@@ -1,0 +1,5 @@
+package Wifi;
+
+public class WifiTransmitter {
+
+}

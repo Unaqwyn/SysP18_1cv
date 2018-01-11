@@ -1,0 +1,30 @@
+package LED;
+
+import ch.ntb.inf.deep.runtime.mpc555.driver.*;
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+
+public class SwichLED extends Task{
+
+	final short pinA=5, pinD=9;
+	public MPIOSM_DIO ledA, swichD;
+	
+	public SwichLED() {
+		ledA=new MPIOSM_DIO(pinA, true);
+		swichD=new MPIOSM_DIO(pinD, false);
+		ledA.set(true);
+	}
+	
+	static {
+		SCI sci1 = SCI.getInstance(SCI.pSCI1);
+		sci1.start(9600,  SCI.NO_PARITY, (short)8);
+		Task task = new LEDdemo();
+		task.period=400;
+		Task.install(task);
+	}
+	
+	public void action()
+	{
+		ledA.set(swichD.get());
+	}
+}
+

@@ -1,0 +1,21 @@
+project {
+#deep-1
+
+meta {
+	version = "Mon Jan 08 09:36:09 CET 2018";
+	description = "deep project file for HelloWorld";
+}
+
+project HelloWorld {
+	libpath = "I:\deep\lib";
+	boardtype = ntbMpc555HB;
+	ostype = ntbSTS;
+	programmertype = ntbMpc555UsbBdi;
+
+#	enter names of rootclasses, e.g.
+#	rootclasses = "test.MyFirstTestClass","other.MySecondTestClass";
+	rootclasses = "test.HelloWorld";
+
+#	imgfile = "C:\Users\rjaeger\eclipse-workspace\HelloWorld\HelloWorld.bin";
+#	imgformat = BIN;
+}

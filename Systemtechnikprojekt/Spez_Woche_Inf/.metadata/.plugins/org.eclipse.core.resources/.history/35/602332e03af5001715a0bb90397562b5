@@ -1,0 +1,73 @@
+package LED;
+
+import ch.ntb.inf.deep.runtime.mpc555.driver.*;
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+
+public class SOS extends Task{
+
+	final static short pinA=5;
+	public static MPIOSM_DIO ledA;
+	private int pos=0;
+	private int counter;
+	public static enum STATE{phase1, phase2, phase3, phase4};
+	
+	public SOS() {
+		ledA=new MPIOSM_DIO(pinA, true);
+		ledA.set(true);
+	}
+	
+	static {
+		SCI sci1 = SCI.getInstance(SCI.pSCI1);
+		sci1.start(9600,  SCI.NO_PARITY, (short)8);
+		Task task = nSOS();
+		task.period=500;
+		Task.install(task);
+	}
+	
+	public void action()
+	{
+		if(pos<=8)
+		{
+			switch(STATE)
+			Case phase1:
+			{
+				ledA.set(true);
+				STATE=phase2;
+			}
+			break;
+			Case phase2:
+			{
+				if(pos<=2 ||pos>=6)
+				{
+					ledA.set(false);
+					STATE=phase3;
+				}
+			}
+			break;
+			Case phase3:
+			{
+				ledA.set(false);
+				if(pos==2||pos==5)
+				{
+					STATE=phase4;
+				}
+				else
+				{
+					STATE=phase1;
+				}
+				pos++;
+			}
+			break;
+			Case phase4:
+			{
+				counter++;
+				if(counter==3)
+				{
+					STATE=phase1;
+					counter=0;
+				}
+			}
+			break;
+		}
+	}
+}

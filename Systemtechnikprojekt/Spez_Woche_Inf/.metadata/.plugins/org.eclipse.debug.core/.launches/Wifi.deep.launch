@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="deep.launchType">
+<stringAttribute key="deep.Model.ATTR_DEEP_LOCATION" value="/Wifi"/>
+<stringAttribute key="deep.Model.ATTR_DEEP_PROGRAM" value="Wifi.deep"/>
+<stringAttribute key="deep.Model.ATTR_TARGET_CONFIG" value="BootFromRam"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/Wifi/Wifi.deep"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+</launchConfiguration>
