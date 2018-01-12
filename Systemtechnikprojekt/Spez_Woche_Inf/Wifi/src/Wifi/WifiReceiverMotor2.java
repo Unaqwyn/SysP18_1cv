@@ -2,7 +2,7 @@ package Wifi;
 
 import java.io.PrintStream;
 
-import Motor.SignMagn;
+import Wifi.SignMagn;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 import ch.ntb.inf.deep.runtime.util.CmdInt;
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;

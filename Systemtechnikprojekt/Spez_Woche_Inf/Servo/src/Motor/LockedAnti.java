@@ -14,7 +14,7 @@ import java.io.PrintStream;
 
  private TPU_PWM pwm;
 
- private LockedAnti() {
+ public LockedAnti() {
  // PWM-Kanal initialisieren
  pwm = new TPU_PWM(useTPUA, PWMChn, pwmPeriod, pwmPeriod/2);
  }
@@ -39,10 +39,26 @@ import java.io.PrintStream;
  la.update(0);
  }
 
- private void update(int hightime) {
+ public void update(int hightime) {
  pwm.update(hightime);
  System.out.print(hightime);System.out.print("\t/\t"); System.out.print(pwmPeriod); 
  System.out.println();
+ }
+ 
+ public void newSpeed(int speed)
+ {
+	 if(speed==0||speed==3)
+	 {
+		 hightimeHalf();
+	 }
+	 else if(speed==1)
+	 {
+		 hightime1_4();
+	 }
+	 else if(speed==2)
+	 {
+		 hightime3_4();
+	 }
  }
 
  static {

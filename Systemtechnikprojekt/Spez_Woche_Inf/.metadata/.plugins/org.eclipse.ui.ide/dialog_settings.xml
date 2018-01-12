@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="\\fs003\stud\rjaeger\Desktop\SysP18_1cv\Systemtechnikprojekt\Spez_Woche_Inf\LEDDemo"/>
+	</list>
 	<section name="NewWizardAction">
 		<item value="ch.ntb.inf.deep.ui.wizard.DeepProjectWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">

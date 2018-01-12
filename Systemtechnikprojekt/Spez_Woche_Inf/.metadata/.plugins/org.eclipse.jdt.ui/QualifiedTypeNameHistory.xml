@@ -2,4 +2,6 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="java.io.PrintStream"/>
 <fullyQualifiedTypeName name="ch.ntb.inf.deep.runtime.ppc32.Task"/>
+<fullyQualifiedTypeName name="Servo.LEDread"/>
+<fullyQualifiedTypeName name="Servo.ServoA"/>
 </qualifiedTypeNameHistroy>
