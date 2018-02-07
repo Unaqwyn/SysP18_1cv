@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="SysP_Project" version="4">
+  <OBJECT>
+    <ID name="SysP_Project" mc="Standard.Project" uid="31709e19-a284-4b0b-bbe1-c4a377d52dbf"/>
+    <ATTRIBUTES>
+      <ATT name="ProjectContext"></ATT>
+      <ATT name="ProjectDescr"></ATT>
+      <ATT name="Name"><![CDATA[SysP_Project]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="Model">
+        <COMPID name="Klassendiagramm" mc="Standard.Package" uid="3877fa9d-9359-4c3f-83d6-c062a3e153d3"/>
+        <COMPID name="Aktivitätsdiagramm" mc="Standard.Package" uid="66c1af9d-8d06-4e98-9fd5-9edbf3f0164c"/>
+      </COMP>
+      <COMP relation="DiagramRoot">
+        <COMPID name="SysP_Project" mc="Infrastructure.DiagramSet" uid="7d6800d5-7b81-4247-b022-94a13738e1b4"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

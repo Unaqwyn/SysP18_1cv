@@ -1,0 +1,7 @@
+#Wed Feb 07 16:20:50 CET 2018
+org.modelio.module.propertytab.JavaDesigner\ v3.7.01\ GModule\ @file\:///C\:/Users/mstoffel/.modelio/3.7/modules/JavaDesigner_3.7.01/JavaDesigner_3.7.01.jmdac\ runtime\ module_.org.modelio.diagram.perspective.parentId=app.ui.ext_com.partstack.right
+org.modelio.diagram.editor.OpenedDiagrams1='Activity Activity diagram' {31ebde2b-c695-45d6-a417-626e4f4d83e8} Standard.ActivityDiagram
+org.modelio.module.propertytab.JavaDesigner\ v3.7.01\ GModule\ @file\:///C\:/Users/mstoffel/.modelio/3.7/modules/JavaDesigner_3.7.01/JavaDesigner_3.7.01.jmdac\ runtime\ module_.org.modelio.app.ui.model.perspective.parentId=org.modelio.app.bottom.parts
+org.modelio.module.propertytab.JavaDesigner\ v3.7.01\ GModule\ @file\:///C\:/Users/mstoffel/.modelio/3.7/modules/JavaDesigner_3.7.01/JavaDesigner_3.7.01.jmdac\ runtime\ module_.org.modelio.development.perspective.parentId=app.ui.ext_com.partstack.bottom
+org.modelio.diagram.editor.OpenedDiagrams0='sysp_project Class diagram' {66e7e9f8-723b-4cc1-8c4d-57f256a2eb56} Standard.ClassDiagram
+org.modelio.module.propertytab.JavaDesigner\ v3.7.01\ GModule\ @file\:///C\:/Users/mstoffel/.modelio/3.7/modules/JavaDesigner_3.7.01/JavaDesigner_3.7.01.jmdac\ runtime\ module_.org.modelio.full.perspective.parentId=app.ui.ext_com.partstack.bottom
