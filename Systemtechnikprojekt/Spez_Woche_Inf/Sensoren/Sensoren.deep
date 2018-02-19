@@ -1,0 +1,20 @@
+#deep-1
+
+meta {
+	version = "Fri Jan 12 08:55:06 CET 2018";
+	description = "deep project file for Sensoren";
+}
+
+project Sensoren {
+	libpath = "I:\deep\lib";
+	boardtype = ntbMpc555HB;
+	ostype = ntbSTS_ppc;
+	programmertype = ntbMpc555UsbBdi;
+
+#	enter names of rootclasses, e.g.
+#	rootclasses = "test.MyFirstTestClass","other.MySecondTestClass";
+	rootclasses = "DistSensor.DistToLED";
+
+#	imgfile = "C:\Users\rjaeger\eclipse-workspace\Sensoren\Sensoren.bin";
+#	imgformat = BIN;
+}

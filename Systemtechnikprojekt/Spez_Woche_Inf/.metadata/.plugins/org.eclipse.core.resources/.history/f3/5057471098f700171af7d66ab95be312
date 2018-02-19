@@ -1,0 +1,20 @@
+#deep-1
+
+meta {
+	version = "Fri Jan 12 13:37:38 CET 2018";
+	description = "deep project file for MotorTest";
+}
+
+project MotorTest {
+	libpath = "I:\deep\lib";
+	boardtype = ntbMpc555HB;
+	ostype = ntbSTS_ppc;
+	programmertype = ntbMpc555UsbBdi;
+
+#	enter names of rootclasses, e.g.
+#	rootclasses = "test.MyFirstTestClass","other.MySecondTestClass";
+	rootclasses = "";
+
+#	imgfile = "C:\Users\rjaeger\eclipse-workspace\MotorTest\MotorTest.bin";
+#	imgformat = BIN;
+}
