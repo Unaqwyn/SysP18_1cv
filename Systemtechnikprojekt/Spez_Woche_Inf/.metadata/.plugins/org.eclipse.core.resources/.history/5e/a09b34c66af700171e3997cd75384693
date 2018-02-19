@@ -1,0 +1,20 @@
+#deep-1
+
+meta {
+	version = "Thu Jan 11 12:46:29 CET 2018";
+	description = "deep project file for Servo2";
+}
+
+project Servo2 {
+	libpath = "I:\deep\lib";
+	boardtype = ntbMpc555HB;
+	ostype = ntbSTS_ppc;
+	programmertype = ntbMpc555UsbBdi;
+
+#	enter names of rootclasses, e.g.
+#	rootclasses = "test.MyFirstTestClass","other.MySecondTestClass";
+	rootclasses = "";
+
+#	imgfile = "C:\Users\rjaeger\eclipse-workspace\Servo2\Servo2.bin";
+#	imgformat = BIN;
+}
