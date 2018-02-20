@@ -6,9 +6,7 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;
 
 public class LockedAnti {
-	private static LockedAnti la; // Diese Klasse hat eine Instanz von sich selber
-
-	private final short PWMChn = 0;
+	private final short PWMChn;
 	private final boolean useTPUA = true;
 	private final static int pwmPeriod = 50000 / TPU_PWM.tpuTimeBase;
 
@@ -72,8 +70,6 @@ public class LockedAnti {
 		// 2) Use SCI1 for stdout
 		System.out = new PrintStream(sci1.out);
 
-		// Objekt erzeugen
-		la = new LockedAnti();
 
 		// Kopfzeile Ausgeben
 		System.out.println("Hightime \t/\t Period");
