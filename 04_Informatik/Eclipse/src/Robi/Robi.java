@@ -14,8 +14,8 @@ import motor.ServoA;
 public class Robi extends Task
 {
 
-	final static short pinV = 5, pinH = 6, pinC = 7;
-	public static MPIOSM_DIO touchV, touchH, touchC;
+	final static short pinV = 5, pinH = 6, pinC = 7, pinS = 8;
+	public static MPIOSM_DIO touchV, touchH, touchC, startTaster;
 
 	private boolean vorwaerts = true;
 	private LockedAnti laMain, laTurn, laArm;
@@ -23,12 +23,11 @@ public class Robi extends Task
 	private ServoA servoV, servoKipp;
 	private Timer timer, timer2;
 	private int h;
-
-
+	private boolean start;
+	private boolean fertig;
 
 	public Robi()
 	{
-		timer.starten(180000);
 		laMain = new LockedAnti(0);
 		laTurn = new LockedAnti(1);
 		laLift = new LockedAntiEncoder(2);
@@ -37,17 +36,32 @@ public class Robi extends Task
 		timer2 = new Timer();
 		touchV = new MPIOSM_DIO(pinV, false);
 		touchH = new MPIOSM_DIO(pinH, false);
-		h = 0;
+		startTaster = new MPIOSM_DIO(pinS, false);
 		servoV = new ServoA(4);
 		servoKipp = new ServoA(5);
+		h = 0;
+		start = false;
+		fertig = false;
+
 	}
 
 	public void main()
 	{
-		init();
-		while(!timer.abgelaufen())
+		init(); // Initialisierung
+
+		while(communication() && !start) // Wenn Kommunikation iO und noch nicht Start mach die Schleiffe
 		{
-			drive();
+			if(startTaster.get()) // Bei Starttaster drücken start Timer und setze start = true
+			{
+				start = true;
+				timer.starten(180000);
+			}
+		}
+
+		while(start && !timer.abgelaufen() && !fertig) // Wenn start gedrückt, timer noch am laufen und nicht fertig =>
+														// bauen
+		{
+			drive(); //
 			if(vorwaerts)
 			{
 				while(!touchV.get())
@@ -72,6 +86,26 @@ public class Robi extends Task
 				getStone();
 			}
 		}
+	}
+
+	/**
+	 * Initialisierung vor dem Start. - Motoren - Vorbereiten Kommunikation Greifer
+	 * bleibt noch hinten und unten (wegen 16x16x16cm)
+	 */
+	public void init()
+	{
+
+	}
+
+	/**
+	 * Kommunikation wird aufgebaut Wenn ein Signal gesendet und empfangen wird iO.
+	 * Wenn nicht fehler meldung
+	 */
+	public boolean communication()
+	{
+		boolean empfangen = false;
+
+		return empfangen;
 	}
 
 	public void drive()
@@ -110,11 +144,6 @@ public class Robi extends Task
 	public void setStone()
 	{
 		servoV.vibration();
-	}
-
-	public void init()
-	{
-		laArm.toPos();
 	}
 
 	static
