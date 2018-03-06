@@ -18,7 +18,7 @@ public class Robi extends Task
 	public static MPIOSM_DIO touchV, touchH, touchC, startTaster;
 
 	private boolean vorwaerts = true;
-	private LockedAnti laMain, laTurn, laArm;
+	private LockedAnti laDrive, laTurn, laArm;
 	private LockedAntiEncoder laLift;
 	private ServoA servoV, servoKipp;
 	private Timer timer, timer2;
@@ -28,7 +28,7 @@ public class Robi extends Task
 
 	public Robi()
 	{
-		laMain = new LockedAnti(0);
+		laDrive = new LockedAnti(0);
 		laTurn = new LockedAnti(1);
 		laLift = new LockedAntiEncoder(2);
 		laArm = new LockedAnti(3);
@@ -61,23 +61,26 @@ public class Robi extends Task
 		while(start && !timer.abgelaufen() && !fertig) // Wenn start gedrückt, timer noch am laufen und nicht fertig =>
 														// bauen
 		{
-			drive(); //
-			if(vorwaerts)
+			drive(); // Fahren
+			if(vorwaerts) // beim Vorwärtsfahren
 			{
-				while(!touchV.get())
+				while(!touchV.get()) // Sensor Vorne angeschlagen
 				{
 				}
-				laMain.stop();
+				laDrive.stop(); // Stopp vorwärts Fahren
 			}
-			else if(!vorwaerts)
+			else if(!vorwaerts) // beim Rückwärtsfahen
 			{
-				while(!touchH.get())
+				while(!touchH.get()) // Sensor hinten angeschlagen
 				{
 				}
-				laMain.stop();
+				laDrive.stop(); // Stopp rückwärts Fahren
 			}
-			vorwaerts = !vorwaerts;
-			if(vorwaerts)
+			vorwaerts = !vorwaerts; // wechsle von true auf false und umgekehrt
+			//
+//			
+	//		
+			if(vorwaerts) // bedingung ändern
 			{
 				setStone();
 			}
@@ -108,11 +111,14 @@ public class Robi extends Task
 		return empfangen;
 	}
 
+	/**
+	 * Fahren vorwärts oder rückwärts. Geschwindikeit und Zeit einstellen
+	 */
 	public void drive()
 	{
 		if(vorwaerts)
 		{
-			laMain.setSpeed(50);
+			laDrive.setSpeed(50);
 			timer2.starten(1000);
 			while(!(timer2.abgelaufen()))
 			{
@@ -126,7 +132,7 @@ public class Robi extends Task
 		}
 		else if(!vorwaerts)
 		{
-			laMain.setSpeed(-50);
+			laDrive.setSpeed(-50);
 			laTurn.max();
 			timer2.starten(1000);
 			while(!(timer2.abgelaufen()))
