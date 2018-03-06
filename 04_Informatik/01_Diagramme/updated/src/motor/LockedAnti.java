@@ -5,30 +5,46 @@ import java.io.PrintStream;
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;
 
-public class LockedAntiEncoder {
+public class LockedAnti {
 	private final boolean useTPUA = true;
-	private Encoder encoder;
 	private final static int pwmPeriod = 50000 / TPU_PWM.tpuTimeBase;
 
 	private TPU_PWM pwm;
 
-	public LockedAntiEncoder(int PWMChn) {
+	public LockedAnti(int PWMChn) {
 
 		pwm = new TPU_PWM(useTPUA, (short) PWMChn, pwmPeriod, pwmPeriod / 2);
-		this.encoder = new Encoder();
 	}
 
-	public void height(int hight) {
-		pwm.update(30);
-		while(encoder.umrechnen()<hight)
-		{}
+	// Geschwindigkeit setzten
+	// -100<=speed<=100
+	public void setSpeed(int speed) {
+		int highTime = (int) (pwmPeriod * (0.5 + (speed * 0.005)));
+		pwm.update(highTime);
 	}
 
-	public void low() {
-		pwm.update(-30);
-		while(encoder.umrechnen()>=0)
-		{}
+	public void stop() {
+		setSpeed(0);
 	}
+
+	public void min() {
+
+	}
+
+	public void max() {
+
+	}
+	
+	public void toPos()
+	{
+		
+	}
+	
+	public void reset()
+	{
+		
+	}
+
 
 	static {
 

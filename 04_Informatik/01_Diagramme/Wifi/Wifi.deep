@@ -1,0 +1,20 @@
+#deep-1
+
+meta {
+	version = "Wed Jan 10 08:36:09 CET 2018";
+	description = "deep project file for Wifi";
+}
+
+project Wifi {
+	libpath = "I:\deep\lib";
+	boardtype = ntbMpc555HB;
+	ostype = ntbSTS_ppc;
+	programmertype = ntbMpc555UsbBdi;
+
+#	enter names of rootclasses, e.g.
+#	rootclasses = "test.MyFirstTestClass","other.MySecondTestClass";
+	rootclasses = "Wifi.WifiTransmitter";
+
+#	imgfile = "C:\Users\rjaeger\eclipse-workspace\Wifi\Wifi.bin";
+#	imgformat = BIN;
+}
