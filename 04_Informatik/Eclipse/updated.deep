@@ -13,7 +13,8 @@ project TestServo {
 
 #	enter names of rootclasses, e.g.
 #	rootclasses = "test.MyFirstTestClass","other.MySecondTestClass";
-	rootclasses = "test.TestServo";
+	rootclasses = "test.TestMotor
+	";
 
 #	imgfile = "C:\Users\rjaeger\eclipse-workspace\updated\updated.bin";
 #	imgformat = BIN;

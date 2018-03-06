@@ -2,7 +2,6 @@ package test;
 
 import java.io.PrintStream;
 
-import bin.LEDdemo;
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.ppc32.Task;

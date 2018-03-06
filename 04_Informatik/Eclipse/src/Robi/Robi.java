@@ -8,6 +8,7 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 import motor.LockedAnti;
+import motor.LockedAntiEncoder;
 import motor.ServoA;
 
 public class Robi extends Task {
@@ -16,22 +17,28 @@ public class Robi extends Task {
 	public static MPIOSM_DIO touchV, touchH, touchC;
 
 	private boolean vorwaerts = true;
-	private LockedAnti laMain, laTurn, laLift, laArm;
-	private ServoA servoa;
+	private LockedAnti laMain, laTurn, laArm;
+	private LockedAntiEncoder laLift;
+	private ServoA servoV, servoKipp;
 	private Timer timer, timer2;
 	private int h;
+	private int h2;
 
+	//bla 
+	
 	public Robi() {
 		timer.starten(180000);
 		laMain = new LockedAnti(0);
-		laTurn = new LockedAnti(2);
-		laLift = new LockedAnti(4);
-		laArm = new LockedAnti(6);
+		laTurn = new LockedAnti(1);
+		laLift = new LockedAntiEncoder(2);
+		laArm = new LockedAnti(3);
 		timer = new Timer();
 		timer2 = new Timer();
 		touchV = new MPIOSM_DIO(pinV, false);
 		touchH = new MPIOSM_DIO(pinH, false);
 		h = 0;
+		servoV = new ServoA(4);
+		servoKipp = new ServoA(5);
 	}
 
 	public void main() {
@@ -82,7 +89,7 @@ public class Robi extends Task {
 	}
 
 	public void setStone() {
-
+		servoV.vibration();
 	}
 
 	public void init() {
