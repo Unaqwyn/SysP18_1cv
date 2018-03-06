@@ -4,6 +4,7 @@ import java.io.PrintStream;
 
 import com.Timer;
 
+import LED.SOS.STATE;
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
@@ -14,10 +15,9 @@ import motor.ServoA;
 public class Robi extends Task
 {
 
-	final static short pinV = 5, pinH = 6, pinC = 7, pinS = 8;
+	final static short pinV = 5, pinH = 6, pinC = 7, pinStart = 8;
 	public static MPIOSM_DIO touchV, touchH, touchC, startTaster;
 
-	private boolean vorwaerts = true;
 	private LockedAnti laDrive, laTurn, laArm;
 	private LockedAntiEncoder laLift;
 	private ServoA servoV, servoKipp;
@@ -26,6 +26,15 @@ public class Robi extends Task
 	private boolean start;
 	private boolean fertig;
 
+	public static enum STATE {
+		fertigInit, vorwaerts, rueckwaerts, drehenLinks, drehenRechts, steinHolen, steinSetzen
+	};
+
+	private STATE state = STATE.fertigInit;
+
+	/**
+	 * Konstrukteur
+	 */
 	public Robi()
 	{
 		laDrive = new LockedAnti(0);
@@ -36,17 +45,21 @@ public class Robi extends Task
 		timer2 = new Timer();
 		touchV = new MPIOSM_DIO(pinV, false);
 		touchH = new MPIOSM_DIO(pinH, false);
-		startTaster = new MPIOSM_DIO(pinS, false);
+		startTaster = new MPIOSM_DIO(pinStart, false);
 		servoV = new ServoA(4);
 		servoKipp = new ServoA(5);
-		h = 0;
+		h = 0; // muss noch weiter verarbeitet werden
 		start = false;
 		fertig = false;
-
 	}
 
+	/**
+	 * Main Methode
+	 */
 	public void main()
 	{
+		boolean initFertig = false;
+
 		init(); // Initialisierung
 
 		while(communication() && !start) // Wenn Kommunikation iO und noch nicht Start mach die Schleiffe
@@ -55,39 +68,61 @@ public class Robi extends Task
 			{
 				start = true;
 				timer.starten(180000);
+				driveForward();
 			}
 		}
 
 		while(start && !timer.abgelaufen() && !fertig) // Wenn start gedrückt, timer noch am laufen und nicht fertig =>
 														// bauen
 		{
-			drive(); // Fahren
-			if(vorwaerts) // beim Vorwärtsfahren
+			switch(state)
 			{
-				while(!touchV.get()) // Sensor Vorne angeschlagen
+				case fertigInit: // Hubsystem Initialiesieren und gleichzeitig Vorwärtsfahren
 				{
+
+					state = STATE.vorwaerts;
 				}
-				laDrive.stop(); // Stopp vorwärts Fahren
-			}
-			else if(!vorwaerts) // beim Rückwärtsfahen
-			{
-				while(!touchH.get()) // Sensor hinten angeschlagen
+				case vorwaerts: // Vorwärtsfahren
 				{
+
+					state = STATE.rueckwaerts;
+					driveBack();
 				}
-				laDrive.stop(); // Stopp rückwärts Fahren
+					break;
+				case rueckwaerts: // Rückwärtsfahren und gleichzeitig Stein anheben und Greifer kippen
+				{
+					state = STATE.drehenRechts;
+				}
+					break;
+				case drehenRechts: // Plattform drehen nach rechts (Richtung Turm)
+				{
+					state = STATE.steinSetzen;
+				}
+					break;
+				case steinSetzen: // Stein platzieren
+				{
+					state = STATE.drehenLinks;
+				}
+					break;
+				case drehenLinks: // Plattform drehen nach links (Richtung Spender)
+				{
+					state = STATE.vorwaerts;
+					driveForward();
+				}
+					break;
 			}
-			vorwaerts = !vorwaerts; // wechsle von true auf false und umgekehrt
-			//
-//			
-	//		
-			if(vorwaerts) // bedingung ändern
-			{
-				setStone();
-			}
-			else if(!vorwaerts)
-			{
-				getStone();
-			}
+
+			/*
+			 * drive(); // Fahren if(vorwaerts) // beim Vorwärtsfahren {
+			 * while(!touchV.get()) // Sensor vorne angeschlagen { } laDrive.stop(); //
+			 * Stopp vorwärts Fahren } else if(!vorwaerts) // beim Rückwärtsfahen {
+			 * while(!touchH.get()) // Sensor hinten angeschlagen { } laDrive.stop(); //
+			 * Stopp rückwärts Fahren } vorwaerts = !vorwaerts; // wechsle von true auf
+			 * false und umgekehrt if(touchV.get() && !vorwaerts) // wenn Sensor vorne
+			 * angeschlagen und Rückwärtsgang eingeleget { getStone(); } else
+			 * if(touchH.get() && vorwaerts)// wenn Sensor hinten angeschlagen und
+			 * Vorwärtsgang eingeleget { setStone(); }
+			 */
 		}
 	}
 
@@ -111,36 +146,44 @@ public class Robi extends Task
 		return empfangen;
 	}
 
+	private void driveForward()
+	{
+		laDrive.setSpeed(50);
+		timer2.starten(500);
+		while(!(timer2.abgelaufen()))
+		{
+			if(touchH.get()) laDrive.stop();
+		}
+		laLift.height(h);
+		timer2.starten(500);
+		while(!(timer2.abgelaufen()))
+		{
+			if(touchH.get()) laDrive.stop();
+		}
+		laTurn.min();
+	}
+
+	private void driveBack()
+	{
+		laDrive.setSpeed(-50);
+		laTurn.max();
+		timer2.starten(1000);
+		while(!(timer2.abgelaufen()))
+		{
+		}
+		laLift.low();
+	}
+
 	/**
 	 * Fahren vorwärts oder rückwärts. Geschwindikeit und Zeit einstellen
 	 */
-	public void drive()
-	{
-		if(vorwaerts)
-		{
-			laDrive.setSpeed(50);
-			timer2.starten(1000);
-			while(!(timer2.abgelaufen()))
-			{
-			}
-			laLift.height(h);
-			timer2.starten(1000);
-			while(!(timer2.abgelaufen()))
-			{
-			}
-			laTurn.min();
-		}
-		else if(!vorwaerts)
-		{
-			laDrive.setSpeed(-50);
-			laTurn.max();
-			timer2.starten(1000);
-			while(!(timer2.abgelaufen()))
-			{
-			}
-			laLift.low();
-		}
-	}
+	/*
+	 * public void drive() { if(state == state.vorwaerts) { laDrive.setSpeed(50);
+	 * timer2.starten(1000); while(!(timer2.abgelaufen())) { } laLift.height(h);
+	 * timer2.starten(1000); while(!(timer2.abgelaufen())) { } laTurn.min(); } else
+	 * if(!vorwaertsFahren) { laDrive.setSpeed(-50); laTurn.max();
+	 * timer2.starten(1000); while(!(timer2.abgelaufen())) { } laLift.low(); } }
+	 */
 
 	public void getStone()
 	{
