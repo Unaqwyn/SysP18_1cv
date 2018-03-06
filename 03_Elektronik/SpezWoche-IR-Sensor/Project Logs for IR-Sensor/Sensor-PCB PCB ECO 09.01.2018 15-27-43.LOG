@@ -1,0 +1,8 @@
+Change Component Comment : Designator=Trig Old Comment=Trig New Comment=12V
+Change Component Comment : Designator=A0 Old Comment=Trig New Comment=A0
+Change Component Comment : Designator=A1 Old Comment=Trig New Comment=A1
+Change Component Designator: OldDesignator=A0 NewDesignator=J11
+Change Component Designator: OldDesignator=A1 NewDesignator=J12
+Change Component Designator: OldDesignator=Trig NewDesignator=J1
+Change Component Designator: OldDesignator=Trig NewDesignator=J4
+Added Member To Class: ClassName=Sheet1-IR-Sensor Member=Component J1 12V
