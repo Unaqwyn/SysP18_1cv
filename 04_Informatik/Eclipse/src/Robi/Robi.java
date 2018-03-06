@@ -11,7 +11,8 @@ import motor.LockedAnti;
 import motor.LockedAntiEncoder;
 import motor.ServoA;
 
-public class Robi extends Task {
+public class Robi extends Task
+{
 
 	final static short pinV = 5, pinH = 6, pinC = 7;
 	public static MPIOSM_DIO touchV, touchH, touchC;
@@ -22,11 +23,11 @@ public class Robi extends Task {
 	private ServoA servoV, servoKipp;
 	private Timer timer, timer2;
 	private int h;
-	private int h2;
 
-	//bla 
-	
-	public Robi() {
+
+
+	public Robi()
+	{
 		timer.starten(180000);
 		laMain = new LockedAnti(0);
 		laTurn = new LockedAnti(1);
@@ -41,62 +42,83 @@ public class Robi extends Task {
 		servoKipp = new ServoA(5);
 	}
 
-	public void main() {
+	public void main()
+	{
 		init();
-		while (!timer.abgelaufen()) {
+		while(!timer.abgelaufen())
+		{
 			drive();
-			if (vorwaerts) {
-				while (!touchV.get()) {
+			if(vorwaerts)
+			{
+				while(!touchV.get())
+				{
 				}
 				laMain.stop();
-			} else if (!vorwaerts) {
-				while (!touchH.get()) {
+			}
+			else if(!vorwaerts)
+			{
+				while(!touchH.get())
+				{
 				}
 				laMain.stop();
 			}
 			vorwaerts = !vorwaerts;
-			if (vorwaerts) {
+			if(vorwaerts)
+			{
 				setStone();
-			} else if (!vorwaerts) {
+			}
+			else if(!vorwaerts)
+			{
 				getStone();
 			}
 		}
 	}
 
-	public void drive() {
-		if (vorwaerts) {
+	public void drive()
+	{
+		if(vorwaerts)
+		{
 			laMain.setSpeed(50);
 			timer2.starten(1000);
-			while (!(timer2.abgelaufen())) {
+			while(!(timer2.abgelaufen()))
+			{
 			}
 			laLift.height(h);
 			timer2.starten(1000);
-			while (!(timer2.abgelaufen())) {
+			while(!(timer2.abgelaufen()))
+			{
 			}
 			laTurn.min();
-		} else if (!vorwaerts) {
+		}
+		else if(!vorwaerts)
+		{
 			laMain.setSpeed(-50);
 			laTurn.max();
 			timer2.starten(1000);
-			while (!(timer2.abgelaufen())) {
+			while(!(timer2.abgelaufen()))
+			{
 			}
 			laLift.low();
 		}
 	}
 
-	public void getStone() {
+	public void getStone()
+	{
 
 	}
 
-	public void setStone() {
+	public void setStone()
+	{
 		servoV.vibration();
 	}
 
-	public void init() {
+	public void init()
+	{
 		laArm.toPos();
 	}
 
-	static {
+	static
+	{
 
 		SCI sci1 = SCI.getInstance(SCI.pSCI1);
 		sci1.start(9600, SCI.NO_PARITY, (short) 8);
