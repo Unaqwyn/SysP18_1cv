@@ -15,7 +15,7 @@ public class TestServo extends Task{
 	
 	public TestServo()
 	{
-		servo=new ServoA();
+		servo=new ServoA(0);
 		touchB=new MPIOSM_DIO(pinB, false);
 	}
 	

@@ -6,23 +6,15 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;
 
 public class LockedAnti {
-	private final short PWMChn;
 	private final boolean useTPUA = true;
 	private final static int pwmPeriod = 50000 / TPU_PWM.tpuTimeBase;
 
 	private TPU_PWM pwm;
 
 	public LockedAnti(int PWMChn) {
-		// PWM-Kanal initialisieren
-		this.PWMChn = (short) PWMChn;
-		pwm = new TPU_PWM(useTPUA, PWMChn, pwmPeriod, pwmPeriod / 2);
-	}
 
-	/*
-	 * private void update(int hightime) { pwm.update(hightime);
-	 * System.out.print(hightime);System.out.print("\t/\t");
-	 * System.out.print(pwmPeriod); System.out.println(); }
-	 */
+		pwm = new TPU_PWM(useTPUA, (short) PWMChn, pwmPeriod, pwmPeriod / 2);
+	}
 
 	// Geschwindigkeit setzten
 	// -100<=speed<=100
@@ -34,31 +26,25 @@ public class LockedAnti {
 	public void stop() {
 		setSpeed(0);
 	}
-	
-	public void min()
-	{
-		
+
+	public void min() {
+
 	}
-	
-	public void max()
-	{
-		
-	}
-	
-	public void height(int hight)
-	{
-		
-	}
-	
-	public void low()
-	{
-		
+
+	public void max() {
+
 	}
 	
 	public void toPos()
 	{
 		
 	}
+	
+	public void reset()
+	{
+		
+	}
+
 
 	static {
 
@@ -69,7 +55,6 @@ public class LockedAnti {
 
 		// 2) Use SCI1 for stdout
 		System.out = new PrintStream(sci1.out);
-
 
 		// Kopfzeile Ausgeben
 		System.out.println("Hightime \t/\t Period");
