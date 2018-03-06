@@ -1,0 +1,7 @@
+Removed Pin From Net: NetName=NetJ1_1 Pin=Q1-2
+Removed Pin From Net: NetName=12V Pin=Q1-3
+Change Component Footprint: Designator=1 Old Footprint=NTB Logo Medium Copper New Footprint=NTB Logo Medium Copper
+Change Component Footprint: Designator=U1 Old Footprint=SOT-23-6 New Footprint=SOT-23-6
+Change Component Footprint: Designator=TP1 Old Footprint=TP-SMD-1206 New Footprint=TP-SMD-1206
+Added Pin To Net: NetName=12V Pin=Q1-2
+Added Pin To Net: NetName=NetJ1_1 Pin=Q1-3

@@ -1,0 +1,656 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : sans-serif;
+			color : white;
+			background-color : #21489e;
+			padding: 0.3em;
+		}
+		body {
+			font-family : verdana;
+		}
+		td, th {
+			padding: 0.5em;
+			text-align : center;
+			width : 18%;
+		}
+		th {
+			background-color : #A6CAF0;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+		}
+		
+		.DRC_summary_header {							
+			padding-bottom : 0.1em;
+			border : 0px solid black;							
+			width: 100%;
+                        align: right;
+                        
+		}
+
+		.DRC_summary_header_col1, 
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3
+		{
+			color : black;
+			font-size:150%;
+                        padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2: 0em;
+			border : 0px solid black;
+			width : auto;
+			vertical-align: top;
+			font-weight: bold;				
+		}
+		
+		.DRC_summary_header_col1 	
+		{		                       
+			text-align: right;
+                        width: auto;	
+		}
+
+		.DRC_summary_header_col2 	
+		{		
+			text-align: center;	
+		}
+
+		.DRC_summary_header_col3 	
+		{		
+			text-align: left;	
+		}
+
+
+		
+		.header_holder
+		{
+		Width = 100%;
+		border = 0px solid green;
+		padding = 0;
+		}
+		
+		
+		
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+                {
+			left:0;
+			top:0;
+			padding-top : 0.1em;			
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top
+
+		}
+		.front_matter {	
+			
+			margin-top: 5px;
+ 			margin-left: 0px;					 			
+ 			horizontal-align: left;
+		}
+				
+		
+		.front_matter_column1 {
+			width : 10em;	
+			text-align  : right;
+			padding-right:0.1em;
+			
+		}
+		
+		.front_matter_column2 {
+                        width: 0.1em;
+			align: center;
+			text-align : center;
+			margin-right  : 0.1em;	
+			margin-left   : 0.1em;
+		}
+		.front_matter_column3 {
+			width         : auto;  
+			text-align    : left;	
+			margin-right  : 0.5em;				
+		}
+		
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : right;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #EEEEE0 
+		}
+		tr.onmouseout_even { 
+			background-color : #F3F3E3   
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : lightYellow
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #008000 
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD17\Templates\AD-rgb_logo_223x64.gif
+		"><a href="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports" class="customize"><acronym title="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports">customize</acronym></a><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td Style="width:70%">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">09.01.2018</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">16:06:46</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">00:00:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3"><a href="file:///\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc" class="file"><acronym title="\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc">\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td Style="Width:30%">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings</td>
+<td class="DRC_summary_header_col2">:</td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations</td>
+<td class="DRC_summary_header_col2">:</td>
+<td class="DRC_summary_header_col3" style="color : red">104</td></tr>
+</table>
+</td>
+</table>
+<hr><a name="IDCCXJBHJY05J4CR0FLCI4U0JW1E4RPWVYMWDHQ2DFXUHJDKTAR5ZL"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDMQN11JSPVE05LXCQFJLE0UDEEPNHARKCHHCLXSL4JSWC4M0JN5VH">Clearance Constraint (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDDT2S1M2RDNACF3KKZC1LCP0FKNKCGJC2KBCWB5LLPW3NGOT2NF">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID2NIHBWJJAMBBMKAAME5FTILVAEO4U3L1POGN0PMVJUEAVRQJWRFN">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDFQIUPZQDIOU1JRTVBF2OROCEZGT2F1Y24GTVDSKZM2LNKGDYRSLM">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDHQDMWQMD5DMKC5W3OWAM0VD2K2RGB5ZEBT1L1FHVMAZAY1J1OVN">Width Constraint (Min=0.254mm) (Max=1mm) (Preferred=0.254mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDUNBAXLUXHSQYKLHR15PLBSEPQCFFENZILLRHWAIRKUCSOIB5ET1J">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDCHIEQOAJ24ESUZU11CO2RSI3HTWJW5KN4RKUNJK2TFH10PJ4NTB">Hole Size Constraint (Min=0.4mm) (Max=5mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDSZPINI0M2OTJNM1MOD22KHTGFM2IER5B2O5ODQMBEJR2IALLCLNL">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDJER0MXGGK2HLI5XOL04VL5LWILQ5ZM1TM1TSHFOGTHUEGBLU00VN">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">9</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDFH3KSGGVKENJDDPITBMJWN3COPQXZ5X0KGHSIV0WTZWDBGKCA4G">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</a></td>
+<td class="column2">95</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDOI1EKJ2I2VUZCVMRBDXAYBSDJQCOZQ3AX5GNHSJVO4DMVKSYOJ">Silk to Silk (Clearance=0mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDTZMOIQ51UADCKLYMR3KJF4BKYUZTBA5UCX13GEQZD0JUG5MXEIE">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDHHTGWJE1NW3DJM44ABLBKOTDRG5SR3MBQUY21G3BPRQK1P200NH">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">104</td>
+</tr>
+</table><br><hr><a name="IDJER0MXGGK2HLI5XOL04VL5LWILQ5ZM1TM1TSHFOGTHUEGBLU00VN"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1846.674mil|Location2.X=1857.924mil|Location1.Y=2946.147mil|Location2.Y=2957.397mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1846.674mil|Location2.X=1857.924mil|Location1.Y=2946.147mil|Location2.Y=2957.397mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.147mm &lt; 0.254mm) Between Pad U1-5(22.2mm,49mm) on Top Layer And Pad U1-6(22.2mm,49.95mm) on Top Layer [Top Solder] Mask Sliver [0.147mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1846.674mil|Location2.X=1857.924mil|Location1.Y=2908.745mil|Location2.Y=2919.995mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1846.674mil|Location2.X=1857.924mil|Location1.Y=2908.745mil|Location2.Y=2919.995mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.147mm &lt; 0.254mm) Between Pad U1-5(22.2mm,49mm) on Top Layer And Pad U1-4(22.2mm,48.05mm) on Top Layer [Top Solder] Mask Sliver [0.147mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1752.186mil|Location2.X=1763.436mil|Location1.Y=2908.745mil|Location2.Y=2919.995mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1752.186mil|Location2.X=1763.436mil|Location1.Y=2908.745mil|Location2.Y=2919.995mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.147mm &lt; 0.254mm) Between Pad U1-2(19.8mm,49mm) on Top Layer And Pad U1-3(19.8mm,48.05mm) on Top Layer [Top Solder] Mask Sliver [0.147mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1752.186mil|Location2.X=1763.436mil|Location1.Y=2946.147mil|Location2.Y=2957.397mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1752.186mil|Location2.X=1763.436mil|Location1.Y=2946.147mil|Location2.Y=2957.397mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.147mm &lt; 0.254mm) Between Pad U1-1(19.8mm,49.95mm) on Top Layer And Pad U1-2(19.8mm,49mm) on Top Layer [Top Solder] Mask Sliver [0.147mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1749.675mil|Location2.X=1760.925mil|Location1.Y=2983.169mil|Location2.Y=2994.419mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1749.675mil|Location2.X=1760.925mil|Location1.Y=2983.169mil|Location2.Y=2994.419mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.18mm &lt; 0.254mm) Between Via (18.5mm,51mm) from Top Layer to Bottom Layer And Pad U1-1(19.8mm,49.95mm) on Top Layer [Top Solder] Mask Sliver [0.18mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3201.068mil|Location2.X=3212.318mil|Location1.Y=1756.088mil|Location2.Y=1767.338mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3201.068mil|Location2.X=3212.318mil|Location1.Y=1756.088mil|Location2.Y=1767.338mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.032mm &lt; 0.254mm) Between Via (55.95mm,20mm) from Top Layer to Bottom Layer And Pad D1-1(55.95mm,18.5mm) on Top Layer [Top Solder] Mask Sliver [0.032mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2541.422mil|Location2.X=2552.672mil|Location1.Y=2888.076mil|Location2.Y=2899.326mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2541.422mil|Location2.X=2552.672mil|Location1.Y=2888.076mil|Location2.Y=2899.326mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.137mm &lt; 0.254mm) Between Via (40mm,48mm) from Top Layer to Bottom Layer And Pad R3-2(38.5mm,48mm) on Top Layer [Top Solder] Mask Sliver [0.137mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3795.948mil|Location2.X=3807.198mil|Location1.Y=1990.259mil|Location2.Y=2001.509mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3795.948mil|Location2.X=3807.198mil|Location1.Y=1990.259mil|Location2.Y=2001.509mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.14mm &lt; 0.254mm) Between Via (71mm,26mm) from Top Layer to Bottom Layer And Pad U3-14(71.095mm,24.05mm) on Top Layer [Top Solder] Mask Sliver [0.14mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3212.19mil|Location2.X=3223.44mil|Location1.Y=2356.58mil|Location2.Y=2367.83mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3212.19mil|Location2.X=3223.44mil|Location1.Y=2356.58mil|Location2.Y=2367.83mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.062mm &lt; 0.254mm) Between Via (57mm,34.5mm) from Top Layer to Bottom Layer And Pad R10-1(55.45mm,34.5mm) on Top Layer [Top Solder] Mask Sliver [0.062mm]</acronym></a><br></td>
+</tr>
+</table></a><a href="#top">Back to top</a><br><br><a name="IDFH3KSGGVKENJDDPITBMJWN3COPQXZ5X0KGHSIV0WTZWDBGKCA4G"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2141.836mil|Location2.X=2149.503mil|Location1.Y=1826.875mil|Location2.Y=1834.542mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2141.836mil|Location2.X=2149.503mil|Location1.Y=1826.875mil|Location2.Y=1834.542mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Arc (27mm,21mm) on Top Overlay And Pad J5-1(27mm,21mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1767.82mil|Location2.X=1775.487mil|Location1.Y=1807.19mil|Location2.Y=1814.857mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1767.82mil|Location2.X=1775.487mil|Location1.Y=1807.19mil|Location2.Y=1814.857mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Arc (17.5mm,20.5mm) on Top Overlay And Pad J1-1(17.5mm,20.5mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3480.419mil|Location2.X=3488.085mil|Location1.Y=1492.23mil|Location2.Y=1499.896mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3480.419mil|Location2.X=3488.085mil|Location1.Y=1492.23mil|Location2.Y=1499.896mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Arc (61mm,12.5mm) on Top Overlay And Pad J12-1(61mm,12.5mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3480.419mil|Location2.X=3488.085mil|Location1.Y=1196.954mil|Location2.Y=1204.621mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3480.419mil|Location2.X=3488.085mil|Location1.Y=1196.954mil|Location2.Y=1204.621mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Arc (61mm,5mm) on Top Overlay And Pad J11-1(61mm,5mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4425.301mil|Location2.X=4432.967mil|Location1.Y=2988.293mil|Location2.Y=2995.959mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4425.301mil|Location2.X=4432.967mil|Location1.Y=2988.293mil|Location2.Y=2995.959mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Arc (85mm,50.5mm) on Top Overlay And Pad J10-1(85mm,50.5mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2771.757mil|Location2.X=2779.424mil|Location1.Y=1216.639mil|Location2.Y=1224.306mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2771.757mil|Location2.X=2779.424mil|Location1.Y=1216.639mil|Location2.Y=1224.306mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Arc (43mm,5.5mm) on Top Overlay And Pad J4-1(43mm,5.5mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4247.918mil|Location2.X=4259.168mil|Location1.Y=2326.071mil|Location2.Y=2337.321mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4247.918mil|Location2.X=4259.168mil|Location1.Y=2326.071mil|Location2.Y=2337.321mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Track (80.35mm,33.95mm)(82.65mm,33.95mm) on Top Overlay And Pad Q2-5(82.54mm,32.5mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4197.918mil|Location2.X=4209.168mil|Location1.Y=2326.071mil|Location2.Y=2337.321mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4197.918mil|Location2.X=4209.168mil|Location1.Y=2326.071mil|Location2.Y=2337.321mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Track (80.35mm,33.95mm)(82.65mm,33.95mm) on Top Overlay And Pad Q2-6(81.27mm,32.5mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4300.261mil|Location2.X=4311.511mil|Location1.Y=2478.627mil|Location2.Y=2489.877mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4300.261mil|Location2.X=4311.511mil|Location1.Y=2478.627mil|Location2.Y=2489.877mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.111mm &lt; 0.254mm) Between Track (83.714mm,37.382mm)(83.714mm,39.618mm) on Top Overlay And Pad C12-2(84.6mm,38.5mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.111mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4302.446mil|Location2.X=4313.696mil|Location1.Y=2476.312mil|Location2.Y=2487.562mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4302.446mil|Location2.X=4313.696mil|Location1.Y=2476.312mil|Location2.Y=2487.562mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.118mm &lt; 0.254mm) Between Track (83.714mm,37.382mm)(88.286mm,37.382mm) on Top Overlay And Pad C12-2(84.6mm,38.5mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.118mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4302.446mil|Location2.X=4313.696mil|Location1.Y=2551.808mil|Location2.Y=2563.058mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4302.446mil|Location2.X=4313.696mil|Location1.Y=2551.808mil|Location2.Y=2563.058mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.118mm &lt; 0.254mm) Between Track (83.714mm,39.618mm)(88.286mm,39.618mm) on Top Overlay And Pad C12-2(84.6mm,38.5mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.118mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4412.682mil|Location2.X=4423.932mil|Location1.Y=2476.312mil|Location2.Y=2487.562mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4412.682mil|Location2.X=4423.932mil|Location1.Y=2476.312mil|Location2.Y=2487.562mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.118mm &lt; 0.254mm) Between Track (83.714mm,37.382mm)(88.286mm,37.382mm) on Top Overlay And Pad C12-1(87.4mm,38.5mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.118mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4468.017mil|Location2.X=4479.267mil|Location1.Y=2478.627mil|Location2.Y=2489.877mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4468.017mil|Location2.X=4479.267mil|Location1.Y=2478.627mil|Location2.Y=2489.877mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.111mm &lt; 0.254mm) Between Track (88.286mm,37.382mm)(88.286mm,39.618mm) on Top Overlay And Pad C12-1(87.4mm,38.5mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.111mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4412.682mil|Location2.X=4423.932mil|Location1.Y=2551.808mil|Location2.Y=2563.058mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4412.682mil|Location2.X=4423.932mil|Location1.Y=2551.808mil|Location2.Y=2563.058mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.118mm &lt; 0.254mm) Between Track (83.714mm,39.618mm)(88.286mm,39.618mm) on Top Overlay And Pad C12-1(87.4mm,38.5mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.118mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2036.678mil|Location2.X=2047.928mil|Location1.Y=2947.131mil|Location2.Y=2958.381mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2036.678mil|Location2.X=2047.928mil|Location1.Y=2947.131mil|Location2.Y=2958.381mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.099mm &lt; 0.254mm) Between Track (26.524mm,49.289mm)(26.524mm,50.711mm) on Top Overlay And Pad R4-1(25.8mm,50mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.099mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1993.391mil|Location2.X=2004.641mil|Location1.Y=2944.942mil|Location2.Y=2956.192mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1993.391mil|Location2.X=2004.641mil|Location1.Y=2944.942mil|Location2.Y=2956.192mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.111mm &lt; 0.254mm) Between Track (23.476mm,49.289mm)(26.524mm,49.289mm) on Top Overlay And Pad R4-1(25.8mm,50mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.111mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1993.391mil|Location2.X=2004.641mil|Location1.Y=2988.69mil|Location2.Y=2999.94mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1993.391mil|Location2.X=2004.641mil|Location1.Y=2988.69mil|Location2.Y=2999.94mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.111mm &lt; 0.254mm) Between Track (23.476mm,50.711mm)(26.524mm,50.711mm) on Top Overlay And Pad R4-1(25.8mm,50mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.111mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1928.45mil|Location2.X=1939.7mil|Location1.Y=2947.131mil|Location2.Y=2958.381mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1928.45mil|Location2.X=1939.7mil|Location1.Y=2947.131mil|Location2.Y=2958.381mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.099mm &lt; 0.254mm) Between Track (23.476mm,49.289mm)(23.476mm,50.711mm) on Top Overlay And Pad R4-2(24.2mm,50mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.099mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1930.399mil|Location2.X=1941.649mil|Location1.Y=2944.942mil|Location2.Y=2956.192mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1930.399mil|Location2.X=1941.649mil|Location1.Y=2944.942mil|Location2.Y=2956.192mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.111mm &lt; 0.254mm) Between Track (23.476mm,49.289mm)(26.524mm,49.289mm) on Top Overlay And Pad R4-2(24.2mm,50mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.111mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1930.399mil|Location2.X=1941.649mil|Location1.Y=2988.69mil|Location2.Y=2999.94mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1930.399mil|Location2.X=1941.649mil|Location1.Y=2988.69mil|Location2.Y=2999.94mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.111mm &lt; 0.254mm) Between Track (23.476mm,50.711mm)(26.524mm,50.711mm) on Top Overlay And Pad R4-2(24.2mm,50mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.111mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1475.008mil|Location2.X=1486.258mil|Location1.Y=2833.278mil|Location2.Y=2844.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1475.008mil|Location2.X=1486.258mil|Location1.Y=2833.278mil|Location2.Y=2844.528mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.118mm &lt; 0.254mm) Between Track (11.949mm,46.397mm)(11.949mm,50.969mm) on Top Overlay And Pad C6-1(13.067mm,47.283mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.118mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1550.504mil|Location2.X=1561.754mil|Location1.Y=2833.278mil|Location2.Y=2844.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1550.504mil|Location2.X=1561.754mil|Location1.Y=2833.278mil|Location2.Y=2844.528mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.118mm &lt; 0.254mm) Between Track (14.184mm,46.397mm)(14.184mm,50.969mm) on Top Overlay And Pad C6-1(13.067mm,47.283mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.118mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1477.323mil|Location2.X=1488.573mil|Location1.Y=2831.092mil|Location2.Y=2842.342mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1477.323mil|Location2.X=1488.573mil|Location1.Y=2831.092mil|Location2.Y=2842.342mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.111mm &lt; 0.254mm) Between Track (11.949mm,46.397mm)(14.184mm,46.397mm) on Top Overlay And Pad C6-1(13.067mm,47.283mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.111mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1475.008mil|Location2.X=1486.258mil|Location1.Y=2943.514mil|Location2.Y=2954.764mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1475.008mil|Location2.X=1486.258mil|Location1.Y=2943.514mil|Location2.Y=2954.764mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.118mm &lt; 0.254mm) Between Track (11.949mm,46.397mm)(11.949mm,50.969mm) on Top Overlay And Pad C6-2(13.067mm,50.083mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.118mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1550.504mil|Location2.X=1561.754mil|Location1.Y=2943.514mil|Location2.Y=2954.764mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1550.504mil|Location2.X=1561.754mil|Location1.Y=2943.514mil|Location2.Y=2954.764mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.118mm &lt; 0.254mm) Between Track (14.184mm,46.397mm)(14.184mm,50.969mm) on Top Overlay And Pad C6-2(13.067mm,50.083mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.118mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1477.323mil|Location2.X=1488.573mil|Location1.Y=2998.848mil|Location2.Y=3010.098mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1477.323mil|Location2.X=1488.573mil|Location1.Y=2998.848mil|Location2.Y=3010.098mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.111mm &lt; 0.254mm) Between Track (11.949mm,50.969mm)(14.184mm,50.969mm) on Top Overlay And Pad C6-2(13.067mm,50.083mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.111mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1426.245mil|Location2.X=1437.495mil|Location1.Y=3029.808mil|Location2.Y=3041.058mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1426.245mil|Location2.X=1437.495mil|Location1.Y=3029.808mil|Location2.Y=3041.058mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.111mm &lt; 0.254mm) Between Track (10.714mm,51.382mm)(10.714mm,53.618mm) on Top Overlay And Pad C10-1(11.6mm,52.5mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.111mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1428.43mil|Location2.X=1439.68mil|Location1.Y=3027.493mil|Location2.Y=3038.743mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1428.43mil|Location2.X=1439.68mil|Location1.Y=3027.493mil|Location2.Y=3038.743mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.118mm &lt; 0.254mm) Between Track (10.714mm,51.382mm)(15.286mm,51.382mm) on Top Overlay And Pad C10-1(11.6mm,52.5mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.118mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1428.43mil|Location2.X=1439.68mil|Location1.Y=3102.989mil|Location2.Y=3114.239mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1428.43mil|Location2.X=1439.68mil|Location1.Y=3102.989mil|Location2.Y=3114.239mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.118mm &lt; 0.254mm) Between Track (10.714mm,53.618mm)(15.286mm,53.618mm) on Top Overlay And Pad C10-1(11.6mm,52.5mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.118mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1594.001mil|Location2.X=1605.251mil|Location1.Y=3029.808mil|Location2.Y=3041.058mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1594.001mil|Location2.X=1605.251mil|Location1.Y=3029.808mil|Location2.Y=3041.058mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.111mm &lt; 0.254mm) Between Track (15.286mm,51.382mm)(15.286mm,53.618mm) on Top Overlay And Pad C10-2(14.4mm,52.5mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.111mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1538.666mil|Location2.X=1549.916mil|Location1.Y=3027.493mil|Location2.Y=3038.743mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1538.666mil|Location2.X=1549.916mil|Location1.Y=3027.493mil|Location2.Y=3038.743mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.118mm &lt; 0.254mm) Between Track (10.714mm,51.382mm)(15.286mm,51.382mm) on Top Overlay And Pad C10-2(14.4mm,52.5mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.118mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1538.666mil|Location2.X=1549.916mil|Location1.Y=3102.989mil|Location2.Y=3114.239mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1538.666mil|Location2.X=1549.916mil|Location1.Y=3102.989mil|Location2.Y=3114.239mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.118mm &lt; 0.254mm) Between Track (10.714mm,53.618mm)(15.286mm,53.618mm) on Top Overlay And Pad C10-2(14.4mm,52.5mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.118mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1426.245mil|Location2.X=1437.495mil|Location1.Y=3128.233mil|Location2.Y=3139.483mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1426.245mil|Location2.X=1437.495mil|Location1.Y=3128.233mil|Location2.Y=3139.483mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.111mm &lt; 0.254mm) Between Track (10.714mm,53.882mm)(10.714mm,56.118mm) on Top Overlay And Pad C4-1(11.6mm,55mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.111mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1428.43mil|Location2.X=1439.68mil|Location1.Y=3125.918mil|Location2.Y=3137.168mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1428.43mil|Location2.X=1439.68mil|Location1.Y=3125.918mil|Location2.Y=3137.168mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.118mm &lt; 0.254mm) Between Track (10.714mm,53.882mm)(15.286mm,53.882mm) on Top Overlay And Pad C4-1(11.6mm,55mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.118mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1428.43mil|Location2.X=1439.68mil|Location1.Y=3201.414mil|Location2.Y=3212.664mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1428.43mil|Location2.X=1439.68mil|Location1.Y=3201.414mil|Location2.Y=3212.664mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.118mm &lt; 0.254mm) Between Track (10.714mm,56.118mm)(15.286mm,56.118mm) on Top Overlay And Pad C4-1(11.6mm,55mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.118mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1594.001mil|Location2.X=1605.251mil|Location1.Y=3128.233mil|Location2.Y=3139.483mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1594.001mil|Location2.X=1605.251mil|Location1.Y=3128.233mil|Location2.Y=3139.483mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.111mm &lt; 0.254mm) Between Track (15.286mm,53.882mm)(15.286mm,56.118mm) on Top Overlay And Pad C4-2(14.4mm,55mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.111mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1538.666mil|Location2.X=1549.916mil|Location1.Y=3125.918mil|Location2.Y=3137.168mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1538.666mil|Location2.X=1549.916mil|Location1.Y=3125.918mil|Location2.Y=3137.168mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.118mm &lt; 0.254mm) Between Track (10.714mm,53.882mm)(15.286mm,53.882mm) on Top Overlay And Pad C4-2(14.4mm,55mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.118mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1538.666mil|Location2.X=1549.916mil|Location1.Y=3201.414mil|Location2.Y=3212.664mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1538.666mil|Location2.X=1549.916mil|Location1.Y=3201.414mil|Location2.Y=3212.664mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.118mm &lt; 0.254mm) Between Track (10.714mm,56.118mm)(15.286mm,56.118mm) on Top Overlay And Pad C4-2(14.4mm,55mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.118mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1928.45mil|Location2.X=1939.7mil|Location1.Y=2868.391mil|Location2.Y=2879.641mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1928.45mil|Location2.X=1939.7mil|Location1.Y=2868.391mil|Location2.Y=2879.641mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.099mm &lt; 0.254mm) Between Track (23.476mm,47.289mm)(23.476mm,48.711mm) on Top Overlay And Pad R1-1(24.2mm,48mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.099mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1930.399mil|Location2.X=1941.649mil|Location1.Y=2866.202mil|Location2.Y=2877.452mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1930.399mil|Location2.X=1941.649mil|Location1.Y=2866.202mil|Location2.Y=2877.452mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.111mm &lt; 0.254mm) Between Track (23.476mm,47.289mm)(26.524mm,47.289mm) on Top Overlay And Pad R1-1(24.2mm,48mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.111mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1930.399mil|Location2.X=1941.649mil|Location1.Y=2909.95mil|Location2.Y=2921.2mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1930.399mil|Location2.X=1941.649mil|Location1.Y=2909.95mil|Location2.Y=2921.2mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.111mm &lt; 0.254mm) Between Track (23.476mm,48.711mm)(26.524mm,48.711mm) on Top Overlay And Pad R1-1(24.2mm,48mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.111mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2036.678mil|Location2.X=2047.928mil|Location1.Y=2868.391mil|Location2.Y=2879.641mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2036.678mil|Location2.X=2047.928mil|Location1.Y=2868.391mil|Location2.Y=2879.641mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.099mm &lt; 0.254mm) Between Track (26.524mm,47.289mm)(26.524mm,48.711mm) on Top Overlay And Pad R1-2(25.8mm,48mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.099mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1993.391mil|Location2.X=2004.641mil|Location1.Y=2866.202mil|Location2.Y=2877.452mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1993.391mil|Location2.X=2004.641mil|Location1.Y=2866.202mil|Location2.Y=2877.452mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.111mm &lt; 0.254mm) Between Track (23.476mm,47.289mm)(26.524mm,47.289mm) on Top Overlay And Pad R1-2(25.8mm,48mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.111mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1993.391mil|Location2.X=2004.641mil|Location1.Y=2909.95mil|Location2.Y=2921.2mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1993.391mil|Location2.X=2004.641mil|Location1.Y=2909.95mil|Location2.Y=2921.2mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.111mm &lt; 0.254mm) Between Track (23.476mm,48.711mm)(26.524mm,48.711mm) on Top Overlay And Pad R1-2(25.8mm,48mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.111mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1373.95mil|Location2.X=1385.2mil|Location1.Y=2847.525mil|Location2.Y=2858.775mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1373.95mil|Location2.X=1385.2mil|Location1.Y=2847.525mil|Location2.Y=2858.775mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.118mm &lt; 0.254mm) Between Track (9.382mm,46.747mm)(9.382mm,50.253mm) on Top Overlay And Pad L1-1(10.5mm,47.535mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.118mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1449.446mil|Location2.X=1460.696mil|Location1.Y=2847.525mil|Location2.Y=2858.775mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1449.446mil|Location2.X=1460.696mil|Location1.Y=2847.525mil|Location2.Y=2858.775mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.118mm &lt; 0.254mm) Between Track (11.618mm,46.747mm)(11.618mm,50.253mm) on Top Overlay And Pad L1-1(10.5mm,47.535mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.118mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1376.265mil|Location2.X=1387.515mil|Location1.Y=2845.111mil|Location2.Y=2856.361mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1376.265mil|Location2.X=1387.515mil|Location1.Y=2845.111mil|Location2.Y=2856.361mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.123mm &lt; 0.254mm) Between Track (9.382mm,46.747mm)(11.618mm,46.747mm) on Top Overlay And Pad L1-1(10.5mm,47.535mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.123mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1373.95mil|Location2.X=1385.2mil|Location1.Y=2923.509mil|Location2.Y=2934.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1373.95mil|Location2.X=1385.2mil|Location1.Y=2923.509mil|Location2.Y=2934.759mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.118mm &lt; 0.254mm) Between Track (9.382mm,46.747mm)(9.382mm,50.253mm) on Top Overlay And Pad L1-2(10.5mm,49.465mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.118mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1449.446mil|Location2.X=1460.696mil|Location1.Y=2923.509mil|Location2.Y=2934.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1449.446mil|Location2.X=1460.696mil|Location1.Y=2923.509mil|Location2.Y=2934.759mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.118mm &lt; 0.254mm) Between Track (11.618mm,46.747mm)(11.618mm,50.253mm) on Top Overlay And Pad L1-2(10.5mm,49.465mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.118mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1376.265mil|Location2.X=1387.515mil|Location1.Y=2970.41mil|Location2.Y=2981.66mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1376.265mil|Location2.X=1387.515mil|Location1.Y=2970.41mil|Location2.Y=2981.66mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.123mm &lt; 0.254mm) Between Track (9.382mm,50.253mm)(11.618mm,50.253mm) on Top Overlay And Pad L1-2(10.5mm,49.465mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.123mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2987.702mil|Location2.X=2998.952mil|Location1.Y=2025.871mil|Location2.Y=2037.121mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2987.702mil|Location2.X=2998.952mil|Location1.Y=2025.871mil|Location2.Y=2037.121mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.111mm &lt; 0.254mm) Between Track (50.686mm,25.882mm)(50.686mm,28.118mm) on Top Overlay And Pad C2-2(49.8mm,27mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.111mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2932.367mil|Location2.X=2943.617mil|Location1.Y=2023.556mil|Location2.Y=2034.806mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2932.367mil|Location2.X=2943.617mil|Location1.Y=2023.556mil|Location2.Y=2034.806mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.118mm &lt; 0.254mm) Between Track (46.114mm,25.882mm)(50.686mm,25.882mm) on Top Overlay And Pad C2-2(49.8mm,27mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.118mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2932.367mil|Location2.X=2943.617mil|Location1.Y=2099.052mil|Location2.Y=2110.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2932.367mil|Location2.X=2943.617mil|Location1.Y=2099.052mil|Location2.Y=2110.302mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.118mm &lt; 0.254mm) Between Track (46.114mm,28.118mm)(50.686mm,28.118mm) on Top Overlay And Pad C2-2(49.8mm,27mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.118mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2819.946mil|Location2.X=2831.196mil|Location1.Y=2025.871mil|Location2.Y=2037.121mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2819.946mil|Location2.X=2831.196mil|Location1.Y=2025.871mil|Location2.Y=2037.121mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.111mm &lt; 0.254mm) Between Track (46.114mm,25.882mm)(46.114mm,28.118mm) on Top Overlay And Pad C2-1(47mm,27mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.111mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2822.131mil|Location2.X=2833.381mil|Location1.Y=2023.556mil|Location2.Y=2034.806mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2822.131mil|Location2.X=2833.381mil|Location1.Y=2023.556mil|Location2.Y=2034.806mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.118mm &lt; 0.254mm) Between Track (46.114mm,25.882mm)(50.686mm,25.882mm) on Top Overlay And Pad C2-1(47mm,27mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.118mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2822.131mil|Location2.X=2833.381mil|Location1.Y=2099.052mil|Location2.Y=2110.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2822.131mil|Location2.X=2833.381mil|Location1.Y=2099.052mil|Location2.Y=2110.302mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.118mm &lt; 0.254mm) Between Track (46.114mm,28.118mm)(50.686mm,28.118mm) on Top Overlay And Pad C2-1(47mm,27mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.118mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3111.418mil|Location2.X=3123.211mil|Location1.Y=1698.727mil|Location2.Y=1709.977mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3111.418mil|Location2.X=3123.211mil|Location1.Y=1698.727mil|Location2.Y=1709.977mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.215mm &lt; 0.254mm) Between Track (53.5mm,16.8mm)(53.5mm,17.6mm) on Top Overlay And Pad D1-2(54.05mm,18.5mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.215mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3215.914mil|Location2.X=3227.164mil|Location1.Y=1698.727mil|Location2.Y=1709.977mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3215.914mil|Location2.X=3227.164mil|Location1.Y=1698.727mil|Location2.Y=1709.977mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.215mm &lt; 0.254mm) Between Track (56.5mm,16.8mm)(56.5mm,17.6mm) on Top Overlay And Pad D1-1(55.95mm,18.5mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.215mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2420.576mil|Location2.X=2431.826mil|Location1.Y=2947.131mil|Location2.Y=2958.381mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2420.576mil|Location2.X=2431.826mil|Location1.Y=2947.131mil|Location2.Y=2958.381mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.099mm &lt; 0.254mm) Between Track (35.976mm,49.289mm)(35.976mm,50.711mm) on Top Overlay And Pad R2-1(36.7mm,50mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.099mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2422.525mil|Location2.X=2433.775mil|Location1.Y=2944.942mil|Location2.Y=2956.192mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2422.525mil|Location2.X=2433.775mil|Location1.Y=2944.942mil|Location2.Y=2956.192mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.111mm &lt; 0.254mm) Between Track (35.976mm,49.289mm)(39.024mm,49.289mm) on Top Overlay And Pad R2-1(36.7mm,50mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.111mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2422.525mil|Location2.X=2433.775mil|Location1.Y=2988.69mil|Location2.Y=2999.94mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2422.525mil|Location2.X=2433.775mil|Location1.Y=2988.69mil|Location2.Y=2999.94mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.111mm &lt; 0.254mm) Between Track (35.976mm,50.711mm)(39.024mm,50.711mm) on Top Overlay And Pad R2-1(36.7mm,50mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.111mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2528.804mil|Location2.X=2540.054mil|Location1.Y=2947.131mil|Location2.Y=2958.381mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2528.804mil|Location2.X=2540.054mil|Location1.Y=2947.131mil|Location2.Y=2958.381mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.099mm &lt; 0.254mm) Between Track (39.024mm,49.289mm)(39.024mm,50.711mm) on Top Overlay And Pad R2-2(38.3mm,50mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.099mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2485.517mil|Location2.X=2496.767mil|Location1.Y=2944.942mil|Location2.Y=2956.192mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2485.517mil|Location2.X=2496.767mil|Location1.Y=2944.942mil|Location2.Y=2956.192mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.111mm &lt; 0.254mm) Between Track (35.976mm,49.289mm)(39.024mm,49.289mm) on Top Overlay And Pad R2-2(38.3mm,50mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.111mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2485.517mil|Location2.X=2496.767mil|Location1.Y=2988.69mil|Location2.Y=2999.94mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2485.517mil|Location2.X=2496.767mil|Location1.Y=2988.69mil|Location2.Y=2999.94mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.111mm &lt; 0.254mm) Between Track (35.976mm,50.711mm)(39.024mm,50.711mm) on Top Overlay And Pad R2-2(38.3mm,50mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.111mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2428.45mil|Location2.X=2439.7mil|Location1.Y=2868.391mil|Location2.Y=2879.641mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2428.45mil|Location2.X=2439.7mil|Location1.Y=2868.391mil|Location2.Y=2879.641mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.099mm &lt; 0.254mm) Between Track (36.176mm,47.289mm)(36.176mm,48.711mm) on Top Overlay And Pad R3-1(36.9mm,48mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.099mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2430.399mil|Location2.X=2441.649mil|Location1.Y=2866.202mil|Location2.Y=2877.452mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2430.399mil|Location2.X=2441.649mil|Location1.Y=2866.202mil|Location2.Y=2877.452mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.111mm &lt; 0.254mm) Between Track (36.176mm,47.289mm)(39.224mm,47.289mm) on Top Overlay And Pad R3-1(36.9mm,48mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.111mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2430.399mil|Location2.X=2441.649mil|Location1.Y=2909.95mil|Location2.Y=2921.2mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2430.399mil|Location2.X=2441.649mil|Location1.Y=2909.95mil|Location2.Y=2921.2mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.111mm &lt; 0.254mm) Between Track (36.176mm,48.711mm)(39.224mm,48.711mm) on Top Overlay And Pad R3-1(36.9mm,48mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.111mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2536.678mil|Location2.X=2547.928mil|Location1.Y=2868.391mil|Location2.Y=2879.641mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2536.678mil|Location2.X=2547.928mil|Location1.Y=2868.391mil|Location2.Y=2879.641mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.099mm &lt; 0.254mm) Between Track (39.224mm,47.289mm)(39.224mm,48.711mm) on Top Overlay And Pad R3-2(38.5mm,48mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.099mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2493.391mil|Location2.X=2504.641mil|Location1.Y=2866.202mil|Location2.Y=2877.452mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2493.391mil|Location2.X=2504.641mil|Location1.Y=2866.202mil|Location2.Y=2877.452mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.111mm &lt; 0.254mm) Between Track (36.176mm,47.289mm)(39.224mm,47.289mm) on Top Overlay And Pad R3-2(38.5mm,48mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.111mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2493.391mil|Location2.X=2504.641mil|Location1.Y=2909.95mil|Location2.Y=2921.2mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2493.391mil|Location2.X=2504.641mil|Location1.Y=2909.95mil|Location2.Y=2921.2mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.111mm &lt; 0.254mm) Between Track (36.176mm,48.711mm)(39.224mm,48.711mm) on Top Overlay And Pad R3-2(38.5mm,48mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.111mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3251.182mil|Location2.X=3262.975mil|Location1.Y=2249.908mil|Location2.Y=2261.158mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3251.182mil|Location2.X=3262.975mil|Location1.Y=2249.908mil|Location2.Y=2261.158mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.215mm &lt; 0.254mm) Between Track (57.05mm,30.8mm)(57.05mm,31.6mm) on Top Overlay And Pad Q3-2(57.6mm,32.5mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.215mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3355.678mil|Location2.X=3366.928mil|Location1.Y=2249.908mil|Location2.Y=2261.158mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3355.678mil|Location2.X=3366.928mil|Location1.Y=2249.908mil|Location2.Y=2261.158mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.215mm &lt; 0.254mm) Between Track (60.05mm,30.8mm)(60.05mm,31.6mm) on Top Overlay And Pad Q3-1(59.5mm,32.5mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.215mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2285.714mil|Location2.X=2296.964mil|Location1.Y=2944.434mil|Location2.Y=2955.684mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2285.714mil|Location2.X=2296.964mil|Location1.Y=2944.434mil|Location2.Y=2955.684mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.187mm &lt; 0.254mm) Between Track (32.349mm,49.238mm)(32.857mm,49.238mm) on Top Overlay And Pad D4-1(33.225mm,50mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.187mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2285.714mil|Location2.X=2296.964mil|Location1.Y=2989.198mil|Location2.Y=3000.448mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2285.714mil|Location2.X=2296.964mil|Location1.Y=2989.198mil|Location2.Y=3000.448mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.187mm &lt; 0.254mm) Between Track (32.349mm,50.762mm)(32.857mm,50.762mm) on Top Overlay And Pad D4-1(33.225mm,50mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.187mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2280.773mil|Location2.X=2292.023mil|Location1.Y=2948.115mil|Location2.Y=2959.365mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2280.773mil|Location2.X=2292.023mil|Location1.Y=2948.115mil|Location2.Y=2959.365mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.251mm &lt; 0.254mm) Between Track (32.349mm,49.238mm)(32.349mm,50.762mm) on Top Overlay And Pad D4-1(33.225mm,50mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.251mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2235.536mil|Location2.X=2246.786mil|Location1.Y=2395.95mil|Location2.Y=2407.2mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2235.536mil|Location2.X=2246.786mil|Location1.Y=2395.95mil|Location2.Y=2407.2mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.099mm &lt; 0.254mm) Between Track (31.276mm,35.289mm)(31.276mm,36.711mm) on Top Overlay And Pad R5-1(32mm,36mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.099mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2237.485mil|Location2.X=2248.735mil|Location1.Y=2393.761mil|Location2.Y=2405.011mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2237.485mil|Location2.X=2248.735mil|Location1.Y=2393.761mil|Location2.Y=2405.011mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.111mm &lt; 0.254mm) Between Track (31.276mm,35.289mm)(34.324mm,35.289mm) on Top Overlay And Pad R5-1(32mm,36mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.111mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2237.485mil|Location2.X=2248.735mil|Location1.Y=2437.509mil|Location2.Y=2448.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2237.485mil|Location2.X=2248.735mil|Location1.Y=2437.509mil|Location2.Y=2448.759mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.111mm &lt; 0.254mm) Between Track (31.276mm,36.711mm)(34.324mm,36.711mm) on Top Overlay And Pad R5-1(32mm,36mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.111mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2343.765mil|Location2.X=2355.015mil|Location1.Y=2395.95mil|Location2.Y=2407.2mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2343.765mil|Location2.X=2355.015mil|Location1.Y=2395.95mil|Location2.Y=2407.2mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.099mm &lt; 0.254mm) Between Track (34.324mm,35.289mm)(34.324mm,36.711mm) on Top Overlay And Pad R5-2(33.6mm,36mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.099mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2300.477mil|Location2.X=2311.727mil|Location1.Y=2393.761mil|Location2.Y=2405.011mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2300.477mil|Location2.X=2311.727mil|Location1.Y=2393.761mil|Location2.Y=2405.011mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.111mm &lt; 0.254mm) Between Track (31.276mm,35.289mm)(34.324mm,35.289mm) on Top Overlay And Pad R5-2(33.6mm,36mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.111mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2300.477mil|Location2.X=2311.727mil|Location1.Y=2437.509mil|Location2.Y=2448.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2300.477mil|Location2.X=2311.727mil|Location1.Y=2437.509mil|Location2.Y=2448.759mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.111mm &lt; 0.254mm) Between Track (31.276mm,36.711mm)(34.324mm,36.711mm) on Top Overlay And Pad R5-2(33.6mm,36mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.111mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2609.415mil|Location2.X=2620.665mil|Location1.Y=2391.191mil|Location2.Y=2402.441mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2609.415mil|Location2.X=2620.665mil|Location1.Y=2391.191mil|Location2.Y=2402.441mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.202mm &lt; 0.254mm) Between Track (41.065mm,35.238mm)(41.243mm,35.238mm) on Top Overlay And Pad D2-1(40.3mm,36mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.202mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2607.56mil|Location2.X=2621.198mil|Location1.Y=2439.643mil|Location2.Y=2450.893mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2607.56mil|Location2.X=2621.198mil|Location1.Y=2439.643mil|Location2.Y=2450.893mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.13mm &lt; 0.254mm) Between Track (40.938mm,36.762mm)(41.421mm,36.762mm) on Top Overlay And Pad D2-1(40.3mm,36mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.13mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2607.56mil|Location2.X=2621.198mil|Location1.Y=2439.643mil|Location2.Y=2450.893mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2607.56mil|Location2.X=2621.198mil|Location1.Y=2439.643mil|Location2.Y=2450.893mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.13mm &lt; 0.254mm) Between Track (40.938mm,36.762mm)(41.243mm,36.762mm) on Top Overlay And Pad D2-1(40.3mm,36mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.13mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2608.849mil|Location2.X=2620.099mil|Location1.Y=2393.985mil|Location2.Y=2405.235mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2608.849mil|Location2.X=2620.099mil|Location1.Y=2393.985mil|Location2.Y=2405.235mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.115mm &lt; 0.254mm) Between Track (41.065mm,35.238mm)(41.065mm,36.762mm) on Top Overlay And Pad D2-1(40.3mm,36mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.115mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2563.276mil|Location2.X=2574.526mil|Location1.Y=2391.778mil|Location2.Y=2403.028mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2563.276mil|Location2.X=2574.526mil|Location1.Y=2391.778mil|Location2.Y=2403.028mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.112mm &lt; 0.254mm) Between Track (35.935mm,35.238mm)(41.065mm,35.238mm) on Top Overlay And Pad D2-1(40.3mm,36mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.112mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2563.276mil|Location2.X=2574.526mil|Location1.Y=2439.491mil|Location2.Y=2450.741mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2563.276mil|Location2.X=2574.526mil|Location1.Y=2439.491mil|Location2.Y=2450.741mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.112mm &lt; 0.254mm) Between Track (35.935mm,36.762mm)(41.065mm,36.762mm) on Top Overlay And Pad D2-1(40.3mm,36mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.112mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2419.27mil|Location2.X=2430.52mil|Location1.Y=2393.985mil|Location2.Y=2405.235mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2419.27mil|Location2.X=2430.52mil|Location1.Y=2393.985mil|Location2.Y=2405.235mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.115mm &lt; 0.254mm) Between Track (35.935mm,35.238mm)(35.935mm,36.762mm) on Top Overlay And Pad D2-2(36.7mm,36mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.115mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2421.544mil|Location2.X=2432.794mil|Location1.Y=2391.778mil|Location2.Y=2403.028mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2421.544mil|Location2.X=2432.794mil|Location1.Y=2391.778mil|Location2.Y=2403.028mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.112mm &lt; 0.254mm) Between Track (35.935mm,35.238mm)(41.065mm,35.238mm) on Top Overlay And Pad D2-2(36.7mm,36mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.112mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2421.544mil|Location2.X=2432.794mil|Location1.Y=2439.491mil|Location2.Y=2450.741mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2421.544mil|Location2.X=2432.794mil|Location1.Y=2439.491mil|Location2.Y=2450.741mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.112mm &lt; 0.254mm) Between Track (35.935mm,36.762mm)(41.065mm,36.762mm) on Top Overlay And Pad D2-2(36.7mm,36mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.112mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1516.93mil|Location2.X=1528.723mil|Location1.Y=2112.113mil|Location2.Y=2123.363mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1516.93mil|Location2.X=1528.723mil|Location1.Y=2112.113mil|Location2.Y=2123.363mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.215mm &lt; 0.254mm) Between Track (13mm,27.3mm)(13mm,28.1mm) on Top Overlay And Pad Q1-2(13.55mm,29mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.215mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1621.426mil|Location2.X=1632.676mil|Location1.Y=2112.113mil|Location2.Y=2123.363mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1621.426mil|Location2.X=1632.676mil|Location1.Y=2112.113mil|Location2.Y=2123.363mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.215mm &lt; 0.254mm) Between Track (16mm,27.3mm)(16mm,28.1mm) on Top Overlay And Pad Q1-1(15.45mm,29mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.215mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2294.572mil|Location2.X=2305.822mil|Location1.Y=2865.694mil|Location2.Y=2876.944mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2294.572mil|Location2.X=2305.822mil|Location1.Y=2865.694mil|Location2.Y=2876.944mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.187mm &lt; 0.254mm) Between Track (32.574mm,47.238mm)(33.082mm,47.238mm) on Top Overlay And Pad D3-1(33.45mm,48mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.187mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2294.572mil|Location2.X=2305.822mil|Location1.Y=2910.458mil|Location2.Y=2921.708mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2294.572mil|Location2.X=2305.822mil|Location1.Y=2910.458mil|Location2.Y=2921.708mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.187mm &lt; 0.254mm) Between Track (32.574mm,48.762mm)(33.082mm,48.762mm) on Top Overlay And Pad D3-1(33.45mm,48mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.187mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2289.631mil|Location2.X=2300.881mil|Location1.Y=2869.375mil|Location2.Y=2880.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\fs003\stud\lweber\Desktop\Spezialistenwoche\IR-Sensor-libs\Sensor-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2289.631mil|Location2.X=2300.881mil|Location1.Y=2869.375mil|Location2.Y=2880.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.251mm &lt; 0.254mm) Between Track (32.574mm,47.238mm)(32.574mm,48.762mm) on Top Overlay And Pad D3-1(33.45mm,48mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.251mm]</acronym></a><br></td>
+</tr>
+</table></a><a href="#top">Back to top</a><br><br></body>
+</html>
