@@ -1,9 +1,7 @@
 package Robi;
 
 import java.io.PrintStream;
-
 import com.Timer;
-
 import LED.SOS.STATE;
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
@@ -58,7 +56,6 @@ public class Robi extends Task
 	 */
 	public void main()
 	{
-		boolean initFertig = false;
 
 		init(); // Initialisierung
 
@@ -85,12 +82,19 @@ public class Robi extends Task
 				case vorwaerts: // Vorwärtsfahren
 				{
 
-					state = STATE.rueckwaerts;
+					laDrive.stop();
+					state = STATE.steinHolen;
+				}
+					break;
+				case steinHolen:
+				{
 					driveBack();
+					state = STATE.rueckwaerts;
 				}
 					break;
 				case rueckwaerts: // Rückwärtsfahren und gleichzeitig Stein anheben und Greifer kippen
 				{
+					laDrive.stop();
 					state = STATE.drehenRechts;
 				}
 					break;
@@ -152,13 +156,15 @@ public class Robi extends Task
 		timer2.starten(500);
 		while(!(timer2.abgelaufen()))
 		{
-			if(touchH.get()) laDrive.stop();
+			if(touchH.get())
+				laDrive.stop();
 		}
 		laLift.height(h);
 		timer2.starten(500);
 		while(!(timer2.abgelaufen()))
 		{
-			if(touchH.get()) laDrive.stop();
+			if(touchH.get())
+				laDrive.stop();
 		}
 		laTurn.min();
 	}
