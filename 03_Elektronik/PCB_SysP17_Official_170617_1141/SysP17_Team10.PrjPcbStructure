@@ -1,0 +1,5 @@
+Record=TopLevelDocument|FileName=SysP_Uebersicht.SchDoc
+Record=SheetSymbol|SourceDocument=SysP_Uebersicht.SchDoc|Designator=div_Ele|SchDesignator=div_Ele|FileName=div_Ele.SchDoc|SymbolType=Normal|RawFileName=div_Ele.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=SysP_Uebersicht.SchDoc|Designator=Motoren|SchDesignator=Motoren|FileName=Motor.SchDoc|SymbolType=Normal|RawFileName=Motor.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=SysP_Uebersicht.SchDoc|Designator=MPC|SchDesignator=MPC|FileName=MPC.SchDoc|SymbolType=Normal|RawFileName=MPC.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=SysP_Uebersicht.SchDoc|Designator=Supply_12Vto5V_5Vto3.3V|SchDesignator=Supply_12Vto5V_5Vto3.3V|FileName=Supply.SchDoc|SymbolType=Normal|RawFileName=Supply.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 

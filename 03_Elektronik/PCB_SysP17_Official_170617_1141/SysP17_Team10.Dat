@@ -1,0 +1,40 @@
+﻿Field=#~Integer~#~50|Field=Comment~String~Comment~100|Field=Description~String~Description~100|Field=Designator~String~Designator~100|Field=Footprint~String~Footprint~100|Field=LibRef~String~LibRef~100|Field=Quantity~Integer~Quantity~100|ReportField=Currency~<none>|ReportField=ProductionQuantity~1|ReportField=ProjectFileName~SysP17_Team10.PrjPcb|ReportField=ProjectFullPath~M:\Altium_Designer\SysP17_Team10\Official\SysP17_Team10.PrjPcb|ReportField=Title~Bill of Materials For Project [SysP17_Team10.PrjPcb] (No PCB Document Selected)|ReportField=TotalQuantity~84|ReportField=ReportTime~16:13:12|ReportField=ReportDate~15.03.2017|ReportField=ReportDateTime~15.03.2017 16:13:12|ReportField=OutputName~Bill of Materials|ReportField=OutputType~BOM_PartType|ReportField=GeneratorName~BOM|ReportField=GeneratorDescription~Bill of Materials|ReportField=VariantName~None|ReportField=Address1~Werdenbergstrasse 4|ReportField=Address2~|ReportField=Address3~9471 Buchs|ReportField=Address4~Switzerland|ReportField=Application_BuildNumber~|ReportField=ApprovedBy~|ReportField=Author~N. Dürr / M. Mettler|ReportField=CheckedBy~|ReportField=CompanyName~NTB|ReportField=CurrentDate~15.03.2017|ReportField=CurrentTime~16:12:45|ReportField=Date~|ReportField=DocumentFullPathAndName~M:\Altium_Designer\SysP17_Team10\Official\SysP_Uebersicht.SchDoc|ReportField=DocumentName~SysP_Uebersicht.SchDoc|ReportField=DocumentNumber~|ReportField=DrawnBy~|ReportField=Engineer~|ReportField=ImagePath~|ReportField=ModifiedDate~15.03.2017|ReportField=Organization~NTB Interstate University of Applied|ReportField=Organization1~Sciences of Technology Buchs|ReportField=ProjectName~SysP17_Team10.PrjPcb|ReportField=Revision~|ReportField=Rule~|ReportField=SheetNumber~|ReportField=SheetTotal~|ReportField=ShortDescription~Schema-Übersicht der ganzen Elektronik|ReportField=Size~A4|ReportField=Time~|ReportField=Title~SysP17_Team10: Übersicht|ReportField=DataSourceFileName~SysP17_Team10.PrjPcb|ReportField=DataSourceFullPath~M:\Altium_Designer\SysP17_Team10\Official\SysP17_Team10.PrjPcb
+1|BAT|Laborbuchse|12V, GND|Laborbuchse 2mm|Laborbuchse|2
+2|x|X7R MLCC 0805 (2012 Metric)|C1|CAPC0805|C Bipolar 0805|1
+3|AVE476M16D16T-F|Aluminum Electrolytic Capacitors for Filtering and Bypass, 47uF, 16V|C1, C2|CDE_CAP AVE CODE D_H|CDE_AVE476M16D16T-F_AVE CODE D|2
+4|100nF|C1206|C2|1206|C1206|1
+5|10nF|C1206|C3|1206|C1206|1
+6|100n|X7R MLCC 0805 (2012 Metric)|C4|CAPC0805|C Bipolar 0805|1
+7|22u|X7R MLCC 1206 (3016 Metric)|C5, C6|CAPC1206|C Bipolar 1206|2
+8|22uF|X7R MLCC 0805 (2012 Metric)|C7, C8|CAPC0805|C Bipolar 0805|2
+9|1uF|X7R MLCC 0805 (2012 Metric)|C9, C10|CAPC0805|C Bipolar 0805|2
+10|SK34SMA|SK34SMA|D1|DIOTEC_DO-214AC_1K2A_2_H|DIOTEC_SK34SMA_DO-214AC|1
+11|MPC555 Headerboard|NTB MPC555 Headerboard|J1|MPC555 Headerboard THT|MPC555 Headerboard|1
+12|CKP2016 4R7M-T|MULTILAYER CHIP POWER INDUCTORS|L1|IND0806|L|1
+13|LSR976|Hyper ChipLED, Red,|LED1, LED2, LED3|GEN_LED0805_1K2A_2_H|OSR_LSR976_0805(1K2A)|3
+14|Header 4|Header, 4-Pin|Motor 1, Motor 2, Motor 3|HDR1X4|Header 4|3
+15|WIFI_A|Header, 4-Pin|P1|PIN2|Header 4|1
+16|LED_1|Header, 2-Pin|P2|HDR1X2|Header 2|1
+17|LED_2|Header, 2-Pin|P3|HDR1X2|Header 2|1
+18|LED_3|Header, 2-Pin|P4|HDR1X2|Header 2|1
+19|LED_4|Header, 2-Pin|P5|HDR1X2|Header 2|1
+20|LED_5|Header, 2-Pin|P6|HDR1X2|Header 2|1
+21|WIFI_B|Header, 5-Pin|P7|HDR1X5|Header 5|1
+22|Taster_1|Header, 2-Pin|P8|HDR1X2|Header 2|1
+23|Taster_2|Header, 2-Pin|P9|HDR1X2|Header 2|1
+24|Taster_3|Header, 2-Pin|P10|HDR1X2|Header 2|1
+25|Schalter_1|Header, 2-Pin|P11|HDR1X2|Header 2|1
+26|LDR|Header, 2-Pin|P12|HDR1X2|Header 2|1
+27|Vcc_Magnet|Header, 2-Pin|P13|HDR1X2|Header 2|1
+28|Header 3H|Header, 3-Pin, Right Angle|P14|HDR1X3H|Header 3H|1
+29|2 Pin Header 2.54mm|2 Pin Header 2.54mm|P16|2Pin Header 2.54mm|2 Pin Connector|1
+30|OPT|Header, 12-Pin|P?|MHDR1X12|MHDR1X12|1
+31|NMOS-2|N-Channel Power MOSFET|Q1, Q1, Q2, Q2|SOT23_L|NMOS-2|4
+32|Generic|generic resistor|R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R11, R12, R12, R13, R13, R14, R20, R21, R22, R23, R102|GEN_R0805_H|GEN_R_2|22
+33|1 Ohm|R1206|R15, R16|1206|R1206|2
+34|SW-SPST|Single-Pole, Single-Throw Switch|S?|SPST-2|SW-SPST|1
+35|Testpunkt 1mm|Testpunkt 1mm|TP1, TP2, TP3, TP4, TP4, TP5, TP6, TP7, TP8, TP9, TP10|GEN_TP-THT-1.1mm_1_H|Testpunkt 1mm|11
+36|Opt101|Opt101|U1|Opt101|Opt101|1
+37|DRV8841Board||U1, U2|DRV8841_Board|DRV8841_Board|2
+38|TPS562209|3-A Synchronous Step-Down Voltage Regulator|U2|SOT23-6|TPS562209|1
+39|NCP1117ST50T3G|1.0 A Low-Dropout Positive  Fixed and Adjustable  Voltage Regulators|U3|ONSEMI_SOT-223(318JH)_H|ONSEMI_NCP1117ST50T3G_SOT-223|1
