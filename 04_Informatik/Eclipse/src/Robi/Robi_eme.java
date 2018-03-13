@@ -20,7 +20,7 @@ public class Robi_eme extends Task
 	final static short pinVorne = 5, pinHinten = 6, pinStart = 7;
 	public static MPIOSM_DIO touchVorne, touchHinten, startTaster;
 
-	private int hoehe;
+	public static int hoehe;
 	private int vorgabe;
 	
 	private boolean start;
@@ -52,7 +52,7 @@ public class Robi_eme extends Task
 		timer2 = new Timer();
 
 		hoehe = 0;
-		vorgabe = 5;
+		vorgabe = 9;
 		
 		start = false;
 		fertig = false;
@@ -159,7 +159,10 @@ public class Robi_eme extends Task
 	 */
 	private boolean start()
 	{
-		
+		if(startTaster.get())
+		{
+			start = true;
+		}
 		return start;
 	}
 
