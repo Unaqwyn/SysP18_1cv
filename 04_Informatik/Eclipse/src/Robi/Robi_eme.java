@@ -2,10 +2,11 @@ package Robi;
 
 import java.io.PrintStream;
 import com.Timer;
-//import LED.SOS.STATE;
+// import LED.SOS.STATE;
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
+import ch.ntb.sysp.demo.WifiDemo;
 import motor.LockedAnti;
 import motor.LockedAntiEncoder;
 import motor.ServoA;
@@ -18,11 +19,12 @@ public class Robi_eme extends Task
 	private Timer timer, timer2;
 
 	final static short pinVorne = 5, pinHinten = 6, pinStart = 7;
-	public static MPIOSM_DIO touchVorne, touchHinten, startTaster;
+	public static MPIOSM_DIO sensorVorne, sensorHinten, startTaster;
 
 	public static int hoehe;
-	private int vorgabe;
-	
+	private final int vorgabe;
+	private int speed;
+
 	private boolean start;
 	private boolean fertig;
 
@@ -44,8 +46,8 @@ public class Robi_eme extends Task
 		servoV = new ServoA(4);
 		servoKipp = new ServoA(5);
 
-		touchVorne = new MPIOSM_DIO(pinVorne, false);
-		touchHinten = new MPIOSM_DIO(pinHinten, false);
+		sensorVorne = new MPIOSM_DIO(pinVorne, false);
+		sensorHinten = new MPIOSM_DIO(pinHinten, false);
 		startTaster = new MPIOSM_DIO(pinStart, false);
 
 		timer = new Timer();
@@ -53,7 +55,8 @@ public class Robi_eme extends Task
 
 		hoehe = 0;
 		vorgabe = 9;
-		
+		speed = 80;
+
 		start = false;
 		fertig = false;
 
@@ -74,7 +77,7 @@ public class Robi_eme extends Task
 		// Start gedückt
 		start();
 
-		while(start &&!fertig)
+		while(start && !fertig)
 		{
 			switch(state)
 			{
@@ -87,45 +90,37 @@ public class Robi_eme extends Task
 					driveForward();
 				}
 					break;
-					
+
 				case steinHolen:
 				{
 					steinHolen();
 				}
 					break;
-					
+
 				case rueckwaerts:
 				{
 					driveBack();
 				}
-				case greiferHoch:
-				{
-					greiferHoch();
-				}
 					break;
-					
-				case greiferKlappenRunter:
-				{
-					greiferKlappenRunter();
-				}
+
 				case drehenRechts:
 				{
 					drehenRechts();
 				}
 					break;
-	
+
 				case steinSetzen:
 				{
 					steinSetzen();
 				}
 					break;
-					
-				// greiferHoch
-					
-				case greiferKlappenHoch:
+
+				case greiferHoch:
 				{
-					greiferKlappenHoch();
+					greiferHoch();
 				}
+					break;
+
 				case drehenLinks:
 				{
 					drehenLinks();
@@ -159,19 +154,22 @@ public class Robi_eme extends Task
 	 */
 	private boolean start()
 	{
-		if(startTaster.get())
+		while(!startTaster.get())
 		{
-			start = true;
 		}
+		start = true;
 		return start;
 	}
+
+	//
 
 	/**
 	 * Greifer vorbereiten Greifer anheben und Arm ausfahren
 	 */
 	private void greiferVorbereiten()
 	{
-
+		laArm.toPos();
+		state = STATE.vorwaerts;
 	}
 
 	/**
@@ -179,7 +177,11 @@ public class Robi_eme extends Task
 	 */
 	private void driveForward()
 	{
-		
+		laDrive.setSpeed(speed);
+		if(sensorVorne.get())
+		{
+			state = STATE.steinHolen;
+		}
 	}
 
 	/**
@@ -187,6 +189,13 @@ public class Robi_eme extends Task
 	 */
 	private void driveBack()
 	{
+		laDrive.setSpeed(-speed);
+		laLift.height(hoehe);
+
+		if(sensorHinten.get())
+		{
+			state = STATE.drehenRechts;
+		}
 	}
 
 	/**
@@ -194,6 +203,15 @@ public class Robi_eme extends Task
 	 */
 	private void drehenRechts()
 	{
+		laDrive.stop();
+		laTurn.max();
+		servoKipp.min();
+
+		if(laTurn.motorInPos())
+		{
+			state = STATE.steinSetzen;
+		}
+
 	}
 
 	//
@@ -203,13 +221,20 @@ public class Robi_eme extends Task
 	 */
 	private void drehenLinks()
 	{
-		// if() methode no laTurn rückmeldung
+		laTurn.low();
+		servoKipp.max();
+		if(laTurn.motorInPos())
 		{
-			state = STATE.vorwaerts;
+			WifiDemo.sendCmd();
+			if(hoehe != vorgabe)
+			{
+				state = STATE.vorwaerts;
+			}
+			else
+			{
+				fertig = true;
+			}
 		}
-		
-		hoehe++;
-		if(hoehe == vorgabe) fertig = true;
 	}
 
 	//
@@ -219,13 +244,8 @@ public class Robi_eme extends Task
 	 */
 	private void steinHolen()
 	{
-	}
-
-	/**
-	 * Greifer hoch
-	 */
-	private void greiferHoch()
-	{
+		laDrive.stop();
+		state = STATE.rueckwaerts;
 	}
 
 	/**
@@ -233,21 +253,25 @@ public class Robi_eme extends Task
 	 */
 	private void steinSetzen()
 	{
-	}
-
-	//
-
-	/**
-	 * Greifer nach unten klappen
-	 */
-	private void greiferKlappenRunter()
-	{
+		laLift.andruecken(hoehe);
+		
+		if(laLift.motorInPos())
+		{
+			hoehe += 2;
+			state = STATE.greiferHoch;
+		}
 	}
 
 	/**
-	 * Greifer nach oben klappen
+	 * Greifer hoch
 	 */
-	private void greiferKlappenHoch()
+	private void greiferHoch()
 	{
+		laLift.height(hoehe);
+		if(laLift.motorInPos())
+		{
+			state = STATE.drehenLinks;
+		}
 	}
+
 }
