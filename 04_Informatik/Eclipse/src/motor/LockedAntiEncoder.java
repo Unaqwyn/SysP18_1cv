@@ -5,32 +5,49 @@ import java.io.PrintStream;
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;
 
-public class LockedAntiEncoder {
+public class LockedAntiEncoder
+{
 	private final boolean useTPUA = true;
 	private Encoder encoder;
 	private final static int pwmPeriod = 50000 / TPU_PWM.tpuTimeBase;
 
 	private TPU_PWM pwm;
 
-	public LockedAntiEncoder(int PWMChn) {
+	public LockedAntiEncoder(int PWMChn, int pinEncoder)
+	{
 
 		pwm = new TPU_PWM(useTPUA, (short) PWMChn, pwmPeriod, pwmPeriod / 2);
-		this.encoder = new Encoder();
+		this.encoder = new Encoder(pinEncoder);
 	}
 
-	public void height(int hight) {
+	public void height(int hight)
+	{
 		pwm.update(30);
-		while(encoder.umrechnen()<hight)
-		{}
+		while (encoder.umrechnen() < hight)
+		{
+		}
 	}
 
-	public void low() {
+	public void low()
+	{
 		pwm.update(-30);
-		while(encoder.umrechnen()>=0)
-		{}
+		while (encoder.umrechnen() >= 0)
+		{
+		}
 	}
 
-	static {
+	public void max()
+	{
+
+	}
+
+	public void andrücken()
+	{
+
+	}
+
+	static
+	{
 
 		// SCI1 initialisieren und als Standardausgabe verwenden
 		// 1) Initialize SCI1 (9600 8N1)

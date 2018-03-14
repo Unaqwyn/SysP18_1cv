@@ -27,20 +27,7 @@ public class LockedAnti {
 		setSpeed(0);
 	}
 
-	public void min() {
-
-	}
-
-	public void max() {
-
-	}
-	
 	public void toPos()
-	{
-		
-	}
-	
-	public void reset()
 	{
 		
 	}
