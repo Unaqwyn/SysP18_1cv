@@ -8,7 +8,7 @@ import java.lang.Math;
 
 public class Encoder extends Task
 {
-	final byte tpuPin4 = 4;
+	final byte tpuPin;
 	private short pos = 0;
 	private long absPos = 0;
 	private double deltaPhi;
@@ -18,11 +18,13 @@ public class Encoder extends Task
 	final boolean useTPUA = true;
 	private TPU_FQD fqd;
 
-	public Encoder()
+	public Encoder(int pin)
 	{
-		fqd = new TPU_FQD(useTPUA, tpuPin4);
+		tpuPin=( byte) pin;
+		fqd = new TPU_FQD(useTPUA, tpuPin);
 		period = 2000;
 		Task.install(this);
+		
 	}
 
 	public void action()
@@ -37,7 +39,7 @@ public class Encoder extends Task
 		return absPos;
 	}
 
-	public boolean heightReached(double height)
+	public boolean heightReached(int height)
 	{
 		boolean finished = false;
 		if(umrechnen() >= height)
