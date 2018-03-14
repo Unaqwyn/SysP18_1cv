@@ -1,0 +1,1034 @@
+Added Component: Designator=C100(CAPC0805)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Case-EIA"; Value = "0805"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case-Metric"; Value = "2012"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Rated Voltage"; Value = "50V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Temperature Characteristics EIA"; Value = "X7R"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Temperature Range EIA"; Value = "-55C/+125C"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Tolerance"; Value = "10%"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "100n"; VariantName = "[No Variations]"
+Added Component: Designator=C101(CDE_CAP AVE CODE D_H)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "#Class"; Value = "PASSIVE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "#ClassSub"; Value = "CAPACITOR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "http://www.cde.com/catalogs/AVE.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Packaging Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor"; Value = "Mouser"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor PartNr"; Value = "598-AVE476M16D16T-F"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Cornell Dubilier"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer PartNr"; Value = "AVE476M16D16T-F"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "20121220"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Stefan Ursella, M.Eng"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileFOO"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileSCH"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFootprint"; Value = "CDE_CAP AVE CODE D"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefSchema"; Value = "CDE_AVE476M16D16T-F_AVE CODE D"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "10uF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ValueAddon"; Value = "16V ±20 %"; VariantName = "[No Variations]"
+Added Component: Designator=C102(CAPC0805)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Case-EIA"; Value = "0805"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case-Metric"; Value = "2012"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Rated Voltage"; Value = "50V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Temperature Characteristics EIA"; Value = "X7R"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Temperature Range EIA"; Value = "-55C/+125C"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Tolerance"; Value = "10%"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "100n"; VariantName = "[No Variations]"
+Added Component: Designator=C103(CAPC1206)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Case-EIA"; Value = "1206"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case-Metric"; Value = "3216"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Rated Voltage"; Value = "10V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Temperature Characteristics EIA"; Value = "X7R"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Temperature Range EIA"; Value = "-55C/+125C"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Tolerance"; Value = "10%"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "22u"; VariantName = "[No Variations]"
+Added Component: Designator=C104(CAPC1206)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Case-EIA"; Value = "1206"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case-Metric"; Value = "3216"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Rated Voltage"; Value = "10V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Temperature Characteristics EIA"; Value = "X7R"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Temperature Range EIA"; Value = "-55C/+125C"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Tolerance"; Value = "10%"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "22u"; VariantName = "[No Variations]"
+Added Component: Designator=C105(CAPC0805)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Case-EIA"; Value = "0805"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case-Metric"; Value = "2012"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Rated Voltage"; Value = "50V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Temperature Characteristics EIA"; Value = "X7R"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Temperature Range EIA"; Value = "-55C/+125C"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Tolerance"; Value = "10%"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "100n"; VariantName = "[No Variations]"
+Added Component: Designator=C106(CAPC0805)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Case-EIA"; Value = "0805"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Case-Metric"; Value = "2012"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Rated Voltage"; Value = "50V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Temperature Characteristics EIA"; Value = "X7R"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Temperature Range EIA"; Value = "-55C/+125C"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Tolerance"; Value = "10%"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "100n"; VariantName = "[No Variations]"
+Added Component: Designator=C200(CDE_CAP AVE CODE D_H)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "#Class"; Value = "PASSIVE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "#ClassSub"; Value = "CAPACITOR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "http://www.cde.com/catalogs/AVE.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Packaging Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor"; Value = "Mouser"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor PartNr"; Value = "598-AVE476M16D16T-F"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Cornell Dubilier"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer PartNr"; Value = "AVE476M16D16T-F"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "20121220"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Stefan Ursella, M.Eng"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileFOO"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileSCH"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFootprint"; Value = "CDE_CAP AVE CODE D"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefSchema"; Value = "CDE_AVE476M16D16T-F_AVE CODE D"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "10uF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ValueAddon"; Value = "16V ±20 %"; VariantName = "[No Variations]"
+Added Component: Designator=C300(CDE_CAP AVE CODE D_H)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "#Class"; Value = "PASSIVE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "#ClassSub"; Value = "CAPACITOR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "http://www.cde.com/catalogs/AVE.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Packaging Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor"; Value = "Mouser"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor PartNr"; Value = "598-AVE476M16D16T-F"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Cornell Dubilier"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer PartNr"; Value = "AVE476M16D16T-F"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "20121220"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Stefan Ursella, M.Eng"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileFOO"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileSCH"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFootprint"; Value = "CDE_CAP AVE CODE D"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefSchema"; Value = "CDE_AVE476M16D16T-F_AVE CODE D"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "10uF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ValueAddon"; Value = "16V ±20 %"; VariantName = "[No Variations]"
+Added Component: Designator=C400(CDE_CAP AVE CODE D_H)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "#Class"; Value = "PASSIVE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "#ClassSub"; Value = "CAPACITOR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "http://www.cde.com/catalogs/AVE.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Packaging Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor"; Value = "Mouser"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor PartNr"; Value = "598-AVE476M16D16T-F"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Cornell Dubilier"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer PartNr"; Value = "AVE476M16D16T-F"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "20121220"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Stefan Ursella, M.Eng"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileFOO"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileSCH"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFootprint"; Value = "CDE_CAP AVE CODE D"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefSchema"; Value = "CDE_AVE476M16D16T-F_AVE CODE D"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "10uF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ValueAddon"; Value = "16V ±20 %"; VariantName = "[No Variations]"
+Added Component: Designator=D100(DIOTEC_DO-214AC_1K2A_2_H)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "#Class"; Value = "DIODE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "#ClassSub"; Value = "SCHOTTKY"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://diotec.com/en/products/all-products/productlist.html?aid=SK34SMA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "http://diotec.com/tl_files/diotec/files/pdf/datasheets/sk32sma.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Packaging Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = "http://diotec.com/en/products/all-products/productlist.html?aid=SK34SMA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor"; Value = "Distrelec"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor PartNr"; Value = "600727"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Diotec Semiconductor"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer PartNr"; Value = "SK34SMA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "20121217"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Stefan Ursella, M.Eng"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileFOO"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileSCH"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFootprint"; Value = "DIOTEC_DO-214AC_1K2A_2_H"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefSchema"; Value = "DIOTEC_SK34SMA_DO-214AC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Status"; Value = "nLager"; VariantName = "[No Variations]"
+Added Component: Designator=L100(IND0806)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Datasheet Taiyo Yuden CK Series"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "V:\Inductor\Taiyo_Yuden_CK_Series.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Current Rating"; Value = "900mA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DCR"; Value = "160mOhm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Inductance"; Value = "4u7"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufactor"; Value = "Taiyo Yuden"; VariantName = "[No Variations]"
+Added Component: Designator=LED100(CAPC1206)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "#Class"; Value = "DIODE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "#ClassSub"; Value = "LED"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.osram-os.com/osram_os/en/products/product-catalog/led-light-emitting-diodes/chipled/chipled-0805/ls-r976/index.jsp?search_result=%2fosram_os%2fen%2fsearch%2fadvanced_search.jsp%3faction%3ddosearch%26inp_searchterm_1%3dLS%2bR976%26website_name%3dosram_os_en"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "http://catalog.osram-os.com/catalogue/catalogue.do;jsessionid=8A0FA5146E77D3A917A5A5D383CD44B4?act=downloadFile&favOid=0200000600039319000100b6"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Packaging Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = "http://catalog.osram-os.com/catalogue/catalogue.do;jsessionid=8A0FA5146E77D3A917A5A5D383CD44B4?act=downloadFile&favOid=0200000600039319000100b6"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor"; Value = "Farnell"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor PartNr"; Value = "1226392"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "OSRAM"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer PartNr"; Value = "LSR976"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "20121218"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Stefan Ursella, M.Eng"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileFOO"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileSCH"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFootprint"; Value = "GEN_LED0805_1K2A_2_H"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefSchema"; Value = "OSR_LSR976_0805(1K2A)"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=LED101(CAPC1206)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "#Class"; Value = "DIODE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "#ClassSub"; Value = "LED"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.osram-os.com/osram_os/en/products/product-catalog/led-light-emitting-diodes/chipled/chipled-0805/ls-r976/index.jsp?search_result=%2fosram_os%2fen%2fsearch%2fadvanced_search.jsp%3faction%3ddosearch%26inp_searchterm_1%3dLS%2bR976%26website_name%3dosram_os_en"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "http://catalog.osram-os.com/catalogue/catalogue.do;jsessionid=8A0FA5146E77D3A917A5A5D383CD44B4?act=downloadFile&favOid=0200000600039319000100b6"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Packaging Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = "http://catalog.osram-os.com/catalogue/catalogue.do;jsessionid=8A0FA5146E77D3A917A5A5D383CD44B4?act=downloadFile&favOid=0200000600039319000100b6"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor"; Value = "Farnell"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor PartNr"; Value = "1226392"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "OSRAM"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer PartNr"; Value = "LSR976"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "20121218"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Stefan Ursella, M.Eng"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileFOO"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileSCH"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFootprint"; Value = "GEN_LED0805_1K2A_2_H"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefSchema"; Value = "OSR_LSR976_0805(1K2A)"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=LED102(CAPC1206)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "#Class"; Value = "DIODE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "#ClassSub"; Value = "LED"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.osram-os.com/osram_os/en/products/product-catalog/led-light-emitting-diodes/chipled/chipled-0805/ls-r976/index.jsp?search_result=%2fosram_os%2fen%2fsearch%2fadvanced_search.jsp%3faction%3ddosearch%26inp_searchterm_1%3dLS%2bR976%26website_name%3dosram_os_en"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "http://catalog.osram-os.com/catalogue/catalogue.do;jsessionid=8A0FA5146E77D3A917A5A5D383CD44B4?act=downloadFile&favOid=0200000600039319000100b6"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Packaging Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = "http://catalog.osram-os.com/catalogue/catalogue.do;jsessionid=8A0FA5146E77D3A917A5A5D383CD44B4?act=downloadFile&favOid=0200000600039319000100b6"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor"; Value = "Farnell"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor PartNr"; Value = "1226392"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "OSRAM"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer PartNr"; Value = "LSR976"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "20121218"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Stefan Ursella, M.Eng"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileFOO"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileSCH"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFootprint"; Value = "GEN_LED0805_1K2A_2_H"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefSchema"; Value = "OSR_LSR976_0805(1K2A)"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=P100(2Pin Header 2.54mm)
+Add component. Clean all parameters for all variants
+Added Component: Designator=P500(2Pin Header 2.54mm)
+Add component. Clean all parameters for all variants
+Added Component: Designator=P501(2Pin Header 2.54mm)
+Add component. Clean all parameters for all variants
+Added Component: Designator=P502(2Pin Header 2.54mm)
+Add component. Clean all parameters for all variants
+Added Component: Designator=P503(2Pin Header 2.54mm)
+Add component. Clean all parameters for all variants
+Added Component: Designator=P504(2Pin Header 2.54mm)
+Add component. Clean all parameters for all variants
+Added Component: Designator=P505(2Pin Header 2.54mm)
+Add component. Clean all parameters for all variants
+Added Component: Designator=P506(2Pin Header 2.54mm)
+Add component. Clean all parameters for all variants
+Added Component: Designator=P507(GEN_HEADER-2.54mm_7_H)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "#Class"; Value = "CONNECTOR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "#ClassSub"; Value = "HEADER"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Packaging Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "20121218"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileFOO"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileSCH"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFootprint"; Value = "GEN_HEADER-2.54mm_7_H"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefSchema"; Value = "GEN_HEADER_7"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=P508(2Pin Header 2.54mm)
+Add component. Clean all parameters for all variants
+Added Component: Designator=P509(2Pin Header 2.54mm)
+Add component. Clean all parameters for all variants
+Added Component: Designator=P510(2Pin Header 2.54mm)
+Add component. Clean all parameters for all variants
+Added Component: Designator=P511(2Pin Header 2.54mm)
+Add component. Clean all parameters for all variants
+Added Component: Designator=Q200(SOT23-3)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Datasheet Si2302CDS"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "V:\MosFets\si2302cds.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ID"; Value = "2.9A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RDSON"; Value = "57mR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "VDSS"; Value = "20V"; VariantName = "[No Variations]"
+Added Component: Designator=Q201(SOT23-3)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Datasheet Si2302CDS"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "V:\MosFets\si2302cds.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ID"; Value = "2.9A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RDSON"; Value = "57mR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "VDSS"; Value = "20V"; VariantName = "[No Variations]"
+Added Component: Designator=Q300(SOT23-3)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Datasheet Si2302CDS"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "V:\MosFets\si2302cds.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ID"; Value = "2.9A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RDSON"; Value = "57mR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "VDSS"; Value = "20V"; VariantName = "[No Variations]"
+Added Component: Designator=Q301(SOT23-3)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Datasheet Si2302CDS"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "V:\MosFets\si2302cds.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ID"; Value = "2.9A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RDSON"; Value = "57mR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "VDSS"; Value = "20V"; VariantName = "[No Variations]"
+Added Component: Designator=Q400(SOT23-3)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Datasheet Si2302CDS"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "V:\MosFets\si2302cds.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ID"; Value = "2.9A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RDSON"; Value = "57mR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "VDSS"; Value = "20V"; VariantName = "[No Variations]"
+Added Component: Designator=Q401(SOT23-3)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Datasheet Si2302CDS"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "V:\MosFets\si2302cds.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ID"; Value = "2.9A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RDSON"; Value = "57mR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "VDSS"; Value = "20V"; VariantName = "[No Variations]"
+Added Component: Designator=R100(GEN_R0805_H)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "#Class"; Value = "PASSIVE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "#ClassSub"; Value = "RESISTOR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Packaging Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileFOO"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileSCH"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFootprint"; Value = "GEN_R0805_H"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefSchema"; Value = "GEN_R_2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "4.7k"; VariantName = "[No Variations]"
+Added Component: Designator=R101(GEN_R0805_H)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "#Class"; Value = "PASSIVE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "#ClassSub"; Value = "RESISTOR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Packaging Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileFOO"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileSCH"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFootprint"; Value = "GEN_R0805_H"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefSchema"; Value = "GEN_R_2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "1.5k"; VariantName = "[No Variations]"
+Added Component: Designator=R102(GEN_R0805_H)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "#Class"; Value = "PASSIVE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "#ClassSub"; Value = "RESISTOR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Packaging Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileFOO"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileSCH"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFootprint"; Value = "GEN_R0805_H"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefSchema"; Value = "GEN_R_2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "560"; VariantName = "[No Variations]"
+Added Component: Designator=R103(GEN_R0805_H)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "#Class"; Value = "PASSIVE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "#ClassSub"; Value = "RESISTOR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Packaging Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileFOO"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileSCH"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFootprint"; Value = "GEN_R0805_H"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefSchema"; Value = "GEN_R_2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "56k"; VariantName = "[No Variations]"
+Added Component: Designator=R104(GEN_R0805_H)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "#Class"; Value = "PASSIVE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "#ClassSub"; Value = "RESISTOR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Packaging Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileFOO"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileSCH"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFootprint"; Value = "GEN_R0805_H"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefSchema"; Value = "GEN_R_2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "10k"; VariantName = "[No Variations]"
+Added Component: Designator=R200(GEN_R0805_H)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "#Class"; Value = "PASSIVE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "#ClassSub"; Value = "RESISTOR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Packaging Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileFOO"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileSCH"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFootprint"; Value = "GEN_R0805_H"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefSchema"; Value = "GEN_R_2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "1k"; VariantName = "[No Variations]"
+Added Component: Designator=R201(GEN_R0805_H)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "#Class"; Value = "PASSIVE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "#ClassSub"; Value = "RESISTOR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Packaging Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileFOO"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileSCH"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFootprint"; Value = "GEN_R0805_H"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefSchema"; Value = "GEN_R_2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "10"; VariantName = "[No Variations]"
+Added Component: Designator=R202(GEN_R0805_H)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "#Class"; Value = "PASSIVE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "#ClassSub"; Value = "RESISTOR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Packaging Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileFOO"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileSCH"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFootprint"; Value = "GEN_R0805_H"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefSchema"; Value = "GEN_R_2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "1k"; VariantName = "[No Variations]"
+Added Component: Designator=R203(GEN_R0805_H)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "#Class"; Value = "PASSIVE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "#ClassSub"; Value = "RESISTOR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Packaging Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileFOO"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileSCH"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFootprint"; Value = "GEN_R0805_H"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefSchema"; Value = "GEN_R_2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "10"; VariantName = "[No Variations]"
+Added Component: Designator=R205(GEN_R0805_H)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "#Class"; Value = "PASSIVE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "#ClassSub"; Value = "RESISTOR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Packaging Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileFOO"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileSCH"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFootprint"; Value = "GEN_R0805_H"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefSchema"; Value = "GEN_R_2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "10k"; VariantName = "[No Variations]"
+Added Component: Designator=R300(GEN_R0805_H)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "#Class"; Value = "PASSIVE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "#ClassSub"; Value = "RESISTOR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Packaging Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileFOO"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileSCH"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFootprint"; Value = "GEN_R0805_H"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefSchema"; Value = "GEN_R_2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "1k"; VariantName = "[No Variations]"
+Added Component: Designator=R301(GEN_R0805_H)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "#Class"; Value = "PASSIVE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "#ClassSub"; Value = "RESISTOR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Packaging Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileFOO"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileSCH"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFootprint"; Value = "GEN_R0805_H"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefSchema"; Value = "GEN_R_2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "10"; VariantName = "[No Variations]"
+Added Component: Designator=R302(GEN_R0805_H)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "#Class"; Value = "PASSIVE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "#ClassSub"; Value = "RESISTOR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Packaging Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileFOO"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileSCH"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFootprint"; Value = "GEN_R0805_H"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefSchema"; Value = "GEN_R_2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "1k"; VariantName = "[No Variations]"
+Added Component: Designator=R303(GEN_R0805_H)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "#Class"; Value = "PASSIVE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "#ClassSub"; Value = "RESISTOR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Packaging Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileFOO"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileSCH"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFootprint"; Value = "GEN_R0805_H"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefSchema"; Value = "GEN_R_2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "10"; VariantName = "[No Variations]"
+Added Component: Designator=R305(GEN_R0805_H)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "#Class"; Value = "PASSIVE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "#ClassSub"; Value = "RESISTOR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Packaging Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileFOO"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileSCH"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFootprint"; Value = "GEN_R0805_H"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefSchema"; Value = "GEN_R_2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "10k"; VariantName = "[No Variations]"
+Added Component: Designator=R400(GEN_R0805_H)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "#Class"; Value = "PASSIVE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "#ClassSub"; Value = "RESISTOR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Packaging Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileFOO"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileSCH"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFootprint"; Value = "GEN_R0805_H"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefSchema"; Value = "GEN_R_2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "1k"; VariantName = "[No Variations]"
+Added Component: Designator=R401(GEN_R0805_H)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "#Class"; Value = "PASSIVE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "#ClassSub"; Value = "RESISTOR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Packaging Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileFOO"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileSCH"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFootprint"; Value = "GEN_R0805_H"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefSchema"; Value = "GEN_R_2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "10"; VariantName = "[No Variations]"
+Added Component: Designator=R402(GEN_R0805_H)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "#Class"; Value = "PASSIVE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "#ClassSub"; Value = "RESISTOR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Packaging Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileFOO"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileSCH"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFootprint"; Value = "GEN_R0805_H"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefSchema"; Value = "GEN_R_2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "1k"; VariantName = "[No Variations]"
+Added Component: Designator=R403(GEN_R0805_H)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "#Class"; Value = "PASSIVE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "#ClassSub"; Value = "RESISTOR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Packaging Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileFOO"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileSCH"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFootprint"; Value = "GEN_R0805_H"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefSchema"; Value = "GEN_R_2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "10"; VariantName = "[No Variations]"
+Added Component: Designator=R405(GEN_R0805_H)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "#Class"; Value = "PASSIVE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "#ClassSub"; Value = "RESISTOR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Packaging Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Distributor PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer PartNr"; Value = "tbd"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileFOO"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFileSCH"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefFootprint"; Value = "GEN_R0805_H"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefSchema"; Value = "GEN_R_2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "10k"; VariantName = "[No Variations]"
+Added Component: Designator=TP100(TP_SMD_xsmall)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Type"; Value = "Standard (No BOM)"; VariantName = "[No Variations]"
+Added Component: Designator=TP101(TP_SMD_xsmall)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Type"; Value = "Standard (No BOM)"; VariantName = "[No Variations]"
+Added Component: Designator=U100(SOT23-6)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Datasheet TPS56x209"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "V:\Power_Management_ICs\PWM_Cont\TPS56x209.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufactor"; Value = "Texas Instruments"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Order Nr."; Value = "TPS562209DDCR"; VariantName = "[No Variations]"
+Added Component: Designator=U101(TO-92-TO3)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://ww1.microchip.com/downloads/en/DeviceDoc/21826b.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Packaging Specification"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "http://www.microchip.com/stellent/groups/techpub_sg/documents/packagingspec/en012702.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "Microchip.com Home"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = "http://www.microchip.com/"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DatasheetVersion"; Value = "revB, Feb-2007"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "3-Lead Plastic Transistor Outline (TO) [TO-92]"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "TO-92-TO3"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageVersion"; Value = "revBB, Aug-2009"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "29-Jan-2009"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "MCP1700-1202E/TO-ND"; VariantName = "[No Variations]"
+Added Component: Designator=U201(DRV8841_Board)
+Add component. Clean all parameters for all variants
+Added Component: Designator=U301(DRV8841_Board)
+Add component. Clean all parameters for all variants
+Added Component: Designator=U401(DRV8841_Board)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=NetC100_1 Pin=C100-1
+Added Pin To Net: NetName=NetC100_2 Pin=C100-2
+Added Pin To Net: NetName=12V Pin=C101-1
+Added Pin To Net: NetName=GND Pin=C101-2
+Added Pin To Net: NetName=12V Pin=C102-1
+Added Pin To Net: NetName=GND Pin=C102-2
+Added Pin To Net: NetName=GND Pin=C103-1
+Added Pin To Net: NetName=NetC103_2 Pin=C103-2
+Added Pin To Net: NetName=NetC103_2 Pin=C104-1
+Added Pin To Net: NetName=GND Pin=C104-2
+Added Pin To Net: NetName=5V Pin=C105-1
+Added Pin To Net: NetName=GND Pin=C105-2
+Added Pin To Net: NetName=3.3V Pin=C106-1
+Added Pin To Net: NetName=GND Pin=C106-2
+Added Pin To Net: NetName=12V Pin=C200-1
+Added Pin To Net: NetName=GND Pin=C200-2
+Added Pin To Net: NetName=12V Pin=C300-1
+Added Pin To Net: NetName=GND Pin=C300-2
+Added Pin To Net: NetName=12V Pin=C400-1
+Added Pin To Net: NetName=GND Pin=C400-2
+Added Pin To Net: NetName=12V Pin=D100-1
+Added Pin To Net: NetName=NetD100_2 Pin=D100-2
+Added Pin To Net: NetName=NetC100_2 Pin=L100-1
+Added Pin To Net: NetName=NetC103_2 Pin=L100-2
+Added Pin To Net: NetName=GND Pin=LED100-1
+Added Pin To Net: NetName=NetLED100_2 Pin=LED100-2
+Added Pin To Net: NetName=GND Pin=LED101-1
+Added Pin To Net: NetName=NetLED101_2 Pin=LED101-2
+Added Pin To Net: NetName=GND Pin=LED102-1
+Added Pin To Net: NetName=NetLED102_2 Pin=LED102-2
+Added Pin To Net: NetName=5V Pin=P100-1
+Added Pin To Net: NetName=NetC103_2 Pin=P100-2
+Added Pin To Net: NetName=GND Pin=P500-1
+Added Pin To Net: NetName=NetD100_2 Pin=P500-2
+Added Pin To Net: NetName=NetP501_1 Pin=P501-1
+Added Pin To Net: NetName=NetP501_2 Pin=P501-2
+Added Pin To Net: NetName=NetP502_1 Pin=P502-1
+Added Pin To Net: NetName=NetP502_2 Pin=P502-2
+Added Pin To Net: NetName=NetP503_1 Pin=P503-1
+Added Pin To Net: NetName=NetP503_2 Pin=P503-2
+Added Pin To Net: NetName=NetP504_1 Pin=P504-1
+Added Pin To Net: NetName=NetP504_2 Pin=P504-2
+Added Pin To Net: NetName=NetP505_1 Pin=P505-1
+Added Pin To Net: NetName=NetP505_2 Pin=P505-2
+Added Pin To Net: NetName=NetP506_1 Pin=P506-1
+Added Pin To Net: NetName=NetP506_2 Pin=P506-2
+Added Pin To Net: NetName=PWM_Motor1 Pin=P507-1
+Added Pin To Net: NetName=PWM_Motor2 Pin=P507-2
+Added Pin To Net: NetName=PWM_Motor3 Pin=P507-3
+Added Pin To Net: NetName=PWM_Motor4 Pin=P507-4
+Added Pin To Net: NetName=PWM_Motor5 Pin=P507-5
+Added Pin To Net: NetName=PWM_Motor6 Pin=P507-6
+Added Pin To Net: NetName=nSleep Pin=P507-7
+Added Pin To Net: NetName=12V Pin=P508-1
+Added Pin To Net: NetName=12V Pin=P508-2
+Added Pin To Net: NetName=5V Pin=P509-1
+Added Pin To Net: NetName=5V Pin=P509-2
+Added Pin To Net: NetName=3.3V Pin=P510-1
+Added Pin To Net: NetName=3.3V Pin=P510-2
+Added Pin To Net: NetName=GND Pin=P511-1
+Added Pin To Net: NetName=GND Pin=P511-2
+Added Pin To Net: NetName=NetQ200_1 Pin=Q200-1
+Added Pin To Net: NetName=GND Pin=Q200-2
+Added Pin To Net: NetName=NetQ200_3 Pin=Q200-3
+Added Pin To Net: NetName=NetQ201_1 Pin=Q201-1
+Added Pin To Net: NetName=GND Pin=Q201-2
+Added Pin To Net: NetName=NetQ201_3 Pin=Q201-3
+Added Pin To Net: NetName=NetQ300_1 Pin=Q300-1
+Added Pin To Net: NetName=GND Pin=Q300-2
+Added Pin To Net: NetName=NetQ300_3 Pin=Q300-3
+Added Pin To Net: NetName=NetQ301_1 Pin=Q301-1
+Added Pin To Net: NetName=GND Pin=Q301-2
+Added Pin To Net: NetName=NetQ301_3 Pin=Q301-3
+Added Pin To Net: NetName=NetQ400_1 Pin=Q400-1
+Added Pin To Net: NetName=GND Pin=Q400-2
+Added Pin To Net: NetName=NetQ400_3 Pin=Q400-3
+Added Pin To Net: NetName=NetQ401_1 Pin=Q401-1
+Added Pin To Net: NetName=GND Pin=Q401-2
+Added Pin To Net: NetName=NetQ401_3 Pin=Q401-3
+Added Pin To Net: NetName=NetLED100_2 Pin=R100-1
+Added Pin To Net: NetName=12V Pin=R100-2
+Added Pin To Net: NetName=NetLED101_2 Pin=R101-1
+Added Pin To Net: NetName=5V Pin=R101-2
+Added Pin To Net: NetName=NetLED102_2 Pin=R102-1
+Added Pin To Net: NetName=3.3V Pin=R102-2
+Added Pin To Net: NetName=NetR103_1 Pin=R103-1
+Added Pin To Net: NetName=NetC103_2 Pin=R103-2
+Added Pin To Net: NetName=GND Pin=R104-1
+Added Pin To Net: NetName=NetR103_1 Pin=R104-2
+Added Pin To Net: NetName=NetQ200_3 Pin=R200-1
+Added Pin To Net: NetName=5V Pin=R200-2
+Added Pin To Net: NetName=PWM_Motor1 Pin=R201-1
+Added Pin To Net: NetName=NetQ200_1 Pin=R201-2
+Added Pin To Net: NetName=NetQ201_3 Pin=R202-1
+Added Pin To Net: NetName=5V Pin=R202-2
+Added Pin To Net: NetName=PWM_Motor2 Pin=R203-1
+Added Pin To Net: NetName=NetQ201_1 Pin=R203-2
+Added Pin To Net: NetName=nSleep Pin=R205-1
+Added Pin To Net: NetName=GND Pin=R205-2
+Added Pin To Net: NetName=NetQ300_3 Pin=R300-1
+Added Pin To Net: NetName=5V Pin=R300-2
+Added Pin To Net: NetName=PWM_Motor3 Pin=R301-1
+Added Pin To Net: NetName=NetQ300_1 Pin=R301-2
+Added Pin To Net: NetName=NetQ301_3 Pin=R302-1
+Added Pin To Net: NetName=5V Pin=R302-2
+Added Pin To Net: NetName=PWM_Motor4 Pin=R303-1
+Added Pin To Net: NetName=NetQ301_1 Pin=R303-2
+Added Pin To Net: NetName=nSleep Pin=R305-1
+Added Pin To Net: NetName=GND Pin=R305-2
+Added Pin To Net: NetName=NetQ400_3 Pin=R400-1
+Added Pin To Net: NetName=5V Pin=R400-2
+Added Pin To Net: NetName=PWM_Motor5 Pin=R401-1
+Added Pin To Net: NetName=NetQ400_1 Pin=R401-2
+Added Pin To Net: NetName=NetQ401_3 Pin=R402-1
+Added Pin To Net: NetName=5V Pin=R402-2
+Added Pin To Net: NetName=PWM_Motor6 Pin=R403-1
+Added Pin To Net: NetName=NetQ401_1 Pin=R403-2
+Added Pin To Net: NetName=nSleep Pin=R405-1
+Added Pin To Net: NetName=GND Pin=R405-2
+Added Pin To Net: NetName=5V Pin=TP100-1
+Added Pin To Net: NetName=3.3V Pin=TP101-1
+Added Pin To Net: NetName=GND Pin=U100-1
+Added Pin To Net: NetName=NetC100_2 Pin=U100-2
+Added Pin To Net: NetName=12V Pin=U100-3
+Added Pin To Net: NetName=NetR103_1 Pin=U100-4
+Added Pin To Net: NetName=12V Pin=U100-5
+Added Pin To Net: NetName=NetC100_1 Pin=U100-6
+Added Pin To Net: NetName=GND Pin=U101-1
+Added Pin To Net: NetName=5V Pin=U101-2
+Added Pin To Net: NetName=3.3V Pin=U101-3
+Added Pin To Net: NetName=12V Pin=U201-11
+Added Pin To Net: NetName=GND Pin=U201-12
+Added Pin To Net: NetName=12V Pin=U201-13
+Added Pin To Net: NetName=NetP501_1 Pin=U201-14
+Added Pin To Net: NetName=GND Pin=U201-15
+Added Pin To Net: NetName=NetP501_2 Pin=U201-16
+Added Pin To Net: NetName=NetP502_2 Pin=U201-17
+Added Pin To Net: NetName=GND Pin=U201-18
+Added Pin To Net: NetName=NetP502_1 Pin=U201-19
+Added Pin To Net: NetName=GND Pin=U201-21
+Added Pin To Net: NetName=NetQ201_3 Pin=U201-22
+Added Pin To Net: NetName=GND Pin=U201-23
+Added Pin To Net: NetName=PWM_Motor2 Pin=U201-24
+Added Pin To Net: NetName=GND Pin=U201-25
+Added Pin To Net: NetName=NetQ200_3 Pin=U201-26
+Added Pin To Net: NetName=GND Pin=U201-27
+Added Pin To Net: NetName=PWM_Motor1 Pin=U201-28
+Added Pin To Net: NetName=GND Pin=U201-29
+Added Pin To Net: NetName=12V Pin=U201-110
+Added Pin To Net: NetName=5V Pin=U201-210
+Added Pin To Net: NetName=nSleep Pin=U201-211
+Added Pin To Net: NetName=12V Pin=U301-11
+Added Pin To Net: NetName=GND Pin=U301-12
+Added Pin To Net: NetName=12V Pin=U301-13
+Added Pin To Net: NetName=NetP503_1 Pin=U301-14
+Added Pin To Net: NetName=GND Pin=U301-15
+Added Pin To Net: NetName=NetP503_2 Pin=U301-16
+Added Pin To Net: NetName=NetP504_2 Pin=U301-17
+Added Pin To Net: NetName=GND Pin=U301-18
+Added Pin To Net: NetName=NetP504_1 Pin=U301-19
+Added Pin To Net: NetName=GND Pin=U301-21
+Added Pin To Net: NetName=NetQ301_3 Pin=U301-22
+Added Pin To Net: NetName=GND Pin=U301-23
+Added Pin To Net: NetName=PWM_Motor4 Pin=U301-24
+Added Pin To Net: NetName=GND Pin=U301-25
+Added Pin To Net: NetName=NetQ300_3 Pin=U301-26
+Added Pin To Net: NetName=GND Pin=U301-27
+Added Pin To Net: NetName=PWM_Motor3 Pin=U301-28
+Added Pin To Net: NetName=GND Pin=U301-29
+Added Pin To Net: NetName=12V Pin=U301-110
+Added Pin To Net: NetName=5V Pin=U301-210
+Added Pin To Net: NetName=nSleep Pin=U301-211
+Added Pin To Net: NetName=12V Pin=U401-11
+Added Pin To Net: NetName=GND Pin=U401-12
+Added Pin To Net: NetName=12V Pin=U401-13
+Added Pin To Net: NetName=NetP505_1 Pin=U401-14
+Added Pin To Net: NetName=GND Pin=U401-15
+Added Pin To Net: NetName=NetP505_2 Pin=U401-16
+Added Pin To Net: NetName=NetP506_2 Pin=U401-17
+Added Pin To Net: NetName=GND Pin=U401-18
+Added Pin To Net: NetName=NetP506_1 Pin=U401-19
+Added Pin To Net: NetName=GND Pin=U401-21
+Added Pin To Net: NetName=NetQ401_3 Pin=U401-22
+Added Pin To Net: NetName=GND Pin=U401-23
+Added Pin To Net: NetName=PWM_Motor6 Pin=U401-24
+Added Pin To Net: NetName=GND Pin=U401-25
+Added Pin To Net: NetName=NetQ400_3 Pin=U401-26
+Added Pin To Net: NetName=GND Pin=U401-27
+Added Pin To Net: NetName=PWM_Motor5 Pin=U401-28
+Added Pin To Net: NetName=GND Pin=U401-29
+Added Pin To Net: NetName=12V Pin=U401-110
+Added Pin To Net: NetName=5V Pin=U401-210
+Added Pin To Net: NetName=nSleep Pin=U401-211
+Added Member To Class: ClassName=Spannungsversorgung: 12V, 5V, 3.3V Member=Component C100 100nF
+Added Member To Class: ClassName=Spannungsversorgung: 12V, 5V, 3.3V Member=Component C101 AVE476M16D16T-F
+Added Member To Class: ClassName=Spannungsversorgung: 12V, 5V, 3.3V Member=Component C102 100nF
+Added Member To Class: ClassName=Spannungsversorgung: 12V, 5V, 3.3V Member=Component C103 22uF
+Added Member To Class: ClassName=Spannungsversorgung: 12V, 5V, 3.3V Member=Component C104 22uF
+Added Member To Class: ClassName=Spannungsversorgung: 12V, 5V, 3.3V Member=Component C105 1uF
+Added Member To Class: ClassName=Spannungsversorgung: 12V, 5V, 3.3V Member=Component C106 1uF
+Added Member To Class: ClassName=Motor1: Fortbewegung    Motor2: Drehmechanismus Member=Component C200 AVE476M16D16T-F
+Added Member To Class: ClassName=Motor3: Hubmechanismus    Motor3: Ausfahrmechanismus Member=Component C300 AVE476M16D16T-F
+Added Member To Class: ClassName=Motor5: Vibbration    Motor6: Reserve Member=Component C400 AVE476M16D16T-F
+Added Member To Class: ClassName=Spannungsversorgung: 12V, 5V, 3.3V Member=Component D100 SK34SMA
+Added Member To Class: ClassName=Spannungsversorgung: 12V, 5V, 3.3V Member=Component L100 CKP2016 4R7M-T
+Added Member To Class: ClassName=Spannungsversorgung: 12V, 5V, 3.3V Member=Component LED100 LSR976
+Added Member To Class: ClassName=Spannungsversorgung: 12V, 5V, 3.3V Member=Component LED101 LSR976
+Added Member To Class: ClassName=Spannungsversorgung: 12V, 5V, 3.3V Member=Component LED102 LSR976
+Added Member To Class: ClassName=Spannungsversorgung: 12V, 5V, 3.3V Member=Component P100 Stiftleiste 2 Pol
+Added Member To Class: ClassName=Uebersicht Member=Component P500 Stiftleiste 2 Pol
+Added Member To Class: ClassName=Uebersicht Member=Component P501 Stiftleiste 2 Pol
+Added Member To Class: ClassName=Uebersicht Member=Component P502 Stiftleiste 2 Pol
+Added Member To Class: ClassName=Uebersicht Member=Component P503 Stiftleiste 2 Pol
+Added Member To Class: ClassName=Uebersicht Member=Component P504 Stiftleiste 2 Pol
+Added Member To Class: ClassName=Uebersicht Member=Component P505 Stiftleiste 2 Pol
+Added Member To Class: ClassName=Uebersicht Member=Component P506 Stiftleiste 2 Pol
+Added Member To Class: ClassName=Uebersicht Member=Component P507 Stiftleiste 7 Pol
+Added Member To Class: ClassName=Uebersicht Member=Component P508 Stiftleiste 2 Pol
+Added Member To Class: ClassName=Uebersicht Member=Component P509 Stiftleiste 2 Pol
+Added Member To Class: ClassName=Uebersicht Member=Component P510 Stiftleiste 2 Pol
+Added Member To Class: ClassName=Uebersicht Member=Component P511 Stiftleiste 2 Pol
+Added Member To Class: ClassName=Motor1: Fortbewegung    Motor2: Drehmechanismus Member=Component Q200 Si2302CDS
+Added Member To Class: ClassName=Motor1: Fortbewegung    Motor2: Drehmechanismus Member=Component Q201 Si2302CDS
+Added Member To Class: ClassName=Motor3: Hubmechanismus    Motor3: Ausfahrmechanismus Member=Component Q300 Si2302CDS
+Added Member To Class: ClassName=Motor3: Hubmechanismus    Motor3: Ausfahrmechanismus Member=Component Q301 Si2302CDS
+Added Member To Class: ClassName=Motor5: Vibbration    Motor6: Reserve Member=Component Q400 Si2302CDS
+Added Member To Class: ClassName=Motor5: Vibbration    Motor6: Reserve Member=Component Q401 Si2302CDS
+Added Member To Class: ClassName=Spannungsversorgung: 12V, 5V, 3.3V Member=Component R100 Generic
+Added Member To Class: ClassName=Spannungsversorgung: 12V, 5V, 3.3V Member=Component R101 Generic
+Added Member To Class: ClassName=Spannungsversorgung: 12V, 5V, 3.3V Member=Component R102 Generic
+Added Member To Class: ClassName=Spannungsversorgung: 12V, 5V, 3.3V Member=Component R103 Generic
+Added Member To Class: ClassName=Spannungsversorgung: 12V, 5V, 3.3V Member=Component R104 Generic
+Added Member To Class: ClassName=Motor1: Fortbewegung    Motor2: Drehmechanismus Member=Component R200 Generic
+Added Member To Class: ClassName=Motor1: Fortbewegung    Motor2: Drehmechanismus Member=Component R201 Generic
+Added Member To Class: ClassName=Motor1: Fortbewegung    Motor2: Drehmechanismus Member=Component R202 Generic
+Added Member To Class: ClassName=Motor1: Fortbewegung    Motor2: Drehmechanismus Member=Component R203 Generic
+Added Member To Class: ClassName=Motor1: Fortbewegung    Motor2: Drehmechanismus Member=Component R205 Generic
+Added Member To Class: ClassName=Motor3: Hubmechanismus    Motor3: Ausfahrmechanismus Member=Component R300 Generic
+Added Member To Class: ClassName=Motor3: Hubmechanismus    Motor3: Ausfahrmechanismus Member=Component R301 Generic
+Added Member To Class: ClassName=Motor3: Hubmechanismus    Motor3: Ausfahrmechanismus Member=Component R302 Generic
+Added Member To Class: ClassName=Motor3: Hubmechanismus    Motor3: Ausfahrmechanismus Member=Component R303 Generic
+Added Member To Class: ClassName=Motor3: Hubmechanismus    Motor3: Ausfahrmechanismus Member=Component R305 Generic
+Added Member To Class: ClassName=Motor5: Vibbration    Motor6: Reserve Member=Component R400 Generic
+Added Member To Class: ClassName=Motor5: Vibbration    Motor6: Reserve Member=Component R401 Generic
+Added Member To Class: ClassName=Motor5: Vibbration    Motor6: Reserve Member=Component R402 Generic
+Added Member To Class: ClassName=Motor5: Vibbration    Motor6: Reserve Member=Component R403 Generic
+Added Member To Class: ClassName=Motor5: Vibbration    Motor6: Reserve Member=Component R405 Generic
+Added Member To Class: ClassName=Spannungsversorgung: 12V, 5V, 3.3V Member=Component TP100 Testpoint xSmall
+Added Member To Class: ClassName=Spannungsversorgung: 12V, 5V, 3.3V Member=Component TP101 Testpoint xSmall
+Added Member To Class: ClassName=Spannungsversorgung: 12V, 5V, 3.3V Member=Component U100 TPS562209
+Added Member To Class: ClassName=Spannungsversorgung: 12V, 5V, 3.3V Member=Component U101 LP38691DT-3.3
+Added Member To Class: ClassName=Motor1: Fortbewegung    Motor2: Drehmechanismus Member=Component U201 DRV8841Board
+Added Member To Class: ClassName=Motor3: Hubmechanismus    Motor3: Ausfahrmechanismus Member=Component U301 DRV8841Board
+Added Member To Class: ClassName=Motor5: Vibbration    Motor6: Reserve Member=Component U401 DRV8841Board
+Added Room: Name=Motor1: Fortbewegung    Motor2: Drehmechanismus
+Added Room: Name=Motor3: Hubmechanismus    Motor3: Ausfahrmechanismus
+Added Room: Name=Motor5: Vibbration    Motor6: Reserve
+Added Room: Name=Spannungsversorgung: 12V, 5V, 3.3V
+Added Room: Name=Uebersicht
