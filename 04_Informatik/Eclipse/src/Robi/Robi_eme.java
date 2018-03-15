@@ -2,6 +2,8 @@ package Robi;
 
 import java.io.PrintStream;
 import com.Timer;
+import com.Wifi;
+
 // import LED.SOS.STATE;
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
@@ -40,8 +42,8 @@ public class Robi_eme extends Task
 	public Robi_eme()
 	{
 		laDrive = new LockedAnti(0);
-		laTurn = new LockedAntiEncoder(1);
-		laLift = new LockedAntiEncoder(2);
+		laTurn = new LockedAntiEncoder(1, 1);
+		laLift = new LockedAntiEncoder(2, 2);
 		laArm = new LockedAnti(3);
 		servoV = new ServoA(4);
 		servoKipp = new ServoA(5);
@@ -60,7 +62,7 @@ public class Robi_eme extends Task
 		start = false;
 		fertig = false;
 
-		state = STATE.greiferVorbereiten;
+		state = STATE.vorwaerts;
 	}
 
 	/**
@@ -81,10 +83,6 @@ public class Robi_eme extends Task
 		{
 			switch(state)
 			{
-				case greiferVorbereiten:
-				{
-					greiferVorbereiten();
-				}
 				case vorwaerts:
 				{
 					driveForward();
@@ -166,22 +164,30 @@ public class Robi_eme extends Task
 	/**
 	 * Greifer vorbereiten Greifer anheben und Arm ausfahren
 	 */
-	private void greiferVorbereiten()
-	{
-		laArm.toPos();
-		state = STATE.vorwaerts;
-	}
 
 	/**
 	 * Vorwärtsfahren
 	 */
 	private void driveForward()
 	{
-		laDrive.setSpeed(speed);
-		if(sensorVorne.get())
+		if(hoehe == 0)
 		{
-			state = STATE.steinHolen;
+			laDrive.setSpeed(speed / 2);
+			laArm.toPos();
+			if(sensorVorne.get())
+			{
+				state = STATE.steinHolen;
+			}
+			else
+			{
+				laDrive.setSpeed(speed);
+				if(sensorVorne.get())
+				{
+					state = STATE.steinHolen;
+				}
+			}
 		}
+
 	}
 
 	/**
@@ -225,7 +231,7 @@ public class Robi_eme extends Task
 		servoKipp.max();
 		if(laTurn.motorInPos())
 		{
-			WifiDemo.sendCmd();
+			Wifi.sendCmd(hoehe);
 			if(hoehe != vorgabe)
 			{
 				state = STATE.vorwaerts;
@@ -254,7 +260,7 @@ public class Robi_eme extends Task
 	private void steinSetzen()
 	{
 		laLift.andruecken(hoehe);
-		
+
 		if(laLift.motorInPos())
 		{
 			hoehe += 2;
