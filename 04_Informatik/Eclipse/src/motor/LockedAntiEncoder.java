@@ -41,9 +41,14 @@ public class LockedAntiEncoder
 
 	}
 
-	public void andrücken()
+	public void andruecken(int height)
 	{
 
+	}
+	
+	public boolean motorInPos()
+	{
+		return true;
 	}
 
 	static
