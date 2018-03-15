@@ -19,7 +19,7 @@ public class DistSensor extends Task
 	private HLC1395Pulsed hlc1395;
 	int[] werte;
 	double durchschnitt = 0;
-	public static boolean angestossen = false;
+	public static boolean[] angestossen = {false, false, false, false};
 
 	public void action()
 	{
