@@ -5,17 +5,17 @@ import java.io.PrintStream;
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
-import motor.ServoA;
+import motor.Servo;
 
 public class TestServo extends Task{
 	
 	final static short pinB=6;
 	public static MPIOSM_DIO touchB;
-	private ServoA servo;
+	private Servo servo;
 	
 	public TestServo()
 	{
-		servo=new ServoA(0);
+		servo=new Servo(0);
 		touchB=new MPIOSM_DIO(pinB, false);
 	}
 	

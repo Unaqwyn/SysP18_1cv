@@ -8,7 +8,7 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 import motor.LockedAnti;
 import motor.LockedAntiEncoder;
-import motor.ServoA;
+import motor.Servo;
 
 public class Robi extends Task
 {
@@ -18,7 +18,7 @@ public class Robi extends Task
 
 	private LockedAnti laDrive, laTurn, laArm;
 	private LockedAntiEncoder laLift;
-	private ServoA servoV, servoKipp;
+	private Servo servoV, servoKipp;
 	private Timer timer, timer2;
 	private int h;
 	private boolean start;
@@ -44,8 +44,8 @@ public class Robi extends Task
 		touchV = new MPIOSM_DIO(pinV, false);
 		touchH = new MPIOSM_DIO(pinH, false);
 		startTaster = new MPIOSM_DIO(pinStart, false);
-		servoV = new ServoA(4);
-		servoKipp = new ServoA(5);
+		servoV = new Servo(4);
+		servoKipp = new Servo(5);
 		h = 0; // muss noch weiter verarbeitet werden
 		start = false;
 		fertig = false;
