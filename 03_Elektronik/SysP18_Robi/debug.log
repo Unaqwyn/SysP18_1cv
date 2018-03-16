@@ -4,3 +4,11 @@
 [0309/155737:WARNING:p2ptransportchannel.cc(487)] Jingle:Port[034D4698:data:1:0:local:Net[any:0.0.0.x/0:Unknown]]: SetOption(5, 0) failed: 0
 [0309/155737:WARNING:p2ptransportchannel.cc(487)] Jingle:Port[034D4900:data:1:0:local:Net[any:0:0:0:x:x:x:x:x/0:Unknown]]: SetOption(5, 0) failed: 0
 [0309/155737:INFO:CONSOLE(25)] "[Facebook Pixel] - Multiple pixels with conflicting versions were detected on this page.", source: http://connect.facebook.net/en_US/fbevents.js (25)
+[0313/134115:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0313/134120:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0313/134125:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0313/134126:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0313/175754:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0313/175754:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0313/175754:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0313/175754:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
