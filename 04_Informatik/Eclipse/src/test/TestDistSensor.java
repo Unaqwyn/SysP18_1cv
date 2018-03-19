@@ -9,7 +9,7 @@ import sensor.DistSensor;
 
 public class TestDistSensor extends Task
 {
-	private final short pinA = 8, pinB = 9, pinC=10, pinD=11;
+	private final short pinA = 8, pinB = 9, pinC=10, pinD=12;
 	private  MPIOSM_DIO ledA, ledB, ledC, ledD;
 	private DistSensor distSensor;
 
