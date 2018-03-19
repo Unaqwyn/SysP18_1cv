@@ -9,8 +9,8 @@ import sensor.DistSensor;
 
 public class TestDistSensor extends Task
 {
-	final static short pinA = 8, pinB = 9, pinC=10, pinD=11;
-	public static MPIOSM_DIO ledA, ledB, ledC, ledD;
+	private final short pinA = 8, pinB = 9, pinC=10, pinD=11;
+	private  MPIOSM_DIO ledA, ledB, ledC, ledD;
 	private DistSensor distSensor;
 
 	public TestDistSensor()
@@ -42,7 +42,7 @@ public class TestDistSensor extends Task
 		System.out = new PrintStream(sci1.out);
 
 		Task task = new TestDistSensor();
-		task.period = 100;
+		task.period = 200;
 		Task.install(task);
 	}
 }
