@@ -1,4 +1,5 @@
-package Robi;
+
+/*
 
 import java.io.PrintStream;
 import com.Timer;
@@ -33,6 +34,7 @@ public class Robi extends Task
 	/**
 	 * Konstrukteur
 	 */
+/*
 	public Robi()
 	{
 		laDrive = new LockedAnti(0);
@@ -54,6 +56,7 @@ public class Robi extends Task
 	/**
 	 * Main Methode
 	 */
+/*
 	public void main()
 	{
 
@@ -127,6 +130,7 @@ public class Robi extends Task
 			 * if(touchH.get() && vorwaerts)// wenn Sensor hinten angeschlagen und
 			 * Vorwärtsgang eingeleget { setStone(); }
 			 */
+/*
 		}
 	}
 
@@ -134,6 +138,7 @@ public class Robi extends Task
 	 * Initialisierung vor dem Start. - Motoren - Vorbereiten Kommunikation Greifer
 	 * bleibt noch hinten und unten (wegen 16x16x16cm)
 	 */
+/*
 	public void init()
 	{
 
@@ -143,6 +148,7 @@ public class Robi extends Task
 	 * Kommunikation wird aufgebaut Wenn ein Signal gesendet und empfangen wird iO.
 	 * Wenn nicht fehler meldung
 	 */
+/*
 	public boolean communication()
 	{
 		boolean empfangen = false;
@@ -191,6 +197,7 @@ public class Robi extends Task
 	 * timer2.starten(1000); while(!(timer2.abgelaufen())) { } laLift.low(); } }
 	 */
 
+/*
 	public void getStone()
 	{
 
@@ -214,3 +221,6 @@ public class Robi extends Task
 		Task.install(task);
 	}
 }
+
+
+*/
