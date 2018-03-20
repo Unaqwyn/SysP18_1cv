@@ -11,13 +11,13 @@ import ch.ntb.inf.deep.runtime.ppc32.Task;
 import ch.ntb.sysp.demo.WifiDemo;
 import motor.LockedAnti;
 import motor.LockedAntiEncoder;
-import motor.ServoA;
+import motor.Servo;
 
 public class Robi_eme extends Task
 {
 	private LockedAnti laDrive, laArm;
 	private LockedAntiEncoder laLift, laTurn;
-	private ServoA servoV, servoKipp;
+	private Servo servoV, servoKipp;
 	private Timer timer, timer2;
 
 	final static short pinVorne = 5, pinHinten = 6, pinStart = 7;
@@ -45,8 +45,8 @@ public class Robi_eme extends Task
 		laTurn = new LockedAntiEncoder(1, 1);
 		laLift = new LockedAntiEncoder(2, 2);
 		laArm = new LockedAnti(3);
-		servoV = new ServoA(4);
-		servoKipp = new ServoA(5);
+		servoV = new Servo(4);
+		servoKipp = new Servo(5);
 
 		sensorVorne = new MPIOSM_DIO(pinVorne, false);
 		sensorHinten = new MPIOSM_DIO(pinHinten, false);

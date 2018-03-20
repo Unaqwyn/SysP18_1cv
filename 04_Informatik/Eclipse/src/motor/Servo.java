@@ -4,7 +4,7 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 import java.util.Random;
 
-public class ServoA extends Task {
+public class Servo extends Task {
 	private final boolean useTPUA = true;
 	// pwmPeriod in TimeBase Unit (50’000 ns)
 	private final int pwmPeriod = 20000000 / TPU_PWM.tpuTimeBase;
@@ -21,7 +21,7 @@ public class ServoA extends Task {
 	private static TPU_PWM pwm;
 	public boolean auf = true;
 
-	public ServoA(int testChannel) {
+	public Servo(int testChannel) {
 		pwm = new TPU_PWM(useTPUA, testChannel, pwmPeriod, highTime);
 		period = 100; // Periodenlaenge des Tasks in ms
 		Task.install(this);

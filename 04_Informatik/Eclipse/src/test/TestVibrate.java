@@ -1,21 +1,21 @@
 package test;
 
 
-import motor.ServoA;
+import motor.Servo;
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 import java.io.PrintStream;
 public class TestVibrate extends Task{
 	
-	private ServoA servoA;
+	private Servo servoA;
 	private final short pinA=5;
 	private MPIOSM_DIO touchA;
 	
 	public TestVibrate()
 	{
 		touchA=new MPIOSM_DIO(pinA,false);
-		servoA=new ServoA(0);
+		servoA=new Servo(0);
 	}
 	
 	public void action()

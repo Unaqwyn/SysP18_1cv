@@ -1,0 +1,8 @@
+Change Component Footprint: Designator=400 Old Footprint=NTB Logo Medium New Footprint=NTB Logo Medium
+Change Component Footprint: Designator=TP400 Old Footprint=TP-SMD-1206 New Footprint=TP-SMD-1206
+Change Component Footprint: Designator=TP401 Old Footprint=TP-SMD-1206 New Footprint=TP-SMD-1206
+Change Component Footprint: Designator=TP402 Old Footprint=TP-SMD-1206 New Footprint=TP-SMD-1206
+Change Component Footprint: Designator=TP403 Old Footprint=TP-SMD-1206 New Footprint=TP-SMD-1206
+Change Component Footprint: Designator=TP404 Old Footprint=TP-SMD-1206 New Footprint=TP-SMD-1206
+Added Member To Class: ClassName=2_MPC555.SchDoc Member=Component J? MPC555 Headerboard
+Added Member To Class: ClassName=2_MPC555.SchDoc Member=Component J? MPC555 Headerboard
