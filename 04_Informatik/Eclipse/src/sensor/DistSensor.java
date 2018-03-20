@@ -20,7 +20,7 @@ public class DistSensor extends Task
 	int[][] werte;
 	double[] durchschnitt =
 	{ 0, 0, 0, 0 };
-	public static boolean[] angestossen =
+	public boolean[] angestossen =
 	{ false, false, false, false };
 
 	public void action()

@@ -1,5 +1,8 @@
-board=ntbMpc555HB
+board=NTB MPC555 header board
 eclipse.preferences.version=1
+imgfile=TestSave
+imgformat=TestFormat
 libPath=I\:\\deep\\lib
-os=ntbSTS_ppc
-programmer=ntbMpc555UsbBdi
+os=NTB Simple Tasking System for PPC
+programmer=NTB MPC555 USB-BDI
+useDefault=true
