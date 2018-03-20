@@ -51,3 +51,9 @@
 [0313/213201:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
 [0313/213206:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
 [0313/213211:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0320/153658:ERROR:tcp_socket_win.cc(335)] bind() returned an error: Only one usage of each socket address (protocol/network address/port) is normally permitted. (0x2740)
+[0320/153658:ERROR:devtools_http_handler.cc(229)] Cannot start http server for devtools. Stop devtools.
+[0320/153712:ERROR:tcp_socket_win.cc(335)] bind() returned an error: Only one usage of each socket address (protocol/network address/port) is normally permitted. (0x2740)
+[0320/153712:ERROR:devtools_http_handler.cc(229)] Cannot start http server for devtools. Stop devtools.
+[0320/153730:ERROR:tcp_socket_win.cc(335)] bind() returned an error: Only one usage of each socket address (protocol/network address/port) is normally permitted. (0x2740)
+[0320/153730:ERROR:devtools_http_handler.cc(229)] Cannot start http server for devtools. Stop devtools.

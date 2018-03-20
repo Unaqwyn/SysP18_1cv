@@ -9,21 +9,23 @@ import sensor.DistSensor;
 
 public class TestTouch extends Task
 {
-	final static short pinA = 9, pinB = 6;
-	public static MPIOSM_DIO ledA, touchB;
+	final static short pinA = 9, pinB = 15;
+	public static MPIOSM_DIO ledA, ledB;
 	private DistSensor distSensor;
 
 	public TestTouch()
 	{
 		ledA = new MPIOSM_DIO(pinA, true);
 		ledA.set(false);
-		touchB = new MPIOSM_DIO(pinB, false);
+		ledB = new MPIOSM_DIO(pinB, true);
+		ledB.set(false);
 		distSensor = new DistSensor();
 	}
 
 	public void action()
 	{
-		ledA.set(distSensor.hindernis());
+		ledA.set(distSensor.hindernis(0));
+		ledB.set(distSensor.hindernis(1));
 		//distSensor.angestossen=false;
 	}
 

@@ -56,6 +56,6 @@ public class Encoder extends Task
 		// 2) Use SCI1 for stdout
 		System.out = new PrintStream(sci1.out);
 
-		new Encoder();
+		
 	}
 }
