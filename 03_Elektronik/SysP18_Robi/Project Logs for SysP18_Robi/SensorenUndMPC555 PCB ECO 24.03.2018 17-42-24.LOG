@@ -1,0 +1,136 @@
+Removed Pin From Net: NetName=5.0V Pin=C405-1
+Removed Pin From Net: NetName=Enc-A-Res Pin=J1-17
+Removed Pin From Net: NetName=GND Pin=J1-202
+Removed Pin From Net: NetName=LED-Power Pin=R403-1
+Removed Pin From Net: NetName=5.0V Pin=R411-2
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=C200
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=C407
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=C408
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=D401
+Removed Member From Class: ClassName=3_Motoren.SchDoc Member=D402
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=D402
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=D403
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=P300
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=P404
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=P406
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=P407
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=P408
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=P409
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=P410
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=P411
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=P412
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=Q404
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=Q405
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=Q406
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=R409
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=R410
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=R411
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=R412
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=R413
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=R414
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=R415
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=TP403
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=TP404
+Change Component Designator: OldDesignator=C200 NewDesignator=C202
+Change Component Designator: OldDesignator=C300 NewDesignator=C100
+Change Component Designator: OldDesignator=C301 NewDesignator=C101
+Change Component Designator: OldDesignator=C302 NewDesignator=C102
+Change Component Designator: OldDesignator=C407 NewDesignator=C201
+Change Component Designator: OldDesignator=C408 NewDesignator=C200
+Change Component Designator: OldDesignator=D401 NewDesignator=D200
+Change Component Designator: OldDesignator=D402 NewDesignator=D202
+Change Component Designator: OldDesignator=D403 NewDesignator=D201
+Change Component Designator: OldDesignator=P300 NewDesignator=P100
+Change Component Designator: OldDesignator=P400 NewDesignator=P204
+Change Component Designator: OldDesignator=P401 NewDesignator=P201
+Change Component Designator: OldDesignator=P402 NewDesignator=P200
+Change Component Designator: OldDesignator=P403 NewDesignator=P400
+Change Component Designator: OldDesignator=P404 NewDesignator=P401
+Change Component Designator: OldDesignator=P405 NewDesignator=P402
+Change Component Designator: OldDesignator=P406 NewDesignator=P403
+Change Component Designator: OldDesignator=P407 NewDesignator=P202
+Change Component Designator: OldDesignator=P408 NewDesignator=P205
+Change Component Designator: OldDesignator=P409 NewDesignator=P206
+Change Component Designator: OldDesignator=P410 NewDesignator=P207
+Change Component Designator: OldDesignator=P411 NewDesignator=P208
+Change Component Designator: OldDesignator=P412 NewDesignator=P203
+Change Component Designator: OldDesignator=Q404 NewDesignator=Q201
+Change Component Designator: OldDesignator=Q405 NewDesignator=Q200
+Change Component Designator: OldDesignator=Q406 NewDesignator=Q202
+Change Component Designator: OldDesignator=R200 NewDesignator=R202
+Change Component Designator: OldDesignator=R400 NewDesignator=R203
+Change Component Designator: OldDesignator=R401 NewDesignator=R201
+Change Component Designator: OldDesignator=R402 NewDesignator=R208
+Change Component Designator: OldDesignator=R403 NewDesignator=R207
+Change Component Designator: OldDesignator=R404 NewDesignator=R400
+Change Component Designator: OldDesignator=R405 NewDesignator=R401
+Change Component Designator: OldDesignator=R406 NewDesignator=R402
+Change Component Designator: OldDesignator=R407 NewDesignator=R403
+Change Component Designator: OldDesignator=R408 NewDesignator=R404
+Change Component Designator: OldDesignator=R409 NewDesignator=R405
+Change Component Designator: OldDesignator=R410 NewDesignator=R406
+Change Component Designator: OldDesignator=R411 NewDesignator=R407
+Change Component Designator: OldDesignator=R412 NewDesignator=R206
+Change Component Designator: OldDesignator=R413 NewDesignator=R205
+Change Component Designator: OldDesignator=R414 NewDesignator=R204
+Change Component Designator: OldDesignator=R415 NewDesignator=R200
+Change Component Designator: OldDesignator=TP400 NewDesignator=TP200
+Change Component Designator: OldDesignator=TP401 NewDesignator=TP201
+Change Component Designator: OldDesignator=TP402 NewDesignator=TP400
+Change Component Designator: OldDesignator=TP403 NewDesignator=TP401
+Change Component Designator: OldDesignator=TP404 NewDesignator=TP402
+Added Pin To Net: NetName=5.0V Pin=C101-1
+Added Pin To Net: NetName=5.0V Pin=J1-201
+Added Pin To Net: NetName=Enc-A-Res Pin=J1-201
+Added Pin To Net: NetName=5.0V Pin=P100-21
+Added Pin To Net: NetName=5.0V Pin=R202-2
+Change Net Name : Old Net Name=5.0V New Net Name=5V
+Change Net Name : Old Net Name=EncB-Res New Net Name=Enc-B-Res
+Change Net Name : Old Net Name=NetC200_2 New Net Name=NetC202_2
+Change Net Name : Old Net Name=NetD401_1 New Net Name=NetD200_1
+Change Net Name : Old Net Name=NetD401_2 New Net Name=NetD200_2
+Change Net Name : Old Net Name=NetD402_2 New Net Name=NetD202_2
+Change Net Name : Old Net Name=NetD403_1 New Net Name=NetD201_1
+Change Net Name : Old Net Name=NetD403_2 New Net Name=NetD201_2
+Change Net Name : Old Net Name=NetJ1_10 New Net Name=Servo-Kipp
+Change Net Name : Old Net Name=NetP403_1 New Net Name=NetP400_1
+Change Net Name : Old Net Name=NetP403_2 New Net Name=NetP400_2
+Change Net Name : Old Net Name=NetP404_2 New Net Name=NetP401_2
+Change Net Name : Old Net Name=NetP405_2 New Net Name=NetP402_2
+Change Net Name : Old Net Name=NetP406_2 New Net Name=NetP403_2
+Change Net Name : Old Net Name=NetQ404_1 New Net Name=NetQ201_1
+Change Net Name : Old Net Name=NetQ405_1 New Net Name=NetQ200_1
+Change Net Name : Old Net Name=NetQ406_1 New Net Name=NetQ202_1
+Change Net Name : Old Net Name=NetR407_1 New Net Name=NetR403_1
+Added Pin To Net: NetName=NetC405_1 Pin=C405-1
+Added Pin To Net: NetName=NetC405_1 Pin=R407-2
+Added Net: Name=NetC405_1
+Change Class Name : Old Net Name=3_Motoren.SchDoc New Net Name=TopSheet
+Added Member To Class: ClassName=2_MPC555.SchDoc Member=Component C201 100nF
+Added Member To Class: ClassName=2_MPC555.SchDoc Member=Component C202 100nF
+Added Member To Class: ClassName=2_MPC555.SchDoc Member=Component D200 LTST-C190GKT
+Added Member To Class: ClassName=2_MPC555.SchDoc Member=Component D201 LTST-C190GKT
+Added Member To Class: ClassName=2_MPC555.SchDoc Member=Component D202 LTST-C190GKT
+Added Member To Class: ClassName=TopSheet Member=Component P100 Header 12X2
+Added Member To Class: ClassName=2_MPC555.SchDoc Member=Component P200 Header 3
+Added Member To Class: ClassName=2_MPC555.SchDoc Member=Component P201 WIFI_A
+Added Member To Class: ClassName=2_MPC555.SchDoc Member=Component P202 Header 3
+Added Member To Class: ClassName=2_MPC555.SchDoc Member=Component P203 Header 2
+Added Member To Class: ClassName=2_MPC555.SchDoc Member=Component P204 Header 2
+Added Member To Class: ClassName=2_MPC555.SchDoc Member=Component P205 Header 2X2
+Added Member To Class: ClassName=2_MPC555.SchDoc Member=Component P206 Header 2X2
+Added Member To Class: ClassName=2_MPC555.SchDoc Member=Component P207 Header 2X2
+Added Member To Class: ClassName=2_MPC555.SchDoc Member=Component P208 Header 3
+Added Member To Class: ClassName=2_MPC555.SchDoc Member=Component Q200 BC846B-7-F
+Added Member To Class: ClassName=2_MPC555.SchDoc Member=Component Q201 BC846B-7-F
+Added Member To Class: ClassName=2_MPC555.SchDoc Member=Component Q202 BC846B-7-F
+Added Member To Class: ClassName=2_MPC555.SchDoc Member=Component R201 10k
+Added Member To Class: ClassName=2_MPC555.SchDoc Member=Component R202 10k
+Added Member To Class: ClassName=2_MPC555.SchDoc Member=Component R203 1k
+Added Member To Class: ClassName=2_MPC555.SchDoc Member=Component R204 10k
+Added Member To Class: ClassName=2_MPC555.SchDoc Member=Component R205 1k
+Added Member To Class: ClassName=2_MPC555.SchDoc Member=Component R206 1k
+Added Member To Class: ClassName=2_MPC555.SchDoc Member=Component R207 10k
+Added Member To Class: ClassName=2_MPC555.SchDoc Member=Component R208 10k
+Added Member To Class: ClassName=2_MPC555.SchDoc Member=Component TP200 Testpoint SMD 1206
+Added Member To Class: ClassName=2_MPC555.SchDoc Member=Component TP201 Testpoint SMD 1206

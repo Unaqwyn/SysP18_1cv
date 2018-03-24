@@ -1,0 +1,52 @@
+Change Component Designator: OldDesignator=C100 NewDesignator=C300
+Change Component Designator: OldDesignator=C101 NewDesignator=C301
+Change Component Designator: OldDesignator=C102 NewDesignator=C302
+Change Component Designator: OldDesignator=C200 NewDesignator=C408
+Change Component Designator: OldDesignator=C201 NewDesignator=C407
+Change Component Designator: OldDesignator=C202 NewDesignator=C200
+Change Component Designator: OldDesignator=D200 NewDesignator=D401
+Change Component Designator: OldDesignator=D201 NewDesignator=D403
+Change Component Designator: OldDesignator=D202 NewDesignator=D402
+Change Component Designator: OldDesignator=P100 NewDesignator=P300
+Change Component Designator: OldDesignator=P200 NewDesignator=P402
+Change Component Designator: OldDesignator=P201 NewDesignator=P401
+Change Component Designator: OldDesignator=P202 NewDesignator=P407
+Change Component Designator: OldDesignator=P203 NewDesignator=P412
+Change Component Designator: OldDesignator=P204 NewDesignator=P400
+Change Component Designator: OldDesignator=P205 NewDesignator=P408
+Change Component Designator: OldDesignator=P206 NewDesignator=P409
+Change Component Designator: OldDesignator=P207 NewDesignator=P410
+Change Component Designator: OldDesignator=P208 NewDesignator=P411
+Change Component Designator: OldDesignator=P400 NewDesignator=P403
+Change Component Designator: OldDesignator=P401 NewDesignator=P404
+Change Component Designator: OldDesignator=P402 NewDesignator=P405
+Change Component Designator: OldDesignator=P403 NewDesignator=P406
+Change Component Designator: OldDesignator=Q200 NewDesignator=Q405
+Change Component Designator: OldDesignator=Q201 NewDesignator=Q404
+Change Component Designator: OldDesignator=Q202 NewDesignator=Q406
+Change Component Designator: OldDesignator=R200 NewDesignator=R415
+Change Component Designator: OldDesignator=R201 NewDesignator=R401
+Change Component Designator: OldDesignator=R202 NewDesignator=R200
+Change Component Designator: OldDesignator=R203 NewDesignator=R400
+Change Component Designator: OldDesignator=R204 NewDesignator=R414
+Change Component Designator: OldDesignator=R205 NewDesignator=R413
+Change Component Designator: OldDesignator=R206 NewDesignator=R412
+Change Component Designator: OldDesignator=R207 NewDesignator=R403
+Change Component Designator: OldDesignator=R208 NewDesignator=R402
+Change Component Designator: OldDesignator=R400 NewDesignator=R404
+Change Component Designator: OldDesignator=R401 NewDesignator=R405
+Change Component Designator: OldDesignator=R402 NewDesignator=R406
+Change Component Designator: OldDesignator=R403 NewDesignator=R407
+Change Component Designator: OldDesignator=R404 NewDesignator=R408
+Change Component Designator: OldDesignator=R405 NewDesignator=R409
+Change Component Designator: OldDesignator=R406 NewDesignator=R410
+Change Component Designator: OldDesignator=R407 NewDesignator=R411
+Change Component Designator: OldDesignator=TP200 NewDesignator=TP400
+Change Component Designator: OldDesignator=TP201 NewDesignator=TP401
+Change Component Designator: OldDesignator=TP400 NewDesignator=TP402
+Change Component Designator: OldDesignator=TP401 NewDesignator=TP403
+Change Component Designator: OldDesignator=TP402 NewDesignator=TP404
+Add Pin To Net: Pin=J1A-17 Old Net=NetJ1_17 New Net=Enc-A-Res
+Add Pin To Net: Pin=R402-1 Old Net=NetR208_1 New Net=LED-Störung
+Add Pin To Net: Pin=R403-1 Old Net=NetR207_1 New Net=LED-Power
+Change Pin Designator/Name:  Old Designator=J1A-17 Old Name=A:TPU14 New Designator =+5V New Name=201
