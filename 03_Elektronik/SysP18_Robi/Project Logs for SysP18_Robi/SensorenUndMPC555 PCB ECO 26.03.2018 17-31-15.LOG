@@ -1,0 +1,19 @@
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=P201
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=P204
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=R201
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=R203
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=R207
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=R208
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=TP200
+Removed Member From Class: ClassName=4_Sensoren.SchDoc Member=TP201
+Added Pin To Net: NetName=5V Pin=J1-201
+Added Member To Class: ClassName=2_MPC555.SchDoc Member=Component C200 100nF
+Added Member To Class: ClassName=4_Sensoren.SchDoc Member=Component P401 3 Pin Header Buchse
+Added Member To Class: ClassName=4_Sensoren.SchDoc Member=Component P403 3 Pin Header Buchse
+Added Member To Class: ClassName=2_MPC555.SchDoc Member=Component R200 10k
+Added Member To Class: ClassName=4_Sensoren.SchDoc Member=Component R400 16k
+Added Member To Class: ClassName=4_Sensoren.SchDoc Member=Component R405 10k
+Added Member To Class: ClassName=4_Sensoren.SchDoc Member=Component R406 10k
+Added Member To Class: ClassName=4_Sensoren.SchDoc Member=Component R407 510R
+Added Member To Class: ClassName=4_Sensoren.SchDoc Member=Component TP401 Testpoint SMD 1206
+Added Member To Class: ClassName=4_Sensoren.SchDoc Member=Component TP402 Testpoint SMD 1206
