@@ -1,0 +1,10 @@
+Removed Pin From Net: NetName=Enc-A-Lift Pin=J1-13
+Removed Pin From Net: NetName=Enc-B-Lift Pin=J1-14
+Removed Pin From Net: NetName=Enc-A-Turn Pin=J1-15
+Removed Pin From Net: NetName=Enc-B-Turn Pin=J1-16
+Added Pin To Net: NetName=Enc-A-Lift Pin=J1-12
+Added Pin To Net: NetName=Enc-B-Lift Pin=J1-13
+Added Pin To Net: NetName=Enc-A-Turn Pin=J1-14
+Added Pin To Net: NetName=Enc-B-Turn Pin=J1-15
+Added Pin To Net: NetName=Enc-A-Res Pin=J1-16
+Added Pin To Net: NetName=Enc-B-Res Pin=J1-18
