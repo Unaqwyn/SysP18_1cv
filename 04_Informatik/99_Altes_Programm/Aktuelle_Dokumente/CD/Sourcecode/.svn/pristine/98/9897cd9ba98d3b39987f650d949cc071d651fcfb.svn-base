@@ -1,0 +1,51 @@
+package Encoder;
+
+import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_FQD;
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+import definitions.PinMap;
+import definitions.RobotConstants;
+
+public class Encoder extends Task
+{
+	float mmPerTick;
+	TPU_FQD qDecode=null;
+	double ticksBefore = 0.0;
+	
+	public Encoder(float inMmPerTick, boolean useTPUA, int tpuPin)
+	{
+		mmPerTick=inMmPerTick;
+		qDecode = new TPU_FQD(useTPUA, tpuPin);
+		period = 0; // TODO: set period Encoder
+		Task.install(this);
+	}
+	
+	public void action(){
+		
+		
+	}
+	
+	/*
+	 * Method getLengthInMM() calculates the length between previous and
+	 * current position and returns it in millimeter.
+	 * 
+	 * @return double length in millimeter.
+	 */
+	public double getLengthInMM(){
+		
+		double ticks = getTicks();
+		double deltaPosition = ticks - ticksBefore;
+		double length = 0 * deltaPosition; // TODO: set Constant pulsPerRotation
+		ticksBefore = ticks;
+		
+		return length; // TODO: avoid variable overflow
+	}
+	
+	/*
+	 * Method getPosition() returns the counted Ticks of the FQD.
+	 * 
+	 * @return double current position of encoder in ticks.
+	 */
+	private double getTicks(){
+		return (double)qDecode.getPosition();
+	}
+}

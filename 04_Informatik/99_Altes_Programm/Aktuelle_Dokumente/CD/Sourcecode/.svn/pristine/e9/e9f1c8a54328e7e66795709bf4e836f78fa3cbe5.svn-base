@@ -1,0 +1,46 @@
+package Motors;
+
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;
+import definitions.PinMap;
+import definitions.RobotConstants;
+
+/*
+ * <h1>Class Motor</h1> implements methods to control the speed of
+ * a locked-antiphase driven motor.
+ */
+public class Motor extends Task
+{
+
+	//private Encoder encoder=null;
+	private TPU_PWM pwmPlus = null;
+	private TPU_PWM pwmMinus = null;
+	
+	private double hightimePWM = 0;
+	
+	public Motor(boolean useTPUAPlus, int channelAPlus, boolean useTPUAMinus, int channelAMinus, int periodPWM, int highTimePWM)
+	{
+		// TODO: Calculate value for mm per ticks 
+		//encoder = new Encoder((float)1.0,PinMap.ROPE_RIGHT_PWM_PLUS_TPUA,PinMap.ROPE_RIGHT_PWM_PLUS_TPU_PIN);
+		
+		pwmPlus = new TPU_PWM(useTPUAPlus, channelAPlus, periodPWM, highTimePWM);
+		pwmMinus = new TPU_PWM(useTPUAMinus, channelAMinus, periodPWM, highTimePWM);
+		period = RobotConstants.MOTOR_TASK_PERIOD;
+		Task.install(this);
+	}
+	
+	public void action()
+	{
+		updatePWM();
+	}
+	
+	public void  setSpeed(int speed){
+		hightimePWM = speed * RobotConstants.PERIOD_PWM / 
+				(Math.PI * RobotConstants.ROPE_FRONT_REEL_DIAMETER * RobotConstants.ROTATION_CONSTANT * RobotConstants.GEAR_RATIO * RobotConstants.MAXIMUM_MOTOR_VOLTAGE);
+	}
+	
+	public void updatePWM(){
+		pwmPlus.update((int)hightimePWM);
+		pwmMinus.update((int)hightimePWM);
+	}
+}

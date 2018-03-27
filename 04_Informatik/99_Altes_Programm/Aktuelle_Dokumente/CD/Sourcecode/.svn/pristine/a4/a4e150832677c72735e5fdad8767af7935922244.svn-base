@@ -1,0 +1,76 @@
+package pid;
+
+import java.io.PrintStream;
+
+import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
+import definitions.RobotConstants;
+
+/*
+ * <h1>Class PID</h1>
+ */
+public class PID {
+
+	double kProportional = RobotConstants.PID_K_PROPORTIONAL;
+	double kIntegral = RobotConstants.PID_K_INTEGRAL;
+	double kDifferential = RobotConstants.PID_K_DIFFERENTIAL;
+	double sumError = 0.0;
+	double errorBefore = 0.0;
+	
+	public PID(double kp, double ki, double kd){
+		
+	}
+	
+	/*
+	 * Method doPID() calculates the value for setting motor-speed.
+	 * PID "Proportional"-"Integral"-"Differential" equation is used
+	 * to calculate the motor-speed
+	 * see http://rn-wissen.de/wiki/index.php/Regelungstechnik#PID-Regler for
+	 * further information.
+	 * TODO: delete link if PID runs
+	 * 
+	 * @param double expected value to set controller
+	 * @param double actual value of motor-speed
+	 * 
+	 * @return double value to set motor-speed
+	 */
+	public double doPID(double desiredPosition, double actualPosition, double cycleTime){
+		
+		double output = 0;
+		double error = desiredPosition - actualPosition;
+		
+		if(error < 30 && error > -30)
+		{
+		sumError = sumError + error;
+		}
+		else
+		{
+			sumError=0;
+		}
+		
+		//output = kProportional*(error / errorBefore)*10; // + kIntegral*(cycleTime)*sumError + kDifferential*(error-errorBefore)/(cycleTime)
+//		if(error > errorBefore*1.5)
+//		{
+//			error = errorBefore *1.5;
+//		}
+		double outputP = kProportional*error;
+		double outputI = kIntegral*(cycleTime)*sumError;
+		double outputD = kDifferential*(error-errorBefore)/(cycleTime);
+		output = outputP + outputI + outputD;
+		errorBefore = error;
+		System.out.print(outputP);
+		System.out.print("	");
+		System.out.print(outputI);
+		System.out.print("	");
+		System.out.println(outputD);
+		
+		
+		return output;
+	}
+	
+	static{
+		SCI sci1 = SCI.getInstance(SCI.pSCI1);
+		sci1.start(19200, SCI.NO_PARITY, (short)8);
+		System.out = new PrintStream(sci1.out);
+		System.out.print("PID");
+	}
+}

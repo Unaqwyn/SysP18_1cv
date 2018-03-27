@@ -1,0 +1,93 @@
+package Encoder;
+
+import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_FQD;
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+import definitions.PinMap;
+
+//import javax.print.attribute.standard.DateTimeAtCompleted;
+
+import ch.ntb.inf.deep.runtime.mpc555.DateTime;
+import definitions.RobotConstants;
+
+public class Encoder extends Task
+{
+	private TPU_FQD qDecode = null;
+	private DateTime dateTime = null;
+	public int ticksBefore = 0;
+	public int thousandTicksBefore = 0;
+	public int absTicks = 0;
+	public int absThousandTicks = 0;
+    public double absLengthInMM = 0;
+	public double absTimeInSec = 0;
+	public int prevTimeInSec = 0;
+	
+	public double speed = 0;
+	public double position = 0;
+	public double time = 0;
+	
+	public Encoder(boolean useTPUA, int tpuPin)
+	{
+//		Task enc = new Encoder(useTPUA, tpuPin);
+		qDecode = new TPU_FQD(useTPUA, tpuPin);
+		//Task enc = new Encoder();
+		//qDecode = new TPU_FQD(true, PinMap.ROPE_RIGHT_ENC_A_TPU_PIN);
+		dateTime = DateTime.getInstance();
+//		period = RobotConstants.ENCODER_TASK_PERIOD;
+//		Task.install(enc);
+	}
+	
+//	public void action(){
+//		position = getDeltaLengthInMM();
+//		time = getDeltaTimeInSec();
+//		speed = time / position;
+//	}
+	
+	/*
+	 * Method getLengthInMM() calculates the length between previous and
+	 * current position and returns it in millimeter.
+	 * 
+	 * @return double length-difference in [mm].
+	 */
+	public double getDeltaLengthInMM(){
+		
+		int deltaTicks = getDeltaTicks();
+		double deltaLength = RobotConstants.ENCODER_LENGTH_PER_TICKS * deltaTicks;
+		absTicks += deltaTicks;
+		absLengthInMM += deltaLength;
+		return deltaLength; // TODO: avoid variable overflow
+	}
+	
+	/*
+	 * Method getDeltaTimeInSec() calculates the time-difference between now and last call.
+	 * 
+	 *  @return int time-difference in [s].
+	 */
+	public int getDeltaTimeInSec(){
+		int time = dateTime.getSec();
+		int deltaTime = time - prevTimeInSec;
+		absTimeInSec += deltaTime;
+		prevTimeInSec = time;
+		
+		return deltaTime;
+	}
+	
+	/*
+	 * Method getPosition() returns the counted Ticks of the FQD.
+	 * 
+	 * @return int current position of encoder in [ticks].
+	 */
+	public int getTicks(){
+		return qDecode.getPosition();
+	}
+	
+	public int getDeltaTicks(){
+		int ticks = getTicks();
+		int deltaTicks = ticks - ticksBefore;
+		ticksBefore = ticks;
+		return deltaTicks;
+	}
+	
+	public double getPosition(){
+		return this.position;
+	}
+}

@@ -1,0 +1,24 @@
+#deep-1
+
+meta {
+	version = "Mon Jan 09 14:21:12 CET 2017";
+	description = "deep project file for roboter-project";
+}
+
+project Roboter_Projekt {
+	libpath = "I:\deep\lib";
+	boardtype = ntbMpc555HB;
+	ostype = ntbSTS;
+	programmertype = ntbMpc555UsbBdi;
+
+#	enter names of rootclasses, e.g.
+#	rootclasses = "test.MyFirstTestClass","other.MySecondTestClass";
+#	rootclasses = "Test.TestSensors";
+#	rootclasses ="Test.TestI_O_s";
+#	rootclasses ="Test.TestPresentation";
+   rootclasses ="Test.TestMotor";
+#   rootclasses ="Robot.Robot";
+
+#	imgfile = "M:\eigene_dateien\workspaceSys10\ledTestSvn\ledTestSvn.bin";
+#	imgformat = BIN;
+}

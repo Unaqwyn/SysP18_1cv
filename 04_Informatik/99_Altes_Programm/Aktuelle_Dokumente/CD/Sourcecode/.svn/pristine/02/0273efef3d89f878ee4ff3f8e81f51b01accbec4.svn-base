@@ -1,0 +1,58 @@
+package Test;
+
+import java.io.PrintStream;
+
+import Encoder.Encoder;
+import motorController.*;
+import I_O_s.I_O_s;
+import Motors.Motor;
+import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+import definitions.PinMap;
+import definitions.RobotConstants;
+
+public class TestMotorController extends Task{
+
+	private I_O_s ios = null;	
+	private MotorController motorController =null;
+	private int counter=0;
+	private int counter1=0;
+
+
+	
+	public TestMotorController(){
+		motorController = new MotorController(RobotConstants.USE_TPUA, PinMap.ROPE_LEFT_PWM_PLUS_TPU_PIN, PinMap.ROPE_LEFT_ENC_A_TPU_PIN);
+		period = 500;
+		ios = new I_O_s();
+		ios.setDisableSleep(false);
+		ios.allLedOff();
+		ios.setMagnet(false);
+		ios.setOptOnOff(false);
+		Task.install(this);
+	}
+	
+	public void action(){
+		if(counter1>5)
+		{
+			ios.setDisableSleep(true);
+			motorController.setSpeedInMM(100, 5);
+			
+		}
+		if(counter >= 30){
+			motorController.setSpeedInMM(-300, 10);
+			counter = 0;
+		}
+		counter++;
+		counter1++;
+
+	}
+	
+	
+	static{
+		SCI sci1 = SCI.getInstance(SCI.pSCI1);
+		sci1.start(9600, SCI.NO_PARITY, (short)8);
+		System.out = new PrintStream(sci1.out);
+		System.out.print("TestMotorController");
+		new TestMotorController();
+	}
+}

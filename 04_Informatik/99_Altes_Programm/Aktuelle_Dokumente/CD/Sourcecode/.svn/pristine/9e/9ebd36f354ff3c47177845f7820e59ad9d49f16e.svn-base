@@ -1,0 +1,27 @@
+package Motors;
+
+import com.sun.corba.se.impl.orbutil.closure.Constant;
+
+import Encoder.Encoder;
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+import definitions.PinMap;
+import definitions.RobotConstants;
+
+public class Motor extends Task
+{
+
+	private Encoder encoder=null;
+	
+	public Motor(int gearRatio, float shaftdiameter, int pulsePerRev)
+	{
+		// TODO: Calculate value for mm per ticks 
+		encoder = new Encoder((float)1.0,PinMap.ROPE_RIGHT_PWM_PLUS_TPUA,PinMap.ROPE_RIGHT_PWM_PLUS_TPU_PIN);
+		period = RobotConstants.ROPE_RIGHT_MOTOR_TASK_PERIOD;
+		Task.install(this);
+	}
+	
+	public void action()
+	{
+		
+	}
+}

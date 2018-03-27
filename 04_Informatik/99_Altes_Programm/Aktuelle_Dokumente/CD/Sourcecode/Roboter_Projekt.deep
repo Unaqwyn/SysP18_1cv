@@ -1,0 +1,34 @@
+#deep-1
+
+meta {
+	version = "Sun May 07 21:45:55 CEST 2017";
+	description = "deep project file for roboter-project";
+}
+
+project Roboter_Projekt {
+	libpath = "M:\deep_runtime_library_1.3.4_2016-11-08";
+	boardtype = ntbMpc555HB;
+	ostype = ntbSTS;
+	programmertype = ntbMpc555UsbBdi;
+
+#	enter names of rootclasses, e.g.
+#	rootclasses = "test.MyFirstTestClass","other.MySecondTestClass";
+#	rootclasses = "Test.TestSensors";
+#	rootclasses ="Test.TestI_O_s";
+#	rootclasses ="Test.TestPresentation";
+#	rootclasses ="Test.TestMotor";
+	rootclasses ="Robot.Robot";
+#	rootclasses ="Test.TestEncoder";
+#	rootclasses ="Test.TestCommunication";
+#	rootclasses ="Test.TestMotorController";
+#	rootclasses ="Test.TestPartnerteam";
+#	rootclasses ="Communication.Communication";
+#	rootclasses ="Test.TestSpeedController4DCMotorCopy";
+#	rootclasses ="Test.positionController";
+#	rootclasses ="Test.Test_PID";
+
+
+
+#	imgfile = "M:\eigene_dateien\workspaceSys10\ledTestSvn\ledTestSvn.bin";
+#	imgformat = BIN;
+}

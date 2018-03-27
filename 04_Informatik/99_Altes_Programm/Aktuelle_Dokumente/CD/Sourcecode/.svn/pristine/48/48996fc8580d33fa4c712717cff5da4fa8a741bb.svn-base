@@ -1,0 +1,33 @@
+package Robot;
+
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+
+public class StateMachine extends Task
+{
+	private static enum States
+	{
+		BOOTING,
+		AWAIT_CONNECTION,
+		
+	}
+	
+	private States state;
+	
+	public void action()
+	{
+		switch (state) {
+		case BOOTING:
+			
+			state=States.AWAIT_CONNECTION;
+			break;
+
+		case AWAIT_CONNECTION:
+			
+			break;
+
+		default:
+			break;
+		}
+		
+	}
+}

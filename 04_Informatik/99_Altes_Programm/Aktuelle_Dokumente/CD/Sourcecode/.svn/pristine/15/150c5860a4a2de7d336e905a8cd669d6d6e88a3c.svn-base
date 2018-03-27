@@ -1,0 +1,95 @@
+package Sensors;
+
+import I_O_s.I_O_s;
+import ch.ntb.inf.deep.runtime.mpc555.driver.QADC_AIN;
+import definitions.PinMap;
+import definitions.RobotConstants;
+
+/**
+ * <h1>Sensorik</h1> The class sensors initializes the sensors.
+ * It reads out the values of the sensors evaluate them.
+ * <p>
+ *
+ * @author Sandro Santoro
+ * @version 1.0
+ * @since 2017-03-07
+ */
+public class Sensors {
+
+	private I_O_s ios;
+	/**
+	 * The constructor of the class sensors. All used analog inputs for
+	 * the sensors will be initialized.
+	 * 
+	 */
+	public Sensors() {
+		
+		QADC_AIN.init(RobotConstants.USE_QADCA);
+		ios = new I_O_s();
+		ios.setOptOnOff(true);
+	}
+
+	/**
+	 * This method reads out the dock sensor
+	 * and checks whether the robot is docked or not.
+	 * 
+	 * @return boolean Returns the value of the dock status. If it's docked
+	 *         it return true or false if it's not docked.
+	 */
+	public boolean getDock() {
+
+		int sensorValue = QADC_AIN.read(RobotConstants.USE_QADCA, PinMap.LDR_AN_PIN);
+
+		if (sensorValue < RobotConstants.VALUE_LED_DOCK_BORDER) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * This method reads out the dock sensor to know where the platform is.
+	 * The platform can be on the positions 1 to 3.
+	 * If no platform is found returns -1.
+	 * 
+	 * 
+	 * Positions: left 1 2 3 right
+	 * 
+	 * @return int Returns the position of the platform.
+	 *         If no platform is found returns -1.
+	 */
+	public int getPlatform() {
+
+		int opt1 = QADC_AIN.read(RobotConstants.USE_QADCA, PinMap.OPT1_AN_PIN);
+		int opt2 = QADC_AIN.read(RobotConstants.USE_QADCA, PinMap.OPT2_AN_PIN);
+		int opt3 = QADC_AIN.read(RobotConstants.USE_QADCA, PinMap.OPT3_AN_PIN);
+		int opt4 = QADC_AIN.read(RobotConstants.USE_QADCA, PinMap.OPT4_AN_PIN);
+		
+		
+		
+		if(opt1 > RobotConstants.VALUE_PLATFORM_LED_RED_MAX &&
+		   opt2 > RobotConstants.VALUE_PLATFORM_LED_RED_MAX &&
+		   opt3 > RobotConstants.VALUE_PLATFORM_LED_RED_MAX &&
+		   opt4 > RobotConstants.VALUE_PLATFORM_LED_RED_MAX)
+		{
+			return 2;
+		}
+		
+		if(opt1 > RobotConstants.VALUE_PLATFORM_LED_RED_MAX &&
+		   opt2 > RobotConstants.VALUE_PLATFORM_LED_RED_MAX &&
+		   opt3 > RobotConstants.VALUE_PLATFORM_LED_RED_MIN &&
+		   opt4 > RobotConstants.VALUE_PLATFORM_LED_RED_MIN)
+		{
+			return 1;
+		}
+		
+		if(opt1 > RobotConstants.VALUE_PLATFORM_LED_RED_MIN &&
+		   opt2 > RobotConstants.VALUE_PLATFORM_LED_RED_MIN &&
+		   opt3 > RobotConstants.VALUE_PLATFORM_LED_RED_MAX &&
+		   opt4 > RobotConstants.VALUE_PLATFORM_LED_RED_MAX)
+		{
+			return 3;
+		}
+		
+		return -1;
+	}
+}

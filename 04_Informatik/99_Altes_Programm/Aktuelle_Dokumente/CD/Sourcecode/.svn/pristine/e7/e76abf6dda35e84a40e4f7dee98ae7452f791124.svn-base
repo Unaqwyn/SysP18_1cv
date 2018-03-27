@@ -1,0 +1,21 @@
+package Test;
+
+import motorController.MotorController;
+import Motors.Motor;
+
+public class TestMotorController {
+	Motor motor;
+	
+	TestMotorController(){
+		motor = new Motor(true, 0, true, 0, 0, 0);
+	}
+	
+	public void setSpeed(){
+		motor.setSpeed(0);
+	}
+	
+	public void updatePWM(){
+		motor.updatePWM();
+	}
+
+}

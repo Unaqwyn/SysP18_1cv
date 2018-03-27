@@ -1,0 +1,88 @@
+package Sensors;
+
+//import ch.ntb.inf.deep.runtime.mpc555.driver.HLC1395Pulsed;
+import ch.ntb.inf.deep.runtime.mpc555.driver.QADC_AIN;
+import definitions.PinMap;
+import definitions.RobotConstants;
+
+/*
+ * TODO: Delete unnecessary code.
+ */
+
+/**
+ * <h1>Sensorik</h1> The class sensors initializes the sensors.
+ * It reads out the values of the sensors evaluate them.
+ * <p>
+ *
+ * @author Sandro Santoro
+ * @version 1.0
+ * @since 2017-03-07
+ */
+public class Sensors{
+
+	/**
+	 * The constructor of the class sensors. All used analog inputs for
+	 * the sensors will be initialized.
+	 * 
+	 */
+	public Sensors() {
+		QADC_AIN.init(RobotConstants.USE_QADCA);
+	}
+
+	/**
+	 * This method reads out the dock sensor
+	 * and checks whether the robot is docked or not.
+	 * 
+	 * @return boolean Returns the value of the dock status. If it's docked
+	 *         it return true or false if it's not docked.
+	 */
+	public boolean getDock() {
+
+		int valueLDR = 0;
+		int valueDocked = 255;
+		
+		valueLDR = QADC_AIN.read(RobotConstants.USE_QADCA, PinMap.LDR_AN_PIN);
+		
+		if (valueLDR >= valueDocked)
+		{
+			return true;
+		}else
+		{
+			return false;
+		}
+	}
+
+	/**
+	 * This method reads out the platform sensors to know if the
+	 * Platform is on the scanned position.
+	 * The platform can be on the positions 1 to 5.
+	 * The Robot has to drive to all the positions and check if platform is there.
+	 * 
+	 * Positions: left 1 2 3 4 5 right
+	 * 
+	 * @return boolean Returns true if the platform is on that position.
+	 *         If no platform is found returns false.
+	 */
+	public boolean getPlatform() {
+		
+		int valuePlatform = 255;
+		int valueOPT1 = 0;
+		int valueOPT2 = 0;
+		int valueOPT3 = 0;
+		int valueOPT4 = 0;
+
+		valueOPT1 = QADC_AIN.read(RobotConstants.USE_QADCA, PinMap.OPT1_AN_PIN);
+		valueOPT2 = QADC_AIN.read(RobotConstants.USE_QADCA, PinMap.OPT2_AN_PIN);
+		valueOPT3 = QADC_AIN.read(RobotConstants.USE_QADCA, PinMap.OPT3_AN_PIN);
+		valueOPT4 = QADC_AIN.read(RobotConstants.USE_QADCA, PinMap.OPT4_AN_PIN);
+		
+		if(valueOPT1 >= valuePlatform && valueOPT2 >= valuePlatform
+			&& valueOPT3 >= valuePlatform && valueOPT4 >= valuePlatform)
+		{
+			return true;
+		}else
+		{
+			return false;
+		}
+	}
+}

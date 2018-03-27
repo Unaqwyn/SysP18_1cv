@@ -1,0 +1,148 @@
+ package Communication;
+
+import java.io.PrintStream;
+
+import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
+import ch.ntb.inf.deep.runtime.mpc555.driver.RN131;
+import ch.ntb.inf.deep.runtime.mpc555.driver.RN131.State;
+import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+import ch.ntb.inf.deep.runtime.util.CmdInt;
+
+/**
+* <h1>Communication</h1>
+* In this class will signals be sent and received.
+* <p>
+*
+* @author  Janick Hartmann
+* @version 0.2
+* @since   2017-03-07
+*/
+
+public class Communication /*extends Task */{
+	/**
+	* The variables of the class Communication.
+	* 
+	*/	
+	public static RN131 wifi;
+	final int resetPin = 11;
+	private int counter = 0;
+	private int sendCounter = 0;
+	private int receivedMessage;
+	
+	
+	/**
+	* The constructor of the class Communication.
+	* 
+	*/
+	public Communication() throws Exception{
+		SCI sci2 = SCI.getInstance(SCI.pSCI2);
+		sci2.start(115200, SCI.NO_PARITY, (short)8);
+		wifi = new RN131(sci2.in, sci2.out, new MPIOSM_DIO(resetPin, true));
+	}
+	
+	/**
+	* This method sends data to the other robot.
+	* 
+	* @param sendData: Code that will be sent to the other robot.
+	*/
+	public void sendData(int sendData)
+	{
+		if(connected()){
+//			System.out.print("\t(Eine Nachricht wurde gesendet)\t");
+			wifi.cmd.writeCmd(sendData);
+		}		
+		else{
+//			System.out.print("\t(Nicht verbunden - Nachricht konnte nicht gesendet werden)\t");
+		}
+	}
+	
+	/**
+	* This method receive data from the other robot.
+	* 
+	*/
+	public int getData()
+	{
+		if(connected()){
+			CmdInt.Type type = wifi.cmd.readCmd();
+			if(type == CmdInt.Type.Cmd){
+				//System.out.print("command=");
+				receivedMessage = wifi.cmd.getInt();
+//				System.out.print(wifi.cmd.getInt());
+				return receivedMessage;
+			}
+			else
+			{
+				return receivedMessage;
+			}
+//			System.out.print("\t(Eine Nachricht wurde empfangen)\t");
+			
+			
+		}
+		else{
+//			System.out.print("\t(Nicht verbunden - Nachricht konnte nicht empfangen werden)\t");
+			return 99;
+		}
+		
+	}	
+	
+	/**
+	* This method returns the state.
+	* 
+	*/
+	public State getState(){
+		return wifi.getState();
+	}
+	
+	/**
+	* This method resets wifi.
+	* 
+	*/
+	public void reset()
+	{
+		wifi.reset();
+	}
+
+	/**
+	* This method checks the heartbeat.
+	* 
+	*/
+	public boolean connected() {
+		if (wifi.connected()){
+//			System.out.print("\t(Verbunden)\t");
+		}
+		else{
+//			System.out.print("\t(Nicht verbunden)\t");
+		}
+		return wifi.connected();
+	}
+	
+	/**
+	* This method sends each number from 0 up to x two times to check the connection
+	* 
+	*/
+	public void testConnection(){
+		if(connected()){
+			if (sendCounter == 0){
+				sendData(counter);
+				System.out.println(counter);
+				sendCounter = 1;
+			}
+			else{
+				sendData(counter);
+				System.out.println(counter);
+				sendCounter = 0;
+				counter ++;
+			}
+		}
+	}
+	
+	static{
+		SCI sci1 = SCI.getInstance(SCI.pSCI1);
+		sci1.start(19200, SCI.NO_PARITY, (short)8);
+		
+		System.out = new PrintStream(sci1.out);
+		System.err = new PrintStream(sci1.out);
+		System.out.println("Communication");
+	}
+}

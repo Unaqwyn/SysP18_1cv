@@ -1,0 +1,21 @@
+package Sensors;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class testgetPlatform {
+
+	@Test
+	public void test() {
+		
+		Sensors sensors = new Sensors();
+		
+		boolean expected = false;
+		
+		boolean actual = sensors.getPlatform();
+		
+		assertEquals("Platform not recognized", expected, actual);
+	}
+
+}

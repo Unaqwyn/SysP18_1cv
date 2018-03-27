@@ -1,0 +1,107 @@
+package Test;
+
+import Motors.Motor;
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+import definitions.PinMap;
+import I_O_s.I_O_s;
+
+public class TestMotor extends Task{
+	private Motor motor;
+	private I_O_s ios;
+	int counter;
+	int hightime;
+	private States state = States.rest;
+	
+	private static enum States{
+		fullSpeed,
+		rest	
+	} 
+	
+	public TestMotor(){
+		counter = 0;
+		hightime = 0;
+		period = 100;
+		Task.install(this);
+		ios = new I_O_s();
+		ios.setDisableSleep(false);
+		boolean useTPUAPlus = true;
+		boolean useTPUAMinus = true;
+		int channelAPlus = PinMap.ROPE_LEFT_PWM_PLUS_TPU_PIN;
+		int channelAMinus = PinMap.ROPE_LEFT_PWM_MINUS_TPU_PIN;
+		motor = new Motor(useTPUAPlus, channelAPlus, useTPUAMinus, channelAMinus);
+	}
+	
+	public void action(){
+		counter++;
+		
+		ios.allLedOff();
+		ios.setMagnet(false);
+		ios.setOptOnOff(false);
+		motor.updatePWM();
+//		motor.setHightime(hightime / 806);
+		
+		
+		switch(state){
+		case rest:
+			if(counter >= 5){
+				ios.setDisableSleep(true);
+//				hightime += 500;
+			}
+			if(!ios.getButtonMotorLeft()){
+				motor.setHalfSpeedReverse();
+				ios.setLedSearch(!ios.getButtonMotorLeft());
+			}
+			else if(!ios.getButtonMotorRight()){
+				motor.setHalfSpeedForward();
+				ios.setLedDock(!ios.getButtonMotorMiddle());
+			}else if(!ios.getStartSwitch()){
+				state =States.fullSpeed;
+			}
+			else {
+				//motor.setStop();
+				motor.setStop();
+			}
+			
+			break;
+		
+		case fullSpeed:
+			if(!ios.getStartSwitch()){
+				motor.setFullSpeedForward();
+			}
+			else{
+				motor.setStop();
+				ios.setDisableSleep(false);
+				state = States.rest;
+			}
+			break;
+		}
+		
+	}
+	
+	static {
+//		Task t = new TestMotor();
+//		t.period = 500;
+//		Task.install(t);
+		new TestMotor();
+
+	}
+	
+	public void setSpeed(){
+//		motor.setSpeed(0);
+//		motor.setFullSpeedForward();
+//		motor.setFullSpeedReverse();
+//		motor.setHalfSpeedForward();
+//		motor.setHalfSpeedReverse();
+		motor.setStop();
+	}
+	
+	public void allOff(){
+		ios.setLedSearch(false);
+		ios.setLedLand(false);
+		ios.setLedDock(false);
+		ios.setLedCommunication(false);
+		ios.setLedReserve(true);
+		ios.setMagnet(false);
+		
+	}
+}

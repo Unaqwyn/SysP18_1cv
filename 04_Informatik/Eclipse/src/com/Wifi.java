@@ -51,7 +51,7 @@ public class Wifi extends Task
 		task.wifi.reset();
 	}
 
-	public static void sendCmd(int x)
+	public void sendCmd(int x)
 	{
 		if (task.wifi.connected())
 			task.wifi.cmd.writeCmd(x);

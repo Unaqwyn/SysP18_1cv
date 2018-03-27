@@ -1,0 +1,20 @@
+#deep-1
+
+meta {
+	version = "Mon Jan 09 11:15:06 CET 2017";
+	description = "deep project file for deepTest";
+}
+
+project deepTest {
+	libpath = "I:\deep\lib";
+	boardtype = ntbMpc555HB;
+	ostype = ntbSTS;
+	programmertype = ntbMpc555UsbBdi;
+
+#	enter names of rootclasses, e.g.
+#	rootclasses = "test.MyFirstTestClass","other.MySecondTestClass";
+	rootclasses = "deepTest.HelloWorld";
+
+#	imgfile = "M:\eigene_dateien\workspaceSys10\deepTest\deepTest.bin";
+#	imgformat = BIN;
+}

@@ -1,0 +1,54 @@
+package Roboter;
+
+import java.io.PrintStream;
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+import Encoder.*;
+import I_O_s.*;
+import Kommunikation.*;
+import Motoren.*;
+import Sensorik.*;
+
+public class Roboter extends Task {
+	
+	private static Kommunikation kommunikation;
+	private static I_O_s ios;
+	boolean kom = true;
+	boolean landen = true;
+	int i =0;
+	
+	public Roboter() throws Exception {
+		kommunikation = new Kommunikation();
+		ios = new I_O_s();
+	}
+
+	public void action(){
+		
+		Kommunikation.sendeDaten(1);
+		ios.ledKommunikationSetzen(kom);
+		kom=!kom;
+		if  (i %2 == 0){
+			ios.ledLandenSetzen(landen);
+			landen=!landen;
+		}
+		i++;
+		kommunikation.erhalteDaten();
+	}
+	
+
+	static {		
+		
+		// Initialize task
+
+		try {
+			Roboter task = new Roboter();
+			task.period = 1000;
+			Task.install(task);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+}

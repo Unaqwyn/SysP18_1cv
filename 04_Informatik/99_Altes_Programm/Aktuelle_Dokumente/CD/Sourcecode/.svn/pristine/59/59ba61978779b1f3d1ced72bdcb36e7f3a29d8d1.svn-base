@@ -1,0 +1,127 @@
+package Motors;
+
+
+import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;
+import definitions.RobotConstants;
+
+/*
+ * <h1>Class Motor</h1> implements methods to control the speed of
+ * a locked-antiphase driven motor.
+ */
+public class Motor
+{
+
+	private TPU_PWM pwmPlus = null;
+	private TPU_PWM pwmMinus = null;
+	private int hightimePWMPlus = 0;
+	private int hightimePWMMinus = 0;
+	
+	public Motor(boolean useTPUAPlus, int channelAPlus, int channelAMinus)
+	{
+		pwmPlus = new TPU_PWM(useTPUAPlus, channelAPlus, RobotConstants.PERIOD_PWM, 0);
+		pwmMinus = new TPU_PWM(useTPUAPlus, channelAMinus, RobotConstants.PERIOD_PWM, 0);
+	}
+	
+	/**
+	 * Method setSpeed() calculates the correct hightime for the given speed.
+	 * Speed can vary from +231.5 mm/s to -231.5 mm/s.
+	 */
+	public void  setSpeed(double speed){
+		
+		//setPWM(speed / RobotConstants.MAX_SPEED);
+		
+		if(speed > 0)
+		{
+			hightimePWMPlus = (int)((4*speed / RobotConstants.MAX_SPEED) * RobotConstants.PERIOD_PWM);
+			if(hightimePWMPlus > (int)(RobotConstants.PERIOD_PWM*0.25))
+			{
+				hightimePWMPlus = (int)(RobotConstants.PERIOD_PWM*0.25);
+			}
+			hightimePWMMinus = 0;			
+		}else if(speed < 0)
+		{
+			hightimePWMMinus = (int)((4*speed / RobotConstants.MAX_SPEED) * RobotConstants.PERIOD_PWM);
+			hightimePWMMinus *= (-1);
+			if(hightimePWMMinus > (int)(RobotConstants.PERIOD_PWM*0.25))
+			{
+				hightimePWMMinus = (int)(RobotConstants.PERIOD_PWM*0.25);
+			}
+			hightimePWMPlus = 0;
+		}
+		else if(speed == 0)
+		{
+			setStop();
+		}
+		updatePWM();		
+	}
+	
+	public void setStop(){
+		hightimePWMPlus = 0;
+		hightimePWMMinus = 0;
+		updatePWM();
+	}
+	
+	public void setFullSpeedReverse(){
+		hightimePWMPlus = RobotConstants.PERIOD_PWM;
+		hightimePWMMinus = 0;
+		updatePWM();
+	}
+	
+	public void setHalfSpeedReverse(){
+		hightimePWMPlus = (int)(RobotConstants.PERIOD_PWM * 0.5);
+		hightimePWMMinus = 0;
+		updatePWM();
+	}
+	
+	public void setQuarterSpeedReverse(){
+		hightimePWMPlus = (int)(RobotConstants.PERIOD_PWM * 0.25);
+		hightimePWMMinus = 0;
+		updatePWM();
+	}
+	
+	public void setFullSpeedForward(){
+		hightimePWMPlus = 0;
+		hightimePWMMinus = RobotConstants.PERIOD_PWM;
+		updatePWM();
+	}
+	
+	public void setHalfSpeedForward(){
+		hightimePWMPlus = 0;
+		hightimePWMMinus = (int)(RobotConstants.PERIOD_PWM * 0.5);
+		updatePWM();
+	}
+	
+	public void setQuarterSpeedForward(){
+		hightimePWMPlus = 0;
+		hightimePWMMinus = (int)(RobotConstants.PERIOD_PWM * 0.25);
+		updatePWM();
+	}
+	
+	public void updatePWM(){
+		pwmPlus.update(hightimePWMPlus);
+		pwmMinus.update(hightimePWMMinus);
+	}
+	
+	/*
+	private static double limitDutyCycle(double d) {
+		if (d > 0.5)
+			return 0.5;
+		if (d < -0.5)
+			return -0.5;
+		return d;
+	}
+	
+	private void setPWM(double dutyCycle) {
+		dutyCycle = limitDutyCycle(dutyCycle);
+
+		if (dutyCycle >= 0) { // forward
+			pwmPlus.update(RobotConstants.PERIOD_PWM, 0); // direction
+		} else { // backward
+			pwmPlus.update(RobotConstants.PERIOD_PWM, RobotConstants.PERIOD_PWM); // direction
+			dutyCycle = dutyCycle + 1;
+		}
+		pwmMinus.update(RobotConstants.PERIOD_PWM, (int)(dutyCycle * RobotConstants.PERIOD_PWM)); // speed
+		pwmPlus.update(RobotConstants.PERIOD_PWM, (int)(dutyCycle + 0.5));
+		
+	}*/
+}

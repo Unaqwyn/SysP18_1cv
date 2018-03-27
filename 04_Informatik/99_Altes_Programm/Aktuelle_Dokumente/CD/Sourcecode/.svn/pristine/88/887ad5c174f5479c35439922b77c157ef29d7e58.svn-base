@@ -1,0 +1,89 @@
+package Motors;
+
+
+import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;
+import definitions.RobotConstants;
+
+/*
+ * <h1>Class Motor</h1> implements methods to control the speed of
+ * a locked-antiphase driven motor.
+ */
+public class Motor
+{
+
+	private TPU_PWM pwmPlus = null;
+	private TPU_PWM pwmMinus = null;
+	private int hightimePWMPlus = 0;
+	private int hightimePWMMinus = 0;
+	
+	public Motor(boolean useTPUAPlus, int channelAPlus, int channelAMinus)
+	{
+		pwmPlus = new TPU_PWM(useTPUAPlus, channelAPlus, RobotConstants.PERIOD_PWM, 0);
+		pwmMinus = new TPU_PWM(useTPUAPlus, channelAMinus, RobotConstants.PERIOD_PWM, 0);
+	}
+	
+	/**
+	 * Method setSpeed() calculates the correct hightime for the given speed.
+	 * Speed can vary from +231.5 mm/s to -231.5 mm/s.
+	 */
+	public void  setSpeed(double speed){
+		
+		if(speed > 0)
+		{
+			hightimePWMPlus = (int)((speed / RobotConstants.MAX_SPEED) * RobotConstants.PERIOD_PWM);
+			hightimePWMMinus = 0;
+		}else
+		{
+			hightimePWMMinus = (int)((speed / RobotConstants.MAX_SPEED) * RobotConstants.PERIOD_PWM);
+			hightimePWMPlus = 0;
+		}
+		updatePWM();		
+	}
+	
+	public void setStop(){
+		hightimePWMPlus = 0;
+		hightimePWMMinus = 0;
+		updatePWM();
+	}
+	
+	public void setFullSpeedForward(){
+		hightimePWMPlus = RobotConstants.PERIOD_PWM;
+		hightimePWMMinus = 0;
+		updatePWM();
+	}
+	
+	public void setHalfSpeedForward(){
+		hightimePWMPlus = (int)(RobotConstants.PERIOD_PWM * 0.5);
+		hightimePWMMinus = 0;
+		updatePWM();
+	}
+	
+	public void setQuarterSpeedForward(){
+		hightimePWMPlus = (int)(RobotConstants.PERIOD_PWM * 0.25);
+		hightimePWMMinus = 0;
+		updatePWM();
+	}
+	
+	public void setFullSpeedReverse(){
+		hightimePWMPlus = 0;
+		hightimePWMMinus = RobotConstants.PERIOD_PWM;
+		updatePWM();
+	}
+	
+	public void setHalfSpeedReverse(){
+		hightimePWMPlus = 0;
+		hightimePWMMinus = (int)(RobotConstants.PERIOD_PWM * 0.5);
+		updatePWM();
+	}
+	
+	public void setQuarterSpeedReverse(){
+		hightimePWMPlus = 0;
+		hightimePWMMinus = (int)(RobotConstants.PERIOD_PWM * 0.25);
+		updatePWM();
+	}
+	
+	public void updatePWM(){
+		pwmPlus.update(hightimePWMPlus);
+		pwmMinus.update(hightimePWMMinus);
+	}
+}

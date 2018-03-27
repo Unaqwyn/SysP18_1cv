@@ -1,0 +1,20 @@
+#deep-1
+
+meta {
+	version = "Tue Mar 27 14:53:59 CEST 2018";
+	description = "deep project file for RobiNew";
+}
+
+project RobiNew {
+	libpath = "I:\deep\lib";
+	boardtype = ntbMpc555HB;
+	ostype = ntbSTS_ppc;
+	programmertype = ntbMpc555UsbBdi;
+
+#	enter names of rootclasses, e.g.
+#	rootclasses = "test.MyFirstTestClass","other.MySecondTestClass";
+	rootclasses = "";
+
+#	imgfile = "C:\Users\rjaeger\eclipse-workspace\RobiNew\RobiNew.bin";
+#	imgformat = BIN;
+}

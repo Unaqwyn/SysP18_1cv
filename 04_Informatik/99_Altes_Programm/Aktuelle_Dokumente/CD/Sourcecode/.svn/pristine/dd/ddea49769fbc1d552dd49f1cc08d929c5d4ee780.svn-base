@@ -1,0 +1,44 @@
+package pid;
+
+import definitions.RobotConstants;
+
+/*
+ * <h1>Class PID</h1>
+ */
+public class PID {
+
+	double kProportional = RobotConstants.PID_K_PROPORTIONAL;
+	double kIntegral = RobotConstants.PID_K_INTEGRAL;
+	double kDifferential = RobotConstants.PID_K_DIFFERENTIAL;
+	double sumError = 0.0;
+	double errorBefore = 0.0;
+	
+	public PID(double kp, double ki, double kd){
+		
+	}
+	
+	/*
+	 * Method doPID() calculates the value for setting motor-speed.
+	 * PID "Proportional"-"Integral"-"Differential" equation is used
+	 * to calculate the motor-speed
+	 * see http://rn-wissen.de/wiki/index.php/Regelungstechnik#PID-Regler for
+	 * further information.
+	 * TODO: delete link if PID runs
+	 * 
+	 * @param double expected value to set controller
+	 * @param double actual value of motor-speed
+	 * 
+	 * @return double value to set motor-speed
+	 */
+	public double doPID(double expected, double actual, double cycleTime){
+		
+		double output = 0;
+		double error = expected - actual;
+		sumError = sumError + error;
+		
+		output = kProportional*error + kIntegral*cycleTime*sumError + kDifferential*(error-errorBefore)/cycleTime;
+		errorBefore = error;
+		
+		return output;
+	}
+}

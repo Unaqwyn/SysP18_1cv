@@ -1,0 +1,149 @@
+package motorController;
+
+import Encoder.Encoder;
+import Motors.Motor;
+import pid.PID;
+import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+import definitions.RobotConstants;
+import java.io.PrintStream;
+
+/*
+ * <h1>Class MotorController</h1>
+ */
+public class MotorController extends Task{
+
+	public Encoder encoder = null;
+	public Motor motor = null;
+	private PID pid = null;
+	
+	// all speeds are in [mm/s]
+	private double speedActual = 0.0;
+	private double speedExpected = 0.0;
+	private double speedPID = 0.0;
+	
+	private double desiredPositionInMM = 0.0;
+	private long encoderPosition = 0;
+	public double encoderPositionInMM = 0.0;
+	public double encoderPositionInMMBefore = 0.0;
+	private double lengthInMM = 0.0;
+	private double timeInSec = 0.0;
+	private final double periodeInSec = ((double)RobotConstants.MOTOR_CONTROLLER_TASK_PERIOD/1000);
+
+	
+	public MotorController(boolean useTPUA, int channelAPlusMotor, int channelAMinusMotor, int channelAEncoder){
+		motor = new Motor(useTPUA, channelAPlusMotor, channelAMinusMotor);
+		encoder = new Encoder(useTPUA, channelAEncoder);
+		pid = new PID(RobotConstants.PID_K_PROPORTIONAL, RobotConstants.PID_K_INTEGRAL, RobotConstants.PID_K_DIFFERENTIAL);
+		period = RobotConstants.MOTOR_CONTROLLER_TASK_PERIOD;
+		Task.install(this);
+		encoder.setZero();
+	}
+	
+	public void action()
+	{
+		getEncoderPosition();
+		lengthInMM = desiredPositionInMM - encoderPositionInMM;
+		timeInSec -= periodeInSec;
+		//setSpeedInMMperSec();
+		if(lengthInMM > 10)
+		{
+			motor.setQuarterSpeedForward();
+		}
+		else if(lengthInMM < -10)
+		{
+			motor.setQuarterSpeedReverse();
+		}
+		else
+		{
+			setSpeedInMMperSec();
+			getActualSpeedInMM();
+			getPIDSpeedInMM();
+			motor.setSpeed(speedPID);
+			
+			
+		}
+//		getActualSpeedInMM();
+//		getPIDSpeedInMM();
+//		motor.setSpeed(speedPID);
+	}
+	
+	
+	
+	public void getEncoderPosition()
+	{
+		encoderPositionInMMBefore = encoderPositionInMM;
+		encoderPosition = (-1)*encoder.getPosition(); // TODO factor -1 check
+		encoderPositionInMM = encoderPosition * RobotConstants.ENCODER_LENGTH_PER_TICK;
+	}
+	
+	public void setDesiredPositionInMMandTimeInSec(double desiredPosition, double timeInSec)
+	{
+		this.desiredPositionInMM = desiredPosition;
+		this.timeInSec = timeInSec;
+	}
+	
+	public void setDesiredPositionInMMandSpeedInMM(double desiredPosition, double desiredSpeed)
+	{
+		this.desiredPositionInMM = desiredPosition;
+		this.speedExpected = desiredSpeed;
+		this.timeInSec=desiredPosition/speedExpected;
+	}
+	
+	public void setDesiredSpeed(double desiredSpeed)
+	{
+		speedExpected = desiredSpeed;
+	}
+	
+	public void setDesiredPosition(double desiredPos)
+	{
+		desiredPositionInMM = desiredPos;
+		timeInSec = 5;
+	}
+	
+	public void setSpeedInMMperSec()
+	{
+		if(this.timeInSec > 0)
+		{
+			speedExpected = this.lengthInMM / this.timeInSec;
+		}else
+		{
+			//desiredPositionInMM = encoderPositionInMM;
+			timeInSec = 2*periodeInSec;
+		}
+	}
+	
+	public void getActualSpeedInMM()
+	{
+//		long position = encoderPosition;
+//		speedActual = ((double)(position-positionBefore)/periodeInSec) * RobotConstants.ENCODER_LENGTH_PER_TICK;
+		speedActual = (encoderPositionInMM-encoderPositionInMMBefore) / periodeInSec;
+//		positionBefore = position;
+	}
+	
+	private void getPIDSpeedInMM()
+	{
+//		System.out.print("expected");
+		System.out.print(speedExpected);
+		System.out.print("   ");
+//		System.out.print("actual");
+		System.out.print(speedActual);
+		System.out.print("   ");
+//		System.out.print("periodeInSec");
+//		System.out.print(periodeInSec);
+//		System.out.print("   ");
+		speedPID = pid.doPID(speedExpected, speedActual, periodeInSec);
+//		System.out.print("pid");
+		System.out.println(speedPID);
+//		speedPID=speedExpected;
+
+	}
+	
+	
+	static{
+		SCI sci1 = SCI.getInstance(SCI.pSCI1);
+		sci1.start(19200, SCI.NO_PARITY, (short)8);
+		System.out = new PrintStream(sci1.out);
+		System.out.print("MotorController");
+	}
+}

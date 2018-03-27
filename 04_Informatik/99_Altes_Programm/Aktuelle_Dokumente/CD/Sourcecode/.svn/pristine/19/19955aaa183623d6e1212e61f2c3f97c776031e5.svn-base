@@ -1,0 +1,53 @@
+package Test;
+
+import java.io.PrintStream;
+
+import Encoder.Encoder;
+import I_O_s.I_O_s;
+import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+import definitions.PinMap;
+import definitions.RobotConstants;
+
+public class TestEncoder extends Task{
+
+	private I_O_s ios;
+	int counter;
+	int countEnc = 0;
+	int deltaTicks = 0;
+	private Encoder encoder = null;
+	private long position=0;
+	private double length=0;	
+	
+	public TestEncoder(){
+		
+		period = 1000;
+		encoder = new Encoder(RobotConstants.USE_TPUA, PinMap.ROPE_LEFT_PWM_MINUS_TPU_PIN);
+		encoder.setZero();
+		ios = new I_O_s();
+		ios.setDisableSleep(false);
+		ios.allLedOff();
+		ios.setMagnet(false);
+		ios.setOptOnOff(false);
+		Task.install(this);
+	}
+	
+	public void action(){
+		position = encoder.getPosition();
+		encoder.setPositionZero();
+		System.out.print("position: ");
+		System.out.print(position);
+		length=position*RobotConstants.ENCODER_LENGTH_PER_TICK;
+		System.out.print("    laenge:   ");
+		System.out.println(length);
+	}
+	
+	
+	static{
+		new TestEncoder();
+		SCI sci1 = SCI.getInstance(SCI.pSCI1);
+		sci1.start(9600, SCI.NO_PARITY, (short)8);
+		System.out = new PrintStream(sci1.out);
+		System.out.print("TestEncoder");
+	}
+}

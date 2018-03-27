@@ -1,0 +1,100 @@
+package Test;
+
+import I_O_s.I_O_s;
+import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+import definitions.PinMap;
+
+public class TestI_O_s extends Task {
+	private I_O_s iOS;
+	private MPIOSM_DIO switch1;
+	private MPIOSM_DIO switch2;
+	private MPIOSM_DIO switch3;
+	
+	
+	public TestI_O_s() {
+		iOS = new I_O_s();
+		period = 500;
+		Task.install(this);
+		switch1 = new MPIOSM_DIO(PinMap.BUTTON1_MOTOR_LEFT_MPIOB_PIN, false);
+		switch2 = new MPIOSM_DIO(PinMap.BUTTON2_MOTOR_MIDDLE_MPIOB_PIN, false);
+		switch3 = new MPIOSM_DIO(PinMap.BUTTON3_MOTOR_RIGHT_MPIOB_PIN, false);
+	}
+
+	public void action(){
+		//Methods
+		switchTest();
+		magnetTest();
+		
+	}
+	
+	public void switchAllLedOn(){
+		iOS.setLedSearch(true);
+		iOS.setLedLand(true);
+		iOS.setLedDock(true);
+		iOS.setLedCommunication(true);
+		iOS.setLedReserve(true);
+	}
+	
+	public void switchAllLedOff(){
+		iOS.allLedOff();
+	}
+
+	public void switchSearchLedOn(){
+		iOS.setLedSearch(true);
+	}
+	
+	public void switchSearchLedOff(){
+		iOS.setLedSearch(false);
+	}
+	
+	public void switchLandLedOn(){
+		iOS.setLedLand(true);
+	}
+	
+	public void switchLandLedOff(){
+		iOS.setLedLand(false);
+	}
+	
+	public void switchDockLedOn(){
+		iOS.setLedDock(true);
+	}
+	
+	public void switchDockLedOff(){
+		iOS.setLedDock(false);
+	}
+	
+	public void switchCommunicationLedOn(){
+		iOS.setLedCommunication(true);
+	}
+	
+	public void switchCommunicationLedOff(){
+		iOS.setLedCommunication(false);
+	}
+	
+	public void switchReserveLedOn(){
+		iOS.setLedReserve(true);
+	}
+
+	public void switchReserveLedOff(){
+		iOS.setLedReserve(false);
+	}
+	public void switchTest(){
+		iOS.setLedCommunication(!iOS.getStartSwitch());
+		iOS.setLedDock(!switch2.get());
+		iOS.setLedLand(!switch3.get());
+		iOS.setLedSearch(!switch1.get());
+		iOS.setLedReserve(!iOS.getLedReserve());
+		
+	}
+	
+	public  void magnetTest(){
+		iOS.setMagnet(false);
+		
+	}
+	static {
+		new TestI_O_s();
+	}
+	
+	
+}

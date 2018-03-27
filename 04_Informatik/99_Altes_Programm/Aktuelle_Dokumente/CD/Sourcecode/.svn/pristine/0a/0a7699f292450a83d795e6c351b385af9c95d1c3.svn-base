@@ -1,0 +1,100 @@
+package Kommunikation;
+
+import java.io.PrintStream;
+import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
+import ch.ntb.inf.deep.runtime.mpc555.driver.RN131;
+import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+import ch.ntb.inf.deep.runtime.util.CmdInt;
+
+/**
+* <h1>Kommunikaton</h1>
+* In der Klasse Kommunikation werden Signale gesendet und empfangen.
+* <p>
+*
+* @author  Janick Hartmann
+* @version 0.2
+* @since   2017-03-07
+*/
+
+public class Kommunikation {
+	/**
+	* Die Variablen der Klasse Kommunikation.
+	* 
+	*/	
+	private static RN131 wifi;
+	int heartbeat = 0;
+	final int resetPin = 11;
+	
+	/**
+	* Der Konstruktor der Klasse Kommunikation.
+	* 
+	*/
+	public Kommunikation() throws Exception{		
+		SCI sci2 = SCI.getInstance(SCI.pSCI2);
+		sci2.start(115200, SCI.NO_PARITY, (short)8);
+		wifi = new RN131(sci2.in, sci2.out, new MPIOSM_DIO(resetPin, true));
+	}
+	
+	/**
+	* Diese Methode schickt die Codes zum anderen Roboter.
+	* 
+	* @param sendeNachricht: Code, der an den anderen Roboter geschickt wird.
+	*/
+	public void sendeDaten(int sendeNachricht)
+	{
+		if(wifi.connected()){
+			wifi.cmd.writeCmd(sendeNachricht);
+			System.out.print("\t(Die Nachricht wurde geschickt)\t");
+		}
+		else{
+			System.out.print("\t(Nicht verbunden - Nachricht konnte nicht geschickt werden)\t");
+		}			
+	}
+	
+	/**
+	* Diese Methode empfängt die Codes vom anderen Roboter.
+	* 
+	*/
+	public int erhalteDaten()
+	{
+		if(wifi.connected()){
+			return wifi.cmd.getInt();
+		}
+		else{
+			return 99;
+		}
+	}
+	
+	/**
+	* Diese Methode ändert den Wert der Variable heartbeat.
+	* 
+	*/
+	public int wechlseHeartbeat()
+	{
+		if (heartbeat == 0){
+			heartbeat = 1;
+		}
+		else{
+			heartbeat = 0;
+		}
+		return heartbeat;
+	}
+	
+	/**
+	* Diese Methode überprüft den erhaltenen Heartbeat.
+	* 
+	*/
+	public boolean erhalteHeartbeat()
+	{
+		if (erhalteDaten() == 0 && heartbeat == 1){
+			return true;
+		}
+		else if (erhalteDaten() == 1 && heartbeat == 0){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+}

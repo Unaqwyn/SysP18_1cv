@@ -1,0 +1,74 @@
+package Test;
+
+import java.io.PrintStream;
+
+import Communication.Communication;
+import I_O_s.I_O_s;
+import Sensors.Sensors;
+import definitions.PinMap;
+import definitions.RobotConstants;
+import ch.ntb.inf.deep.runtime.mpc555.driver.HLC1395Pulsed;
+import ch.ntb.inf.deep.runtime.mpc555.driver.QADC_AIN;
+import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+
+
+public class TestSensors extends Task {
+
+	Sensors sensors;
+	private I_O_s ios;
+	private Communication com;
+	
+	
+	TestSensors() throws Exception{
+		sensors = new Sensors();
+		com = new Communication();
+		ios = new I_O_s();
+		period = 500;
+		Task.install(this);
+		ios.setFDisableSleep(false);
+		ios.setLRDisableSleep(false);
+		ios.allLedOff();
+		ios.setMagnet(false);
+
+	}
+	
+	public void action(){
+		
+		
+//		System.out.println("Roboter angedockt:");
+//		System.out.print(sensors.getDock());
+//		System.out.println("Plattformposition:");
+//		System.out.print(sensors.getPlatform());
+		getValues();
+		ios.setLedDock(sensors.getDock());
+		
+	}
+	
+
+	
+	public void getValues(){
+		
+//		com.sendData(QADC_AIN.read(true, 55));
+//		com.sendData(QADC_AIN.read(true, 56));
+//		com.sendData(QADC_AIN.read(true, 54));
+//		com.sendData(QADC_AIN.read(true, 52));
+		com.sendData(QADC_AIN.read(true, 53));
+		com.sendData(sensors.getPlatform());
+		
+
+	}
+	
+	static {
+		try{
+			new TestSensors();
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		SCI sci1 = SCI.getInstance(SCI.pSCI1);
+		sci1.start(9600, SCI.NO_PARITY, (short)8);
+		System.out = new PrintStream(sci1.out);
+		
+	}
+	
+}

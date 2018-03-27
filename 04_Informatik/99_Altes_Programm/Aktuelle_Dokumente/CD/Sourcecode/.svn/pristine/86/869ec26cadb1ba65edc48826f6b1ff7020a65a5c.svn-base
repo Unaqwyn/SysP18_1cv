@@ -1,0 +1,72 @@
+package Test;
+
+import I_O_s.I_O_s;
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+
+public class TestI_O_s extends Task {
+	I_O_s iOS;
+	
+	TestI_O_s(){
+		iOS = new I_O_s();
+		period = 500;
+		Task.install(this);
+	}
+
+	public void action(){
+		//Methods
+	}
+	
+	public void switchAllLedOn(){
+		iOS.setLedSearch(false);
+		iOS.setLedLand(false);
+		iOS.setLedDock(false);
+		iOS.setLedCommunication(false);
+		iOS.setLedReserve(false);
+	}
+	
+	public void switchAllLedOff(){
+		iOS.allLedOff();
+	}
+
+	public void switchSearchLedOn(){
+		iOS.setLedSearch(true);
+	}
+	
+	public void switchSearchLedOff(){
+		iOS.setLedSearch(false);
+	}
+	
+	public void switchLandLedOn(){
+		iOS.setLedLand(true);
+	}
+	
+	public void switchLandLedOff(){
+		iOS.setLedLand(false);
+	}
+	
+	public void switchDockLedOn(){
+		iOS.setLedDock(true);
+	}
+	
+	public void switchDockLedOff(){
+		iOS.setLedDock(false);
+	}
+	
+	public void switchCommunicationLedOn(){
+		iOS.setLedCommunication(true);
+	}
+	
+	public void switchCommunicationLedOff(){
+		iOS.setLedCommunication(false);
+	}
+	
+	public void switchReserveLedOn(){
+		iOS.setLedReserve(true);
+	}
+
+	public void switchReserveLedOff(){
+		iOS.setLedReserve(false);
+	}
+	
+	
+}

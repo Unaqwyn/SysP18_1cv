@@ -1,0 +1,92 @@
+package Motors;
+
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;
+import definitions.PinMap;
+import definitions.RobotConstants;
+
+/*
+ * <h1>Class Motor</h1> implements methods to control the speed of
+ * a locked-antiphase driven motor.
+ */
+public class Motor extends Task
+{
+
+	private TPU_PWM pwmPlus = null;
+	private TPU_PWM pwmMinus = null;
+	
+	private int hightimePWM = 0;
+	
+	public Motor(boolean useTPUAPlus, int channelAPlus, boolean useTPUAMinus, int channelAMinus)
+	{
+		// TODO: Calculate value for mm per ticks 
+		//encoder = new Encoder((float)1.0,PinMap.ROPE_RIGHT_PWM_PLUS_TPUA,PinMap.ROPE_RIGHT_PWM_PLUS_TPU_PIN)
+		
+		pwmPlus = new TPU_PWM(useTPUAPlus, channelAPlus, RobotConstants.PERIOD_PWM, RobotConstants.PERIOD_PWM / 2);
+		pwmMinus = new TPU_PWM(useTPUAMinus, channelAMinus, RobotConstants.PERIOD_PWM, RobotConstants.PERIOD_PWM / 2);
+	}
+	
+	public void action()
+	{
+		updatePWM();
+	}
+	
+	static {
+		boolean useTPUAPlus = true;
+		boolean useTPUAMinus = true;
+		int channelAPlus = -1;
+		int channelAMinus = -1;
+		Task t = new Motor(useTPUAPlus, channelAPlus, useTPUAMinus, channelAMinus);
+		t.period = RobotConstants.MOTOR_TASK_PERIOD;
+		Task.install(t);
+	}
+	
+	/**
+	 * Method setSpeed() calculates the correct hightime for the given speed.
+	 * Speed can vary from +231.5 mm/s to -231.5 mm/s.
+	 */
+	public void  setSpeed(double speed){
+		hightimePWM = (int)((speed / (RobotConstants.MAX_SPEED * 2) + 0.5) * RobotConstants.PERIOD_PWM);
+		
+		if(hightimePWM > RobotConstants.PERIOD_PWM){
+			setFullSpeedForward();
+		}
+		
+		if(hightimePWM < 0){
+			setFullSpeedReverse();
+		}
+	}
+	
+	public void setStop(){
+		hightimePWM = RobotConstants.PERIOD_PWM / 2;
+	}
+	
+	public void setFullSpeedForward(){
+		hightimePWM = RobotConstants.PERIOD_PWM;
+	}
+	
+	public void setHalfSpeedForward(){
+		hightimePWM = RobotConstants.PERIOD_PWM * 3/4;
+	}
+	
+	public void setFullSpeedReverse(){
+		hightimePWM = 0;
+	}
+	
+	public void setHalfSpeedReverse(){
+		hightimePWM = RobotConstants.PERIOD_PWM * 1/4;
+	}
+	
+	public void setHightime(double hightime){
+		if(hightime > RobotConstants.PERIOD_PWM){
+			hightime = RobotConstants.PERIOD_PWM;
+		}
+		hightimePWM = (int)hightime;
+	}
+	
+	public void updatePWM(){
+		pwmPlus.update(hightimePWM);
+		// TODO: Check to make complimentary PWM of pwmPlus (maybe done by electronics)
+		pwmMinus.update(hightimePWM);
+	}
+}

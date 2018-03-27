@@ -1,0 +1,129 @@
+package Test;
+
+import Communication.Communication;
+import Encoder.Encoder;
+import Motors.Motor;
+import java.io.PrintStream;
+import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+import definitions.PinMap;
+import definitions.RobotConstants;
+import I_O_s.I_O_s;
+
+public class TestPartnerteam  extends Task{
+
+	private Communication com;
+	private Motor motorLeft;
+	private Motor motorRight;
+	private Motor motorFront;
+	private Encoder encoderLeft;
+	private Encoder encoderRight;
+	private Encoder encoderFront;
+	
+	private I_O_s ios;
+	
+	private int receiveMsg;
+	
+	private double lengthLeft;
+	private double lengthRight;
+	private double lengthFront;
+	
+	private int counter = 0;
+	
+	public TestPartnerteam() throws Exception
+	{
+		motorLeft = new Motor(RobotConstants.USE_TPUA, PinMap.ROPE_LEFT_PWM_PLUS_TPU_PIN);
+		motorRight = new Motor(RobotConstants.USE_TPUA, PinMap.ROPE_RIGHT_PWM_PLUS_TPU_PIN);
+		motorFront = new Motor(RobotConstants.USE_TPUA, PinMap.ROPE_FRONT_PWM_PLUS_TPU_PIN);
+		encoderFront = new Encoder(RobotConstants.USE_TPUA, PinMap.ROPE_FRONT_ENC_A_TPU_PIN);
+		encoderLeft = new Encoder(RobotConstants.USE_TPUA, PinMap.ROPE_LEFT_ENC_A_TPU_PIN);
+		encoderRight = new Encoder(RobotConstants.USE_TPUA, PinMap.ROPE_RIGHT_ENC_A_TPU_PIN);
+		com = new Communication();
+		ios = new I_O_s();
+		ios.setLRDisableSleep(false);
+		ios.setFDisableSleep(false);
+		period = 500;
+		Task.install(this);
+	}
+	public void action()
+	{
+		if(counter > 3)
+		{
+			receiveMsg = com.getData();
+			ios.setFDisableSleep(true);
+			ios.setLRDisableSleep(true);
+		}
+		switch (receiveMsg) {
+		case 51:
+			motorsStop();
+			break;
+
+		case 52:
+			motorLeft.setQuarterSpeedForward();
+			motorRight.setQuarterSpeedForward();
+			break;
+			
+		case 53:
+			motorLeft.setQuarterSpeedReverse();
+			motorRight.setQuarterSpeedReverse();
+			break;
+			
+		case 54:
+			motorRight.setQuarterSpeedForward();
+			break;
+			
+		case 55:
+			motorRight.setQuarterSpeedReverse();
+			break;
+			
+		case 56:
+			motorFront.setQuarterSpeedForward();
+			break;
+			
+		case 57:
+			motorFront.setQuarterSpeedReverse();
+			break;
+
+		default:
+			motorsStop();
+			break;
+		}
+		lengthFront = encoderFront.getPosition() * RobotConstants.ENCODER_LENGTH_PER_TICK;
+		lengthLeft = encoderLeft.getPosition() * RobotConstants.ENCODER_LENGTH_PER_TICK;
+		lengthRight = encoderRight.getPosition() * RobotConstants.ENCODER_LENGTH_PER_TICK;
+		
+		com.sendData((int)lengthLeft);
+		com.sendData((int)lengthRight);
+		com.sendData((int)lengthFront);
+		
+//		System.out.println(receiveMsg);
+//	    System.out.print("length Left:  ");
+//	    System.out.print(lengthLeft);
+//	    System.out.print("    ");
+//	    System.out.print("length Right:  ");
+//	    System.out.print(lengthRight);
+//	    System.out.print("    ");
+//	    System.out.print("length Front:  ");
+//	    System.out.print(lengthFront);
+//	    System.out.println();
+		
+		counter++;
+	}
+	
+	public void motorsStop(){
+		motorLeft.setStop();
+		motorRight.setStop();
+		motorFront.setStop();
+	}
+	static{
+		try {
+			new TestPartnerteam();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		SCI sci1 = SCI.getInstance(SCI.pSCI1);
+		sci1.start(9600, SCI.NO_PARITY, (short)8);
+		System.out = new PrintStream(sci1.out);
+		System.out.print("TestPartnerteam");
+	}
+}

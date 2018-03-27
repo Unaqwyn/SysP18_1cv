@@ -1,0 +1,74 @@
+package motorController;
+
+import Encoder.Encoder;
+import Motors.Motor;
+import pid.PID;
+import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+import definitions.RobotConstants;
+
+import java.io.PrintStream;
+import java.math.*;
+
+/*
+ * <h1>Class MotorController</h1>
+ */
+public class MotorController extends Task{
+
+	public Encoder encoder = null;
+	public Motor motor = null;
+	private PID pid = null;
+	
+	// all speeds are in [mm/s]
+	private double speedActual = 0.0;
+	private double speedExpected = 0.0;
+	private double speedPID = 0.0;
+	
+	private double lengthInMM = 0.0;
+	private int timeInSec = 0;
+	
+	public MotorController(boolean useTPUA, int channelAPlusMotor, int channelAEncoder){
+		motor = new Motor(useTPUA, channelAPlusMotor);
+		encoder = new Encoder(useTPUA, channelAEncoder);
+		pid = new PID(RobotConstants.PID_K_PROPORTIONAL, RobotConstants.PID_K_INTEGRAL, RobotConstants.PID_K_DIFFERENTIAL);
+		period = RobotConstants.MOTOR_CONTROLLER_TASK_PERIOD;
+		Task.install(this);
+	}
+	
+	public void action()
+	{
+		lengthInMM -= (encoder.getPosition() * RobotConstants.ENCODER_LENGTH_PER_TICK);
+		timeInSec -= period;
+		setSpeedInMM(lengthInMM, timeInSec);
+		motor.setSpeed(speedPID);
+	}
+	
+	public void setSpeedInMM(double lengthInMM, int timeInSec)
+	{
+		this.lengthInMM = lengthInMM;
+		this.timeInSec = timeInSec;
+		if(timeInSec > 0)
+		{
+			speedExpected = lengthInMM / timeInSec;
+		}else
+		{
+			speedExpected = 0;
+		}
+		getActualSpeedInMM();
+		getPIDSpeedInMM();
+
+	}
+	
+	private void getActualSpeedInMM()
+	{
+		speedActual = encoder.getSpeedInTicks() * RobotConstants.ENCODER_LENGTH_PER_TICK;
+	}
+	
+	private void getPIDSpeedInMM()
+	{
+//		speedPID = pid.doPID(speedExpected, speedActual, period);
+		speedPID=speedExpected;
+
+	}
+	
+}
