@@ -21,7 +21,7 @@ public class Wifi extends Task
 		SCI sci2 = SCI.getInstance(SCI.pSCI2);
 		sci2.start(115200, SCI.NO_PARITY, (short) 8);
 		wifi = new RN131(sci2.in, sci2.out, null);
-		wifiIO = new MPIOSM_DIO(PinMap.PinMap.pinLedWifi, true);
+		wifiIO = new MPIOSM_DIO(definitions.PinMap.pinLedWifi, true);
 		wifiIO.set(false);
 		try
 		{

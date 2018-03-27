@@ -1,4 +1,4 @@
-package PinMap;
+package definitions;
 
 public class PinMap
 {
