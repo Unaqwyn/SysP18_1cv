@@ -1,0 +1,164 @@
+package Sensors;
+
+//import ch.ntb.inf.deep.runtime.mpc555.driver.HLC1395Pulsed;
+import ch.ntb.inf.deep.runtime.mpc555.driver.QADC_AIN;
+import definitions.PinMap;
+
+/*
+ * TODO: Delete unnecessary code.
+ */
+
+/**
+ * <h1>Sensorik</h1> The class sensors initializes the sensors.
+ * It reads out the values of the sensors evaluate them.
+ * <p>
+ *
+ * @author Sandro Santoro
+ * @version 1.0
+ * @since 2017-03-07
+ */
+public class Sensors {
+
+	/*
+	private final int adresseKopplungsSensor = -1; // MPIOBX
+	private final int triggerPinKopplung = -1; // MPIOBX
+	*/
+	
+	/*
+	private final int adressePlattformSensor0 = -1; // MPIOBX
+	private final int adressePlattformSensor1 = -1; // MPIOBX
+	private final int adressePlattformSensor2 = -1; // MPIOBX
+	private final int adressePlattformSensor3 = -1; // MPIOBX
+	private final int triggerPinPlattform = -1; // MPIOBX
+	*/
+	
+	// private HLC1395Pulsed kopplungsSensor;
+	private QADC_AIN sensors;
+	// Stub of analog-inputs
+	private StubQADC_AIN stubsensors;
+	private boolean qadcA = true;
+
+	/**
+	 * The constructor of the class sensors. All used analog inputs for
+	 * the sensors will be initialized.
+	 * 
+	 */
+	public Sensors() {
+		
+		sensors.init(qadcA);
+		
+		// Sensor initialisieren
+		//kopplungsSensor.init(adresseKopplungsSensor, triggerPinKopplung, analogPinKopplung);
+		// Lesen starten
+		//kopplungsSensor.start();
+
+		/*
+		 * kopplungsSensor = HLC1395Pulsed.getInstance(); // Sensor
+		 * initialisieren plattformSensoren.init(adressePlattformSensor0,
+		 * adressePlattformSensor1, adressePlattformSensor2,
+		 * adressePlattformSensor3, triggerPin, analogEingangPin); // Lesen
+		 * starten plattformSensoren.start();
+		 */
+	}
+
+	/**
+	 * This method reads out the dock sensor
+	 * and checks whether the robot is docked or not.
+	 * 
+	 * @return boolean Returns the value of the dock status. If it's docked
+	 *         it return true or false if it's not docked.
+	 */
+	public boolean getDock() {
+		boolean docked = false;
+		int sensorValue = 0;
+		int countTests = 10;
+		int valueDocked = 255;
+
+		for (int counter = countTests; counter > 0; counter--) {
+			// sensorValue += sensors.read(qadcA, analogPinDock);
+			// use stub of sensors for Junit-testing
+			sensorValue += QADC_AIN.read(qadcA, PinMap.DOCK_ANALOG_PIN);
+//			sensorValue += sensors.read(qadcA, PinMap.DOCK_ANALOG_PIN);
+		}
+		sensorValue = (int) (double)sensorValue / countTests;
+		System.out.println("LDR    " + sensorValue); // TODO String zusamensetzen anpassen
+
+		if (sensorValue >= valueDocked) {
+			docked = true;
+		}
+		return docked;
+	}
+
+	/**
+	 * This method reads out the dock sensor to know where the platform is.
+	 * The platform can be on the positions 1 to 6.
+	 * If no platform is found returns -1.
+	 * 
+	 * 
+	 * Positions: left 1 2 3 4 5 right
+	 * 
+	 * @return int Returns the position of the platform.
+	 *         If no platform is found returns -1.
+	 */
+	public int getPlatform() {
+
+		int countTests = 10;
+		//
+		int valuePlatformMax = 255;
+		int valuePlattformMin = 180;
+		int[] sensorsValues = { 0, 0, 0, 0 };
+
+		// Read out each sensor 10 times and calculate average.
+		// platformSensor0 = 0, platformSensor1 = 1, platformSensor2 = 2, platformSensor3 = 3
+		for (int sensor = 0; sensor < 4; sensor++) {
+			// Read out 10 times
+			for (int counter = countTests; counter > 0; counter--) {
+				
+				// sensorsValues[sensor] += sensors.read(qadcA, analogPinsPlatform[sensor]);
+				// use stub of sensors for Junit-testing
+				sensorsValues[sensor] += sensors.read(qadcA, PinMap.PLATFORM_ANALOG_PINS[sensor]);
+			}
+			// Calculate average
+			sensorsValues[sensor] = (int) ((double) sensorsValues[sensor] / countTests);
+			System.out.println("sensor" + sensor + "   " + sensorsValues[sensor]);
+		}
+
+		// Platform on the left side of the robot.
+		// Analyze position 1 or 2
+		if (sensorsValues[0] >= valuePlattformMin && sensorsValues[1] >= valuePlattformMin
+				&& sensorsValues[2] < valuePlattformMin && sensorsValues[3] < valuePlattformMin) {
+
+			// Platform in position 2
+			if (sensorsValues[0] >= valuePlatformMax && sensorsValues[1] >= valuePlatformMax) {
+				return 2;
+			}
+			// Platform in position 1
+			return 1;
+		}
+
+		// Platform on the right side of the robot.
+		// Analyze position 4 or 5
+		if (sensorsValues[0] < valuePlattformMin && sensorsValues[1] < valuePlattformMin
+				&& sensorsValues[2] >= valuePlattformMin && sensorsValues[3] >= valuePlattformMin) {
+
+			// Platform in position 4
+			if (sensorsValues[2] >= valuePlatformMax && sensorsValues[3] >= valuePlatformMax) {
+				return 4;
+			}
+			// Platform in position 5
+			return 5;
+		}
+
+		// Platform under the robot.
+		// Analyze position 3
+		if (sensorsValues[0] >= valuePlatformMax && sensorsValues[1] >= valuePlatformMax
+				&& sensorsValues[2] >= valuePlatformMax && sensorsValues[3] >= valuePlatformMax) {
+
+			// Platform position 3
+			return 3;
+		}
+
+		// Platform not found
+		return -1;
+	}
+}

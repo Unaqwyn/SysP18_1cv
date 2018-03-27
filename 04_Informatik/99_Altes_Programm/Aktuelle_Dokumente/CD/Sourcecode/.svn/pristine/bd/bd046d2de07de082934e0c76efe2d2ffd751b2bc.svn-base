@@ -1,0 +1,120 @@
+package Robot;
+
+import java.io.PrintStream;
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+import definitions.RobotConstants;
+import Encoder.*;
+import I_O_s.*;
+import Communication.*;
+import Motors.*;
+import Sensors.*;
+
+public class Robot extends Task {
+	
+	private static Communication communication;
+	private static I_O_s ios;
+	private static Sensors sensors;
+	boolean kom = true;
+	boolean land = true;
+	int i =0;
+	
+	public Robot() throws Exception {
+		communication = new Communication();
+		ios = new I_O_s();
+	}
+	
+	private static enum States
+	{
+		booting,
+		start,
+		searchPosition,
+		dockPosition,
+		tilting,
+		end,
+		communicationFailure
+	}
+	
+	private States state = States.booting;
+	public void action(){
+		
+		switch(state){
+		
+		case booting:
+			if(ios.getStartSwitch()){
+				Communication.sendData(RobotConstants.WIFI_CODE_REQ_START);
+				state = States.start;
+			}
+			else if(communication.getData()==1){
+				Communication.sendData(RobotConstants.WIFI_CODE_ACK_START);
+			}
+			
+			break;
+			
+		case start:
+			// TODO go to search Position
+			if(true) {// TODO methode to know when reached searchposition
+				state = States.searchPosition;	
+			} 
+			break;
+			
+		case searchPosition:
+			int searchCount = 0;
+			int platformPosition = sensors.getPlatform();
+			searchCount++;
+			if(platformPosition != -1){
+				communication.sendData(RobotConstants.WIFI_CODE_REQ_PLATFORM_FOUND);
+			}
+			if(platformPosition != -1 && communication.getData()==RobotConstants.WIFI_CODE_REQ_PLATFORM_NOT_FOUND){
+				communication.sendData(RobotConstants.WIFI_CODE_ACK_PLATFORM_NOT_FOUND);
+				state = States.dockPosition;
+				// TODO drive to dockPosition				
+			}
+			else if(platformPosition == -1 && communication.getData()== RobotConstants.WIFI_CODE_REQ_PLATFORM_FOUND){
+				communication.sendData(RobotConstants.WIFI_CODE_ACK_PLATFORM_FOUND);
+				state = States.dockPosition;
+				// TODO drive to dockPosition	
+			}
+				
+			
+			break;
+			
+		case dockPosition:
+			
+			break;
+		
+		case tilting:
+			
+			break;
+			
+		case end:
+			
+			break;
+			
+		case communicationFailure:
+			
+			break;
+			
+		default:
+			
+			break;
+		}
+	}
+	
+
+	static {		
+		
+		// Initialize task
+
+		try {
+			Robot task = new Robot();
+			task.period = RobotConstants.STATE_MACHINE_TASK_PERIOD;
+			Task.install(task);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+}

@@ -1,0 +1,8 @@
+board=NTB MPC555 header board
+eclipse.preferences.version=1
+imgfile=TestSave
+imgformat=TestFormat
+libPath=M\:\\deep_runtime_library_1.3.4_2016-11-08
+os=NTB Simple Tasking System
+programmer=NTB MPC555 USB-BDI
+useDefault=true

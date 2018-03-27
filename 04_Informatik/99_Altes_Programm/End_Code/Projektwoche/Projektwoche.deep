@@ -1,0 +1,28 @@
+#deep-1
+
+meta {
+	version = "Mon Jan 09 14:21:12 CET 2017";
+	description = "deep project file for ledTestSvn";
+}
+
+project ledTestSvn {
+	libpath = "I:\deep\lib";
+	boardtype = ntbMpc555HB;
+	ostype = ntbSTS;
+	programmertype = ntbMpc555UsbBdi;
+
+#	enter names of rootclasses, e.g.
+#	rootclasses = "test.MyFirstTestClass","other.MySecondTestClass";
+#	rootclasses = "WifiSendenEmpfangen.WifiTransmitter";
+#	rootclasses = "WifiSendenEmpfangen.WifiReceiver";
+#	rootclasses = "WifiModul.WifiDemo";
+#	rootclasses = "Drehzahlregler.SpeedControllerExample";
+#	rootclasses = "DCMotor.FqdDemo";
+	rootclasses = "WifiModul.WifiDemo";
+#	rootclasses = "DCMotor.FqdDemo";
+#	rootclasses = "Drehzalregler.SpeedControllerExample";
+	
+
+#	imgfile = "M:\eigene_dateien\workspaceSys10\ledTestSvn\ledTestSvn.bin";
+#	imgformat = BIN;
+}

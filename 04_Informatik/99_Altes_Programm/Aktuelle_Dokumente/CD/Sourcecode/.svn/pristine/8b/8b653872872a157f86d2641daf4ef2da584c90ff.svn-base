@@ -1,0 +1,11 @@
+package definitions;
+
+public class RobotConstants {
+	// TODO: Create proper values
+	public static final int ROPE1_GEAR_RATIO = 129;
+	public static final int ROPE1_REEL_DIAMETER = 25;
+	public static final int ROPE1_MOTOR_TASK_PERIOD = 10;
+
+	private RobotConstants(){}; //private constructor to prevent instantiation
+
+}

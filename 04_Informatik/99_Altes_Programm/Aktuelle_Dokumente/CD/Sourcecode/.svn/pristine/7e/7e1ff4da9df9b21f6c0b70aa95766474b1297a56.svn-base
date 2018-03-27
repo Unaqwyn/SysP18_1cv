@@ -1,0 +1,8 @@
+package definitions;
+
+public class PinMap {
+	public static final boolean ROPE1_PWM_PLUS_TPUA = true;
+	public static final int ROPE1_PWM_PLUS_TPU_PIN = 0;
+
+	private PinMap(){};//private constructor to block instantiation
+}

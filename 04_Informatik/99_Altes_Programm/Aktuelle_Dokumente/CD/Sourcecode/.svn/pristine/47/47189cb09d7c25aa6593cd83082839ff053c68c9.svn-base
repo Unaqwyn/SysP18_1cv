@@ -1,0 +1,35 @@
+package motorController;
+
+import Encoder.Encoder;
+import Motors.Motor;
+import pid.PID;
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+import definitions.PinMap;
+import definitions.RobotConstants;
+import java.math.*;
+
+/*
+ * <h1>Class MotorController</h1>
+ */
+public class MotorController {
+
+	private Encoder encoderMotorRight = null;
+	private Encoder encoderMotorMiddle = null;
+	private Encoder encoderMotorLeft = null;
+	private Motor motorRight = null;
+	private Motor motorMiddle = null;
+	private Motor motorLeft = null;
+	
+	
+	private double speedActual = 0.0;
+	private double speedExpected = 0.0;
+	private double speedPID = 0.0;
+	
+	public MotorController(){
+		boolean useTPUAPlus = true;
+		boolean useTPUAMinus = true;
+		int channelAPlus = -1;
+		int channelAMinus = -1;
+		motorRight = new Motor(useTPUAPlus, channelAPlus, useTPUAMinus, channelAMinus);
+	}
+}

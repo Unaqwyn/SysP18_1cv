@@ -1,0 +1,50 @@
+package Test;
+
+import java.io.PrintStream;
+import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+import Communication.Communication;
+import definitions.RobotConstants;
+
+public class TestCommunication extends Task {
+	
+	private Communication wifi;
+	private int counter = 0;
+	
+	public void action(){
+		
+	}
+	
+	public void testHeartbeat(){
+		if (wifi.getHeartbeat()){
+			wifi.changeHeartbeat();
+			wifi.sendData(wifi.heartbeat);
+		}
+		else{
+			wifi.reset();
+		}
+	}
+
+	public void testConnection(){
+		wifi.sendData(counter);
+		System.out.println(counter);
+		counter ++;
+	}
+	
+	public void sendStart(){
+		wifi.sendData(RobotConstants.WIFI_CODE_REQ_START);
+	}
+	
+	public void getData(){
+		wifi.getData();
+	}
+	
+	static {
+		Task t = new TestCommunication();
+		t.period = 500;
+		SCI sci1 = SCI.getInstance(SCI.pSCI1);
+		sci1.start(9600, SCI.NO_PARITY, (short)8);
+		System.out = new PrintStream(sci1.out);
+		Task.install(t);
+	}	
+}

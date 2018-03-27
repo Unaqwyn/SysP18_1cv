@@ -1,0 +1,10 @@
+package Test;
+
+import motorController.MotorController;
+
+public class TestMotorController {
+	TestMotorController(){
+		
+	}
+
+}

@@ -1,0 +1,140 @@
+package I_O_s;
+
+
+import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
+import definitions.PinMap;
+
+/**
+* <h1>I/O's</h1>
+* Sets the status of the leds and the start button
+* <p>
+*
+* @author  Andreas Jung
+* @version 1.0
+* @since   2017-03-07
+*/
+
+public class I_O_s {
+	
+	private MPIOSM_DIO startSwitch;
+	private MPIOSM_DIO ledSearch;
+	private MPIOSM_DIO ledDock;
+	private MPIOSM_DIO ledLand;
+	private MPIOSM_DIO ledCommunication;
+	private MPIOSM_DIO ledReserve;
+	
+	final int pinStartSwitch = 5, pinLedSearch = 6, pinLedDock = 7, pinLedLand = 8, pinLedCommunication = 9;
+	
+	/**
+	 * The constructor of the class I_O_s
+	 * Initialize the start button and the leds
+	 */
+	public I_O_s () 
+	{
+		startSwitch = new MPIOSM_DIO(PinMap.SWITCH1_MPIOB_PIN, false);
+		ledSearch=(new MPIOSM_DIO(PinMap.LED1_MPIOB_PIN, true));
+		ledDock = new MPIOSM_DIO(PinMap.LED2_MPIOB_PIN, true);
+		ledLand = new MPIOSM_DIO(PinMap.LED3_MPIOB_PIN, true);
+		ledCommunication = new MPIOSM_DIO(PinMap.LED4_MPIOB_PIN, true);
+		ledReserve =new MPIOSM_DIO(PinMap.LED5_MDA_PIN, true);
+		
+	}
+	
+	/**
+	 * Checks whether the start button is pressed or not
+	 * @return Returns true if the start button is pressed
+	 */
+	public boolean getStartSwitch() {
+			return startSwitch.get();
+	}
+	
+	/**
+	 * Returns the variable ledSearch
+	 * @return true for switched on
+	 */
+	public boolean getLedSearch() {
+		return this.ledSearch.get();
+	}
+
+	/**
+	 * Returns the variable ledDock
+	 * @return true for switched on
+	 */
+	public boolean getLedDock() {
+		return this.ledDock.get();
+	}
+	
+	/**
+	 * Returns the variable ledLand
+	 * @return true for switched on
+	 */
+	public boolean setLedLand() {
+		return this.ledLand.get();
+	}
+	
+	/**
+	 * Returns the variable ledCommunication
+	 * @return true for switched on
+	 */
+	public boolean getLedCommunication() {
+		return this.ledCommunication.get();
+	}
+	
+	/**
+	 * Returns the variable ledReserve 
+	 * @return true for swiched on 
+	 */
+	public boolean getLedReserve() {
+		return this.ledReserve.get();
+	}
+	/**
+	 * Set the variable ledSearch 
+	 * @param true for swiched on 
+	 */
+	public void setLedSearch(boolean ledSearch) {
+		this.ledSearch.set(ledSearch);
+	}
+
+	/**
+	 * Set the variable ledDock
+	 * @param true for switched on
+	 */
+	public void setLedDock(boolean ledDock) {
+		this.ledDock.set(ledDock);
+	}
+	
+	/**
+	 * Set the variable ledLand
+	 * @param true for switched on
+	 */
+	public void setLedLand(boolean ledLand) {
+		this.ledLand.set(ledLand);
+	}
+	
+	/**
+	 * Set the variable ledCommunication
+	 * @param true for switched on
+	 */
+	public void setLedCommunication(boolean ledCommunication) {
+		this.ledCommunication.set(ledCommunication);
+	}
+	
+	/**
+	 * ledReserve the ledReserve to set
+	 * @param true for swiched on 
+	 */
+	public void setLedReserve(boolean ledReserve) {
+		this.ledReserve.set(ledReserve);
+	}
+	/**
+	 * turns all LED's off
+	 */
+	public void allLedOff(){
+		ledCommunication.set(false);
+		ledDock.set(false);
+		ledLand.set(false);
+		ledReserve.set(false);
+		ledSearch.set(false);
+	}
+	
+}

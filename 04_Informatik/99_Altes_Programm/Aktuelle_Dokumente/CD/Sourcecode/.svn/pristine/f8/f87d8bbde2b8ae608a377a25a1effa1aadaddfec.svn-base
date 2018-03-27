@@ -1,0 +1,44 @@
+package motorController;
+
+import Encoder.Encoder;
+import Motors.Motor;
+import pid.PID;
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+import definitions.PinMap;
+import definitions.RobotConstants;
+import java.math.*;
+
+/*
+ * <h1>Class MotorController</h1>
+ */
+public class MotorController {
+
+	private Encoder encoderMotorRight = null;
+	private Encoder encoderMotorMiddle = null;
+	private Encoder encoderMotorLeft = null;
+	private Motor MotorRight = null;
+	private Motor MotorMiddle = null;
+	private Motor MotorLeft = null;
+	
+	// tpuTimeBase = 806 [ns]
+	// periodPWM = 50 [us]
+	private final int periodPWM = 50000 / 806;
+	
+	private double speedActual = 0.0;
+	private double speedExpected = 0.0;
+	private double speedPID = 0.0;
+	
+	public MotorController(){
+		
+
+	}
+	
+	
+	private double calculateHightime(){
+		double hightime = speedPID * periodPWM / 
+				(Math.PI * RobotConstants.ROPE_FRONT_REEL_DIAMETER * RobotConstants.ROTATION_CONSTANT * RobotConstants.GEAR_RATIO * RobotConstants.MAXIMUM_MOTOR_VOLTAGE);
+		
+		return hightime;
+	}
+	
+}

@@ -1,0 +1,103 @@
+package motorController;
+
+import Encoder.Encoder;
+import Motors.Motor;
+import Test.TestPartnerteam;
+import pid.PID;
+import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+import definitions.RobotConstants;
+import I_O_s.I_O_s;
+import java.io.PrintStream;
+import java.math.*;
+
+/*
+ * <h1>Class MotorController</h1>
+ */
+public class MotorController extends Task{
+
+	public Encoder encoder = null;
+	public Motor motor = null;
+	private PID pid = null;
+	private I_O_s ios = null;
+	
+	// all speeds are in [mm/s]
+	private double speedActual = 0.0;
+	private double speedExpected = 0.0;
+	private double speedPID = 0.0;
+	
+	private double lengthInMM = 0.0;
+	private double timeInSec = 0.0;
+	private final double periodeInSec = ((double)RobotConstants.MOTOR_CONTROLLER_TASK_PERIOD/1000);
+	private long positionBefore = 0;
+
+	
+	public MotorController(boolean useTPUA, int channelAPlusMotor, int channelAEncoder){
+		motor = new Motor(useTPUA, channelAPlusMotor);
+		encoder = new Encoder(useTPUA, channelAEncoder);
+		pid = new PID(RobotConstants.PID_K_PROPORTIONAL, RobotConstants.PID_K_INTEGRAL, RobotConstants.PID_K_DIFFERENTIAL);
+		ios = new I_O_s();
+		period = RobotConstants.MOTOR_CONTROLLER_TASK_PERIOD;
+		Task.install(this);
+	}
+	
+	public void action()
+	{
+		lengthInMM -= (encoder.getPosition() * RobotConstants.ENCODER_LENGTH_PER_TICK);
+		timeInSec -= periodeInSec;
+		setSpeedInMMperSec(lengthInMM, timeInSec);	
+		motor.setSpeed(speedPID);
+	}
+	
+	public long getEncoderPosition()
+	{
+		return encoder.getPosition();
+	}
+	
+	public void setSpeedInMMperSec(double lengthInMM, double timeInSec)
+	{
+		this.lengthInMM = lengthInMM;
+		this.timeInSec = timeInSec;
+		if(timeInSec > 0)
+		{
+			speedExpected = lengthInMM / timeInSec;
+		}else
+		{
+			speedExpected = 0;
+		}
+		getActualSpeedInMM();
+		getPIDSpeedInMM();
+
+	}
+	
+	private void getActualSpeedInMM()
+	{
+		long position =encoder.getPosition();
+		speedActual = ((double)(position-positionBefore)/periodeInSec) * RobotConstants.ENCODER_LENGTH_PER_TICK;
+		positionBefore=position;
+	}
+	
+	private void getPIDSpeedInMM()
+	{
+//		System.out.print("expected");
+//		System.out.print(speedExpected);
+//		System.out.print("   ");
+//		System.out.print("actual");
+//		System.out.println(speedActual);
+//		System.out.print("   ");
+//		System.out.print("periodeInSec");
+//		System.out.print(periodeInSec);
+//		System.out.print("   ");
+		speedPID = pid.doPID(speedExpected, speedActual, periodeInSec);
+//		System.out.print("pid");
+//		System.out.println(speedPID);
+//		speedPID=speedExpected;
+
+	}
+	static{
+		SCI sci1 = SCI.getInstance(SCI.pSCI1);
+		sci1.start(19200, SCI.NO_PARITY, (short)8);
+		System.out = new PrintStream(sci1.out);
+		System.out.print("TestPartnerteam");
+	}
+}

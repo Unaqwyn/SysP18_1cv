@@ -1,0 +1,35 @@
+package Roboter;
+
+import java.io.PrintStream;
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+import Encoder.*;
+import I_O_s.*;
+import Kommunikation.*;
+import Motoren.*;
+import Sensorik.*;
+
+public class Roboter extends Task {
+	
+	private static Kommunikation kommunikation;
+	
+	
+	public Roboter(){
+		
+	}
+
+	public void action(){
+		
+		Kommunikation.sendeDaten(15);
+		
+	}
+	
+	static {		
+		
+		// Initialize task
+		Task task = new Roboter();
+		task.period = 100;
+		Task.install(task);
+
+	}
+
+}

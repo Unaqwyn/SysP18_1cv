@@ -1,0 +1,97 @@
+package Test;
+
+import java.io.PrintStream;
+
+import Communication.Communication;
+import I_O_s.I_O_s;
+import Sensors.Sensors;
+import definitions.PinMap;
+import definitions.RobotConstants;
+import ch.ntb.inf.deep.runtime.mpc555.driver.HLC1395Pulsed;
+import ch.ntb.inf.deep.runtime.mpc555.driver.QADC_AIN;
+import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+
+
+public class TestSensors extends Task {
+
+//	Sensors sensors;
+	QADC_AIN adc;
+//	private HLC1395Pulsed hlc;
+	private I_O_s ios;
+	private Communication com;
+	
+	
+	TestSensors() throws Exception{
+		//sensors = new Sensors();
+		//adc.init(true);
+		adc.init(true);
+		//hlc = HLC1395Pulsed.getInstance();
+		//hlc.init(-1, -1, -1, -1, -1, 53);
+		//hlc.start();
+		com = new Communication();
+		period = 500;
+		Task.install(this);
+		ios.setFDisableSleep(false);
+		ios.setLRDisableSleep(false);
+		ios.allLedOff();
+		ios.setMagnet(false);
+		ios.setOptOnOff(true);
+
+	}
+	
+	public void action(){
+		
+		
+//		System.out.println("Roboter angedockt:");
+//		System.out.print(sensors.getDock());
+//		System.out.println("Plattformposition:");
+//		System.out.print(sensors.getPlatform());
+			//ios.setMagnet(false);
+			getValues();
+		
+	}
+	
+	static {
+
+		SCI sci1 = SCI.getInstance(SCI.pSCI1);
+		sci1.start(9600, SCI.NO_PARITY, (short)8);
+		System.out = new PrintStream(sci1.out);
+		
+
+	}
+	
+	public void getValues(){
+		int opt1 = adc.read(true, 55);
+		int opt2 = adc.read(true, 56);
+		int opt3 = adc.read(true, 54);
+		int opt4 = adc.read(true, 52);
+		int ldr = adc.read(true, 53);
+		
+		com.sendData(opt1);
+		com.sendData(opt2);
+		com.sendData(opt3);
+		com.sendData(opt4);
+		com.sendData(ldr);
+		
+		
+		//adc.read(true, 53);
+//		System.out.print("LDR:		   ");
+//		System.out.println(adc.read(true, 53));
+//		//System.out.println(hlc.read(0));
+//		
+//		System.out.print("OPT1         ");
+//		System.out.println(adc.read(true, 55));
+//
+//		
+//		System.out.print("OPT2        "); 
+//		System.out.println(adc.read(true, 56));
+//		
+//		System.out.print("OPT3        ");
+//		System.out.println(adc.read(true, 54));
+//		
+//		System.out.print("OPT4        ");
+//		System.out.println(adc.read(true, 52));
+	}
+	
+}

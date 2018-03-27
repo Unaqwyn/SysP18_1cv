@@ -1,0 +1,231 @@
+package Robot;
+
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+import definitions.RobotConstants;
+import I_O_s.*;
+import Communication.*;
+import Sensors.*;
+
+public class Robot extends Task {
+	
+	private static Communication communication;
+	private static I_O_s ios;
+	private static Sensors sensors;
+	boolean kom = true;
+	boolean land = true;
+	int i =0;
+	private static int platformPosition;
+	private static int searchRound=0;
+	private static int breakForSearching=RobotConstants.BREAK_TIME_FOR_SEARCHING;
+	private static final boolean setLED =true;
+	private States state = States.booting;
+	private int ack = 0;
+	
+	
+	public Robot() throws Exception {
+		communication = new Communication();
+		ios = new I_O_s();
+	}
+	
+	private static enum States {
+		
+		booting,
+		start,
+		searchPosition,
+		dockPosition,
+		docking,
+		tilting,
+		end
+	}
+	
+	
+	public void action(){
+		
+		switch(state){
+		
+		case booting:
+
+				ios.allLedOn();				
+				if(ios.getStartSwitch()){
+					if(communication.getData() != RobotConstants.WIFI_CODE_ACK_START)
+					communication.sendData(RobotConstants.WIFI_CODE_REQ_START);
+					else{
+						state = States.start;
+					}
+				}
+				else if(communication.getData() == RobotConstants.WIFI_CODE_REQ_START){
+					ack = 1;
+					communication.sendData(RobotConstants.WIFI_CODE_ACK_START);
+				}
+				else if (communication.getData() != RobotConstants.WIFI_CODE_REQ_START && ack == 1){
+					ack = 0;
+					state = States.start;
+				}
+			
+			break;
+			
+		case start:
+			ios.allLedOff();
+				// TODO go to search Position
+				ios.setLedSearch(!ios.getLedSearch());
+				if(true) {// TODO Method to know when reached searchposition
+//					state = States.searchPosition;	
+				} 
+
+			break;
+		
+		case searchPosition:
+				ios.setLedSearch(setLED);
+				if(searchRound < RobotConstants.MAX_SEARCH_ROUND && breakForSearching >= RobotConstants.BREAK_TIME_FOR_SEARCHING){
+					platformPosition=sensors.getPlatform();
+					
+					if(platformPosition != -1){
+						communication.sendData(RobotConstants.WIFI_CODE_REQ_PLATFORM_FOUND);
+						
+						if(communication.getData() == RobotConstants.WIFI_CODE_REQ_PLATFORM_NOT_FOUND){
+							communication.sendData(RobotConstants.WIFI_CODE_ACK_PLATFORM_NOT_FOUND);
+							
+							if(communication.getData() == RobotConstants.WIFI_CODE_ACK_PLATFORM_FOUND){
+								state = States.dockPosition;
+								// TODO drive to dockPosition
+							}
+						}
+						else if(communication.getData() == RobotConstants.WIFI_CODE_REQ_PLATFORM_FOUND){
+							communication.sendData(RobotConstants.WIFI_CODE_ACK_PLATFORM_FOUND);
+							breakForSearching = 0;
+							platformPosition = -1;
+						}
+					}
+					else if(platformPosition == -1){
+						communication.sendData(RobotConstants.WIFI_CODE_REQ_PLATFORM_NOT_FOUND);
+						
+						if(communication.getData() == RobotConstants.WIFI_CODE_REQ_PLATFORM_FOUND){
+							communication.sendData(RobotConstants.WIFI_CODE_ACK_PLATFORM_FOUND);
+							
+							if(communication.getData() == RobotConstants.WIFI_CODE_ACK_PLATFORM_NOT_FOUND){
+								state = States.dockPosition;
+								// TODO drive to dockPosition
+							}
+						}
+						else if(communication.getData() == RobotConstants.WIFI_CODE_REQ_PLATFORM_NOT_FOUND){
+							communication.sendData(RobotConstants.WIFI_CODE_ACK_PLATFORM_NOT_FOUND);
+							breakForSearching = 0;
+							platformPosition = -1;
+						}
+					}
+					searchRound ++;
+				}
+				breakForSearching++;
+
+			break;
+			
+		case dockPosition:
+				ios.allLedOff();
+				ios.setLedDock(!ios.getLedDock());
+				boolean dockposition = true; // TODO Method to know when reached dock position
+				if(dockposition && communication.getData() != RobotConstants.WIFI_CODE_ACK_GOTO_DOCKPOSITION){
+					communication.sendData(RobotConstants.WIFI_CODE_ACK_GOTO_DOCKPOSITION);
+				}
+				else if(dockposition && communication.getData() == RobotConstants.WIFI_CODE_ACK_GOTO_DOCKPOSITION){
+					// TODO Method do move to the other robot
+					state = States.docking;
+				}
+				else if(dockposition && communication.getData() == RobotConstants.WIFI_CODE_REQ_GOTO_DOCKPOSITION){
+					ack = 1;
+					communication.sendData(RobotConstants.WIFI_CODE_ACK_GOTO_DOCKPOSITION);
+				}
+				else if(dockposition && communication.getData() != RobotConstants.WIFI_CODE_REQ_GOTO_DOCKPOSITION && ack == 1){
+					ack = 0;
+					// TODO Method do move to the other robot
+					state = States.docking;
+				}
+			
+			break;
+			
+		case docking:
+			
+				ios.allLedOff();
+				ios.setLedDock(!ios.getLedDock());
+				boolean docking = true; // TODO Method to know when reached position to dock
+				if(docking && communication.getData() != RobotConstants.WIFI_CODE_ACK_START_DOCK){
+					communication.sendData(RobotConstants.WIFI_CODE_ACK_START_DOCK);
+				}
+				else if(docking && communication.getData() == RobotConstants.WIFI_CODE_ACK_START_DOCK){
+					// TODO Method do move to the other robot
+					state = States.tilting;
+				}
+				else if(docking && communication.getData() == RobotConstants.WIFI_CODE_REQ_START_DOCK){
+					ack = 1;
+					communication.sendData(RobotConstants.WIFI_CODE_ACK_START_DOCK);
+				}
+				else if(docking && communication.getData() != RobotConstants.WIFI_CODE_REQ_START_DOCK && ack == 1){
+					ack = 0;
+					// TODO Method do move to the other robot
+					state = States.tilting;
+				}		
+		
+		break;
+		
+		case tilting:
+				ios.setLedDock(setLED);
+				if(sensors.getDock() && platformPosition != -1){
+					// TODO Method to tilt the robot to our side
+					// TODO Method to land on platform
+					state = States.end;
+				}
+				else if (sensors.getDock() && platformPosition == -1){
+					// TODO Method to tilt the robot to partner side
+					state = States.end;	
+				}
+				else if (communication.getData() != RobotConstants.WIFI_CODE_ACK_ERROR_DOCK){
+					communication.sendData(RobotConstants.WIFI_CODE_REQ_ERROR_DOCK);
+					// TODO Method to stop the motors
+					// TODO drive to dockPosition
+					state = States.dockPosition;
+				}
+			
+			break;
+			
+		case end:
+				ios.allLedOff();
+				ios.setLedLand(!ios.getLedLand());
+				boolean landed = true; // TODO Method to know when landed on platform
+				if (landed && communication.getData() != RobotConstants.WIFI_CODE_ACK_END){
+					communication.sendData(RobotConstants.WIFI_CODE_REQ_END);
+				}
+				else if (landed && communication.getData() == RobotConstants.WIFI_CODE_ACK_END){
+					ios.setLedLand(setLED);
+				}
+				else if (communication.getData() == RobotConstants.WIFI_CODE_REQ_END){
+					ack = 1;
+					communication.sendData(RobotConstants.WIFI_CODE_ACK_END);
+				}
+				else if(communication.getData() != RobotConstants.WIFI_CODE_REQ_END && ack == 1){
+					ack = 0;
+					ios.allLedOff();
+				}
+			
+			break;
+			
+		default:
+			
+			break;
+		}
+	}
+	
+	static {		
+		
+		// Initialize task
+
+		try {
+			Robot task = new Robot();
+			task.period = RobotConstants.STATE_MACHINE_TASK_PERIOD;
+			Task.install(task);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+}

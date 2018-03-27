@@ -1,0 +1,88 @@
+package Kommunikation;
+
+import java.io.PrintStream;
+import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
+import ch.ntb.inf.deep.runtime.mpc555.driver.RN131;
+import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+import ch.ntb.inf.deep.runtime.util.CmdInt;
+
+/**
+* <h1>Kommunikaton</h1>
+* In der Klasse Kommunikation werden Signale gesendet und empfangen.
+* <p>
+*
+* @author  Janick Hartmann
+* @version 0.1
+* @since   2017-03-07
+*/
+
+public class Kommunikation {
+	/**
+	* Die Variablen der Klasse Kommunikation.
+	* 
+	*/	
+	private RN131 wifi;
+	int heartbeat = 0;
+	
+	/**
+	* Der Konstruktor der Klasse Kommunikation.
+	* 
+	*/
+	public Kommunikation() throws Exception{		
+		SCI sci2 = SCI.getInstance(SCI.pSCI2);
+		sci2.start(115200, SCI.NO_PARITY, (short)8);
+		wifi = new RN131(sci2.in, sci2.out, new MPIOSM_DIO(resetPin, true));
+	}
+	
+	/**
+	* Diese Methode schickt die Codes zum anderen Roboter.
+	* 
+	* @param sendeNachricht: Code, der an den anderen Roboter geschickt wird.
+	*/
+	public void sendeDaten(int sendeNachricht)
+	{
+		if(wifi.connected()){
+			System.out.print("\t(connected)\t");
+			wifi.cmd.writeCmd(sendeNachricht);
+		}
+		else{
+			System.out.print("\t(not connected)\t");
+		}			
+	}
+	
+	/**
+	* Diese Methode empfängt die Codes vom anderen Roboter
+	* 
+	*/
+	public int erhalteDaten()
+	{
+		if(wifi.connected()){
+			System.out.print("\t(connected)\t");
+			CmdInt.Type type = wifi.cmd.readCmd();
+			return wifi.cmd.getInt();
+		}
+		else{
+			System.out.print("\t(not connected)\t");
+			return 0;
+		}
+	}
+	
+	public int wechlseHeartbeat()
+	{
+		if (heartbeat == 0)
+		{
+			heartbeat = 1;
+		}
+		else
+		{
+			heartbeat = 0;
+		}
+		return heartbeat;
+	}
+	
+	public boolean erhalteHeartbeat()
+	{
+		
+	}
+}

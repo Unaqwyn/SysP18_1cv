@@ -1,0 +1,15 @@
+package Encoder;
+
+import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_FQD;
+
+public class Encoder
+{
+	float mmPerTick;
+	TPU_FQD qDecode=null;
+	
+	public Encoder(float inMmPerTick, boolean useTPUA, int tpuPin)
+	{
+		mmPerTick=inMmPerTick;
+		qDecode = new TPU_FQD(useTPUA, tpuPin);
+	}
+}

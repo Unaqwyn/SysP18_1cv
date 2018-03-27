@@ -1,0 +1,84 @@
+package I_O_s;
+
+
+import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
+
+/**
+* <h1>I/O's</h1>
+* hier werden die Status LED's gesetzt und der Startschalter ausgelesen
+* <p>
+*
+* @author  Andreas Jung
+* @version 1.0
+* @since   2017-03-07
+*/
+
+public class I_O_s {
+	
+	private MPIOSM_DIO startSchalter;
+	private MPIOSM_DIO ledSuchen;
+	private MPIOSM_DIO ledAndocken;
+	private MPIOSM_DIO ledLanden;
+	private MPIOSM_DIO ledKommunikation;
+	
+	final int pinStartSchalter = 5, pinLEDSuchen = 6, pinLEDAndocken = 7, pinLEDLanden = 8, pinLEDKommunikation = 9;
+	
+	/**
+	 * Der Konstruktor der Klasse template.
+	 * Initalisieren des Startschalters und der Status LED's
+	 */
+	public I_O_s () 
+	{
+		startSchalter = new MPIOSM_DIO(pinStartSchalter, false);
+		ledSuchen=(new MPIOSM_DIO(pinLEDSuchen, true));
+		ledAndocken = new MPIOSM_DIO(pinLEDAndocken, true);
+		ledLanden = new MPIOSM_DIO(pinLEDLanden, true);
+		ledKommunikation = new MPIOSM_DIO(pinLEDKommunikation, true);
+	}
+	
+	/**
+	 * Prüft ob der Startschalter betätigt wurde
+	 * @return gibt True zurück wenn Startschalter betätigt wurde
+	 */
+	public boolean gibStartSchalter() {
+		if(startSchalter.get()) {
+			return startSchalter.get();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	/**
+	 * Setzen der LEDSuchen
+	 * @param true für eingeschaltet
+	 */
+	public void ledSuchenSetzen(boolean ledSuchen) {
+		this.ledSuchen.set(ledSuchen);
+	}
+
+	/**
+	 * Setzen der LEDAndocken
+	 * @param true für eingeschaltet
+	 */
+	public void ledAndockenSetzen(boolean ledAndocken) {
+		this.ledAndocken.set(ledAndocken);
+	}
+	
+	/**
+	 * Setzen der LEDLanden
+	 * @param true für eingeschaltet
+	 */
+	public void ledLandenSetzen(boolean ledLanden) {
+		this.ledLanden.set(ledLanden);
+	}
+	
+	/**
+	 * Setzen der LEDKommunikation
+	 * @param true für eingeschaltet
+	 */
+	public void ledKommunikationSetzen(boolean ledKommunikation) {
+		this.ledKommunikation.set(ledKommunikation);
+	}
+}

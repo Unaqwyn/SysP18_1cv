@@ -1,0 +1,158 @@
+package Sensorik;
+
+//import ch.ntb.inf.deep.runtime.mpc555.driver.HLC1395Pulsed;
+import ch.ntb.inf.deep.runtime.mpc555.driver.QADC_AIN;
+
+/*
+ * TODO: Unnötige Codefragmente entfernen.
+ */
+
+/**
+ * <h1>Sensorik</h1> Die Klasse Sensorik initialisiert die verwendeten Sensoren,
+ * liest die Werte der einzelnen Sensoren aus und wertet diese aus.
+ * <p>
+ *
+ * @author Sandro Santoro
+ * @version 1.0
+ * @since 2017-03-07
+ */
+public class Sensorik {
+
+	/*
+	private final int adresseKopplungsSensor = -1; // MPIOBX
+	private final int triggerPinKopplung = -1; // MPIOBX
+	*/
+	private final int analogPinKopplung = -1; // A:ANX
+
+	/*
+	private final int adressePlattformSensor0 = -1; // MPIOBX
+	private final int adressePlattformSensor1 = -1; // MPIOBX
+	private final int adressePlattformSensor2 = -1; // MPIOBX
+	private final int adressePlattformSensor3 = -1; // MPIOBX
+	private final int triggerPinPlattform = -1; // MPIOBX
+	*/
+	
+	// [0] = sensor0, ..., [3] = sensor3
+	private final int[] analogPinsPlattform = {-1, -1, -1, -1}; // A:ANX
+
+
+	// private HLC1395Pulsed kopplungsSensor;
+	private QADC_AIN sensoren;
+	private boolean qadcA = false;
+
+	/**
+	 * Der Konstruktor der Klasse Sensorik. Alle verwendeten Analog-Eingänge für
+	 * die Sensoren werden initialisiert
+	 * 
+	 */
+	public Sensorik() {
+		
+		sensoren.init(qadcA);
+		
+		// Sensor initialisieren
+		//kopplungsSensor.init(adresseKopplungsSensor, triggerPinKopplung, analogPinKopplung);
+		// Lesen starten
+		//kopplungsSensor.start();
+
+		/*
+		 * kopplungsSensor = HLC1395Pulsed.getInstance(); // Sensor
+		 * initialisieren plattformSensoren.init(adressePlattformSensor0,
+		 * adressePlattformSensor1, adressePlattformSensor2,
+		 * adressePlattformSensor3, triggerPin, analogEingangPin); // Lesen
+		 * starten plattformSensoren.start();
+		 */
+	}
+
+	/**
+	 * Diese Methode liest den Kopplungssensor aus und wertet anhand der Daten
+	 * aus, ob beide Roboter miteinander gekoppelt sind.
+	 * 
+	 * @return boolean Rückgabewert des Kopplungszustandes. Bei Kopplung
+	 *         Rückgabe true, beziehungsweise false bei Nichtkopplung.
+	 */
+	public boolean kopplungErkennen() {
+		boolean gekoppelt = false;
+		int sensorWert = -1;
+		int anzahlMessungen = 10;
+		int wertGekoppelt = 255;
+
+		for (int counter = anzahlMessungen; counter > 0; counter--) {
+			sensorWert += sensoren.read(qadcA, analogPinKopplung);
+		}
+		sensorWert = (int) (double)sensorWert / anzahlMessungen;
+
+		if (sensorWert >= wertGekoppelt) {
+			gekoppelt = true;
+		}
+		return gekoppelt;
+	}
+
+	/**
+	 * Diese Methode liest die Plattformsensoren aus und wertet anhand der Daten
+	 * aus, wo die Plattform ist. Die Plattform kann an den Positionen 1 bis 6
+	 * sich befinden. Falls keine Plattform erkannt wurde, wird -1
+	 * zurückgegeben.
+	 * 
+	 * Positionen: links 1 2 3 4 5 rechts
+	 * 
+	 * @return int Rückgabewert der Position der Plattform. Falls die Plattform
+	 *         nicht gefunden wurde wird -1 zurückgegeben.
+	 */
+	public int plattformErkennen() {
+
+		int anzahlMessungen = 10;
+		//
+		int wertPlattformMax = 255;
+		int wertPlattformMin = 180;
+		int[] sensorenWerte = { 0, 0, 0, 0 };
+
+		// Jeder Sensor 10mal auslesen und Mittelwert bilden;
+		// plattformSensor0 = 0, plattformSensor1 = 1, plattformSensor2 = 2, plattformSensor3 = 3
+		for (int sensor = 0; sensor < 4; sensor++) {
+			// 10 Messungen ausführen
+			for (int counter = anzahlMessungen; counter > 0; counter--) {
+				sensorenWerte[sensor] += sensoren.read(qadcA, analogPinsPlattform[sensor]);
+			}
+			// Mittelwert aus allen Messungen bilden
+			sensorenWerte[sensor] = (int) (double) sensorenWerte[sensor] / anzahlMessungen;
+		}
+
+		// Plattform auf linke Seite des Roboters
+		// Auswertung Position 1 oder 2
+		if (sensorenWerte[0] >= wertPlattformMin && sensorenWerte[1] >= wertPlattformMin
+				&& sensorenWerte[2] < wertPlattformMin && sensorenWerte[3] < wertPlattformMin) {
+
+			// Plattform auf Positon 2
+			if (sensorenWerte[0] >= wertPlattformMax && sensorenWerte[1] >= wertPlattformMax) {
+				return 2;
+			}
+			// Plattform Position 1
+			return 1;
+		}
+
+		// Plattform auf rechte Seite des Roboters
+		// Auswertung Position 4 oder 5
+		if (sensorenWerte[0] < wertPlattformMin && sensorenWerte[1] < wertPlattformMin
+				&& sensorenWerte[2] >= wertPlattformMin && sensorenWerte[3] >= wertPlattformMin) {
+
+			// Plattform auf Positon 4
+			if (sensorenWerte[2] >= wertPlattformMax && sensorenWerte[3] >= wertPlattformMax) {
+				return 4;
+			}
+			// Plattform Position 5
+			return 5;
+		}
+
+		// Plattform unterhalb des Roboters
+		// Auswertung Position 3
+		if (sensorenWerte[0] >= wertPlattformMax && sensorenWerte[1] >= wertPlattformMax
+				&& sensorenWerte[2] >= wertPlattformMax && sensorenWerte[3] >= wertPlattformMax) {
+
+			// Plattform Position 3
+			return 3;
+		}
+
+		// Plattform nicht erkannt
+		return -1;
+	}
+}

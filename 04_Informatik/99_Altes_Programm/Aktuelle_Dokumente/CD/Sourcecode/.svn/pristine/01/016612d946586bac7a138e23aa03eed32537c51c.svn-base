@@ -1,0 +1,54 @@
+package Robot;
+
+import java.io.PrintStream;
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+import Encoder.*;
+import I_O_s.*;
+import Communication.*;
+import Motors.*;
+import Sensors.*;
+
+public class Robot extends Task {
+	
+	private static Communication communication;
+	private static I_O_s ios;
+	boolean kom = true;
+	boolean land = true;
+	int i =0;
+	
+	public Robot() throws Exception {
+		communication = new Communication();
+		ios = new I_O_s();
+	}
+
+	public void action(){
+		
+		Communication.sendData(1);
+		ios.setLedCommunication(kom);
+		kom=!kom;
+		if  (i %2 == 0){
+			ios.setLedLand(land);
+			land=!land;
+		}
+		i++;
+		communication.getData();
+	}
+	
+
+	static {		
+		
+		// Initialize task
+
+		try {
+			Robot task = new Robot();
+			task.period = 1000;
+			Task.install(task);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+}

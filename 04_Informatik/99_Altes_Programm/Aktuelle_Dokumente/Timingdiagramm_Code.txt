@@ -1,0 +1,67 @@
+Pleasen enter code on http://wavedrom.com/editor.html
+
+{ 
+
+  /*
+
+  Version: 1.0
+
+  Creator: jhartmann1
+
+  Date: 09.05.2017
+
+  */
+
+  //Title and infos
+
+    head:{
+
+      text:'Simple data exchange',
+
+      tick:0,
+
+    },
+
+     foot:{
+
+     text:''
+
+   }, 
+
+  	//Signals
+
+  	signal: [ 
+
+     ['Rob1',
+
+        { name: 'req', wave: '01..0',  node: '.a..d' },
+
+        { name: 'ack', wave: '0....',  node: '' },
+
+      ],
+
+      {},
+
+      ['Rob2',
+
+        { name: 'req', wave: '0....',  node: '' },
+
+        { name: 'ack', wave: '0.10.',  node: '..bc' },
+
+      ],
+
+	],
+
+       
+
+	//Edges
+
+    edge: ['a~>b', 'c~>d'],
+
+      
+
+  	//Layout and config
+
+   	config: { hscale: 3 },     
+
+}

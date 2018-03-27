@@ -1,0 +1,93 @@
+package Encoder;
+
+import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_FQD;
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+
+import javax.print.attribute.standard.DateTimeAtCompleted;
+
+import ch.ntb.inf.deep.runtime.mpc555.DateTime;
+import definitions.PinMap;
+import definitions.RobotConstants;
+
+public class Encoder extends Task
+{
+	private TPU_FQD qDecode = null;
+	private DateTime dateTime = null;
+	public double ticksBefore = 0;
+	public double thousandTicksBefore = 0;
+	public double absTicks = 0;
+	public double absThousandTicks = 0;
+    public double absLengthInMM = 0;
+	public double absTimeInSec = 0;
+	public int prevTimeInSec;
+	
+	public double speed = 0;
+	public double position = 0;
+	public double time = 0;
+	
+	public Encoder(boolean useTPUA, int tpuPin)
+	{
+		qDecode = new TPU_FQD(useTPUA, tpuPin);
+		period = RobotConstants.ENCODER_TASK_PERIOD;
+		dateTime = DateTime.getInstance();
+		prevTimeInSec = dateTime.getSec();
+		Task.install(this);
+	}
+	
+	public void action(){
+		position = getDeltaLengthInMM();
+		time = getDeltaTimeInSec();
+		speed = time / position;
+	}
+	
+	/*
+	 * Method getLengthInMM() calculates the length between previous and
+	 * current position and returns it in millimeter.
+	 * 
+	 * @return double length-difference in [mm].
+	 */
+	public double getDeltaLengthInMM(){
+		
+		double ticks = getTicks();
+		double deltaTicks = ticks - ticksBefore;
+		double deltaLength = RobotConstants.ENCODER_LENGTH_PER_TICKS * deltaTicks;
+		absTicks += deltaTicks;
+		absLengthInMM += deltaLength;
+		ticksBefore = ticks;
+		
+		return deltaLength; // TODO: avoid variable overflow
+	}
+	
+	/*
+	 * Method getDeltaTimeInSec() calculates the time-difference between now and last call.
+	 * 
+	 *  @return int time-difference in [s].
+	 */
+	public int getDeltaTimeInSec(){
+		int deltaTime = dateTime.getSec() - prevTimeInSec;
+		absTimeInSec += deltaTime;
+		prevTimeInSec = dateTime.getSec();
+		
+		return deltaTime;
+	}
+	
+	/*
+	 * Method getSpeedInMMperSec() calls internal methods to get length-difference
+	 * and time-difference and calculates the speed.
+	 * 
+	 * @return double speed in [mm/s].
+	 */
+	public double getSpeedInMMperSec(){
+		double speed = getDeltaLengthInMM() / getDeltaTimeInSec();
+		return speed;
+	}
+	
+	/*
+	 * Method getPosition() returns the counted Ticks of the FQD.
+	 * 
+	 * @return double current position of encoder in [ticks].
+	 */
+	private double getTicks(){
+		return (double)qDecode.getPosition();
+	}
+}

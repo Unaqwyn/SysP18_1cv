@@ -1,0 +1,99 @@
+package Test;
+
+import java.io.PrintStream;
+
+import Encoder.Encoder;
+import I_O_s.I_O_s;
+import Motors.Motor;
+import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
+import ch.ntb.inf.deep.runtime.ppc32.Task;
+import definitions.PinMap;
+import definitions.RobotConstants;
+
+public class TestEncoder extends Task{
+
+	private Motor motor;
+	private Encoder encoder;
+	private I_O_s ios;
+	int counter;
+//	private States state = States.rest;
+//	int hightime;
+	int countEnc = 0;
+	int deltaTicks = 0;
+	
+	private static enum States{
+		fullSpeed,
+		rest	
+	} 
+	
+	
+	public TestEncoder(){
+		
+		period = 1000;
+		encoder = new Encoder(RobotConstants.USE_TPUA, PinMap.ROPE_RIGHT_ENC_A_TPU_PIN);
+		ios = new I_O_s();
+		ios.setDisableSleep(false);
+		boolean useTPUAPlus = true;
+		boolean useTPUAMinus = true;
+		int channelAPlus = PinMap.ROPE_LEFT_PWM_PLUS_TPU_PIN;
+		int channelAMinus = PinMap.ROPE_LEFT_PWM_MINUS_TPU_PIN;
+		motor = new Motor(useTPUAPlus, channelAPlus, useTPUAMinus, channelAMinus);
+		Task.install(this);
+	}
+	
+	public void action(){
+		ios.allLedOff();
+		ios.setMagnet(false);
+		ios.setOptOnOff(false);
+//		motor.updatePWM();
+//		motor.setHightime(hightime / 806);
+		System.out.print("position: ");
+		System.out.print(encoder.getPosition());
+		System.out.println();
+//		counter++;
+//		
+//		switch(state){
+//		case rest:
+//			if(counter >= 5){
+//				ios.setDisableSleep(true);
+////				hightime += 500;
+//			}
+//			if(!ios.getButtonMotorLeft()){
+//				motor.setHalfSpeedReverse();
+//				ios.setLedSearch(!ios.getButtonMotorLeft());
+//			}
+//			else if(!ios.getButtonMotorRight()){
+//				motor.setHalfSpeedForward();
+//				ios.setLedDock(!ios.getButtonMotorMiddle());
+//			}else if(!ios.getStartSwitch()){
+//				state =States.fullSpeed;
+//			}
+//			else {
+//				//motor.setStop();
+//				motor.setStop();
+//			}
+//			
+//			break;
+//		
+//		case fullSpeed:
+//			if(!ios.getStartSwitch()){
+//				motor.setFullSpeedForward();
+//			}
+//			else{
+//				motor.setStop();
+//				ios.setDisableSleep(false);
+//				state = States.rest;
+//			}
+//			break;
+//		}
+		
+	}
+	
+	
+	static{
+		new TestEncoder();
+		SCI sci1 = SCI.getInstance(SCI.pSCI1);
+		sci1.start(9600, SCI.NO_PARITY, (short)8);
+		System.out = new PrintStream(sci1.out);
+	}
+}
