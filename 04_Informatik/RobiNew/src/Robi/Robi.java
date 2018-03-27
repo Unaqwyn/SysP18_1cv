@@ -17,21 +17,121 @@ public class Robi extends Task
 	private Wifi wifi;
 	private Timer timer1;
 	
-	
 	public static int height;
+	private STATE state = STATE.INITROBI;
+	
+	private static enum STATE
+	{
+		INITROBI, DRIVEFORWORD_1, GRAP, DRIVEBACKWORD_1, DRIVEBACKWORD_2, TURNRIGHT, SETLEGO, GRIPPERUP, TURNLEFT, DRIVEFORWORD_2, FINISH
+	}
 	
 	public Robi() throws Exception
 	{
 		
 	}
-
+	
+	public void action()
+	{
+		switch(state)
+		{
+			case INITROBI:
+			{
+			}
+				break;
+			case DRIVEFORWORD_1:
+			{
+			}
+				break;
+			case GRAP:
+			{
+			}
+				break;
+			case DRIVEBACKWORD_1:
+			{
+			}
+				break;
+			case DRIVEBACKWORD_2:
+			{
+			}
+				break;
+			case TURNRIGHT:
+			{
+			}
+				break;
+			case SETLEGO:
+			{
+			}
+				break;
+			case GRIPPERUP:
+			{
+			}
+				break;
+			case TURNLEFT:
+			{
+			}
+				break;
+			case DRIVEFORWORD_2:
+			{
+			}
+				break;
+			case FINISH:
+			{
+			}
+				break;
+		}
+	}
+	
+	public void initRobi()
+	{
+	}
+	
+	public void driveForword_1()
+	{
+	}
+	
+	public void grap()
+	{
+	}
+	
+	public void driveBackword_1()
+	{
+	}
+	
+	public void dirveBackword_2()
+	{
+	}
+	
+	public void turnRight()
+	{
+	}
+	
+	public void SetLego()
+	{
+	}
+	
+	public void gripperUp()
+	{
+	}
+	
+	public void turnLeft()
+	{
+	}
+	
+	public void driveForword_2()
+	{
+	}
+	
+	public void finish()
+	{
+	}
+	
 	static
 	{
 		// Initialize task
 		try
 		{
 			new Robi();
-
+			
 		}
 		catch(Exception e)
 		{
