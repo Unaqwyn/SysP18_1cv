@@ -27,7 +27,8 @@ public class Wifi extends Task
 		{
 			task = new Wifi();
 			Task.install(task);
-		} catch (Exception e)
+		}
+		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
@@ -36,7 +37,7 @@ public class Wifi extends Task
 	public void action()
 	{
 		wifiIO.set(wifi.connected());
-		if (wifi.connected())
+		if(wifi.connected())
 		{
 			CmdInt.Type type = wifi.cmd.readCmd();
 			received = wifi.cmd.getInt();
@@ -45,22 +46,22 @@ public class Wifi extends Task
 
 	public void sendCmd(int x)
 	{
-		if (task.wifi.connected())
+		if(task.wifi.connected())
 			task.wifi.cmd.writeCmd(x);
 	}
 
 	public void send()
 	{
-		int x=0;
-		//int x=robi.height+100;
-			if (task.wifi.connected())
-				task.wifi.cmd.writeCmd(x);
+		int x = 0;
+		// int x=robi.height+100;
+		if(task.wifi.connected())
+			task.wifi.cmd.writeCmd(x);
 	}
 
 	public void pingStart()
 	{
 
-		if (task.wifi.connected())
+		if(task.wifi.connected())
 		{
 			task.wifi.cmd.writeCmd(800);
 		}
@@ -68,23 +69,23 @@ public class Wifi extends Task
 
 	public void pingEnd()
 	{
-		if (task.wifi.connected())
+		if(task.wifi.connected())
 			task.wifi.cmd.writeCmd(802);
 	}
 
 	public void init()
 	{
-		if (task.wifi.connected())
+		if(task.wifi.connected())
 		{
 			task.wifi.cmd.writeCmd(222);
 			int x = 222;
 			int i = 0;
-			while (x == 222)
+			while(x == 222)
 			{
 				CmdInt.Type type = wifi.cmd.readCmd();
 				x = wifi.cmd.getInt();
-				++i;
-				if (i > 200)
+				++ i;
+				if(i > 200)
 				{
 					task.wifi.cmd.writeCmd(222);
 				}
