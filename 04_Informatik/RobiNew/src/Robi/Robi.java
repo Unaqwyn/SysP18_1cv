@@ -8,6 +8,8 @@ import ch.ntb.sysp.demo.WifiDemo;
 import Motor.Lift;
 import Motor.Move;
 import Com.Wifi;
+import Definitions.IO;
+
 import com.Timer;
 
 public class Robi extends Task
@@ -15,10 +17,12 @@ public class Robi extends Task
 	private Move move;
 	private Lift lift;
 	private Wifi wifi;
-	private Timer timer1;
+	private Timer timer_1;
+	private IO io;
 	
 	public static int height;
-	private STATE state = STATE.INITROBI;
+	
+	private STATE state;
 	
 	private static enum STATE
 	{
@@ -27,7 +31,14 @@ public class Robi extends Task
 	
 	public Robi() throws Exception
 	{
+		move = new Move();
+		lift = new Lift();
+		wifi = new Wifi();
+		timer_1 = new Timer();
+		io = new IO();
 		
+		height = 0;
+		state = STATE.INITROBI;
 	}
 	
 	public void action()
@@ -36,46 +47,57 @@ public class Robi extends Task
 		{
 			case INITROBI:
 			{
+				initRobi();
 			}
 				break;
 			case DRIVEFORWORD_1:
 			{
+				driveForword_1();
 			}
 				break;
 			case GRAP:
 			{
+				grap();
 			}
 				break;
 			case DRIVEBACKWORD_1:
 			{
+				driveBackword_1();
 			}
 				break;
 			case DRIVEBACKWORD_2:
 			{
+				driveBackword_2();
 			}
 				break;
 			case TURNRIGHT:
 			{
+				turnRight();
 			}
 				break;
 			case SETLEGO:
 			{
+				SetLego();
 			}
 				break;
 			case GRIPPERUP:
 			{
+				gripperUp();
 			}
 				break;
 			case TURNLEFT:
 			{
+				turnLeft();
 			}
 				break;
 			case DRIVEFORWORD_2:
 			{
+				driveForword_2();
 			}
 				break;
 			case FINISH:
 			{
+				finish();
 			}
 				break;
 		}
@@ -97,7 +119,7 @@ public class Robi extends Task
 	{
 	}
 	
-	public void dirveBackword_2()
+	public void driveBackword_2()
 	{
 	}
 	
