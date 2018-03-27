@@ -5,35 +5,39 @@ import java.io.PrintStream;
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;
 
-public class LockedAnti {
+public class LockedAnti
+{
 	private final boolean useTPUA = true;
 	private final static int pwmPeriod = 50000 / TPU_PWM.tpuTimeBase;
 
 	private TPU_PWM pwm;
 
-	public LockedAnti(int PWMChn) {
+	public LockedAnti(int PWMChn)
+	{
 
 		pwm = new TPU_PWM(useTPUA, (short) PWMChn, pwmPeriod, pwmPeriod / 2);
 	}
 
 	// Geschwindigkeit setzten
 	// -100<=speed<=100
-	public void setSpeed(int speed) {
+	public void setSpeed(int speed)
+	{
 		int highTime = (int) (pwmPeriod * (0.5 + (speed * 0.005)));
 		pwm.update(highTime);
 	}
 
-	public void stop() {
+	public void stop()
+	{
 		setSpeed(0);
 	}
 
 	public void toPos()
 	{
-		
+
 	}
 
-
-	static {
+	static
+	{
 
 		// SCI1 initialisieren und als Standardausgabe verwenden
 		// 1) Initialize SCI1 (9600 8N1)
