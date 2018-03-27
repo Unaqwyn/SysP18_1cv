@@ -1,4 +1,4 @@
-package definitions;
+package Definitions;
 
 public class RobiConstants
 {
