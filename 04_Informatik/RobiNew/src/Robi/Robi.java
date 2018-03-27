@@ -1,19 +1,29 @@
 package Robi;
 
 import java.io.PrintStream;
-import com.Timer;
-import com.Wifi;
-// import LED.SOS.STATE;
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 import ch.ntb.sysp.demo.WifiDemo;
-import motor.LockedAnti;
-import motor.LockedAntiEncoder;
-import motor.Servo;
+import Motor.Lift;
+import Motor.Move;
+import Com.Wifi;
+import com.Timer;
 
 public class Robi extends Task
 {
+	private Move move;
+	private Lift lift;
+	private Wifi wifi;
+	private Timer timer1;
+	
+	
+	public static int height;
+	
+	public Robi() throws Exception
+	{
+		
+	}
 
 	static
 	{
