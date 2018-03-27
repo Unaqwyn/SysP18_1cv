@@ -13,7 +13,6 @@ public class Wifi extends Task
 	private static Wifi task;
 	private RN131 wifi;
 	public static int received = 0;
-	private final int pinA = 10;
 	private MPIOSM_DIO wifiIO;
 
 	public Wifi() throws Exception
@@ -22,7 +21,7 @@ public class Wifi extends Task
 		SCI sci2 = SCI.getInstance(SCI.pSCI2);
 		sci2.start(115200, SCI.NO_PARITY, (short) 8);
 		wifi = new RN131(sci2.in, sci2.out, null);
-		wifiIO = new MPIOSM_DIO(pinA, true);
+		wifiIO = new MPIOSM_DIO(PinMap.PinMap.pinLedWifi, true);
 		wifiIO.set(false);
 		try
 		{
@@ -52,12 +51,10 @@ public class Wifi extends Task
 
 	public void send()
 	{
-		int x = received + 1;
-		for (int i = 0; i < 3; i++)
-		{
+		int x=0;
+		//int x=robi.height+100;
 			if (task.wifi.connected())
 				task.wifi.cmd.writeCmd(x);
-		}
 	}
 
 	public void pingStart()
