@@ -9,8 +9,7 @@ import Motor.Lift;
 import Motor.Move;
 import Com.Wifi;
 import Definitions.IO;
-
-import com.Timer;
+import Com.Timer;
 
 public class Robi extends Task
 {
@@ -21,12 +20,13 @@ public class Robi extends Task
 	private IO io;
 	
 	public static int height;
+	private int target;
 	
 	private STATE state;
 	
 	private static enum STATE
 	{
-		INITROBI, DRIVEFORWORD_1, GRAP, DRIVEBACKWORD_1, DRIVEBACKWORD_2, TURNRIGHT, SETLEGO, GRIPPERUP, TURNLEFT, DRIVEFORWORD_2, FINISH
+		INITROBI, DRIVEFORWORD_1, GRAP, DRIVEBACKWORD_1, DRIVEBACKWORD_2, WAITSIGNAL, TURNRIGHT, SETLEGO, GRIPPERUP, TURNLEFT, DRIVEFORWORD_2, FINISH
 	}
 	
 	public Robi() throws Exception
@@ -38,6 +38,8 @@ public class Robi extends Task
 		io = new IO();
 		
 		height = 0;
+		target = 9;
+		
 		state = STATE.INITROBI;
 	}
 	
@@ -68,6 +70,10 @@ public class Robi extends Task
 			case DRIVEBACKWORD_2:
 			{
 				driveBackword_2();
+			}
+				break;
+			case WAITSIGNAL:
+			{
 			}
 				break;
 			case TURNRIGHT:
@@ -105,46 +111,125 @@ public class Robi extends Task
 	
 	public void initRobi()
 	{
+		state = STATE.DRIVEFORWORD_1;
 	}
 	
 	public void driveForword_1()
 	{
+		lift.init();
+		move.driveForwart();
+		
+		if(io.getSensorFront())
+		{
+			state = STATE.GRAP;
+		}
 	}
 	
 	public void grap()
 	{
+		timer_1.start(1000);
+		
+		state = STATE.DRIVEBACKWORD_1;
 	}
 	
 	public void driveBackword_1()
 	{
+		move.driveBackwart();
+		
+		if(timer_1.lapsed())
+		{
+			state = STATE.DRIVEBACKWORD_2;
+		}
 	}
 	
 	public void driveBackword_2()
 	{
+		lift.toHeight(height);
+		if(lift.inPosHeight())
+			lift.tilt(true);
+		
+		if(io.getSensorBack())
+		{
+			state = STATE.WAITSIGNAL;
+		}
+	}
+	
+	public void waitSignal()
+	{
+		if(lift.inPosHeight())
+			lift.tilt(true);
+		
+		if(wifi.next(height))
+		{
+			state = STATE.TURNRIGHT;
+		}
 	}
 	
 	public void turnRight()
 	{
+		move.turnRight();
+		if(lift.inPosHeight())
+			lift.tilt(true);
+		
+		if(move.platformRight())
+		{
+			state = STATE.SETLEGO;
+		}
 	}
 	
 	public void SetLego()
 	{
+		lift.vibrate(true);
+		lift.setLego();
+		
+		if(lift.legoFit())
+		{
+			height++;
+			lift.vibrate(false);
+			state = STATE.GRIPPERUP;
+		}
 	}
 	
 	public void gripperUp()
 	{
+		lift.toHeight(height);
+		
+		if(lift.inPosHeight())
+		{
+			state = STATE.TURNLEFT;
+		}
+		
 	}
 	
 	public void turnLeft()
 	{
+		move.turnLeft();
+		lift.tilt(false);
+		lift.downMin();
+		wifi.sendHeight();
+		
+		if(move.platformLeft() && height != target)
+		{
+			state = STATE.DRIVEFORWORD_2;
+		}
+		else if(move.platformLeft() && height == target)
+		{
+			state = STATE.FINISH;
+		}
 	}
 	
 	public void driveForword_2()
 	{
+		move.driveForwart();
+		if(io.getSensorFront())
+		{
+			state = STATE.GRAP;
+		}
 	}
 	
 	public void finish()
 	{
+		wifi.sendCmd(801);
 	}
 	
 	static
@@ -161,7 +246,7 @@ public class Robi extends Task
 		}
 		SCI sci1 = SCI.getInstance(SCI.pSCI1);
 		sci1.start(19200, SCI.NO_PARITY, (short) 8);
-		System.out = new PrintStream(sci1.out);
-		System.out.print("Roboter");
+		// System.out = new PrintStream(sci1.out);
+		// System.out.print("Roboter");
 	}
 }

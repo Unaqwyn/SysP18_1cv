@@ -30,7 +30,7 @@ public class IO
 	// Inputs sensors
 	private MPIOSM_DIO sensorFront;
 	private MPIOSM_DIO sensorBack;
-	private MPIOSM_DIO sensorInit;
+	private MPIOSM_DIO sensorArm;
 	
 	// Outputs LEDs
 	private MPIOSM_DIO ledPower;
@@ -64,7 +64,7 @@ public class IO
 		
 		// sensorFront = new MPIOSM_DIO(PinMap.pin , false);
 		// sensorBack = new MPIOSM_DIO(PinMap.pin , false);
-		// sensorInit = new MPIOSM_DIO(PinMap.pin , false);
+		// sensorArm = new MPIOSM_DIO(PinMap.pin , false);
 		
 		ledPower = new MPIOSM_DIO(PinMap.pinLedPower, true);
 		ledWifi = new MPIOSM_DIO(PinMap.pinLedWifi, true);
@@ -170,9 +170,9 @@ public class IO
 		return sensorBack.get();
 	}
 	
-	public boolean getSensorInit()
+	public boolean getSensorArm()
 	{
-		return sensorInit.get();
+		return sensorArm.get();
 	}
 	
 	//
