@@ -29,14 +29,7 @@ public class IO
 	
 	public IO()
 	{
-		laMain = new MPIOSM_DIO(PinMap.pinMain, true);
-		smTurn_A = new MPIOSM_DIO(PinMap.pinTurnA, true);
-		smTurn_B = new MPIOSM_DIO(PinMap.pinTurnB, true);
-		laLifting = new MPIOSM_DIO(PinMap.pinLifting, true);
-		seTilt = new MPIOSM_DIO(PinMap.pinTilt, true);
-		smVibration_A = new MPIOSM_DIO(PinMap.pinVibrationA, true);
-		smVibration_B = new MPIOSM_DIO(PinMap.pinVibrationB, true);
-			
+		
 		
 		encoderLifting_A = new MPIOSM_DIO(PinMap.pinEncoderLiftingA, false);
 		encoderLifting_B = new MPIOSM_DIO(PinMap.pinEncoderLiftingB, false);
@@ -55,197 +48,9 @@ public class IO
 		sleepSwitch = new MPIOSM_DIO(PinMap.pinSleep, false);
 	}
 
-	/**
-	 * @return the laMain
-	 */
-	public MPIOSM_DIO getLaMain()
-	{
-		return laMain;
-	}
 
-	/**
-	 * @param laMain the laMain to set
-	 */
-	public void setLaMain(MPIOSM_DIO laMain)
-	{
-		this.laMain = laMain;
-	}
 
-	/**
-	 * @return the smTurn_A
-	 */
-	public MPIOSM_DIO getSmTurn_A()
-	{
-		return smTurn_A;
-	}
 
-	/**
-	 * @param smTurn_A the smTurn_A to set
-	 */
-	public void setSmTurn_A(MPIOSM_DIO smTurn_A)
-	{
-		this.smTurn_A = smTurn_A;
-	}
-
-	/**
-	 * @return the smTurn_B
-	 */
-	public MPIOSM_DIO getSmTurn_B()
-	{
-		return smTurn_B;
-	}
-
-	/**
-	 * @param smTurn_B the smTurn_B to set
-	 */
-	public void setSmTurn_B(MPIOSM_DIO smTurn_B)
-	{
-		this.smTurn_B = smTurn_B;
-	}
-
-	/**
-	 * @return the laLifting
-	 */
-	public MPIOSM_DIO getLaLifting()
-	{
-		return laLifting;
-	}
-
-	/**
-	 * @param laLifting the laLifting to set
-	 */
-	public void setLaLifting(MPIOSM_DIO laLifting)
-	{
-		this.laLifting = laLifting;
-	}
-
-	/**
-	 * @return the seTilt
-	 */
-	public MPIOSM_DIO getSeTilt()
-	{
-		return seTilt;
-	}
-
-	/**
-	 * @param seTilt the seTilt to set
-	 */
-	public void setSeTilt(MPIOSM_DIO seTilt)
-	{
-		this.seTilt = seTilt;
-	}
-
-	/**
-	 * @return the smVibration_A
-	 */
-	public MPIOSM_DIO getSmVibration_A()
-	{
-		return smVibration_A;
-	}
-
-	/**
-	 * @param smVibration_A the smVibration_A to set
-	 */
-	public void setSmVibration_A(MPIOSM_DIO smVibration_A)
-	{
-		this.smVibration_A = smVibration_A;
-	}
-
-	/**
-	 * @return the smVibration_B
-	 */
-	public MPIOSM_DIO getSmVibration_B()
-	{
-		return smVibration_B;
-	}
-
-	/**
-	 * @param smVibration_B the smVibration_B to set
-	 */
-	public void setSmVibration_B(MPIOSM_DIO smVibration_B)
-	{
-		this.smVibration_B = smVibration_B;
-	}
-
-	/**
-	 * @return the motorMainSleep
-	 */
-	public MPIOSM_DIO getMotorMainSleep()
-	{
-		return motorMainSleep;
-	}
-
-	/**
-	 * @param motorMainSleep the motorMainSleep to set
-	 */
-	public void setMotorMainSleep(MPIOSM_DIO motorMainSleep)
-	{
-		this.motorMainSleep = motorMainSleep;
-	}
-
-	/**
-	 * @return the motorTurnSleep
-	 */
-	public MPIOSM_DIO getMotorTurnSleep()
-	{
-		return motorTurnSleep;
-	}
-
-	/**
-	 * @param motorTurnSleep the motorTurnSleep to set
-	 */
-	public void setMotorTurnSleep(MPIOSM_DIO motorTurnSleep)
-	{
-		this.motorTurnSleep = motorTurnSleep;
-	}
-
-	/**
-	 * @return the motorLiftingSleep
-	 */
-	public MPIOSM_DIO getMotorLiftingSleep()
-	{
-		return motorLiftingSleep;
-	}
-
-	/**
-	 * @param motorLiftingSleep the motorLiftingSleep to set
-	 */
-	public void setMotorLiftingSleep(MPIOSM_DIO motorLiftingSleep)
-	{
-		this.motorLiftingSleep = motorLiftingSleep;
-	}
-
-	/**
-	 * @return the motorTiltSleep
-	 */
-	public MPIOSM_DIO getMotorTiltSleep()
-	{
-		return motorTiltSleep;
-	}
-
-	/**
-	 * @param motorTiltSleep the motorTiltSleep to set
-	 */
-	public void setMotorTiltSleep(MPIOSM_DIO motorTiltSleep)
-	{
-		this.motorTiltSleep = motorTiltSleep;
-	}
-
-	/**
-	 * @return the motorVibrationSleep
-	 */
-	public MPIOSM_DIO getMotorVibrationSleep()
-	{
-		return motorVibrationSleep;
-	}
-
-	/**
-	 * @param motorVibrationSleep the motorVibrationSleep to set
-	 */
-	public void setMotorVibrationSleep(MPIOSM_DIO motorVibrationSleep)
-	{
-		this.motorVibrationSleep = motorVibrationSleep;
-	}
 
 	/**
 	 * @return the encoderLifting_A
@@ -438,24 +243,7 @@ public class IO
 	{
 		this.sleepSwitch = sleepSwitch;
 	}
-	
-	public void setAllMotorSleepOFF()
-	{
-		motorMainSleep.set(false);;
-		motorTurnSleep.set(false);;
-		motorLiftingSleep.set(false);;
-		motorTiltSleep.set(false);;
-		motorVibrationSleep.set(false);;
-	}
-	
-	public void setAllMotorSleepON()
-	{
-		motorMainSleep.set(true);;
-		motorTurnSleep.set(true);;
-		motorLiftingSleep.set(true);;
-		motorTiltSleep.set(true);;
-		motorVibrationSleep.set(true);;
-	}
+
 	
 	public void setAllLedOff()
 	{
