@@ -1,3 +1,5 @@
+package Definitions;
+
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.MDASM_DIO;
 

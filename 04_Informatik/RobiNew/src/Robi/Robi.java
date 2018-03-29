@@ -253,8 +253,7 @@ public class Robi extends Task
 		{
 			Robi task = new Robi();
 			task.period = 1000; // Periodenlänge in ms
-			Task.install(task);
-			; // Installation des Tasks
+			Task.install(task); // Installation des Tasks
 		}
 		catch(Exception e)
 		{
