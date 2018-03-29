@@ -1,5 +1,3 @@
-package Definitions;
-
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.MDASM_DIO;
 
@@ -73,162 +71,389 @@ public class IO
 		startSwitch = new MPIOSM_DIO(PinMap.pinStart, false);
 		sleepSwitch = new MPIOSM_DIO(PinMap.pinSleep, false);
 	}
-	
-	public boolean getLaMain()
+
+	/**
+	 * @return the laMain
+	 */
+	public MPIOSM_DIO getLaMain()
 	{
-		return laMain.get();
+		return laMain;
 	}
-	
-	public boolean getSmTurn_A()
+
+	/**
+	 * @param laMain the laMain to set
+	 */
+	public void setLaMain(MPIOSM_DIO laMain)
 	{
-		return smTurn_A.get();
+		this.laMain = laMain;
 	}
-	
-	public boolean getSmTurn_B()
+
+	/**
+	 * @return the smTurn_A
+	 */
+	public MPIOSM_DIO getSmTurn_A()
 	{
-		return smTurn_B.get();
+		return smTurn_A;
 	}
-	
-	public boolean getLaLifting()
+
+	/**
+	 * @param smTurn_A the smTurn_A to set
+	 */
+	public void setSmTurn_A(MPIOSM_DIO smTurn_A)
 	{
-		return laLifting.get();
+		this.smTurn_A = smTurn_A;
 	}
-	
-	public boolean getSeTilt()
+
+	/**
+	 * @return the smTurn_B
+	 */
+	public MPIOSM_DIO getSmTurn_B()
 	{
-		return seTilt.get();
+		return smTurn_B;
 	}
-	
-	public boolean getSmVibration_A()
+
+	/**
+	 * @param smTurn_B the smTurn_B to set
+	 */
+	public void setSmTurn_B(MPIOSM_DIO smTurn_B)
 	{
-		return smVibration_A.get();
+		this.smTurn_B = smTurn_B;
 	}
-	
-	public boolean getVibration_B()
+
+	/**
+	 * @return the laLifting
+	 */
+	public MPIOSM_DIO getLaLifting()
 	{
-		return smVibration_B.get();
+		return laLifting;
 	}
-	
-	//	
-	
-	public boolean getMotorMainSleep()
+
+	/**
+	 * @param laLifting the laLifting to set
+	 */
+	public void setLaLifting(MPIOSM_DIO laLifting)
 	{
-		return motorMainSleep.get();
+		this.laLifting = laLifting;
 	}
-	
-	public boolean getMotorTurnSleep()
+
+	/**
+	 * @return the seTilt
+	 */
+	public MPIOSM_DIO getSeTilt()
 	{
-		return motorTurnSleep.get();
+		return seTilt;
 	}
-	
-	public boolean getMotorLiftingSleep()
+
+	/**
+	 * @param seTilt the seTilt to set
+	 */
+	public void setSeTilt(MPIOSM_DIO seTilt)
 	{
-		return motorLiftingSleep.get();
+		this.seTilt = seTilt;
 	}
-	
-	public boolean getMotorTiltSleep()
+
+	/**
+	 * @return the smVibration_A
+	 */
+	public MPIOSM_DIO getSmVibration_A()
 	{
-		return motorTiltSleep.get();
+		return smVibration_A;
 	}
-	
-	public boolean getMotorVibrationSleep()
+
+	/**
+	 * @param smVibration_A the smVibration_A to set
+	 */
+	public void setSmVibration_A(MPIOSM_DIO smVibration_A)
 	{
-		return motorVibrationSleep.get();
+		this.smVibration_A = smVibration_A;
 	}
-	
-	//
-	
-	public boolean getEncoderLifting_A()
+
+	/**
+	 * @return the smVibration_B
+	 */
+	public MPIOSM_DIO getSmVibration_B()
 	{
-		return encoderLifting_A.get();
+		return smVibration_B;
 	}
-	
-	public boolean getEncoderLifting_B()
+
+	/**
+	 * @param smVibration_B the smVibration_B to set
+	 */
+	public void setSmVibration_B(MPIOSM_DIO smVibration_B)
 	{
-		return encoderLifting_B.get();
+		this.smVibration_B = smVibration_B;
 	}
-	
-	public boolean getEncoderTurn_A()
+
+	/**
+	 * @return the motorMainSleep
+	 */
+	public MPIOSM_DIO getMotorMainSleep()
 	{
-		return encoderTurn_A.get();
+		return motorMainSleep;
 	}
-	
-	public boolean getEncoderTurn_B()
+
+	/**
+	 * @param motorMainSleep the motorMainSleep to set
+	 */
+	public void setMotorMainSleep(MPIOSM_DIO motorMainSleep)
 	{
-		return encoderTurn_B.get();
+		this.motorMainSleep = motorMainSleep;
 	}
-	
-	//
-	
-	public boolean getSensorFront()
+
+	/**
+	 * @return the motorTurnSleep
+	 */
+	public MPIOSM_DIO getMotorTurnSleep()
 	{
-		return sensorFront.get();
+		return motorTurnSleep;
 	}
-	
-	public boolean getSensorBack()
+
+	/**
+	 * @param motorTurnSleep the motorTurnSleep to set
+	 */
+	public void setMotorTurnSleep(MPIOSM_DIO motorTurnSleep)
 	{
-		return sensorBack.get();
+		this.motorTurnSleep = motorTurnSleep;
 	}
-	
-	public boolean getSensorArm()
+
+	/**
+	 * @return the motorLiftingSleep
+	 */
+	public MPIOSM_DIO getMotorLiftingSleep()
 	{
-		return sensorArm.get();
+		return motorLiftingSleep;
 	}
-	
-	//
-	
-	public boolean getLedPower()
+
+	/**
+	 * @param motorLiftingSleep the motorLiftingSleep to set
+	 */
+	public void setMotorLiftingSleep(MPIOSM_DIO motorLiftingSleep)
 	{
-		return ledPower.get();
+		this.motorLiftingSleep = motorLiftingSleep;
 	}
-	
-	public boolean getLedWifi()
+
+	/**
+	 * @return the motorTiltSleep
+	 */
+	public MPIOSM_DIO getMotorTiltSleep()
 	{
-		return ledWifi.get();
+		return motorTiltSleep;
 	}
-	
-	public boolean getLedProblem()
+
+	/**
+	 * @param motorTiltSleep the motorTiltSleep to set
+	 */
+	public void setMotorTiltSleep(MPIOSM_DIO motorTiltSleep)
 	{
-		return ledProblem.get();
+		this.motorTiltSleep = motorTiltSleep;
 	}
-	
-	//
-	
-	public boolean getStartSwitch()
+
+	/**
+	 * @return the motorVibrationSleep
+	 */
+	public MPIOSM_DIO getMotorVibrationSleep()
 	{
-		return startSwitch.get();
+		return motorVibrationSleep;
 	}
-	
-	public boolean getSleepSwitch()
+
+	/**
+	 * @param motorVibrationSleep the motorVibrationSleep to set
+	 */
+	public void setMotorVibrationSleep(MPIOSM_DIO motorVibrationSleep)
 	{
-		return sleepSwitch.get();
+		this.motorVibrationSleep = motorVibrationSleep;
 	}
-	
-	//
-	
-	public void setMotorMainSleep(boolean change) 
+
+	/**
+	 * @return the encoderLifting_A
+	 */
+	public MPIOSM_DIO getEncoderLifting_A()
 	{
-		motorMainSleep.set(change);
+		return encoderLifting_A;
 	}
-	
-	public void setMotorTurnSleep(boolean change) 
+
+	/**
+	 * @param encoderLifting_A the encoderLifting_A to set
+	 */
+	public void setEncoderLifting_A(MPIOSM_DIO encoderLifting_A)
 	{
-		motorTurnSleep.set(change);
+		this.encoderLifting_A = encoderLifting_A;
 	}
-	
-	public void setMotorLiftingSleep(boolean change) 
+
+	/**
+	 * @return the encoderLifting_B
+	 */
+	public MPIOSM_DIO getEncoderLifting_B()
 	{
-		motorLiftingSleep.set(change);
+		return encoderLifting_B;
 	}
-	
-	public void setMotorTiltSleep(boolean change) 
+
+	/**
+	 * @param encoderLifting_B the encoderLifting_B to set
+	 */
+	public void setEncoderLifting_B(MPIOSM_DIO encoderLifting_B)
 	{
-		motorTiltSleep.set(change);
+		this.encoderLifting_B = encoderLifting_B;
 	}
-	
-	public void setMotorVibrationSleep(boolean change) 
+
+	/**
+	 * @return the encoderTurn_A
+	 */
+	public MPIOSM_DIO getEncoderTurn_A()
 	{
-		motorVibrationSleep.set(change);
+		return encoderTurn_A;
+	}
+
+	/**
+	 * @param encoderTurn_A the encoderTurn_A to set
+	 */
+	public void setEncoderTurn_A(MPIOSM_DIO encoderTurn_A)
+	{
+		this.encoderTurn_A = encoderTurn_A;
+	}
+
+	/**
+	 * @return the encoderTurn_B
+	 */
+	public MPIOSM_DIO getEncoderTurn_B()
+	{
+		return encoderTurn_B;
+	}
+
+	/**
+	 * @param encoderTurn_B the encoderTurn_B to set
+	 */
+	public void setEncoderTurn_B(MPIOSM_DIO encoderTurn_B)
+	{
+		this.encoderTurn_B = encoderTurn_B;
+	}
+
+	/**
+	 * @return the sensorFront
+	 */
+	public MPIOSM_DIO getSensorFront()
+	{
+		return sensorFront;
+	}
+
+	/**
+	 * @param sensorFront the sensorFront to set
+	 */
+	public void setSensorFront(MPIOSM_DIO sensorFront)
+	{
+		this.sensorFront = sensorFront;
+	}
+
+	/**
+	 * @return the sensorBack
+	 */
+	public MPIOSM_DIO getSensorBack()
+	{
+		return sensorBack;
+	}
+
+	/**
+	 * @param sensorBack the sensorBack to set
+	 */
+	public void setSensorBack(MPIOSM_DIO sensorBack)
+	{
+		this.sensorBack = sensorBack;
+	}
+
+	/**
+	 * @return the sensorArm
+	 */
+	public MPIOSM_DIO getSensorArm()
+	{
+		return sensorArm;
+	}
+
+	/**
+	 * @param sensorArm the sensorArm to set
+	 */
+	public void setSensorArm(MPIOSM_DIO sensorArm)
+	{
+		this.sensorArm = sensorArm;
+	}
+
+	/**
+	 * @return the ledPower
+	 */
+	public MPIOSM_DIO getLedPower()
+	{
+		return ledPower;
+	}
+
+	/**
+	 * @param ledPower the ledPower to set
+	 */
+	public void setLedPower(MPIOSM_DIO ledPower)
+	{
+		this.ledPower = ledPower;
+	}
+
+	/**
+	 * @return the ledWifi
+	 */
+	public MPIOSM_DIO getLedWifi()
+	{
+		return ledWifi;
+	}
+
+	/**
+	 * @param ledWifi the ledWifi to set
+	 */
+	public void setLedWifi(MPIOSM_DIO ledWifi)
+	{
+		this.ledWifi = ledWifi;
+	}
+
+	/**
+	 * @return the ledProblem
+	 */
+	public MPIOSM_DIO getLedProblem()
+	{
+		return ledProblem;
+	}
+
+	/**
+	 * @param ledProblem the ledProblem to set
+	 */
+	public void setLedProblem(MPIOSM_DIO ledProblem)
+	{
+		this.ledProblem = ledProblem;
+	}
+
+	/**
+	 * @return the startSwitch
+	 */
+	public MPIOSM_DIO getStartSwitch()
+	{
+		return startSwitch;
+	}
+
+	/**
+	 * @param startSwitch the startSwitch to set
+	 */
+	public void setStartSwitch(MPIOSM_DIO startSwitch)
+	{
+		this.startSwitch = startSwitch;
+	}
+
+	/**
+	 * @return the sleepSwitch
+	 */
+	public MPIOSM_DIO getSleepSwitch()
+	{
+		return sleepSwitch;
+	}
+
+	/**
+	 * @param sleepSwitch the sleepSwitch to set
+	 */
+	public void setSleepSwitch(MPIOSM_DIO sleepSwitch)
+	{
+		this.sleepSwitch = sleepSwitch;
 	}
 	
 	public void setAllMotorSleepOFF()
@@ -248,22 +473,6 @@ public class IO
 		motorTiltSleep.set(true);;
 		motorVibrationSleep.set(true);;
 	}
-	//
-	
-	public void setLedPower(boolean change) 
-	{
-		ledPower.set(change);
-	}
-	
-	public void setLedWifi(boolean change) 
-	{
-		ledPower.set(change);
-	}
-	
-	public void setLedProblem(boolean change) 
-	{
-		ledProblem.set(change);
-	}
 	
 	public void setAllLedOff()
 	{
@@ -279,3 +488,4 @@ public class IO
 		ledProblem.set(true);
 	}
 }
+	

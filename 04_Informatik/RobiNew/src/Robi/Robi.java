@@ -43,7 +43,7 @@ public class Robi extends Task
 		state = STATE.INITROBI;
 	}
 	
-	public void action()
+	public void statemachine()
 	{
 		switch(state)
 		{
@@ -119,7 +119,7 @@ public class Robi extends Task
 		lift.init();
 		move.driveForwart();
 		
-		if(io.getSensorFront())
+		if(io.getSensorFront().get())
 		{
 			state = STATE.GRAP;
 		}
@@ -148,7 +148,7 @@ public class Robi extends Task
 		if(lift.inPosHeight())
 			lift.tilt(true);
 		
-		if(io.getSensorBack())
+		if(io.getSensorBack().get())
 		{
 			state = STATE.WAITSIGNAL;
 		}
@@ -221,7 +221,7 @@ public class Robi extends Task
 	public void driveForword_2()
 	{
 		move.driveForwart();
-		if(io.getSensorFront())
+		if(io.getSensorFront().get())
 		{
 			state = STATE.GRAP;
 		}
@@ -232,21 +232,35 @@ public class Robi extends Task
 		wifi.sendCmd(801);
 	}
 	
+	public void action()
+	{
+		statemachine();
+	}
+	
 	static
 	{
-		// Initialize task
+		// 1) Initialize SCI1 (9600 8n1)
+		SCI sci1 = SCI.getInstance(SCI.pSCI1);
+		sci1.start(9600, SCI.NO_PARITY, (short) 8);
+		
+		// // 2) Use SCI1 for stdout
+		// System.out = new PrintStream(sci1.out);
+		//
+		// // 3) Say hello to the world
+		// System.out.println("Hello, world");
+		
 		try
 		{
-			new Robi();
-			
+			Robi task = new Robi();
+			task.period = 1000; // Periodenlänge in ms
+			Task.install(task);
+			; // Installation des Tasks
 		}
 		catch(Exception e)
 		{
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		SCI sci1 = SCI.getInstance(SCI.pSCI1);
-		sci1.start(19200, SCI.NO_PARITY, (short) 8);
-		// System.out = new PrintStream(sci1.out);
-		// System.out.print("Roboter");
+		
 	}
 }

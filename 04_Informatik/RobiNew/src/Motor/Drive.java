@@ -16,4 +16,7 @@ public class Drive
 	{
 		return true;
 	}
+	
+	public void setEncoderZero()
+	{}
 }
