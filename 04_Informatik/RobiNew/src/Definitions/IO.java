@@ -4,12 +4,6 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 
 public class IO
 {
-	// Inputs encoders
-	private MPIOSM_DIO encoderLifting_A;
-	private MPIOSM_DIO encoderLifting_B;
-	private MPIOSM_DIO encoderTurn_A;
-	private MPIOSM_DIO encoderTurn_B;
-	
 	// Inputs sensors
 	private MPIOSM_DIO sensorFront;
 	private MPIOSM_DIO sensorBack;
@@ -23,16 +17,11 @@ public class IO
 	// Inputs switches
 	private MPIOSM_DIO startSwitch;
 	
-	// Input Motordriver
+	// Output Motordriver
 	private MPIOSM_DIO motorSleep;
 	
 	public IO()
 	{
-		encoderLifting_A = new MPIOSM_DIO(PinMap.pinEncoderLiftingA, false);
-		encoderLifting_B = new MPIOSM_DIO(PinMap.pinEncoderLiftingB, false);
-		encoderTurn_A = new MPIOSM_DIO(PinMap.pinEncoderTurnA, false);
-		encoderTurn_B = new MPIOSM_DIO(PinMap.pinEncoderTurnB, false);
-		
 		// sensorFront = new MPIOSM_DIO(PinMap.pin , false);
 		// sensorBack = new MPIOSM_DIO(PinMap.pin , false);
 		// sensorArm = new MPIOSM_DIO(PinMap.pin , false);
@@ -43,75 +32,7 @@ public class IO
 		
 		startSwitch = new MPIOSM_DIO(PinMap.pinStart, false);
 		
-		motorSleep = new MPIOSM_DIO(PinMap.pinSleep, false);
-	}
-	
-	/**
-	 * @return the encoderLifting_A
-	 */
-	public MPIOSM_DIO getEncoderLifting_A()
-	{
-		return encoderLifting_A;
-	}
-	
-	/**
-	 * @param encoderLifting_A
-	 *            the encoderLifting_A to set
-	 */
-	public void setEncoderLifting_A(MPIOSM_DIO encoderLifting_A)
-	{
-		this.encoderLifting_A = encoderLifting_A;
-	}
-	
-	/**
-	 * @return the encoderLifting_B
-	 */
-	public MPIOSM_DIO getEncoderLifting_B()
-	{
-		return encoderLifting_B;
-	}
-	
-	/**
-	 * @param encoderLifting_B
-	 *            the encoderLifting_B to set
-	 */
-	public void setEncoderLifting_B(MPIOSM_DIO encoderLifting_B)
-	{
-		this.encoderLifting_B = encoderLifting_B;
-	}
-	
-	/**
-	 * @return the encoderTurn_A
-	 */
-	public MPIOSM_DIO getEncoderTurn_A()
-	{
-		return encoderTurn_A;
-	}
-	
-	/**
-	 * @param encoderTurn_A
-	 *            the encoderTurn_A to set
-	 */
-	public void setEncoderTurn_A(MPIOSM_DIO encoderTurn_A)
-	{
-		this.encoderTurn_A = encoderTurn_A;
-	}
-	
-	/**
-	 * @return the encoderTurn_B
-	 */
-	public MPIOSM_DIO getEncoderTurn_B()
-	{
-		return encoderTurn_B;
-	}
-	
-	/**
-	 * @param encoderTurn_B
-	 *            the encoderTurn_B to set
-	 */
-	public void setEncoderTurn_B(MPIOSM_DIO encoderTurn_B)
-	{
-		this.encoderTurn_B = encoderTurn_B;
+		motorSleep = new MPIOSM_DIO(PinMap.pinSleep, true);
 	}
 	
 	/**
@@ -219,24 +140,15 @@ public class IO
 	/**
 	 * @return the startSwitch
 	 */
-	public MPIOSM_DIO getStartSwitch()
+	public boolean getStartSwitch()
 	{
-		return startSwitch;
-	}
-	
-	/**
-	 * @param startSwitch
-	 *            the startSwitch to set
-	 */
-	public void setStartSwitch(MPIOSM_DIO startSwitch)
-	{
-		this.startSwitch = startSwitch;
+		return startSwitch.get();
 	}
 	
 	/**
 	 * @return the sleepSwitch
 	 */
-	public MPIOSM_DIO getSleepSwitch()
+	public MPIOSM_DIO getMotorSleep()
 	{
 		return motorSleep;
 	}
@@ -245,9 +157,9 @@ public class IO
 	 * @param sleepSwitch
 	 *            the sleepSwitch to set
 	 */
-	public void setSleepSwitch(MPIOSM_DIO sleepSwitch)
+	public void setmotorSleep(boolean change)
 	{
-		this.motorSleep = sleepSwitch;
+		this.motorSleep.set(change);
 	}
 	
 	public void setAllLedOff()

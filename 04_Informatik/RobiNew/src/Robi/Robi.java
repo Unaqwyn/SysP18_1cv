@@ -21,6 +21,7 @@ public class Robi extends Task
 	
 	public static int height;
 	private int target;
+	private boolean start;
 	
 	private STATE state;
 	
@@ -29,6 +30,9 @@ public class Robi extends Task
 		INITROBI, DRIVEFORWORD_1, GRAP, DRIVEBACKWORD_1, DRIVEBACKWORD_2, WAITSIGNAL, TURNRIGHT, SETLEGO, GRIPPERUP, TURNLEFT, DRIVEFORWORD_2, FINISH
 	}
 	
+	/**
+	 * @throws Exception
+	 */
 	public Robi() throws Exception
 	{
 		move = new Move();
@@ -39,10 +43,14 @@ public class Robi extends Task
 		
 		height = 0;
 		target = 9;
+		start = false;
 		
 		state = STATE.INITROBI;
 	}
 	
+	/**
+	 * 
+	 */
 	public void statemachine()
 	{
 		switch(state)
@@ -54,7 +62,7 @@ public class Robi extends Task
 				break;
 			case DRIVEFORWORD_1:
 			{
-				driveForword_1();
+				driveForward_1();
 			}
 				break;
 			case GRAP:
@@ -64,12 +72,12 @@ public class Robi extends Task
 				break;
 			case DRIVEBACKWORD_1:
 			{
-				driveBackword_1();
+				driveBackward_1();
 			}
 				break;
 			case DRIVEBACKWORD_2:
 			{
-				driveBackword_2();
+				driveBackward_2();
 			}
 				break;
 			case WAITSIGNAL:
@@ -98,7 +106,7 @@ public class Robi extends Task
 				break;
 			case DRIVEFORWORD_2:
 			{
-				driveForword_2();
+				driveForward_2();
 			}
 				break;
 			case FINISH:
@@ -109,12 +117,30 @@ public class Robi extends Task
 		}
 	}
 	
+	/**
+	 * Initialize the Robi before start. Send a test and if the answer is incoming, we
+	 * send the startsignal and change to the next state.
+	 */
 	public void initRobi()
 	{
-		state = STATE.DRIVEFORWORD_1;
+		start = io.getStartSwitch();
+		
+		if(start)
+		{
+			io.setmotorSleep(true);
+			wifi.sendCmd(222);
+			if(wifi.received == 223)
+			{
+				wifi.sendCmd(800);
+				state = STATE.DRIVEFORWORD_1;
+			}
+		}
 	}
 	
-	public void driveForword_1()
+	/**
+	 * Robi drive forward and at the first time, the lift will be initialize. 
+	 */
+	public void driveForward_1()
 	{
 		lift.init();
 		move.driveForwart();
@@ -132,7 +158,7 @@ public class Robi extends Task
 		state = STATE.DRIVEBACKWORD_1;
 	}
 	
-	public void driveBackword_1()
+	public void driveBackward_1()
 	{
 		move.driveBackwart();
 		
@@ -142,7 +168,7 @@ public class Robi extends Task
 		}
 	}
 	
-	public void driveBackword_2()
+	public void driveBackward_2()
 	{
 		lift.toHeight(height);
 		if(lift.inPosHeight())
@@ -159,7 +185,7 @@ public class Robi extends Task
 		if(lift.inPosHeight())
 			lift.tilt(true);
 		
-		if(wifi.next(height))
+		if(wifi.next())
 		{
 			state = STATE.TURNRIGHT;
 		}
@@ -218,7 +244,7 @@ public class Robi extends Task
 		}
 	}
 	
-	public void driveForword_2()
+	public void driveForward_2()
 	{
 		move.driveForwart();
 		if(io.getSensorFront().get())
