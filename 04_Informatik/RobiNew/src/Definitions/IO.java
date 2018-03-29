@@ -1,23 +1,11 @@
+package Definitions;
+
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
-import ch.ntb.inf.deep.runtime.mpc555.driver.MDASM_DIO;
+
 
 public class IO
 {
-	// Inputs motors
-	private MPIOSM_DIO laMain;
-	private MPIOSM_DIO smTurn_A;
-	private MPIOSM_DIO smTurn_B;
-	private MPIOSM_DIO laLifting;
-	private MPIOSM_DIO seTilt;
-	private MPIOSM_DIO smVibration_A;
-	private MPIOSM_DIO smVibration_B;
 	
-	// Outputs motors drivers
-	private MPIOSM_DIO motorMainSleep;
-	private MPIOSM_DIO motorTurnSleep;
-	private MPIOSM_DIO motorLiftingSleep;
-	private MPIOSM_DIO motorTiltSleep;
-	private MPIOSM_DIO motorVibrationSleep;
 	
 	// Inputs encoders
 	private MPIOSM_DIO encoderLifting_A;
@@ -48,12 +36,7 @@ public class IO
 		seTilt = new MPIOSM_DIO(PinMap.pinTilt, true);
 		smVibration_A = new MPIOSM_DIO(PinMap.pinVibrationA, true);
 		smVibration_B = new MPIOSM_DIO(PinMap.pinVibrationB, true);
-		
-//		motorMainSleep = new MPIOSM_DIO(PinMap.pin , true);
-//		motorTurnSleep = new MPIOSM_DIO(PinMap.pin , true);
-//		motorLiftingSleep = new MPIOSM_DIO(PinMap.pin , true);
-//		motorTiltSleep = new MPIOSM_DIO(PinMap.pin , true);
-//		motorVibrationSleep = new MPIOSM_DIO(PinMap.pin , true);	
+			
 		
 		encoderLifting_A = new MPIOSM_DIO(PinMap.pinEncoderLiftingA, false);
 		encoderLifting_B = new MPIOSM_DIO(PinMap.pinEncoderLiftingB, false);

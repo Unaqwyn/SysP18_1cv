@@ -14,7 +14,6 @@ public class LockedAnti
 
 	public LockedAnti(int PWMChn)
 	{
-
 		pwm = new TPU_PWM(useTPUA, (short) PWMChn, pwmPeriod, pwmPeriod / 2);
 	}
 

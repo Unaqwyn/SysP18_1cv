@@ -99,12 +99,11 @@ public class Wifi extends Task
 		pingStart();
 	}
 	
-	public boolean next(int height)
+	public boolean next()
 	{
-		int updatedStone = 100 + height + 1;
-		int receivedStone = received;
+		int updatedStone = 100 + Robi.Robi.height + 1;
 		
-		if(updatedStone == receivedStone)
+		if(updatedStone == received)
 		{
 			return true;
 		}
