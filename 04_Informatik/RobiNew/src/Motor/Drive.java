@@ -1,11 +1,13 @@
 package Motor;
 
-public class Drive
+public abstract class Drive
 {
 
 	
 	public void setSpeed()
-	{}
+	{
+		
+	}
 	
 	public double getPos()
 	{
@@ -15,5 +17,10 @@ public class Drive
 	public boolean inPos()
 	{
 		return true;
+	}
+	
+	public void setEncoderZero()
+	{
+		
 	}
 }

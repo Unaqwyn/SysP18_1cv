@@ -1,6 +1,6 @@
 package Motor;
 
-public class SignMagn
+public class SignMagn extends Drive
 {
 
 	public void setSpeed()

@@ -1,6 +1,6 @@
 package Motor;
 
-public class LockedAnti
+public class LockedAnti extends Drive
 {
 
 	public void setSpeed()

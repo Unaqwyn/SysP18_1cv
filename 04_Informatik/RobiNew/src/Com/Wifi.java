@@ -9,12 +9,12 @@ import ch.ntb.inf.deep.runtime.util.CmdInt;
 
 public class Wifi extends Task
 {
-
+	
 	private static Wifi task;
 	private RN131 wifi;
 	public static int received = 0;
 	private MPIOSM_DIO wifiIO;
-
+	
 	public Wifi() throws Exception
 	{
 		period = 500;
@@ -33,8 +33,13 @@ public class Wifi extends Task
 			e.printStackTrace();
 		}
 	}
-
+	
 	public void action()
+	{
+		getReceived();
+	}
+	
+	public void getReceived()
 	{
 		wifiIO.set(wifi.connected());
 		if(wifi.connected())
@@ -43,36 +48,36 @@ public class Wifi extends Task
 			received = wifi.cmd.getInt();
 		}
 	}
-
+	
 	public void sendCmd(int x)
 	{
 		if(task.wifi.connected())
 			task.wifi.cmd.writeCmd(x);
 	}
-
-	public void send()
+	
+	public void sendHeight()
 	{
 		int x = 0;
 		// int x=robi.height+100;
 		if(task.wifi.connected())
 			task.wifi.cmd.writeCmd(x);
 	}
-
+	
 	public void pingStart()
 	{
-
+		
 		if(task.wifi.connected())
 		{
 			task.wifi.cmd.writeCmd(800);
 		}
 	}
-
+	
 	public void pingEnd()
 	{
 		if(task.wifi.connected())
 			task.wifi.cmd.writeCmd(802);
 	}
-
+	
 	public void init()
 	{
 		if(task.wifi.connected())
@@ -93,5 +98,19 @@ public class Wifi extends Task
 		}
 		pingStart();
 	}
-
+	
+	public boolean next()
+	{
+		int updatedStone = 100 + Robi.Robi.height + 1;
+		
+		if(updatedStone == received)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
 }

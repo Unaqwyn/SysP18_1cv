@@ -13,12 +13,22 @@ public class Lift
 	public void toHeight(int height)
 	{}
 	
-	public void tilt()
+	public void tilt(boolean direction)		// true = nach unten, false = nach oben
 	{}
 	
-	public void vibrate()
+	public void setLego()
 	{}
 	
-	public void inPos()
+	public void vibrate(boolean on_off)
 	{}
+	
+	public boolean inPosHeight()
+	{
+		return true;
+	}
+	
+	public boolean legoFit()
+	{
+		return true;
+	}
 }

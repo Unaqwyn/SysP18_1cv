@@ -16,7 +16,12 @@ public class Move
 	public void turnRight()
 	{}
 	
-	public boolean inPos(int nr)
+	public boolean platformLeft()
+	{
+		return true;
+	}
+	
+	public boolean platformRight()
 	{
 		return true;
 	}

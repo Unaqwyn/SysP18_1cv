@@ -12,7 +12,7 @@ public class PinMap
 	public static int pinVibrationA = 5;
 	public static int pinVibrationB = 6;
 	
-	// ?????
+	// Motor Pingruppe
 	public static boolean useTPU_A = true;
 	
 	// PINs for encoders
@@ -21,11 +21,11 @@ public class PinMap
 	public static int pinEncoderTurnA = 11;
 	public static int pinEncoderTurnB = 12;
 	
-	// PINs for sensors ??????
-	public static int pinSensOut = 59; // bitte namen der was aussagen oder kommentar
-	public static int pinSensTrig = 5; // bitte namen der was aussagen oder kommentar
-	public static int pinSensA = 6; // bitte namen der was aussagen oder kommentar
-	public static int pinSensB = 7; // bitte namen der was aussagen oder kommentar
+	// PINs for sensors, do not ask...
+	public static int pinSensOut = 59; 
+	public static int pinSensTrig = 5; 
+	public static int pinSensA = 6; 
+	public static int pinSensB = 7; 
 	
 	// PINs for LEDs
 	public static int pinLedPower = 9;
