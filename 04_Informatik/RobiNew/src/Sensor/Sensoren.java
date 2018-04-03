@@ -15,7 +15,6 @@ public class Sensoren
 	private final int ADR0PIN = PinMap.pinSensA; // MPIOB6
 	private final int TRGPIN = PinMap.pinSensTrig; // MPIOB5
 	private final int ANPIN = PinMap.pinSensOut; // A:AN59
-	public static int[] sensorValues;
 	private DistSensor[] distSensor;
 	private short nSensors=4;
 	
@@ -29,9 +28,9 @@ public class Sensoren
 		hlc1395 = HLC1395Pulsed.getInstance();
 		hlc1395.init(ADR3PIN, ADR2PIN, ADR1PIN, ADR0PIN, TRGPIN, ANPIN); // Start reading
 		hlc1395.start();
-		sensorValues=new int[nSensors];
 	}
-	
+	// 0 = Front
+	// 1 = Back
 	public boolean obstacle(int sensor)
 	{
 		return distSensor[sensor].obstacle();

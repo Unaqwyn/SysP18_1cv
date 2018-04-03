@@ -35,7 +35,7 @@ public class DistSensor extends Task
 
 	public int readSensor()
 	{
-		return Sensoren.sensorValues[sensorNR];
+		return Sensoren.readSensor(sensorNR);
 	}
 
 	public void action()
