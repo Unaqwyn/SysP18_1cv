@@ -18,3 +18,18 @@
 [0320/153517:WARNING:mediasession.cc(376)] Duplicate id found. Reassigning from 101 to 127
 [0320/153517:WARNING:p2ptransportchannel.cc(487)] Jingle:Port[01501B50:data:1:0:local:Net[any:0.0.0.x/0:Unknown]]: SetOption(5, 0) failed: 0
 [0320/153517:WARNING:p2ptransportchannel.cc(487)] Jingle:Port[015024F0:data:1:0:local:Net[any:0:0:0:x:x:x:x:x/0:Unknown]]: SetOption(5, 0) failed: 0
+[0327/213804:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0327/213805:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0327/213805:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0327/213809:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0327/213810:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0327/213810:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0327/213814:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0327/213815:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0327/213815:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0327/213819:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0327/213820:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0327/213820:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0327/213824:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0327/213825:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0327/213825:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.

@@ -2,23 +2,23 @@ package Com;
 
 public class Timer
 {
-	private long startZeit; // in Millisekunden
+	private long startTime; // in Millisekunden
 	private int dauer; // in Millisekunden
 
 	public Timer()
 	{
-		startZeit = System.currentTimeMillis();
+		startTime = System.currentTimeMillis();
 	}
 
-	public void starten(int dauerInMilliSekunden)
+	public void start(int time)
 	{
-		startZeit = System.currentTimeMillis();
-		dauer = dauerInMilliSekunden;
+		startTime = System.currentTimeMillis();
+		dauer = time;
 	}
 
-	public boolean abgelaufen()
+	public boolean lapsed()
 	{
-		return System.currentTimeMillis() - startZeit >= dauer;
+		return System.currentTimeMillis() - startTime >= dauer;
 	}
 
 }
