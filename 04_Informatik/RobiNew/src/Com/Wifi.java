@@ -17,7 +17,7 @@ public class Wifi extends Task
 	
 	public Wifi() throws Exception
 	{
-		period = 500;
+		
 		SCI sci2 = SCI.getInstance(SCI.pSCI2);
 		sci2.start(115200, SCI.NO_PARITY, (short) 8);
 		wifi = new RN131(sci2.in, sci2.out, null);
@@ -26,7 +26,9 @@ public class Wifi extends Task
 		try
 		{
 			task = new Wifi();
+			task.period = 500;
 			Task.install(task);
+			
 		}
 		catch(Exception e)
 		{

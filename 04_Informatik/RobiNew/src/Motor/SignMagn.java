@@ -27,8 +27,8 @@ public class SignMagn extends Drive
 		}
 		else if (speed < 0)
 		{
-			pwmR.update((int) ((-1) * (RobiConstants.pwmPeriod * (speed * 0.01))));
 			pwmL.update(0);
+			pwmR.update((int) ((-1) * (RobiConstants.pwmPeriod * (speed * 0.01))));
 			turns = true;
 		}
 		else
