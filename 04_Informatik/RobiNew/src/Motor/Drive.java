@@ -6,16 +6,16 @@ import Definitions.PinMap;
 public abstract class Drive extends Task
 {
 	private Encoder encoder;
-
+	
 	protected boolean turns = false;
 	private boolean forward = true;
 	private double min = 0;
 	private double max;
-
+	
 	public Drive(int pinEnc, double faktor)
 	{
-
-		if (faktor != 0 && pinEnc != 0)
+		
+		if(faktor != 0 && pinEnc != 0)
 		{
 			encoder = new Encoder(pinEnc, faktor);
 		}
@@ -24,34 +24,34 @@ public abstract class Drive extends Task
 			encoder = null;
 		}
 	}
-
+	
 	// -100 <= speed <= 100
 	public abstract void setSpeed(int speed);
-
+	
 	public void stop()
 	{
 		setSpeed(0);
-		turns=false;
+		turns = false;
 	}
-
+	
 	public double getPos()
 	{
-		if (encoder != null)
+		if(encoder != null)
 		{
 			return encoder.getPos();
 		}
 		return 0.0;
 	}
-
+	
 	public boolean inPos()
 	{
-		if (encoder != null)
+		if(encoder != null)
 		{
-			if (!forward)
+			if(!forward)
 			{
 				return encoder.getPos() <= min;
 			}
-			else if (forward)
+			else if(forward)
 			{
 				return encoder.getPos() >= max;
 			}
@@ -62,19 +62,19 @@ public abstract class Drive extends Task
 		}
 		return false;
 	}
-
+	
 	public void toPos(double pos)
 	{
-		if (encoder != null)
+		if(encoder != null)
 		{
-			if (getPos() <= pos)
+			if(getPos() <= pos)
 			{
 				max = pos;
 				forward = true;
 				turns = true;
 				setSpeed(60);
 			}
-			else if (getPos() >= pos)
+			else if(getPos() >= pos)
 			{
 				min = pos;
 				forward = false;
@@ -83,24 +83,24 @@ public abstract class Drive extends Task
 			}
 		}
 	}
-
+	
 	public void setEncoderZero()
 	{
-		if (encoder != null)
+		if(encoder != null)
 		{
 			encoder.reset();
 		}
 	}
-
+	
 	public void action()
 	{
-		if (!turns)
+		if(!turns)
 		{
 			stop();
 		}
-		if (encoder != null)
+		if(encoder != null)
 		{
-			if (inPos())
+			if(inPos())
 			{
 				stop();
 				turns = false;

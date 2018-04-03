@@ -8,16 +8,15 @@ import Definitions.PinMap;
 public class Encoder extends Task
 {
 	private TPU_FQD fqd;
-	private double pos=0;
-	private double faktor=1;
-	
+	private double pos = 0;
+	private double faktor = 1;
 	
 	public Encoder(int pin, double faktor)
 	{
 		fqd = new TPU_FQD(PinMap.useTPU_A, pin);
-		this.faktor=faktor;
-		Task t=new Encoder(pin, faktor);
-		t.period=100;
+		this.faktor = faktor;
+		Task t = new Encoder(pin, faktor);
+		t.period = 100;
 		Task.install(t);
 	}
 	
@@ -28,11 +27,11 @@ public class Encoder extends Task
 	
 	public void action()
 	{
-		pos+=(fqd.getPosition()*faktor);
+		pos += (fqd.getPosition() * faktor);
 	}
 	
 	public void reset()
 	{
-		pos=0;
+		pos = 0;
 	}
 }
