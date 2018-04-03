@@ -1,0 +1,28 @@
+﻿Field=#~Integer~#~50|Field=Comment~String~Comment~100|Field=Description~String~Description~100|Field=Designator~String~Designator~100|Field=Footprint~String~Footprint~100|Field=LibRef~String~LibRef~100|Field=Quantity~Integer~Quantity~100|ReportField=Currency~<none>|ReportField=ProductionQuantity~1|ReportField=ProjectFileName~SysP18_Robi.PrjPcb|ReportField=ProjectFullPath~M:\GitHub\SysP18_1cv\03_Elektronik\SysP18_Robi\SysP18_Robi.PrjPcb|ReportField=Title~Bill of Materials For Project [SysP18_Robi.PrjPcb] (No PCB Document Selected)|ReportField=TotalQuantity~61|ReportField=ReportTime~15:03:08|ReportField=ReportDate~27.03.2018|ReportField=ReportDateTime~27.03.2018 15:03:08|ReportField=OutputName~Bill of Materials|ReportField=OutputType~BOM_PartType|ReportField=GeneratorName~BOM|ReportField=GeneratorDescription~Bill of Materials|ReportField=VariantName~None|ReportField=Address1~|ReportField=Address2~|ReportField=Address3~|ReportField=Address4~|ReportField=Application_BuildNumber~|ReportField=ApprovedBy~|ReportField=Author~|ReportField=CheckedBy~|ReportField=CompanyName~|ReportField=CurrentDate~27.03.2018|ReportField=CurrentTime~14:30:43|ReportField=Date~|ReportField=DocumentFullPathAndName~M:\GitHub\SysP18_1cv\03_Elektronik\SysP18_Robi\TopSheet.schdoc|ReportField=DocumentName~TopSheet.schdoc|ReportField=DocumentNumber~|ReportField=DrawnBy~|ReportField=Engineer~|ReportField=ImagePath~|ReportField=ModifiedDate~27.03.2018|ReportField=Organization~|ReportField=Organization1~Sciences of Technology Buchs|ReportField=ProjectName~SysP18_Robi.PrjPcb|ReportField=Revision~|ReportField=Rule~|ReportField=SheetNumber~|ReportField=SheetTotal~|ReportField=ShortDescription~|ReportField=Size~A4|ReportField=Time~|ReportField=Title~Top Sheet|ReportField=DataSourceFileName~SysP18_Robi.PrjPcb|ReportField=DataSourceFullPath~M:\GitHub\SysP18_1cv\03_Elektronik\SysP18_Robi\SysP18_Robi.PrjPcb|ReportField=PCBConfigurationName~Sources|ReportField=Item~|ReportField=ItemRevision~|ReportField=ItemAndRevision~|ReportField=ItemRevisionBase~|ReportField=ItemRevisionLevel1~|ReportField=ItemRevisionLevel2~|ReportField=ItemRevisionLevel1AndBase~|ReportField=ItemRevisionLevel2AndLevel1~
+1|NTB Logo Medium|NTB Logo Medium|400|NTB Logo Medium|NTB Logo Medium|1
+2|AVE476M16D16T-F|ELKO, 47uF, 16V, CDE_AVE476M16D16T-F_AVE CODE D|C100, C101, C102, C401|CDE_CAP AVE CODE D_H|ELKO 47uF 16V|4
+3|100nF|100n 50V X7R MLCC 0805 (1608 Metric)|C200, C201, C202, C400, C403, C406|CAP-0805[2012]|MLCC 0805 100n 50V|6
+4|1nF|MLCC - SMD/SMT 0805 1000pF 16V C0G 10%|C402|CAP-0805[2012]|MLCC 0805 1n 16V|1
+5|10nF|10n 16V X7R MLCC 0805|C404|CAP-0805[2012]|MLCC 0805 10n 16V|1
+6|10uF|10u 16V X7R MLCC 1206 (3016 Metric)|C405|CAP-1206[3216]|MLCC 1206 10u 16V|1
+7|LTST-C190GKT|LED SMD 0603 green 6mcd|D200, D201, D202|LED 0603 green|LED Green|3
+8|BAT721S|NXP  BAT721S  SCHOTTKY-DIODE, 2FACH|D400|SOT-23|BAT721S-SOT23|1
+9|MPC555 Headerboard|NTB MPC555 Headerboard|J1|MPC555 Headerboard SMT|MPC555 Headerboard|1
+10|Header 12X2|Header, 12-Pin, Dual row|P100|HDR2X12|Header 12X2|1
+11|Header 3|Header, 3-Pin|P200, P202, P208|HDR1X3|Header 3|3
+12|WIFI_A|Header, 4-Pin|P201|HDR1X4|Header 4|1
+13|Header 2|Header, 2-Pin|P203, P204|HDR1X2|Header 2|2
+14|Header 2X2|Header, 2-Pin, Dual row|P205, P206, P207|HDR2X2|Header 2X2|3
+15|WIFI_B|Header, 5-Pin|P209|HDR1X5|Header 5|1
+16|3 Pin Header Buchse|3 Pin Header 2.54mm Buchse|P400, P401, P402, P403|3PIN HEADER SOCKET 2.54MM|3 Pin Header Buchse|4
+17|BC846B-7-F|NPN General-purpose Transistor|Q200, Q201, Q202, Q401|SOT-23|BC846B-SOT23|4
+18|IRF7204PBF|High Power P-Kanal Mosfet|Q400|SOIC-8|IRF7204|1
+19|IRF7311PBF|Dual N-Kanal Mosfet|Q402, Q403|SOIC-8|IRF7311|2
+20|10k|0805 (2013 Metric) 1/10 W 10K 1 Thick Film Chip Resistor|R200, R201, R202, R204, R207, R208, R403, R404, R405, R406|RES-0805[2012]|RES 0805|10
+21|1k|0805 (2013 Metric) 1/10 W 10K 1 Thick Film Chip Resistor|R203, R205, R206, R401|RES-0805[2012]|RES 0805|4
+22|16k|0805 (2013 Metric) 1/10 W 10K 1 Thick Film Chip Resistor|R400|RES-0805[2012]|RES 0805|1
+23|4k3|0805 (2013 Metric) 1/10 W 10K 1 Thick Film Chip Resistor|R402|RES-0805[2012]|RES 0805|1
+24|510R|0805 (2013 Metric) 1/10 W 10K 1 Thick Film Chip Resistor|R407|RES-0805[2012]|RES 0805|1
+25|SW-SPST|Single-Pole, Single-Throw Switch|S200|B3SE-1002P|SW-SPST|1
+26|ICM7555|General purpose CMOS timer|U400|SOIC-8|ICM7555-SOIC8|1
+27|74HC237D,653|3-to-8 line decoder, demultiplexer, NXP, SO16|U401|SOIC-16|74HC237D-SOIC16|1
