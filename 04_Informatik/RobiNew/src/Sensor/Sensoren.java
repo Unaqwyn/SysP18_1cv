@@ -7,7 +7,6 @@ import ch.ntb.inf.deep.runtime.ppc32.Task;
 public class Sensoren
 {
 
-	
 	private static HLC1395Pulsed hlc1395;
 	private final int ADR3PIN = -1; // not used
 	private final int ADR2PIN = -1; // not used
@@ -16,26 +15,28 @@ public class Sensoren
 	private final int TRGPIN = PinMap.pinSensTrig; // MPIOB5
 	private final int ANPIN = PinMap.pinSensOut; // A:AN59
 	private DistSensor[] distSensor;
-	private short nSensors=4;
-	
+	private short nSensors = 3;
+	public static final int sensorArm = 0;
+	public static final int sensorBack = 1;
+	public static final int sensorInit = 2;
+
 	public Sensoren()
 	{
-		distSensor=new DistSensor[nSensors];
-		for(int i=0;i<nSensors;i++)
+		distSensor = new DistSensor[nSensors];
+		for (int i = 0; i < nSensors; i++)
 		{
-			distSensor[i]=new DistSensor(i);
+			distSensor[i] = new DistSensor(i);
 		}
 		hlc1395 = HLC1395Pulsed.getInstance();
 		hlc1395.init(ADR3PIN, ADR2PIN, ADR1PIN, ADR0PIN, TRGPIN, ANPIN); // Start reading
 		hlc1395.start();
 	}
-	// 0 = Front
-	// 1 = Back
+
 	public boolean obstacle(int sensor)
 	{
 		return distSensor[sensor].obstacle();
 	}
-	
+
 	public static int readSensor(int sensor)
 	{
 		return hlc1395.read(sensor);
@@ -43,6 +44,6 @@ public class Sensoren
 
 	public boolean threshold(int threshold, int sensor)
 	{
-		return (threshold<hlc1395.read(sensor));
+		return (threshold < hlc1395.read(sensor));
 	}
 }
