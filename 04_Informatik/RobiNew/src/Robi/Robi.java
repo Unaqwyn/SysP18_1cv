@@ -93,7 +93,7 @@ public class Robi extends Task
 				break;
 			case SETLEGO:
 			{
-				SetLego();
+				setLego();
 			}
 				break;
 			case GRIPPERUP:
@@ -169,7 +169,8 @@ public class Robi extends Task
 	}
 	
 	/**
-	 * Robi drive backward, if the timer is lapsed, he is enoug away form the spender and change to the next state.
+	 * Robi drive backward, if the timer is lapsed, he is enoug away form the
+	 * spender and change to the next state.
 	 */
 	public void driveBackward_1()
 	{
@@ -182,7 +183,8 @@ public class Robi extends Task
 	}
 	
 	/**
-	 * Robi still drive backward 
+	 * Robi still drive backward and the lift go up in the right position. If Robi
+	 * is in the right back position, change to the next state.
 	 */
 	public void driveBackward_2()
 	{
@@ -196,6 +198,10 @@ public class Robi extends Task
 		}
 	}
 	
+	/**
+	 * If the lift is in the right position, the gripper is tilt down. If the
+	 * building lot is free, change to the next state.
+	 */
 	public void waitSignal()
 	{
 		if(lift.inPosHeight())
@@ -207,9 +213,14 @@ public class Robi extends Task
 		}
 	}
 	
+	/**
+	 * Robi turn right to the building lot. If the gripper don't tilt he tilt now
+	 * down. If the platform is right, change to the next state.
+	 */
 	public void turnRight()
 	{
 		move.turnRight();
+		
 		if(lift.inPosHeight())
 			lift.tilt(true);
 		
@@ -219,7 +230,10 @@ public class Robi extends Task
 		}
 	}
 	
-	public void SetLego()
+	/**
+	 * Robi set the Lego. If the Lego if fit, change to the next state.
+	 */
+	public void setLego()
 	{
 		lift.vibrate(true);
 		lift.setLego();
@@ -232,6 +246,13 @@ public class Robi extends Task
 		}
 	}
 	
+	/**
+	 * Hier noch mal nachdenken!!
+	 * 
+	 * 
+	 * 
+	 * 
+	 */
 	public void gripperUp()
 	{
 		lift.toHeight(height);
