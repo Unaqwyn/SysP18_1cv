@@ -232,7 +232,7 @@ public class Robi extends Task
 	
 	/**
 	 * Robi set the Lego. If the Lego if fit, change to the next state.
-	 */
+	 */ 
 	public void setLego()
 	{
 		lift.vibrate(true);
