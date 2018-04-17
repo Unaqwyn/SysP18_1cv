@@ -14,14 +14,16 @@ public abstract class Drive extends Task
 	public Drive(int pinEnc, double faktor)
 	{
 
-		if (faktor != 0 && pinEnc != 0)
+		Task.install(this);
+		if (faktor != 0)
 		{
 			encoder = new Encoder(pinEnc, faktor);
 		}
-		else
+		else if(faktor == 0)
 		{
 			encoder = null;
 		}
+
 	}
 
 	// -100 <= speed <= 100
@@ -30,7 +32,7 @@ public abstract class Drive extends Task
 	public void stop()
 	{
 		setSpeed(0);
-		turns=false;
+		turns = false;
 	}
 
 	public double getPos()
@@ -89,6 +91,11 @@ public abstract class Drive extends Task
 		{
 			encoder.reset();
 		}
+	}
+	
+	public boolean hasEncoder()
+	{
+		return (encoder!=null);
 	}
 
 	public void action()

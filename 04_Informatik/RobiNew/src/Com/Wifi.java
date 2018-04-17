@@ -6,93 +6,84 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.RN131;
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 import ch.ntb.inf.deep.runtime.util.CmdInt;
+import Robi.Robi;
 
 public class Wifi extends Task
 {
-	
+
 	private static Wifi task;
 	private RN131 wifi;
 	public static int received = 0;
 	private MPIOSM_DIO wifiIO;
-	
+
 	public Wifi() throws Exception
 	{
-		
+
 		SCI sci2 = SCI.getInstance(SCI.pSCI2);
 		sci2.start(115200, SCI.NO_PARITY, (short) 8);
 		wifi = new RN131(sci2.in, sci2.out, null);
 		wifiIO = new MPIOSM_DIO(Definitions.PinMap.pinLedWifi, true);
 		wifiIO.set(false);
-		try
-		{
-			task = new Wifi();
-			task.period = 500;
-			Task.install(task);
-			
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
+		install(this);
 	}
-	
+
 	public void action()
 	{
 		getReceived();
 	}
-	
+
 	public void getReceived()
 	{
 		wifiIO.set(wifi.connected());
-		if(wifi.connected())
+		if (wifi.connected())
 		{
 			CmdInt.Type type = wifi.cmd.readCmd();
 			received = wifi.cmd.getInt();
 		}
 	}
-	
+
 	public void sendCmd(int x)
 	{
-		if(task.wifi.connected())
+		if (task.wifi.connected())
 			task.wifi.cmd.writeCmd(x);
 	}
-	
+
 	public void sendHeight()
 	{
-		int x = 0;
-		// int x=robi.height+100;
-		if(task.wifi.connected())
+		
+		int x=Robi.height+100;
+		if (task.wifi.connected())
 			task.wifi.cmd.writeCmd(x);
 	}
-	
+
 	public void pingStart()
 	{
-		
-		if(task.wifi.connected())
+
+		if (task.wifi.connected())
 		{
 			task.wifi.cmd.writeCmd(800);
 		}
 	}
-	
+
 	public void pingEnd()
 	{
-		if(task.wifi.connected())
+		if (task.wifi.connected())
 			task.wifi.cmd.writeCmd(802);
 	}
-	
+
 	public void init()
 	{
-		if(task.wifi.connected())
+		if (task.wifi.connected())
 		{
 			task.wifi.cmd.writeCmd(222);
 			int x = 222;
 			int i = 0;
-			while(x == 222)
+			while (x == 222)
 			{
 				CmdInt.Type type = wifi.cmd.readCmd();
 				x = wifi.cmd.getInt();
-				++ i;
-				if(i > 200)
+				++i;
+				if (i > 200)
 				{
 					task.wifi.cmd.writeCmd(222);
 				}
@@ -100,12 +91,12 @@ public class Wifi extends Task
 		}
 		pingStart();
 	}
-	
+
 	public boolean next()
 	{
-		int updatedStone = 100 + Robi.Robi.height + 1;
-		
-		if(updatedStone == received)
+		int updatedStone = 100 + Robi.height + 1;
+
+		if (updatedStone == received)
 		{
 			return true;
 		}
@@ -114,5 +105,5 @@ public class Wifi extends Task
 			return false;
 		}
 	}
-	
+
 }

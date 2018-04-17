@@ -9,6 +9,7 @@ public class SignMagn extends Drive
 	
 	private TPU_PWM pwmL;
 	private TPU_PWM pwmR;
+	private int speedMom;
 	
 	public SignMagn(int PWMChn1, int PWMChn2, int pinEnc, double faktor)
 	{
@@ -19,22 +20,26 @@ public class SignMagn extends Drive
 	
 	public void setSpeed(int speed)
 	{
-		if(speed > 0)
+		if (speedMom != speed)
 		{
-			pwmL.update((int) (RobiConstants.pwmPeriod * (speed * 0.01)));
-			pwmR.update(0);
-			turns = true;
-		}
-		else if(speed < 0)
-		{
-			pwmL.update(0);
-			pwmR.update((int) ((-1) * (RobiConstants.pwmPeriod * (speed * 0.01))));
-			turns = true;
-		}
-		else
-		{
-			pwmL.update(0);
-			pwmR.update(0);
+			speedMom=speed;
+			if (speed > 0)
+			{
+				pwmL.update((int) (RobiConstants.pwmPeriod * (speed * 0.01)));
+				pwmR.update(0);
+				turns = true;
+			}
+			else if (speed < 0)
+			{
+				pwmL.update(0);
+				pwmR.update((int) ((-1) * (RobiConstants.pwmPeriod * (speed * 0.01))));
+				turns = true;
+			}
+			else
+			{
+				pwmL.update(0);
+				pwmR.update(0);
+			}
 		}
 	}
 }

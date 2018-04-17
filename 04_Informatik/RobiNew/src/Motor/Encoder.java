@@ -2,7 +2,6 @@ package Motor;
 
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_FQD;
-import java.lang.Math;
 import Definitions.PinMap;
 
 public class Encoder extends Task
@@ -15,9 +14,7 @@ public class Encoder extends Task
 	{
 		fqd = new TPU_FQD(PinMap.useTPU_A, pin);
 		this.faktor = faktor;
-		Task t = new Encoder(pin, faktor);
-		t.period = 100;
-		Task.install(t);
+		Task.install(this);
 	}
 	
 	public double getPos()

@@ -2,7 +2,6 @@ package Motor;
 
 import ch.ntb.inf.deep.runtime.mpc555.driver.TPU_PWM;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
-import java.util.Random;
 
 import Definitions.PinMap;
 
