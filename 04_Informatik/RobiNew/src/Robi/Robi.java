@@ -22,6 +22,7 @@ public class Robi extends Task
 	public static int height;
 	private int target;
 	private boolean start;
+	private boolean comIO;
 	
 	private STATE state;
 	
@@ -44,6 +45,7 @@ public class Robi extends Task
 		height = 0;
 		target = 9;
 		start = false;
+		comIO = false;
 		
 		state = STATE.INITROBI;
 	}
@@ -118,39 +120,47 @@ public class Robi extends Task
 	}
 	
 	/**
-	 * Initialize the Robi before start. Send a test and if the answer is incoming, we
-	 * send the startsignal and change to the next state.
+	 * Initialize the Robi before start. Robi send a testping to our partner. If the
+	 * answer is incoming and correct and the start button is pushing, we send the
+	 * startsignal to the lighthouse and our partner and change to the next state.
 	 */
 	public void initRobi()
 	{
 		start = io.getStartSwitch();
+		io.setmotorSleep(true);
+		wifi.sendCmd(222);
 		
-		if(start)
+		if(wifi.received == 223)
 		{
-			io.setmotorSleep(true);
-			wifi.sendCmd(222);
-			if(wifi.received == 223)
-			{
-				wifi.sendCmd(800);
-				state = STATE.DRIVEFORWORD_1;
-			}
+			comIO = true;
+		}
+		
+		if(start && comIO)
+		{
+			wifi.sendCmd(800);
+			state = STATE.DRIVEFORWORD_1;
+			
 		}
 	}
 	
 	/**
-	 * Robi drive forward and at the first time, the lift will be initialize. 
-	 */F
+	 * Robi drive forward and the lift will be initialize. If the Robi is in front
+	 * of the spender, change to the next state.
+	 */
 	public void driveForward_1()
 	{
 		lift.init();
 		move.driveForwart();
 		
-		if(io.getSensorFront().get())
+		if(!lift.legoFit())
 		{
 			state = STATE.GRAP;
 		}
 	}
 	
+	/**
+	 * Robi pick up a Lego. A timer is starting and change to the next state.
+	 */
 	public void grap()
 	{
 		timer_1.start(1000);
@@ -158,6 +168,9 @@ public class Robi extends Task
 		state = STATE.DRIVEBACKWORD_1;
 	}
 	
+	/**
+	 * Robi drive backward, if the timer is lapsed, he is enoug away form the spender and change to the next state.
+	 */
 	public void driveBackward_1()
 	{
 		move.driveBackwart();
@@ -168,6 +181,9 @@ public class Robi extends Task
 		}
 	}
 	
+	/**
+	 * Robi still drive backward 
+	 */
 	public void driveBackward_2()
 	{
 		lift.toHeight(height);
