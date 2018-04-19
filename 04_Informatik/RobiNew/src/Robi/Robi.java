@@ -270,7 +270,7 @@ public class Robi extends Task
 		lift.tilt(false);
 		lift.downMin();
 		wifi.sendHeight();
-		
+		ds
 		if(move.platformLeft() && height != target)
 		{
 			state = STATE.DRIVEFORWORD_2;
