@@ -5,8 +5,6 @@ import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 import ch.ntb.sysp.demo.WifiDemo;
-import Motor.Lift;
-import Motor.Move;
 import Com.Wifi;
 import Definitions.IO;
 import Com.Timer;
