@@ -16,12 +16,11 @@ public class Lift extends Task
 	private LockedAnti moveOutMotor;
 	private LockedAnti d; // ?? Für was? Name? ??
 	
-	public Lift()
+	public Lift(Sensoren sensoren)
 	{
 		Task.install(this);
-		
+		this.sensoren=sensoren;
 		tiltMotor = new Servo();
-		sensoren = new Sensoren();
 		lifting = new LockedAnti(PinMap.pinLifting ,PinMap.pinEncoderLiftingA,1); // ?? Pin Nr. ??
 		moveOutMotor = new LockedAnti (PinMap.pinInit, 0, 1); // ?? Pin Nr. ??
 		d = new LockedAnti(3,3,3); // ?? Pin Nr. ??

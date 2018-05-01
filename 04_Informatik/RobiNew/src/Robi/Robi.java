@@ -7,6 +7,7 @@ import ch.ntb.inf.deep.runtime.ppc32.Task;
 import ch.ntb.sysp.demo.WifiDemo;
 import Com.Wifi;
 import Definitions.IO;
+import Sensor.Sensoren;
 import Com.Timer;
 
 public class Robi extends Task
@@ -16,6 +17,7 @@ public class Robi extends Task
 	private Wifi wifi;
 	private Timer timer_1;
 	private IO io;
+	private Sensoren sensoren;
 	
 	public static int height;
 	private int target;
@@ -34,8 +36,9 @@ public class Robi extends Task
 	 */
 	public Robi() throws Exception
 	{
-		move = new Move();
-		lift = new Lift();
+		sensoren=new Sensoren();
+		move = new Move(sensoren);
+		lift = new Lift(sensoren);
 		wifi = new Wifi();
 		timer_1 = new Timer();
 		io = new IO();
