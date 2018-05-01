@@ -137,7 +137,7 @@ public class Robi extends Task
 		{
 			wifi.sendCmd(800);
 			state = STATE.DRIVEFORWORD_1;
-			
+			// Sensoren init
 		}
 	}
 	
