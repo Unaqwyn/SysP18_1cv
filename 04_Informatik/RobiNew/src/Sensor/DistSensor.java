@@ -17,10 +17,9 @@ public class DistSensor extends Task
 
 	public DistSensor(int i)
 	{
+		value=new int[10];
 		sensorNR = i;
-		Task t = new DistSensor(i);
-		t.period = 100;
-		Task.install(t);
+		Task.install(this);
 	}
 
 	public boolean obstacle()
@@ -35,20 +34,21 @@ public class DistSensor extends Task
 
 	public int readSensor()
 	{
-		return Sensoren.readSensor(sensorNR);
+		return Sensoren.readSensor(sensorNR)+30;
 	}
 
 	public void action()
 	{
 		for (int i = 0; i < 10; i++)
 		{
-			if (readSensor() >= average*k)
+			if (Sensoren.readSensor(sensorNR) > average*k&&readSensor()!=30)
 			{
 				obstacle = true;
 			}
 			average -= (value[i] * 0.1);
 			value[i] = readSensor();
 			average += (value[i] * 0.1);
+			
 		}
 	}
 }
