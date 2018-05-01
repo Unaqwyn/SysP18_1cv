@@ -19,11 +19,11 @@ public class Lift extends Task
 	public Lift(Sensoren sensoren)
 	{
 		Task.install(this);
-		this.sensoren=sensoren;
+		this.sensoren = sensoren;
 		tiltMotor = new Servo();
-		lifting = new LockedAnti(PinMap.pinLifting ,PinMap.pinEncoderLiftingA,1); // ?? Pin Nr. ??
-		moveOutMotor = new LockedAnti (PinMap.pinInit, 0, 1); // ?? Pin Nr. ??
-		d = new LockedAnti(3,3,3); // ?? Pin Nr. ??
+		lifting = new LockedAnti(PinMap.pinLifting, PinMap.pinEncoderLiftingA, 1); // ?? Faktor? ??
+		moveOutMotor = new LockedAnti(PinMap.pinInit, 0, 1); // ?? Faktor? ??
+		d = new LockedAnti(3, 3, 3); // ?? Pin Nr. ??
 	}
 	
 	public void init()
@@ -31,7 +31,7 @@ public class Lift extends Task
 		moveOutMotor.setSpeed(50);
 		lifting.setEncoderZero();
 		
-		if(sensoren.obstacle(0))
+		if(sensoren.obstacle(Sensoren.sensorInit))
 		{
 			moveOutMotor.stop();
 		}
