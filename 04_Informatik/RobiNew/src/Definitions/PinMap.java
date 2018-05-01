@@ -23,7 +23,6 @@ public class PinMap
 	public static int pinSensTrig = 5; 
 	public static int pinSensA = 6; 
 	public static int pinSensB = 7;
-	public static int pinVibrationA = 12;
 	
 	// PINs for LEDs
 	public static int pinLedPower = 9;
@@ -32,7 +31,10 @@ public class PinMap
 	
 	// PINs for buttons
 	public static int pinStart = 8;
+	
+	// PINs for motor driver and vibrations motor
 	public static int pinSleep = 15; // ??
+	public static int pinVibration = 15; // Reserve 5 4??
 	
 	private PinMap()
 	{

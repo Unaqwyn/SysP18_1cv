@@ -189,8 +189,8 @@ public class Robi extends Task
 	 */
 	public void driveBackward_2()
 	{
-		lift.toHeight(height);
-		if(lift.inPosHeight())
+		lift.toHeight(height +2);
+		if(lift.inPosHeight(height+2))
 			lift.tilt(true);
 		
 		if(io.getSensorBack().get())
@@ -205,7 +205,7 @@ public class Robi extends Task
 	 */
 	public void waitSignal()
 	{
-		if(lift.inPosHeight())
+		if(lift.inPosHeight(height+2))
 			lift.tilt(true);
 		
 		if(wifi.next())
@@ -222,7 +222,7 @@ public class Robi extends Task
 	{
 		move.turnRight();
 		
-		if(lift.inPosHeight())
+		if(lift.inPosHeight(height+2))
 			lift.tilt(true);
 		
 		if(move.platformRight())
@@ -251,7 +251,7 @@ public class Robi extends Task
 	 */
 	public void gripperUp()
 	{	
-		if(lift.inPosHeight())
+		if(lift.inPosHeight(height+1))
 		{
 			state = STATE.TURNLEFT;
 		}

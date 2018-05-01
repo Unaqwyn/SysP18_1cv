@@ -17,8 +17,9 @@ public class IO
 	// Inputs switches
 	private MPIOSM_DIO startSwitch;
 	
-	// Output Motordriver
+	// Output Motordriver and vibrations motor
 	private MPIOSM_DIO motorSleep;
+	private MPIOSM_DIO vibrationsMotor;
 	
 	public IO()
 	{
@@ -33,6 +34,7 @@ public class IO
 		startSwitch = new MPIOSM_DIO(PinMap.pinStart, false);
 		
 		motorSleep = new MPIOSM_DIO(PinMap.pinSleep, true);
+		vibrationsMotor = new MPIOSM_DIO(PinMap.pinVibration, true);
 	}
 	
 	/**
@@ -120,6 +122,8 @@ public class IO
 		this.ledWifi = ledWifi;
 	}
 	
+	
+	
 	/**
 	 * @return the ledProblem
 	 */
@@ -160,6 +164,15 @@ public class IO
 	public void setmotorSleep(boolean change)
 	{
 		this.motorSleep.set(change);
+	}
+	
+	
+	/**
+	 * @param vibrationsMotor
+	 */
+	public void setVibrationsMotor(boolean on_off)
+	{
+		vibrationsMotor.set(on_off);
 	}
 	
 	public void setAllLedOff()

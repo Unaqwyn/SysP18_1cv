@@ -1,5 +1,6 @@
 package Robi;
 
+import Definitions.IO;
 import Definitions.PinMap;
 import Motor.Encoder;
 import Motor.LockedAnti;
@@ -16,12 +17,14 @@ public class Lift extends Task
 	private LockedAnti liftingMotor;
 	private LockedAnti moveOutMotor;
 	private Timer timer;
+	private IO ios;
 	
 	private double faktor;
 	private double andrücken;
 	
 	public Lift(Sensoren sensoren)
 	{
+		ios = new IO();
 		this.sensoren = sensoren;
 		tiltMotor = new Servo();
 		liftingMotor = new LockedAnti(PinMap.pinLifting, PinMap.pinEncoderLiftingA, 1); // ?? Faktor? ??
@@ -56,7 +59,7 @@ public class Lift extends Task
 	
 	public void toHeight(int height)
 	{
-		liftingMotor.toPos((height + 2) * faktor);
+		liftingMotor.toPos(height * faktor);
 	}
 	
 	public void tilt(boolean direction) // true = down, false = up
@@ -78,23 +81,44 @@ public class Lift extends Task
 		timer.start(500);
 		if(timer.lapsed())
 		{
-			liftingMotor.toPos(height);
+			liftingMotor.toPos(height + 2);
 			vibrate(false);
 		}
 	}
 	
-	public void vibrate(boolean on_off)
+	public void vibrate(boolean on_off) // true = on, false = off
 	{
+		ios.setVibrationsMotor(on_off);
 	}
 	
-	public boolean inPosHeight()
+	//
+	//
+	// fragen wie inPos funktioniert
+	//
+	//
+	//
+	public boolean inPosHeight(int height)
 	{
-		return true;
+		if(liftingMotor.inPos())
+		{
+			return true;
+		}
+		return false;
 	}
 	
+	//
+	//
+	// fragen threshold wann gibt er true zurück
+	//
+	//
+	//
 	public boolean legoFit()
 	{
-		return true;
+		if(sensoren.threshold(200, Sensoren.sensorArm))
+		{
+			return true;
+		}
+		return false;
 	}
 	
 	public void action()
