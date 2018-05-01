@@ -17,7 +17,8 @@ public class Move extends Task
 		this.sensoren=sensoren;
 		main=new LockedAnti(PinMap.pinMain, 0,0);
 		turn=new SignMagn(PinMap.pinTurnA, PinMap.pinTurnB, PinMap.pinEncoderTurnA, 1);
-		
+		//period=200;
+		Task.install(this);
 	}
 	
 	public void driveForwart()
@@ -43,17 +44,19 @@ public class Move extends Task
 	
 	public boolean platformLeft()
 	{
-		return true;
+		return turn.inPos();
 	}
 	
 	public boolean platformRight()
 	{
-		return true;
+		return turn.inPos();
 	}
 	
 	public void action()
 	{
-		
-		
+		if(sensoren.obstacle(Sensoren.sensorArm)||sensoren.obstacle(Sensoren.sensorBack))
+		{
+			main.stop();
+		}
 	}
 }
