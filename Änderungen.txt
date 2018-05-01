@@ -1,2 +1,0 @@
-Änderung: 
-- PIN Reserve 5 (15) => neu Vibrationsmotor
