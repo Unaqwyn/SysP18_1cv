@@ -9,8 +9,7 @@ public class PinMap
 	public static int pinLifting = 3;
 	public static int pinInit = 4;
 	public static int pinTilt = 7;
-	public static int pinVibrationA = 5;
-	public static int pinVibrationB = 6;
+
 	
 	// Motor Pingruppe
 	public static boolean useTPU_A = true;
@@ -23,7 +22,8 @@ public class PinMap
 	public static int pinSensOut = 59; 
 	public static int pinSensTrig = 5; 
 	public static int pinSensA = 6; 
-	public static int pinSensB = 7; 
+	public static int pinSensB = 7;
+	public static int pinVibrationA = 12;
 	
 	// PINs for LEDs
 	public static int pinLedPower = 9;

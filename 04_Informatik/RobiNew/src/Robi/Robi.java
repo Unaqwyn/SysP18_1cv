@@ -36,7 +36,7 @@ public class Robi extends Task
 	 */
 	public Robi() throws Exception
 	{
-		sensoren=new Sensoren();
+		sensoren = new Sensoren();
 		move = new Move(sensoren);
 		lift = new Lift(sensoren);
 		wifi = new Wifi();
@@ -233,11 +233,10 @@ public class Robi extends Task
 	
 	/**
 	 * Robi set the Lego. If the Lego if fit, change to the next state.
-	 */ 
+	 */
 	public void setLego()
 	{
-		lift.vibrate(true);
-		lift.setLego();
+		lift.setLego(height);
 		
 		if(lift.legoFit())
 		{
@@ -249,15 +248,9 @@ public class Robi extends Task
 	
 	/**
 	 * Hier noch mal nachdenken!!
-	 * 
-	 * 
-	 * 
-	 * 
 	 */
 	public void gripperUp()
-	{
-		lift.toHeight(height);
-		
+	{	
 		if(lift.inPosHeight())
 		{
 			state = STATE.TURNLEFT;

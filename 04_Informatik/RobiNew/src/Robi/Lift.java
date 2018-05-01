@@ -6,30 +6,38 @@ import Motor.LockedAnti;
 import Motor.Servo;
 import Motor.SignMagn;
 import Sensor.Sensoren;
+import Com.Timer;
 import ch.ntb.inf.deep.runtime.ppc32.Task;
 
 public class Lift extends Task
 {
 	private Servo tiltMotor;
 	private Sensoren sensoren;
-	private LockedAnti lifting;
+	private LockedAnti liftingMotor;
 	private LockedAnti moveOutMotor;
-	private LockedAnti d; // ?? Für was? Name? ??
+	private Timer timer;
+	
+	private double faktor;
+	private double andrücken;
 	
 	public Lift(Sensoren sensoren)
 	{
-		Task.install(this);
 		this.sensoren = sensoren;
 		tiltMotor = new Servo();
-		lifting = new LockedAnti(PinMap.pinLifting, PinMap.pinEncoderLiftingA, 1); // ?? Faktor? ??
+		liftingMotor = new LockedAnti(PinMap.pinLifting, PinMap.pinEncoderLiftingA, 1); // ?? Faktor? ??
 		moveOutMotor = new LockedAnti(PinMap.pinInit, 0, 1); // ?? Faktor? ??
-		d = new LockedAnti(3, 3, 3); // ?? Pin Nr. ??
+		
+		timer = new Timer();
+		
+		faktor = 1;
+		andrücken = 0.5;
+		
+		Task.install(this);
 	}
 	
 	public void init()
 	{
 		moveOutMotor.setSpeed(50);
-		lifting.setEncoderZero();
 		
 		if(sensoren.obstacle(Sensoren.sensorInit))
 		{
@@ -39,18 +47,40 @@ public class Lift extends Task
 	
 	public void downMin()
 	{
+		liftingMotor.setSpeed(-50);
+		if(liftingMotor.getPos() == 0)
+		{
+			liftingMotor.stop();
+		}
 	}
 	
 	public void toHeight(int height)
 	{
+		liftingMotor.toPos((height + 2) * faktor);
 	}
 	
-	public void tilt(boolean direction) // true = nach unten, false = nach oben
+	public void tilt(boolean direction) // true = down, false = up
 	{
+		if(direction)
+		{
+			tiltMotor.min();
+		}
+		else
+		{
+			tiltMotor.max();
+		}
 	}
 	
-	public void setLego()
+	public void setLego(int height)
 	{
+		vibrate(true);
+		liftingMotor.toPos((height + 1) * faktor - andrücken);
+		timer.start(500);
+		if(timer.lapsed())
+		{
+			liftingMotor.toPos(height);
+			vibrate(false);
+		}
 	}
 	
 	public void vibrate(boolean on_off)
