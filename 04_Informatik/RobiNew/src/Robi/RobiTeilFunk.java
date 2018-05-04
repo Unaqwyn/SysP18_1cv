@@ -64,7 +64,7 @@ public class RobiTeilFunk extends Task
 				servo.min();
 			}
 		}
-		if(sensoren.obstacle(4))
+		if(sensoren.obstacle(3))
 		{
 			minLA=!minLA;
 			if(minLA)

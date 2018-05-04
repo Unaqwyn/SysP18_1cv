@@ -1,5 +1,6 @@
 package Definitions;
 
+import ch.ntb.inf.deep.runtime.mpc555.driver.MDASM_DIO;
 import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
 
 public class IO
@@ -18,7 +19,7 @@ public class IO
 	private MPIOSM_DIO startSwitch;
 	
 	// Output Motordriver and vibrations motor
-	private MPIOSM_DIO motorSleep;
+	private MDASM_DIO motorSleep;
 	private MPIOSM_DIO vibrationsMotor;
 	
 	public IO()
@@ -33,7 +34,7 @@ public class IO
 		
 		startSwitch = new MPIOSM_DIO(PinMap.pinStart, false);
 		
-		motorSleep = new MPIOSM_DIO(PinMap.pinSleep, true);
+		motorSleep = new MDASM_DIO(PinMap.pinSleep, true);
 		vibrationsMotor = new MPIOSM_DIO(PinMap.pinVibration, true);
 	}
 	
@@ -152,7 +153,7 @@ public class IO
 	/**
 	 * @return the sleepSwitch
 	 */
-	public MPIOSM_DIO getMotorSleep()
+	public MDASM_DIO getMotorSleep()
 	{
 		return motorSleep;
 	}
