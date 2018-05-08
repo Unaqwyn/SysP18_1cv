@@ -9,6 +9,7 @@ public class PinMap
 	public static int pinLifting = 3;
 	public static int pinInit = 4;
 	public static int pinTilt = 7;
+	public static int reserve=8;
 
 	
 	// Motor Pingruppe

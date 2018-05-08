@@ -73,14 +73,14 @@ public abstract class Drive extends Task
 				max = pos;
 				forward = true;
 				turns = true;
-				setSpeed(60);
+				setSpeed(30);
 			}
 			else if (getPos() >= pos)
 			{
 				min = pos;
 				forward = false;
 				turns = true;
-				setSpeed(-60);
+				setSpeed(-30);
 			}
 		}
 	}
