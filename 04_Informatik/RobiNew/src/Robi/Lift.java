@@ -91,26 +91,17 @@ public class Lift extends Task
 		ios.setVibrationsMotor(on_off);
 	}
 	
-	//
-	//
-	// fragen wie inPos funktioniert
-	//
-	//
-	//
-	public boolean inPosHeight(int height)
+
+	public boolean inPosHeight()
 	{
-		if(liftingMotor.inPos())
-		{
-			return true;
-		}
-		return false;
+		return liftingMotor.inPos();
 	}
 	
 	//
 	//
 	// fragen threshold wann gibt er true zurück
 	//
-	//
+	// true = näher grenzwert
 	//
 	public boolean legoFit()
 	{
@@ -124,8 +115,5 @@ public class Lift extends Task
 	public void action()
 	{
 	}
-	
-	static
-	{
-	}
+
 }
