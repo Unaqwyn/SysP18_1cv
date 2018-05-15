@@ -19,9 +19,6 @@ public class Lift extends Task
 	private Timer timer;
 	private IO ios;
 	
-	private double faktor;
-	private double andrücken;
-	
 	public Lift(Sensoren sensoren)
 	{
 		ios = new IO();
@@ -32,34 +29,28 @@ public class Lift extends Task
 		
 		timer = new Timer();
 		
-		faktor = 1;
-		andrücken = 0.5;
-		
-		Task.install(this);
+		// Task.install(this);
 	}
 	
 	public void init()
 	{
-		moveOutMotor.setSpeed(50);
+		moveOutMotor.setSpeed(0);
 		
-		if(sensoren.obstacle(Sensoren.sensorInit))
+		while(!sensoren.obstacle(Sensoren.sensorInit))
 		{
-			moveOutMotor.stop();
+			// erste version
 		}
+		moveOutMotor.stop();
 	}
 	
 	public void downMin()
 	{
-		liftingMotor.setSpeed(-50);
-		if(liftingMotor.getPos() == 0)
-		{
-			liftingMotor.stop();
-		}
+		liftingMotor.toPos(0);
 	}
 	
 	public void toHeight(int height)
 	{
-		liftingMotor.toPos(height * faktor);
+		liftingMotor.toPos(height);
 	}
 	
 	public void tilt(boolean direction) // true = down, false = up
@@ -77,13 +68,15 @@ public class Lift extends Task
 	public void setLego(int height)
 	{
 		vibrate(true);
-		liftingMotor.toPos((height + 1) * faktor - andrücken);
+		
+		liftingMotor.toPos(height + 1); // runter
 		timer.start(500);
-		if(timer.lapsed())
+		while(!timer.lapsed())
 		{
-			liftingMotor.toPos(height + 2);
-			vibrate(false);
+			//
 		}
+		liftingMotor.toPos(height + 2);
+		vibrate(false);
 	}
 	
 	public void vibrate(boolean on_off) // true = on, false = off
@@ -91,29 +84,20 @@ public class Lift extends Task
 		ios.setVibrationsMotor(on_off);
 	}
 	
-
 	public boolean inPosHeight()
 	{
 		return liftingMotor.inPos();
 	}
 	
-	//
-	//
-	// fragen threshold wann gibt er true zurück
-	//
 	// true = näher grenzwert
 	//
 	public boolean legoFit()
 	{
-		if(sensoren.threshold(200, Sensoren.sensorArm))
-		{
-			return true;
-		}
-		return false;
+		return sensoren.threshold(600, Sensoren.sensorArm);
 	}
 	
-	public void action()
-	{
-	}
-
+	// public void action()
+	// {
+	// }
+	
 }

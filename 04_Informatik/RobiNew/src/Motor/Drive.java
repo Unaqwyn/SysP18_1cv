@@ -92,11 +92,6 @@ public abstract class Drive extends Task
 			encoder.reset();
 		}
 	}
-	
-	public boolean hasEncoder()
-	{
-		return (encoder!=null);
-	}
 
 	public void action()
 	{
