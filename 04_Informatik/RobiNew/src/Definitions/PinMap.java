@@ -3,11 +3,11 @@ package Definitions;
 public class PinMap
 {
 	// PINs for motors
-	public static int pinMain = 0;
+	public static int pinMain = 0;   //m1
 	public static int pinTurnA = 1;
 	public static int pinTurnB = 2;
 	public static int pinLifting = 3;
-	public static int pinInit = 4;
+	public static int pinInit = 8;		//pin 4 funktioniert nicht, reserve wird verwendet
 	public static int pinTilt = 7;
 	public static int reserve=8;
 
