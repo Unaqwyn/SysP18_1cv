@@ -44,38 +44,38 @@ public class Wifi extends Task
 	
 	public void sendCmd(int x)
 	{
-		if(task.wifi.connected())
-			task.wifi.cmd.writeCmd(x);
+		if(wifi.connected())
+			wifi.cmd.writeCmd(x);
 	}
 	
 	public void sendHeight()
 	{
 		
 		int x = Robi.height + 100;
-		if(task.wifi.connected())
-			task.wifi.cmd.writeCmd(x);
+		if(wifi.connected())
+			wifi.cmd.writeCmd(x);
 	}
 	
 	public void pingStart()
 	{
 		
-		if(task.wifi.connected())
+		if(wifi.connected())
 		{
-			task.wifi.cmd.writeCmd(800);
+			wifi.cmd.writeCmd(800);
 		}
 	}
 	
 	public void pingEnd()
 	{
-		if(task.wifi.connected())
-			task.wifi.cmd.writeCmd(802);
+		if(wifi.connected())
+			wifi.cmd.writeCmd(802);
 	}
 	
 	public void init()
 	{
-		if(task.wifi.connected())
+		if(wifi.connected())
 		{
-			task.wifi.cmd.writeCmd(222);
+			wifi.cmd.writeCmd(222);
 			int x = 222;
 			int i = 0;
 			while(x == 222)
@@ -85,7 +85,7 @@ public class Wifi extends Task
 				++ i;
 				if(i > 200)
 				{
-					task.wifi.cmd.writeCmd(222);
+					wifi.cmd.writeCmd(222);
 				}
 			}
 		}

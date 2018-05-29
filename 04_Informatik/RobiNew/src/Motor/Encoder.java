@@ -15,6 +15,7 @@ public class Encoder extends Task
 		fqd = new TPU_FQD(PinMap.useTPU_A, pin);
 		this.faktor = faktor;
 		Task.install(this);
+		fqd.setPosition(0);
 	}
 	
 	public double getPos()
@@ -25,6 +26,7 @@ public class Encoder extends Task
 	public void action()
 	{
 		pos += (fqd.getPosition() * faktor);
+		fqd.setPosition(0);
 	}
 	
 	public void reset()
