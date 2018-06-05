@@ -213,6 +213,11 @@ public class Robi extends Task
 			lift.tilt(true);
 		}
 		
+		if(height == 0)
+		{
+			state = STATE.TURNRIGHT;
+		}
+		
 		if(wifi.next())
 		{
 			state = STATE.TURNRIGHT;
