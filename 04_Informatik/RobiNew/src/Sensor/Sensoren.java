@@ -31,7 +31,7 @@ public class Sensoren
 		hlc1395.start();
 	}
 
-	public boolean obstacle(int sensor)  // true = Angestanden, kurze Zeit
+	public boolean obstacle(int sensor) // true = Angestanden, kurze Zeit
 	{
 		return distSensor[sensor].obstacle();
 	}
