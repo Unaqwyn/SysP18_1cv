@@ -35,12 +35,6 @@ public class Lift extends Task
 	public void init()
 	{
 		moveOutMotor.toPos(888); // Richtige Position eingeben!!!!
-		
-		while(!sensoren.obstacle(Sensoren.sensorInit))
-		{
-			// erste version
-		}
-		moveOutMotor.stop();
 	}
 	
 	public void downMin()

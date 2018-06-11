@@ -15,10 +15,9 @@ public class Sensoren
 	private final int TRGPIN = PinMap.pinSensTrig; // MPIOB5
 	private final int ANPIN = PinMap.pinSensOut; // A:AN59
 	private DistSensor[] distSensor;
-	private short nSensors = 3;
+	private short nSensors = 2;
 	public static final int sensorArm = 0;
 	public static final int sensorBack = 1;
-	public static final int sensorInit = 2;
 
 	public Sensoren()
 	{

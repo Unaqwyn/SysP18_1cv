@@ -15,7 +15,7 @@ public class Wifi extends Task
 	private RN131 wifi;
 	public static int received = 0;
 	private MPIOSM_DIO wifiIO;
-	
+	private Timer timer;
 	public Wifi() throws Exception
 	{
 		
@@ -25,6 +25,7 @@ public class Wifi extends Task
 		wifiIO = new MPIOSM_DIO(Definitions.PinMap.pinLedWifi, true);
 		wifiIO.set(false);
 		install(this);
+		timer=new Timer();
 	}
 	
 	public void action()
@@ -77,15 +78,15 @@ public class Wifi extends Task
 		{
 			wifi.cmd.writeCmd(222);
 			int x = 222;
-			int i = 0;
+			timer.start(1000);
 			while(x == 222)
 			{
 				CmdInt.Type type = wifi.cmd.readCmd();
 				x = wifi.cmd.getInt();
-				++ i;
-				if(i > 200)
+				if(timer.lapsed())
 				{
 					wifi.cmd.writeCmd(222);
+					timer.start(1000);
 				}
 			}
 		}
@@ -106,4 +107,12 @@ public class Wifi extends Task
 		}
 	}
 	
+	static{
+		SCI sci1 = SCI.getInstance(SCI.pSCI1);
+		sci1.start(19200, SCI.NO_PARITY, (short)8);
+		
+		System.out = new PrintStream(sci1.out);
+		System.err = new PrintStream(sci1.out);
+		System.out.println("Communication");
+	}
 }
