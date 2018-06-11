@@ -18,6 +18,7 @@ public class PinMap
 	// PINs for encoders
 	public static int pinEncoderLiftingA = 9;
 	public static int pinEncoderTurnA = 11;
+	public static int pinEncoderInit = 13;
 	
 	// PINs for sensors, do not ask...
 	public static int pinSensOut = 59; 

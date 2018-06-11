@@ -44,7 +44,7 @@ public class Robi extends Task
 		io = new IO();
 		
 		height = 0;
-		target = 9;
+		target = 7;
 		start = false;
 		comIO = false;
 		

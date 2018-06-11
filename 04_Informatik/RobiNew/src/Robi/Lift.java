@@ -25,7 +25,7 @@ public class Lift extends Task
 		this.sensoren = sensoren;
 		tiltMotor = new Servo();
 		liftingMotor = new LockedAnti(PinMap.pinLifting, PinMap.pinEncoderLiftingA, 1); // ?? Faktor? ??
-		moveOutMotor = new LockedAnti(PinMap.pinInit, 0, 1); // ?? Faktor? ??
+		moveOutMotor = new LockedAnti(PinMap.pinInit, PinMap.pinEncoderInit, 1); // ?? Faktor? ??
 		
 		timer = new Timer();
 		
@@ -34,7 +34,7 @@ public class Lift extends Task
 	
 	public void init()
 	{
-		moveOutMotor.setSpeed(0);
+		moveOutMotor.toPos(888); // Richtige Position eingeben!!!!
 		
 		while(!sensoren.obstacle(Sensoren.sensorInit))
 		{
