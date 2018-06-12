@@ -1,5 +1,7 @@
 package Test;
 
+import java.io.PrintStream;
+
 import Com.Timer;
 import Robi.Lift;
 import Sensor.Sensoren;
@@ -15,23 +17,25 @@ public class TestLift extends Task
 	public TestLift()
 	{
 		Lift lift = new Lift(new Sensoren());
-		
+		bla();
+		lift.tilt(false);
 	}
 	
-	public void action()
+	public void bla()
 	{
 		lift.init();
-		t.start(800);
+		t.start(30000);
 		while(!t.lapsed())
 		{
 		}
 		lift.toHeight(5);
-		if(lift.inPosHeight())
+		while(!lift.inPosHeight())
 		{
+		}
 			lift.tilt(true);
 //			lift.vibrate(true);
 			lift.setLego(4);
-		}	
+			
 	}
 	
 	static
@@ -41,11 +45,12 @@ public class TestLift extends Task
 		sci1.start(9600, SCI.NO_PARITY, (short) 8);
 		
 		// // 2) Use SCI1 for stdout
-		// System.out = new PrintStream(sci1.out);
+		 System.out = new PrintStream(sci1.out);
 		
-		TestLift task = new TestLift();
-		task.period = 1000; // Periodenlänge in ms
-		Task.install(task); // Installation des Tasks
+		 TestLift lift=new TestLift();
+		//TestLift task = new TestLift();
+		//task.period = 1000; // Periodenlänge in ms
+		//Task.install(task); // Installation des Tasks
 		
 	}
 }

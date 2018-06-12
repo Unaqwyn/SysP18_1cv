@@ -16,6 +16,7 @@ public class Lift extends Task
 	private Sensoren sensoren;
 	private LockedAnti liftingMotor;
 	private LockedAnti moveOutMotor;
+	private SignMagn vib;
 	private Timer timer;
 	private IO ios;
 	
@@ -26,6 +27,8 @@ public class Lift extends Task
 		tiltMotor = new Servo();
 		liftingMotor = new LockedAnti(PinMap.pinLifting, PinMap.pinEncoderLiftingA, 1); // ?? Faktor? ??
 		moveOutMotor = new LockedAnti(PinMap.pinInit, PinMap.pinEncoderInit, 1); // ?? Faktor? ??
+		vib=new SignMagn(PinMap.pinVibA,PinMap.pinVibB,0,0);
+		
 		
 		timer = new Timer();
 		
@@ -34,7 +37,7 @@ public class Lift extends Task
 	
 	public void init()
 	{
-		moveOutMotor.toPos(888); // Richtige Position eingeben!!!!
+		moveOutMotor.toPos(Definitions.RobiConstants.posArm); // Richtige Position eingeben!!!!
 	}
 	
 	public void downMin()
@@ -44,18 +47,19 @@ public class Lift extends Task
 	
 	public void toHeight(int height)
 	{
-		liftingMotor.toPos(height);
+		int h=Definitions.RobiConstants.posLift*height;
+		liftingMotor.toPos(h);
 	}
 	
 	public void tilt(boolean direction) // true = down, false = up
 	{
 		if(direction)
 		{
-			tiltMotor.min();
+			tiltMotor.max();
 		}
 		else
 		{
-			tiltMotor.max();
+			tiltMotor.min();
 		}
 	}
 	
@@ -63,19 +67,26 @@ public class Lift extends Task
 	{
 		vibrate(true);
 		
-		liftingMotor.toPos(height + 1); // runter
+		toHeight(height + 1); // runter
 		timer.start(500);
 		while(!timer.lapsed())
 		{
 			//
 		}
-		liftingMotor.toPos(height + 2);
+		toHeight(height + 2);
 		vibrate(false);
 	}
 	
 	public void vibrate(boolean on_off) // true = on, false = off
 	{
-		ios.setVibrationsMotor(on_off);
+		if(on_off)
+		{
+			vib.setSpeed(100);
+		}
+		else
+		{
+			vib.stop();
+		}
 	}
 	
 	public boolean inPosHeight()
