@@ -10,6 +10,8 @@ public class PinMap
 	public static int pinInit = 8;		//pin 4 funktioniert nicht, reserve wird verwendet
 	public static int pinTilt = 7;
 	public static int reserve=8;
+	public static int pinVibA=5;
+	public static int pinVibB=6;
 
 	
 	// Motor Pingruppe

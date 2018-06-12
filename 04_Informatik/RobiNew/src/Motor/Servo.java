@@ -11,7 +11,7 @@ public class Servo extends Task
 	// pwmPeriod in TimeBase Unit (50�000 ns)
 	private final int pwmPeriod = 20000000 / TPU_PWM.tpuTimeBase;
 	public static int highTime = 1200000 / TPU_PWM.tpuTimeBase;
-	public static int max = 2280000 / TPU_PWM.tpuTimeBase;
+	public static int max = 2270000 / TPU_PWM.tpuTimeBase;
 	public static int min = 1200000 / TPU_PWM.tpuTimeBase;
 	
 	private static TPU_PWM pwm;
