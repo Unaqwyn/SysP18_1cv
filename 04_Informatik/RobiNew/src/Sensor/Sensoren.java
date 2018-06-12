@@ -17,14 +17,14 @@ public class Sensoren
 	private DistSensor[] distSensor;
 	private short nSensors = 2;
 	public static final int sensorArm = 0;
-	public static final int sensorBack = 1;
+	public static final int sensorBack = 3;
 
 	public Sensoren()
 	{
 		distSensor = new DistSensor[nSensors];
 		for (int i = 0; i < nSensors; i++)
 		{
-			distSensor[i] = new DistSensor(i);
+			distSensor[i] = new DistSensor(3*i);
 		}
 		hlc1395 = HLC1395Pulsed.getInstance();
 		hlc1395.init(ADR3PIN, ADR2PIN, ADR1PIN, ADR0PIN, TRGPIN, ANPIN); // Start reading
