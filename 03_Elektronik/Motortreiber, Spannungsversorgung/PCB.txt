@@ -1,0 +1,17 @@
+﻿Field=#~Integer~#~50|Field=Comment~String~Comment~101|Field=Description~String~Description~101|Field=Designator~String~Designator~101|Field=Footprint~String~Footprint~101|Field=LibRef~String~LibRef~101|Field=Quantity~Integer~Quantity~101|Field=Value~String~Value~101|ReportField=Currency~<kein>|ReportField=ProductionQuantity~1|ReportField=ProjectFileName~SysP18_Team10.PrjPcb|ReportField=ProjectFullPath~C:\Users\Michael Alig\Desktop\Motortreiber, Spannungsversorgung\SysP18_Team10.PrjPcb|ReportField=Title~Bill of Materials For PCB Document [PCB.PcbDoc]|ReportField=TotalQuantity~55|ReportField=ReportTime~16:30:58|ReportField=ReportDate~03.04.2018|ReportField=ReportDateTime~03.04.2018 16:30:58|ReportField=OutputName~Bill of Materials|ReportField=OutputType~BOM_PartType|ReportField=GeneratorName~BOM|ReportField=GeneratorDescription~Bill of Materials|ReportField=VariantName~None|ReportField=DataSourceFileName~PCB.PcbDoc|ReportField=DataSourceFullPath~C:\Users\Michael Alig\Desktop\Motortreiber, Spannungsversorgung\PCB.PcbDoc|ReportField=PCBConfigurationName~Default Configuration|ReportField=Item~|ReportField=ItemRevision~|ReportField=ItemAndRevision~|ReportField=ItemRevisionBase~|ReportField=ItemRevisionLevel1~|ReportField=ItemRevisionLevel2~|ReportField=ItemRevisionLevel1AndBase~|ReportField=ItemRevisionLevel2AndLevel1~
+1|100nF|X7R MLCC 0805 (2012 Metric)|C100, C102|CAPC0805|C Bipolar 0805|2|100n
+2|AVE476M16D16T-F|Aluminum Electrolytic Capacitors for Filtering and Bypass, 47uF, 16V|C101, C200, C300, C400, C500, C501, C502|CDE_CAP AVE CODE D_H|CDE_AVE476M16D16T-F_AVE CODE D|7|10uF
+3|22uF|X7R MLCC 1206 (3016 Metric)|C103, C104|CAPC1206|C Bipolar 1206|2|22u
+4|1uF|X7R MLCC 0805 (2012 Metric)|C105, C106|CAPC0805|C Bipolar 0805|2|100n
+5|SK34SMA|SK34SMA|D100, D101|DIOTEC_DO-214AC_1K2A_2_H|DIOTEC_SK34SMA_DO-214AC|2|
+6|LTST-C190GKT|LED SMD 0603 green 6mcd|D102, D103, D104|LED 0603 green|LED|3|
+7|NRS5020T4R7MMGJ|Tayo Yuden NRS5020T4R7MMGJ 4u7 2A|L100|NRS5024T4R7MMGJV|NRS5020T4R7MMGJ|1|
+8|Stiftleiste 2 Pol|Stiftleiste 2 Pol, 2 Pin Header 2.54mm, 2 Pin Header 2.54mm, 2 Pin Header 2.54mm, 2 Pin Header 2.54mm, 2 Pin Header 2.54mm, 2 Pin Header 2.54mm|P100, P501, P502, P503, P504, P505, P506|2Pin Header 2.54mm|2 Pin Connector|7|
+9|Stecker XT-60||P500|Batteriestecker XT-60|Batteriestecker XT-60|1|
+10|Stiftleiste 24Pol (12X2)|Header, 12-Pin, Dual row|P507|HDR2X12|Header 12X2|1|
+11|Si2302CDS|N-Channel 20V (D-S) MOSFET|Q200, Q201, Q300, Q301|SOT23-3|Depletion Mode MOSFET|4|
+12|Generic|generic resistor|R100, R101, R102, R103, R104, R200, R201, R202, R203, R205, R300, R301, R302, R303|GEN_R0805_H|GEN_R_2|14|18k, 5.6k, 4.7k, 56k, 10k, 1k, 10, 1k, 10, 10k, 1k, 10, 1k, 10
+13|Screw M3x10mm with Distancebolt 15mm|Screw M3x10mm with Distancebolt 15mm, [NoValue], Screw M3x10mm with Distancebolt 15mm, Screw M3x10mm with Distancebolt 15mm|SC500, SC501, SC502, SC503|Screw_M3x10_Dist_15mm|Screw M3 10mm with Distancebolt 15mm|4|
+14|TPS562209|3-A Synchronous Step-Down Voltage Regulator|U100|SOT23-6|TPS562209|1|
+15|LP38691DT-3.3|Low Quiescent Current LDO, 3-Pin TO-92, Extended TemperatureBAG|U101|TO-92-TO3|MCP1700-1202E/TO|1|
+16|DRV8841Board||U201, U301, U401|DRV8841_Board|DRV8841_Board|3|

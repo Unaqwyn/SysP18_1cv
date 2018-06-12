@@ -1,0 +1,34 @@
+Change Component Footprint: Designator=P100 Old Footprint=2Pin Header 2.54mm New Footprint=2Pin Header 2.54mm
+Change Component Footprint: Designator=P501 Old Footprint=2Pin Header 2.54mm New Footprint=2Pin Header 2.54mm
+Change Component Footprint: Designator=P502 Old Footprint=2Pin Header 2.54mm New Footprint=2Pin Header 2.54mm
+Change Component Footprint: Designator=P503 Old Footprint=2Pin Header 2.54mm New Footprint=2Pin Header 2.54mm
+Change Component Footprint: Designator=P504 Old Footprint=2Pin Header 2.54mm New Footprint=2Pin Header 2.54mm
+Change Component Footprint: Designator=P505 Old Footprint=2Pin Header 2.54mm New Footprint=2Pin Header 2.54mm
+Change Component Footprint: Designator=P506 Old Footprint=2Pin Header 2.54mm New Footprint=2Pin Header 2.54mm
+Change Component Footprint: Designator=C100 Old Footprint=CAPC0805 New Footprint=CAPC0805
+Change Component Footprint: Designator=C102 Old Footprint=CAPC0805 New Footprint=CAPC0805
+Change Component Footprint: Designator=C105 Old Footprint=CAPC0805 New Footprint=CAPC0805
+Change Component Footprint: Designator=C106 Old Footprint=CAPC0805 New Footprint=CAPC0805
+Change Component Footprint: Designator=C103 Old Footprint=CAPC1206 New Footprint=CAPC1206
+Change Component Footprint: Designator=C104 Old Footprint=CAPC1206 New Footprint=CAPC1206
+Change Component Footprint: Designator=D102 Old Footprint=LED 0603 green New Footprint=LED 0603 green
+Change Component Footprint: Designator=D103 Old Footprint=LED 0603 green New Footprint=LED 0603 green
+Change Component Footprint: Designator=D104 Old Footprint=LED 0603 green New Footprint=LED 0603 green
+Change Component Footprint: Designator=SC500 Old Footprint=Screw_M3x10_Dist_15mm New Footprint=Screw_M3x10_Dist_15mm
+Change Component Footprint: Designator=SC501 Old Footprint=Screw_M3x10_Dist_15mm New Footprint=Screw_M3x10_Dist_15mm
+Change Component Footprint: Designator=SC502 Old Footprint=Screw_M3x10_Dist_15mm New Footprint=Screw_M3x10_Dist_15mm
+Change Component Footprint: Designator=SC503 Old Footprint=Screw_M3x10_Dist_15mm New Footprint=Screw_M3x10_Dist_15mm
+Change Component Footprint: Designator=Q200 Old Footprint=SOT23-3 New Footprint=SOT23-3
+Change Component Footprint: Designator=Q201 Old Footprint=SOT23-3 New Footprint=SOT23-3
+Change Component Footprint: Designator=Q300 Old Footprint=SOT23-3 New Footprint=SOT23-3
+Change Component Footprint: Designator=Q301 Old Footprint=SOT23-3 New Footprint=SOT23-3
+Change Component Footprint: Designator=U100 Old Footprint=SOT23-6 New Footprint=SOT23-6
+Change Component Footprint: Designator=TP100 Old Footprint=TP_SMD_xsmall New Footprint=TP_SMD_xsmall
+Change Component Footprint: Designator=TP101 Old Footprint=TP_SMD_xsmall New Footprint=TP_SMD_xsmall
+Change Component Footprint: Designator=TP102 Old Footprint=TP_SMD_xsmall New Footprint=TP_SMD_xsmall
+Added Pin To Net: NetName=PWM_Motor2 Pin=P507-3
+Added Room: Name=Motor1: Fortbewegung    Motor2: Reserve
+Added Room: Name=Motor3: Hubmechanismus    Motor3: Ausfahrmechanismus
+Added Room: Name=Motor5: Vibbration    Motor6: Drehmechanismus
+Added Room: Name=Spannungsversorgung: 12V, 5V, 3.3V
+Added Room: Name=Uebersicht
