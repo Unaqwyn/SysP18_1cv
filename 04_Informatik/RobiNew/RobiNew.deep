@@ -13,7 +13,7 @@ project RobiNew {
 
 #	enter names of rootclasses, e.g.
 #	rootclasses = "test.MyFirstTestClass","other.MySecondTestClass";
-	rootclasses = "Test.TestLift";
+	rootclasses = "Robi.Robi";
 
 #	imgfile = "\\fs003\stud\rjaeger\Desktop\SysP18_1cv\04_Informatik\RobiNew\RobiNew.bin";
 #	imgformat = BIN;
