@@ -36,7 +36,7 @@ public class TestLift extends Task
 //			lift.vibrate(true);
 			lift.setLego(4);
 			
-	}
+	
 	
 	static
 	{
