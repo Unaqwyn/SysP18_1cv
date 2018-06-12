@@ -23,12 +23,12 @@ public class Move extends Task
 	
 	public void driveForwart()
 	{
-		main.setSpeed(20);
+		main.setSpeed(80);
 	}
 	
 	public void driveBackwart()
 	{
-		main.setSpeed(-20);
+		main.setSpeed(-80);
 	}
 	
 	public void turnLeft()
@@ -39,7 +39,7 @@ public class Move extends Task
 	//pos testen!!!!!!!!!!!!!!!!!!!!!
 	public void turnRight()
 	{
-		turn.toPos(20000);
+		turn.toPos(-6560000);
 	}
 	
 	public boolean platformLeft()
@@ -54,7 +54,7 @@ public class Move extends Task
 	
 	public void action()
 	{
-		if(sensoren.obstacle(Sensoren.sensorArm)||sensoren.obstacle(Sensoren.sensorBack))
+		if(sensoren.threshold(700,Sensoren.sensorArm)||sensoren.obstacle(Sensoren.sensorBack))
 		{
 			main.stop();
 		}

@@ -23,6 +23,7 @@ public abstract class Drive extends Task
 			encoder = null;
 		}
 
+		stop();
 	}
 
 	// -100 <= speed <= 100

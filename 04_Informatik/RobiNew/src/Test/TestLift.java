@@ -29,7 +29,7 @@ public class TestLift extends Task
 		if(lift.inPosHeight())
 		{
 			lift.tilt(true);
-			lift.vibrate(true);
+//			lift.vibrate(true);
 			lift.setLego(4);
 		}	
 	}

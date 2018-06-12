@@ -13,7 +13,7 @@ public class DistSensor extends Task
 	private int[] value;
 	private double average = 0;
 	private boolean obstacle = false;
-	private double k = 1.2;
+	private double k = 1.1;
 
 	public DistSensor(int i)
 	{
