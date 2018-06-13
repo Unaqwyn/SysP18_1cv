@@ -24,6 +24,8 @@ public class Robi extends Task
 	private boolean start;
 	private boolean comIO;
 	
+	private int zähler = 0;
+	
 	private STATE state;
 	
 	private static enum STATE
@@ -128,18 +130,20 @@ public class Robi extends Task
 	public void initRobi()
 	{
 		start = io.getStartSwitch();
-		io.setmotorSleep(true);
-		wifi.sendCmd(222);
 		
-		if(wifi.received == 223)
+		if(zähler == 0)
 		{
+			io.setmotorSleep(true);
+			wifi.init();
 			comIO = true;
+			zähler++;
 		}
 		
 		if(start && comIO)
 		{
 			wifi.sendCmd(800);
 			state = STATE.DRIVEFORWORD_1;
+			zähler = 0;
 			// Sensoren init
 		}
 	}
@@ -150,12 +154,15 @@ public class Robi extends Task
 	 */
 	public void driveForward_1()
 	{
-		lift.init();
-		move.driveForwart();
-		
+		if(zähler == 0)
+		{
+			lift.init();
+			move.driveForwart();
+		}
 		if(!lift.legoFit())
 		{
 			state = STATE.GRAP;
+			zähler = 0;
 		}
 	}
 	
