@@ -1,0 +1,118 @@
+package Com;
+
+import java.io.PrintStream;
+import ch.ntb.inf.deep.runtime.mpc555.driver.MPIOSM_DIO;
+import ch.ntb.inf.deep.runtime.mpc555.driver.RN131;
+import ch.ntb.inf.deep.runtime.mpc555.driver.SCI;
+import ch.ntb.inf.deep.runtime.util.CmdInt;
+
+public class Wifi
+{
+	public RN131 wifi;
+	public static int received = 0;
+	private MPIOSM_DIO wifiIO;
+//	private Timer timer;
+	
+	public Wifi() throws Exception
+	{
+		SCI sci2 = SCI.getInstance(SCI.pSCI2);
+		sci2.start(115200, SCI.NO_PARITY, (short) 8);
+		
+		System.out.println("con1");
+		
+		wifi = new RN131(sci2.in, sci2.out, new MPIOSM_DIO(11, true));
+		//wifiIO = new MPIOSM_DIO(10, true);
+		//wifiIO.set(false);
+//		timer = new Timer();
+		
+		System.out.println("con2");
+		
+		//init();
+	}
+
+	public void getReceived()
+	{
+		//wifiIO.set(wifi.connected());
+		if (wifi.connected())
+		{
+			System.out.println("con3");
+			CmdInt.Type type = wifi.cmd.readCmd();
+			received = wifi.cmd.getInt();
+			System.out.print("connected \t");
+			System.out.println(received);
+			
+		}
+		else {
+			System.out.println("con4");
+			System.out.println("disconnected");
+		}
+	}
+
+	public void sendCmd(int x)
+	{
+		System.out.println("con5");
+		if (wifi.connected())
+			wifi.cmd.writeCmd(x);
+	}
+
+	public void sendHeight()
+	{
+		System.out.println("con6");
+		
+		int x = 0 + 1 + 100;
+		if (wifi.connected())
+			wifi.cmd.writeCmd(x);
+	}
+
+	public void pingStart()
+	{
+		System.out.println("con7");
+		if (wifi.connected())
+		{
+			wifi.cmd.writeCmd(800);
+		}
+	}
+
+	public void pingEnd()
+	{
+		if (wifi.connected())
+			wifi.cmd.writeCmd(802);
+	}
+
+	public void init()
+	{
+		while (!wifi.connected())
+		{
+			System.out.println("init");
+		}
+		wifi.cmd.writeCmd(222);
+		int x = 222;
+//		timer.start(1000);
+		while (!(x == 223))
+		{
+			CmdInt.Type type = wifi.cmd.readCmd();
+			x = wifi.cmd.getInt();
+//			if (timer.lapsed())
+			{
+				wifi.cmd.writeCmd(222);
+//				timer.start(1000);
+			}
+		}
+		pingStart();
+	}
+
+	public boolean next()
+	{
+		getReceived();
+		int updatedStone = 100 + 0 + 1;
+
+		if (updatedStone == received)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+}
