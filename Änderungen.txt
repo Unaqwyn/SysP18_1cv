@@ -1,4 +1,0 @@
-Änderung: 
-- PIN Reserve 5 (15) => neu Vibrationsmotor
-- P502 reserve -> init (Ausfahren)
-- P504 init -> reseve, funktioniert nicht.
