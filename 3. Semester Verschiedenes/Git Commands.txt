@@ -1,0 +1,6 @@
+Zuerst zum Ordner: SysP18_1cv navigieren
+git status  				Status abfragen
+git pull				Dateien abholen				
+git add .				alle Dateien bereitmachen für commit
+git commit . -m "Commmit Nachricht"	alle "geaddeten" Daten bereitmachen für push
+git push				Daten an GIT senden
